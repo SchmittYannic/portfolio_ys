@@ -5,11 +5,12 @@ const Hero = () => {
     const ref = useRef<HTMLDivElement>(null);
     const [rectStyle, setRectStyle] = useState<React.CSSProperties>({
         position: "absolute",
-        transformOrigin: "top left",
-        transform: "rotate(-45deg)",
+        transformOrigin: "bottom left", //"top left"
+        transform: "rotate(45deg)",
         height: "0px", //default
         width: "50px",
-        top: "0px", // default
+        bottom: "0px",
+        //top: "0px", // default
         left: "0px", // default
     });
 
@@ -23,14 +24,16 @@ const Hero = () => {
                 const refHeight = ref?.current?.clientHeight;
                 const parentHeight = ref?.current?.parentElement?.clientHeight;
                 const parentWidth = ref?.current?.parentElement?.clientWidth;
-                const newTop = parentHeight! * 0.5 - refHeight! * Math.sqrt(2) * 0.5 + 1;
+                //const newTop = parentHeight! * 0.5 - refHeight! * Math.sqrt(2) * 0.5 + 1;
+                const newBottom = refHeight! + ((refHeight! * Math.sqrt(2)) - refHeight!)*0.5 -1;
                 const newLeft = parentWidth! * 0.5 - 1;
                 const newHeight = refHeight;
                 const newWidth = parentHeight! * Math.sqrt(2) * 0.5;
-                newState["top"] = `${newTop}px`;
+                //newState["top"] = `${newTop}px`;
+                newState["bottom"] = `${newBottom}px`;
                 newState["left"] = `${newLeft}px`;
-                newState["height"] = `${newHeight}px`;
-                newState["width"] = `${newWidth}px`;
+                newState["width"] = `${newHeight}px`;
+                newState["height"] = `${newWidth}px`;
                 return newState;
             });
         }
@@ -48,20 +51,36 @@ const Hero = () => {
     }, [])
 
     return (
-        <section className="w-full h-screen">
+        <section className="w-full">
             <div
-                className="relative w-full min-h-[600px] h-0.5 overflow-hidden"
+                className="relative w-full min-h-[300px] mb-10 overflow-hidden"
             >
                 <div 
                     ref={ref}
-                    className="absolute bg-action top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
+                    className="absolute bg-action bottom-0 left-[50%] -translate-x-1/2 rounded-bl-full rounded-br-full rotate-45"
                 >
                     <img src={placeholderProfile} alt="" className="rounded-full -rotate-45" />
                 </div>
                 <div 
                     style={rectStyle}
-                    className="bg-action border-2 border-action"
+                    className="bg-action border-[1px] border-action"
                 />
+            </div>
+
+            <div className="px-10">
+                <h2 className="text-3xl font-bold mb-4">
+                    Hi, Ich bin <span className="text-action">Yannic</span>
+                </h2>
+                <p className="">angehender Webentwickler mit Fokus auf dem <span className="text-action">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
+
+                <div className="mt-12">
+                    <button className="px-3 py-[8px] border-4 rounded border-textPrimary">
+                        Resume
+                    </button>
+                    <a href="" className="ml-5 px-3 py-[13px] rounded bg-action">
+                        Kontakt
+                    </a>
+                </div>
             </div>
         </section>
     )
