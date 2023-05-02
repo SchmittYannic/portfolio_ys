@@ -63,7 +63,7 @@ const Hero = () => {
     }, [isMobile])
 
     return (
-        <section className="w-full lg:h-screen mb-32 xl:bg-slate-500 lg:bg-slate-400 md:bg-slate-300 sm:bg-slate-100 flex lg:flex-row-reverse flex-col items-center">
+        <section className="w-full lg:h-screen mb-32 flex lg:flex-row-reverse flex-col items-center">
             <div
                 className={`${styles.heroImgSection} relative w-full overflow-hidden`}
             >

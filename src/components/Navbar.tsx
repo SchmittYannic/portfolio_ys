@@ -87,7 +87,7 @@ const Navbar = () => {
                 ))}
             </ul> */}
 
-            <div className="fixed w-full max-w-[1920px] flex items-center justify-between z-50">
+            <div className="fixed w-full max-w-[1920px] min-w-[320px] flex items-center justify-between z-50">
                 <MobileNav />
             </div>
         </nav>
