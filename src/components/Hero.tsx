@@ -1,7 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import { placeholderProfile } from "../assets";
+import { styles } from "../styles";
+import useWindowSize from "../hooks/useWindowSize";
 
 const Hero = () => {
+    const { width, height } = useWindowSize();
+    const isMobile = width && width < 1024;
     const ref = useRef<HTMLDivElement>(null);
     const [rectStyle, setRectStyle] = useState<React.CSSProperties>({
         position: "absolute",
@@ -25,15 +29,23 @@ const Hero = () => {
                 const parentHeight = ref?.current?.parentElement?.clientHeight;
                 const parentWidth = ref?.current?.parentElement?.clientWidth;
                 //const newTop = parentHeight! * 0.5 - refHeight! * Math.sqrt(2) * 0.5 + 1;
-                const newBottom = refHeight! + ((refHeight! * Math.sqrt(2)) - refHeight!)*0.5 -1;
+                //const newBottom = refHeight! + ((refHeight! * Math.sqrt(2)) - refHeight!)*0.5 -1;
                 const newLeft = parentWidth! * 0.5 - 1;
                 const newHeight = refHeight;
-                const newWidth = parentHeight! * Math.sqrt(2) * 0.5;
+                const newWidth = parentWidth! * Math.sqrt(2) * 0.5;
                 //newState["top"] = `${newTop}px`;
-                newState["bottom"] = `${newBottom}px`;
+                //newState["bottom"] = `${newBottom}px`;
                 newState["left"] = `${newLeft}px`;
-                newState["width"] = `${newHeight}px`;
+                newState["width"] = `${newHeight}px`; //switching height and width on purpose
                 newState["height"] = `${newWidth}px`;
+
+                if(isMobile) {
+                    const newBottom = refHeight! + ((refHeight! * Math.sqrt(2)) - refHeight!)*0.5 - 1;
+                    newState["bottom"] = `${newBottom}px`;
+                } else {
+                    const newBottom = parentHeight! * 0.5 + refHeight! * Math.sqrt(2) * 0.5 - 1;
+                    newState["bottom"] = `${newBottom}px`;
+                }
                 return newState;
             });
         }
@@ -48,18 +60,21 @@ const Hero = () => {
         );
 
         return () => window.removeEventListener("resize", handleResize);
-    }, [])
+    }, [isMobile])
 
     return (
-        <section className="w-full mb-32">
+        <section className="w-full lg:h-screen mb-32 lg:bg-slate-500 md:bg-slate-300 sm:bg-slate-100 flex lg:flex-row-reverse flex-col items-center">
             <div
-                className="relative w-full min-h-[300px] mb-10 overflow-hidden"
+                className={`${styles.heroImgSection} relative w-full overflow-hidden`}
             >
                 <div 
                     ref={ref}
-                    className="absolute bg-action bottom-0 left-[50%] -translate-x-1/2 rounded-bl-full rounded-br-full rotate-45"
+                    className="absolute bg-action lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
                 >
-                    <img src={placeholderProfile} alt="" className="rounded-full -rotate-45" />
+                    <img 
+                        src={placeholderProfile} 
+                        alt="" 
+                        className={`${styles.heroImg} rounded-full -rotate-45`} />
                 </div>
                 <div 
                     style={rectStyle}
@@ -67,12 +82,12 @@ const Hero = () => {
                 />
             </div>
 
-            <div className="px-10">
+            <div className={`${styles.heroTextSection} lg:py-0 md:py-24 sm:py-16 py-10 lg:mx-auto px-10`}>
 
-                <h2 className="text-3xl font-bold mb-4">
+                <h2 className={`${styles.heroHeadText} mb-4`}>
                     Hi, Ich bin <span className="text-action">Yannic</span>
                 </h2>
-                <p className="">angehender Webentwickler mit Fokus auf dem <span className="text-action">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
+                <p className={`${styles.heroSubText}`}>angehender Webentwickler mit Fokus auf dem <span className="text-action">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
 
                 <div className="mt-12">
                     <button className="px-3 py-[8px] border-4 rounded border-textPrimary">
