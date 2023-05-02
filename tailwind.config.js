@@ -6,6 +6,7 @@ export default {
         extend: {
             colors: {
                 base: "#fff",
+                baseSecondary: "#e8e8e8",
                 textPrimary: "#000000",
                 action: "#fe5b02",
             },

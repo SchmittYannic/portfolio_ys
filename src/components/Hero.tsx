@@ -68,6 +68,7 @@ const Hero = () => {
             </div>
 
             <div className="px-10">
+
                 <h2 className="text-3xl font-bold mb-4">
                     Hi, Ich bin <span className="text-action">Yannic</span>
                 </h2>

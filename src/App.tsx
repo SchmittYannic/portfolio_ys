@@ -1,10 +1,11 @@
 import { BrowserRouter } from "react-router-dom"
-import { Hero } from "./components"
+import { Hero, Navbar } from "./components"
 
 const App = () => {
     return (
         <BrowserRouter>
             <div className="App w-full h-full bg-base">
+                <Navbar />
                 <Hero />
             </div>
         </BrowserRouter>
