@@ -51,7 +51,7 @@ const Hero = () => {
     }, [])
 
     return (
-        <section className="w-full">
+        <section className="w-full mb-32">
             <div
                 className="relative w-full min-h-[300px] mb-10 overflow-hidden"
             >
