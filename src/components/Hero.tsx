@@ -63,13 +63,13 @@ const Hero = () => {
     }, [isMobile])
 
     return (
-        <section className="w-full lg:h-screen mb-32 lg:bg-slate-500 md:bg-slate-300 sm:bg-slate-100 flex lg:flex-row-reverse flex-col items-center">
+        <section className="w-full lg:h-screen mb-32 xl:bg-slate-500 lg:bg-slate-400 md:bg-slate-300 sm:bg-slate-100 flex lg:flex-row-reverse flex-col items-center">
             <div
                 className={`${styles.heroImgSection} relative w-full overflow-hidden`}
             >
                 <div 
                     ref={ref}
-                    className="absolute bg-action lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
+                    className="absolute lg:w-2/3 bg-action lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
                 >
                     <img 
                         src={placeholderProfile} 
@@ -82,7 +82,7 @@ const Hero = () => {
                 />
             </div>
 
-            <div className={`${styles.heroTextSection} lg:py-0 md:py-24 sm:py-16 py-10 lg:mx-auto px-10`}>
+            <div className={`${styles.heroTextSection} lg:py-0 md:py-24 sm:py-16 py-10 lg:mx-auto lg:pl-20 px-10`}>
 
                 <h2 className={`${styles.heroHeadText} mb-4`}>
                     Hi, Ich bin <span className="text-action">Yannic</span>
