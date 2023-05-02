@@ -4,8 +4,8 @@ import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
 
 const Hero = () => {
-    const { width, height } = useWindowSize();
-    const isMobile = width && width < 1024;
+    const windowSize = useWindowSize();
+    const isMobile = windowSize.width && windowSize.width < 1024;
     const ref = useRef<HTMLDivElement>(null);
     const [rectStyle, setRectStyle] = useState<React.CSSProperties>({
         position: "absolute",
@@ -82,7 +82,7 @@ const Hero = () => {
                 />
             </div>
 
-            <div className={`${styles.heroTextSection} lg:py-0 md:py-24 sm:py-16 py-10 lg:mx-auto lg:pl-20 px-10`}>
+            <div className={`${styles.heroTextSection} ${styles.heroTextSectionPadding}`}>
 
                 <h2 className={`${styles.heroHeadText} mb-4`}>
                     Hi, Ich bin <span className="text-action">Yannic</span>
@@ -90,10 +90,10 @@ const Hero = () => {
                 <p className={`${styles.heroSubText}`}>angehender Webentwickler mit Fokus auf dem <span className="text-action">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
 
                 <div className="mt-12">
-                    <button className="px-3 py-[8px] border-4 rounded border-textPrimary">
+                    <button className="sm:px-6 px-3 py-[8px] border-4 rounded border-textPrimary text-xl font-bold">
                         Resume
                     </button>
-                    <a href="" className="ml-5 px-3 py-[13px] rounded bg-action">
+                    <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded bg-action text-xl font-bold">
                         Kontakt
                     </a>
                 </div>

@@ -6,6 +6,8 @@ const styles = {
 
     heroTextSection: 
         "xl:max-w-[700px] lg:max-w-[550px] md:max-w-[500px] sm:max-w-[450px] max-w-[360px]",
+    heroTextSectionPadding:
+        "lg:py-0 md:py-24 sm:py-16 py-10 lg:mx-auto lg:pl-20 px-10",
     heroHeadText:
         "xl:text-7xl md:text-5xl sm:text-4xl text-3xl font-bold",
     heroSubText:
