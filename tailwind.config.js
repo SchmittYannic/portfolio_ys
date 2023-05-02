@@ -7,7 +7,7 @@ export default {
             colors: {
                 base: "#fff",
                 textPrimary: "#000000",
-                action: "#FFA500",
+                action: "#fe5b02",
             },
             screens: {
                 xs: "450px",

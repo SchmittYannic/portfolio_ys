@@ -37,7 +37,12 @@ const Hero = () => {
 
         window.addEventListener("resize", handleResize);
 
-        handleResize();
+        //handleResize();
+
+        setTimeout(
+            ()=>{window.dispatchEvent(new Event('resize'));},
+            1
+        );
 
         return () => window.removeEventListener("resize", handleResize);
     }, [])
