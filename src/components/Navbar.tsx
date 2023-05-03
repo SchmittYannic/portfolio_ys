@@ -5,14 +5,37 @@ import { useInView } from "framer-motion";
 import { navLinks } from "../constants";
 import { closeBlack, cogBlack, logoBlack, menuBlack } from "../assets";
 
+const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
+    return (
+        <div className={`xl:ml-6 xl:mt-6 rounded-lg bg-base border-2 border-baseSecondary divide-y divide-baseSecondary shadow-xl z-10`}>
+            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                <div className="text-center font-medium truncate">Navigation</div>
+            </div>
+
+            <ul className="py-2 text-sm">
+                {navLinks.map(link => (
+                    <li
+                        key={link.id}
+                        onClick={() => {setIsMenuOpen(false)}}
+                    >
+                        <div className="p-2 h-12 w-full inline-flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <a href={`#${link.id}`}>{link.title_de}</a>
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
 const SettingsMenu = () => {
     return (
         <div className={`xl:ml-6 xl:mt-6 rounded-lg bg-base border-2 border-baseSecondary divide-y divide-baseSecondary shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                <div className="text-center font-medium truncate">Settings</div>
+                <div className="text-center font-medium truncate">Einstellungen</div>
             </div>
             
-            <ul className="py-2 text-sm" aria-labelledby="dropdownMenuIconButton">
+            <ul className="py-2 text-sm">
                 <li>
                     <div className="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
@@ -165,22 +188,9 @@ const MobileNav = () => {
             </div>
 
             <div 
-                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] right-0 w-[50%] bg-baseSecondary shadow-lg`}
+                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] right-0 w-[180px]`}
             >
-                <ul className="p-8 flex flex-col gap-8 text-2xl">
-                    {navLinks.map(link => (
-                        <li
-                            key={link.id}
-                            onClick={() => {
-                                setIsMenuOpen(!isMenuOpen)
-                            }}
-                        >
-                            <a href={`#${link.id}`}>
-                                {link.title_de}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <NavMenu setIsMenuOpen={setIsMenuOpen} />
             </div>
 
             <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] left-0`}>
