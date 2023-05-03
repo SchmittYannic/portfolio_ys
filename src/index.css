@@ -32,9 +32,9 @@ body {
 }
 
 .flag-checkbox:not(:checked)~#german-flag .rect {
-    stroke: rgba(0, 30, 255, 1);
+    stroke: rgba(254, 91, 2, 1);
 }
 
 .flag-checkbox:checked~#uk-flag .rect {
-    stroke: rgba(0, 30, 255, 1);
+    stroke: rgba(254, 91, 2, 1);
 }

@@ -10,7 +10,7 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
     const language = document.documentElement.lang;
 
     return (
-        <div className={`xl:ml-6 xl:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary shadow-xl z-10`}>
+        <div className={`xl:ml-6 xl:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-textPrimary dark:text-darkTextPrimary">
                 <div className="text-center font-medium truncate">
                     {language === "de" ? TextContent.german.navigation : TextContent.english.navigation}
@@ -61,7 +61,7 @@ const SettingsMenu = () => {
     }
 
     return (
-        <div className={`lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary shadow-xl z-10`}>
+        <div className={`lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm dark:text-darkTextPrimary text-textPrimary">
                 <div className="text-center font-medium truncate">
                     {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
@@ -264,7 +264,7 @@ const Navbar = () => {
     return (
         <>
             <div ref={ref} />
-            <header className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full h-[80px] z-50`}>
+            <header className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full h-[80px] z-50`}>
                 <nav className="h-full">
                     <div className="h-full lg:grid grid-cols-3 items-center hidden">
                         <DesktopNav />
