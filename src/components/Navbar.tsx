@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useInView } from "framer-motion";
 
 import { navLinks } from "../constants";
 import { closeBlack, cogBlack, logoBlack, menuBlack } from "../assets";
@@ -9,17 +10,19 @@ const DesktopNav = () => {
 
     return (
         <>
-            <div className={`${isSettingOpen ? "bg-baseSecondary" : ""} p-2 ml-6`}>
+            <div className={`p-2 ml-6`}>
                 <img 
                     src={isSettingOpen ? closeBlack : cogBlack} 
                     alt={isSettingOpen ? "close-settings" : "settings"}
                     className="w-[50px] h-[50px] cursor-pointer"
+                    onClick={() => setIsSettingOpen(!isSettingOpen)}
                 />
             </div>
 
             <Link
                 to="/"
                 className="justify-self-center p-2"
+                onClick={() => window.scrollTo(0, 0)}
             >
                 <img 
                     src={logoBlack} 
@@ -37,6 +40,10 @@ const DesktopNav = () => {
                     </li>
                 ))}
             </ul>
+
+            <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] left-0 w-[50%]`}>
+                {/* fill in later */}
+            </div>
         </>
     )
 }
@@ -110,16 +117,23 @@ const MobileNav = () => {
 };
 
 const Navbar = () => {
-    return (
-        <nav>
-            <div className="fixed w-full max-w-[1920px] min-w-[320px] lg:grid grid-cols-3 hidden z-50">
-                <DesktopNav />
-            </div>
+    const ref = useRef(null);
+    const isInView = useInView(ref)
 
-            <div className="fixed w-full max-w-[1920px] min-w-[320px] lg:hidden flex items-center justify-between z-50">
-                <MobileNav />
-            </div>
-        </nav>
+    return (
+        <>
+            <div ref={ref} />
+            <header className={`${isInView ? "bg-transparent" : "bg-base drop-shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full z-50`}>
+                <nav>
+                    <div className="lg:grid grid-cols-3 hidden">
+                        <DesktopNav />
+                    </div>
+                    <div className="lg:hidden flex items-center justify-between">
+                        <MobileNav />
+                    </div>
+                </nav>
+            </header>
+        </>
     )
 }
 
