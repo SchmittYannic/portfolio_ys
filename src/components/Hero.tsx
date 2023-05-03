@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
+import { TextContent } from "../constants";
 
 const Hero = () => {
     const windowSize = useWindowSize();
@@ -17,6 +18,7 @@ const Hero = () => {
         //top: "0px", // default
         left: "0px", // default
     });
+    const language = document.documentElement.lang;
 
     useEffect(() => {
         const handleResize = () => {
@@ -85,16 +87,20 @@ const Hero = () => {
             <div className={`${styles.heroTextSection} ${styles.heroTextSectionPadding}`}>
 
                 <h2 className={`${styles.heroHeadText} mb-4`}>
-                    Hi, Ich bin <span className="text-actionOrange-900">Yannic</span>
+                    {language === "de" ? TextContent.german.heroHeadText : TextContent.english.heroHeadText}<span className="text-actionOrange-900">Yannic</span>
                 </h2>
-                <p className={`${styles.heroSubText}`}>angehender Webentwickler mit Fokus auf dem <span className="text-actionOrange-900">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
+                <p className={`${styles.heroSubText}`}>
+                    {language === "de" ? TextContent.german.heroSubText1 : TextContent.english.heroSubText1}
+                    <span className="text-actionOrange-900">Frontend</span>
+                    {language === "de" ? TextContent.german.heroSubText2 : TextContent.english.heroSubText2}
+                </p>
 
                 <div className="mt-12">
                     <button className="sm:px-6 px-3 py-[8px] border-4 rounded border-textPrimary text-xl font-bold">
                         Resume
                     </button>
                     <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded bg-actionOrange-900 text-xl font-bold">
-                        Kontakt
+                        {language === "de" ? TextContent.german.contact : TextContent.english.contact}
                     </a>
                 </div>
             </div>

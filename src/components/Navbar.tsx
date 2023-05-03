@@ -1,15 +1,20 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
-import { navLinks } from "../constants";
+import { TextContent, navLinks } from "../constants";
 import { closeBlack, cogBlack, logoBlack, menuBlack } from "../assets";
+import { SettingsContext } from "../context/SettingsProvider";
 
 const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
+    const language = document.documentElement.lang;
+
     return (
         <div className={`xl:ml-6 xl:mt-6 rounded-lg bg-base border-2 border-baseSecondary divide-y divide-baseSecondary shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                <div className="text-center font-medium truncate">Navigation</div>
+                <div className="text-center font-medium truncate">
+                    {language === "de" ? TextContent.german.navigation : TextContent.english.navigation}
+                </div>
             </div>
 
             <ul className="py-2 text-sm">
@@ -19,7 +24,7 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
                         onClick={() => {setIsMenuOpen(false)}}
                     >
                         <div className="p-2 h-12 w-full inline-flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <a href={`#${link.id}`}>{link.title_de}</a>
+                            <a href={`#${link.id}`}>{language === "de" ? link.title_de : link.title_en}</a>
                         </div>
                     </li>
                 ))}
@@ -29,10 +34,38 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
 }
 
 const SettingsMenu = () => {
+    const { theme, setTheme, lang, setLang, color, setColor } = useContext(SettingsContext)
+
+    const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.checked) {
+            setTheme("dark")
+            localStorage.theme = "dark";
+            document.documentElement.classList.add("dark")
+        } else {
+            setTheme("light")
+            localStorage.theme = "light";
+            document.documentElement.classList.remove("dark")
+        }
+    }
+
+    const handleChangeLang = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.checked) {
+            setLang("en")
+            localStorage.lang = "en";
+            document.documentElement.setAttribute("lang", "en")
+        } else {
+            setLang("de")
+            localStorage.lang = "de";
+            document.documentElement.setAttribute("lang", "de")
+        }
+    }
+
     return (
         <div className={`xl:ml-6 xl:mt-6 rounded-lg bg-base border-2 border-baseSecondary divide-y divide-baseSecondary shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                <div className="text-center font-medium truncate">Einstellungen</div>
+                <div className="text-center font-medium truncate">
+                    {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
+                </div>
             </div>
             
             <ul className="py-2 text-sm">
@@ -40,10 +73,17 @@ const SettingsMenu = () => {
                     <div className="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
                             <span className="mx-3 text-sm font-medium text-textPrimary dark:text-gray-300">
-                                Dunkelmodus
+                                {lang === "de" ? TextContent.german.darkmode : TextContent.english.darkmode}
                             </span>
                             <div className="relative h-8 flex items-center">
-                                <input type="checkbox" value="" className="sr-only peer" />
+                                <input 
+                                    type="checkbox" 
+                                    className="sr-only peer" 
+                                    onChange={(e) => {
+                                        handleChangeTheme(e)
+                                    }}
+                                    checked={theme === "light" ? false : true}
+                                />
                                 <div className="w-9 h-5 mr-3 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-actionOrange-400 dark:peer-focus:ring-actionOrange-900 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[50%] after:-translate-y-[50%] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-actionOrange-700" />
                             </div>
                         </label>
@@ -53,9 +93,15 @@ const SettingsMenu = () => {
                     <div className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
                             <span className="mx-3 text-sm font-medium text-textPrimary">
-                                Sprache
+                                {lang === "de" ? TextContent.german.language : TextContent.english.language}
                             </span>
-                            <input className="flag-checkbox sr-only peer" type="checkbox" value="" />                         
+                            <input 
+                                className="flag-checkbox sr-only peer" 
+                                type="checkbox" 
+                                onChange={(e) => {
+                                    handleChangeLang(e)
+                                }}
+                            />                         
                             <svg
                                 className="w-8 h-8"
                                 id="german-flag"
@@ -106,6 +152,7 @@ const SettingsMenu = () => {
 
 const DesktopNav = () => {
     const [isSettingOpen, setIsSettingOpen] = useState(false);
+    const language = document.documentElement.lang;
 
     return (
         <>
@@ -135,7 +182,7 @@ const DesktopNav = () => {
                     <li
                         key={link.id}
                     >
-                        <a href={`#${link.id}`}>{link.title_de}</a>
+                        <a href={`#${link.id}`}>{language === "de" ? link.title_de : link.title_en}</a>
                     </li>
                 ))}
             </ul>
