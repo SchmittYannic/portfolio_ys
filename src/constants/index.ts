@@ -3,6 +3,7 @@ const TextContent = {
         settings: "Einstellungen",
         darkmode: "Dunkelmodus",
         language: "Sprache",
+        colorscheme: "Farbschema",
         navigation: "Navigation",
         contact: "Kontakt",
         heroHeadText: "Hi, Ich bin ",
@@ -13,6 +14,7 @@ const TextContent = {
         settings: "Settings",
         darkmode: "Darkmode",
         language: "Language",
+        colorscheme: "Colorscheme",
         navigation: "Navigation",
         contact: "Contact",
         heroHeadText: "Hi, I am ",
@@ -20,6 +22,39 @@ const TextContent = {
         heroSubText2: ". Using the latest technologies, I will bring your designs to life."
     }
 }
+
+const colorOption = [
+    {
+        id: "blue",
+        name_de: "Blau",
+        name_en: "Blue",
+    },
+    {
+        id: "orange",
+        name_de: "Orange",
+        name_en: "Orange",
+    },
+    {
+        id: "green",
+        name_de: "Grün",
+        name_en: "Green",
+    },
+    {
+        id: "purple",
+        name_de: "Lila",
+        name_en: "Purple",
+    },
+    {
+        id: "magenta",
+        name_de: "Magenta",
+        name_en: "Magenta",
+    },
+    {
+        id: "yellow",
+        name_de: "Gelb",
+        name_en: "Yellow",
+    },
+]
 
 const navLinks = [
     {
@@ -47,5 +82,6 @@ const navLinks = [
 
 export {
     navLinks,
-    TextContent
+    TextContent,
+    colorOption
 }

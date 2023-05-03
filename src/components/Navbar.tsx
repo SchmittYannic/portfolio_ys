@@ -2,7 +2,7 @@ import { useState, useRef, useContext, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
-import { TextContent, navLinks } from "../constants";
+import { TextContent, colorOption, navLinks } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import { SettingsContext } from "../context/SettingsProvider";
 
@@ -34,30 +34,38 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
 }
 
 const SettingsMenu = () => {
+    const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
     const { theme, setTheme, lang, setLang, color, setColor } = useContext(SettingsContext)
 
     const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
-            setTheme("dark")
+            setTheme("dark");
             localStorage.theme = "dark";
-            document.documentElement.classList.add("dark")
+            document.documentElement.classList.add("dark");
         } else {
-            setTheme("light")
+            setTheme("light");
             localStorage.theme = "light";
-            document.documentElement.classList.remove("dark")
+            document.documentElement.classList.remove("dark");
         }
     }
 
     const handleChangeLang = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
-            setLang("en")
+            setLang("en");
             localStorage.lang = "en";
-            document.documentElement.setAttribute("lang", "en")
+            document.documentElement.setAttribute("lang", "en");
         } else {
-            setLang("de")
+            setLang("de");
             localStorage.lang = "de";
-            document.documentElement.setAttribute("lang", "de")
+            document.documentElement.setAttribute("lang", "de");
         }
+    }
+
+    const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        
+        setColor(value);
+        localStorage.color = value;
     }
 
     return (
@@ -70,7 +78,7 @@ const SettingsMenu = () => {
             
             <ul className="py-2 text-sm">
                 <li>
-                    <div className="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                    <div className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
                             <span className="mx-3 text-sm font-medium text-textPrimary dark:text-darkTextPrimary">
                                 {lang === "de" ? TextContent.german.darkmode : TextContent.english.darkmode}
@@ -89,6 +97,8 @@ const SettingsMenu = () => {
                         </label>
                     </div>
                 </li>
+
+
                 <li>
                     <div className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
@@ -142,8 +152,46 @@ const SettingsMenu = () => {
                         </label>
                     </div>
                 </li>
+
+
                 <li>
-                    {/* Theme change here */}
+                    <button 
+                        type="button"
+                        className="h-12 w-full px-5 py-2 flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:text-darkTextPrimary text-textPrimary"
+                        onClick={() => setIsColorMenuOpen(!isColorMenuOpen)}
+                    >
+                        {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
+                        <svg aria-hidden="true" className="w-4 h-4 rotate-90" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
+                    </button>
+                    <div className={`${isColorMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-0 w-[100%] rounded-bl-lg rounded-br-lg dark:bg-darkBase bg-base border-2 border-t-[1px] dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}> 
+                        <ul className="py-2 text-sm text-textPrimary dark:text-darkTextPrimary">
+                            {colorOption.map(option => {
+                                const colorClass = `bg-action${option.name_en}-900`;
+                                return (
+                                    <li key={option.id}>
+                                        <label className="flex items-center h-12 w-full px-5 text-sm font-medium text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
+                                            <input 
+                                                type="radio"
+                                                value={`${option.id}`} 
+                                                name="color" 
+                                                className="sr-only peer"
+                                                onChange={(e) => handleChangeColor(e)}
+                                                checked={color === option.id ? true : false}
+                                            />
+                                            <div className={`${colorClass} checkmark-container relative w-8 h-8 mr-4 rounded-full`}>
+                                                <svg className={`${color === option.id ? "opacity-100" : "opacity-0"} checkmark absolute w-4 h-4 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]`} width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
+                                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
+                                                    <g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"/> <g id="Shopicon"> <polygon points="18,33.172 6,21.172 3.171,24 18,38.828 44.829,12 42,9.172 "/> </g> </g>
+                                                </svg>
+                                            </div>
+                                            {lang === "de" ? option.name_de : option.name_en}
+                                        </label>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>

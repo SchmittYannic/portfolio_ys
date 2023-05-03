@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+        --actionOrange-900: 254, 91, 2, 1;
+        --actionBlue-900: 29, 155, 240, 1;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -32,9 +39,9 @@ body {
 }
 
 .flag-checkbox:not(:checked)~#german-flag .rect {
-    stroke: rgba(254, 91, 2, 1);
+    stroke: rgba(var(--actionOrange-900));
 }
 
 .flag-checkbox:checked~#uk-flag .rect {
-    stroke: rgba(254, 91, 2, 1);
+    stroke: rgba(var(--actionOrange-900));
 }

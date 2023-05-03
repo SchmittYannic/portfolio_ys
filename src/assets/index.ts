@@ -9,6 +9,8 @@ import menuBlack from "./menuBlack.svg";
 import menuWhite from "./menuWhite.svg";
 import uk from "./uk.svg";
 import germany from "./germany.svg";
+import checkmarkWhite from "./checkmarkWhite.svg";
+import checkmarkBlack from "./checkmarkBlack.svg";
 
 export {
     placeholderProfile,
@@ -22,4 +24,6 @@ export {
     menuWhite,
     uk,
     germany,
+    checkmarkBlack,
+    checkmarkWhite
 }

@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react"
 import { SettingsContext } from "./context/SettingsProvider"
 
 const App = () => {
-    const { setTheme, setLang } = useContext(SettingsContext)
+    const { setTheme, setLang, setColor } = useContext(SettingsContext)
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -21,6 +21,12 @@ const App = () => {
         } else {
             setLang("de")
             document.documentElement.setAttribute("lang", "de")
+        }
+
+        if (localStorage.color) {
+            setColor(localStorage.color);
+        } else {
+            setColor("orange");
         }
     }, [])
 
