@@ -8,7 +8,17 @@ export default {
                 base: "#fff",
                 baseSecondary: "#e8e8e8",
                 textPrimary: "#000000",
-                action: "#fe5b02",
+                actionOrange: {
+                    900: "#fe5b02", //using https://maketintsandshades.com/#fe5b02
+                    800: "#fe6b1b",
+                    700: "#fe7c35",
+                    600: "#fe8c4e",
+                    500: "#fe9d67",
+                    400: "#ffbd9a",
+                    300: "#ffceb3",
+                    200: "#ffdecc",
+                    100: "#ffefe6",
+                }
             },
             screens: {
                 xs: "450px",

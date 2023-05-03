@@ -69,7 +69,7 @@ const Hero = () => {
             >
                 <div 
                     ref={ref}
-                    className="absolute lg:w-2/3 bg-action lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
+                    className="absolute lg:w-2/3 bg-actionOrange-900 lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
                 >
                     <img 
                         src={placeholderProfile} 
@@ -78,22 +78,22 @@ const Hero = () => {
                 </div>
                 <div 
                     style={rectStyle}
-                    className="bg-action border-[1px] border-action"
+                    className="bg-actionOrange-900 border-[1px] border-actionOrange-900"
                 />
             </div>
 
             <div className={`${styles.heroTextSection} ${styles.heroTextSectionPadding}`}>
 
                 <h2 className={`${styles.heroHeadText} mb-4`}>
-                    Hi, Ich bin <span className="text-action">Yannic</span>
+                    Hi, Ich bin <span className="text-actionOrange-900">Yannic</span>
                 </h2>
-                <p className={`${styles.heroSubText}`}>angehender Webentwickler mit Fokus auf dem <span className="text-action">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
+                <p className={`${styles.heroSubText}`}>angehender Webentwickler mit Fokus auf dem <span className="text-actionOrange-900">Frontend.</span> Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken. </p>
 
                 <div className="mt-12">
                     <button className="sm:px-6 px-3 py-[8px] border-4 rounded border-textPrimary text-xl font-bold">
                         Resume
                     </button>
-                    <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded bg-action text-xl font-bold">
+                    <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded bg-actionOrange-900 text-xl font-bold">
                         Kontakt
                     </a>
                 </div>

@@ -7,6 +7,8 @@ import logoBlack from "./logoBlack.svg";
 import logoWhite from "./logoWhite.svg";
 import menuBlack from "./menuBlack.svg";
 import menuWhite from "./menuWhite.svg";
+import uk from "./uk.svg";
+import germany from "./germany.svg";
 
 export {
     placeholderProfile,
@@ -18,4 +20,6 @@ export {
     logoWhite,
     menuBlack,
     menuWhite,
+    uk,
+    germany,
 }

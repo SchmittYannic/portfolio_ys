@@ -30,3 +30,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgba(0, 30, 255, 1);
+}
+
+.flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgba(0, 30, 255, 1);
+}
