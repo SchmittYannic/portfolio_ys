@@ -26,7 +26,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="App w-full h-full bg-base">
+            <div className="App w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
                 <About />

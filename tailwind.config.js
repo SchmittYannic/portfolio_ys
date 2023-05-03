@@ -18,7 +18,10 @@ export default {
                     300: "#ffceb3",
                     200: "#ffdecc",
                     100: "#ffefe6",
-                }
+                },
+                darkBase: "#15202b",
+                darkBaseSecondary: "#38444d",
+                darkTextPrimary: "#fff"
             },
             screens: {
                 xs: "450px",

@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
 import { TextContent, navLinks } from "../constants";
-import { closeBlack, cogBlack, logoBlack, menuBlack } from "../assets";
+import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import { SettingsContext } from "../context/SettingsProvider";
 
 const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const language = document.documentElement.lang;
 
     return (
-        <div className={`xl:ml-6 xl:mt-6 rounded-lg bg-base border-2 border-baseSecondary divide-y divide-baseSecondary shadow-xl z-10`}>
-            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+        <div className={`xl:ml-6 xl:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary shadow-xl z-10`}>
+            <div className="px-4 py-3 text-sm text-textPrimary dark:text-darkTextPrimary">
                 <div className="text-center font-medium truncate">
                     {language === "de" ? TextContent.german.navigation : TextContent.english.navigation}
                 </div>
@@ -23,7 +23,7 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
                         key={link.id}
                         onClick={() => {setIsMenuOpen(false)}}
                     >
-                        <div className="p-2 h-12 w-full inline-flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600">
+                        <div className="p-2 h-12 w-full inline-flex items-center justify-center cursor-pointer dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600">
                             <a href={`#${link.id}`}>{language === "de" ? link.title_de : link.title_en}</a>
                         </div>
                     </li>
@@ -61,8 +61,8 @@ const SettingsMenu = () => {
     }
 
     return (
-        <div className={`xl:ml-6 xl:mt-6 rounded-lg bg-base border-2 border-baseSecondary divide-y divide-baseSecondary shadow-xl z-10`}>
-            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+        <div className={`lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary shadow-xl z-10`}>
+            <div className="px-4 py-3 text-sm dark:text-darkTextPrimary text-textPrimary">
                 <div className="text-center font-medium truncate">
                     {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
                 </div>
@@ -72,7 +72,7 @@ const SettingsMenu = () => {
                 <li>
                     <div className="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
-                            <span className="mx-3 text-sm font-medium text-textPrimary dark:text-gray-300">
+                            <span className="mx-3 text-sm font-medium text-textPrimary dark:text-darkTextPrimary">
                                 {lang === "de" ? TextContent.german.darkmode : TextContent.english.darkmode}
                             </span>
                             <div className="relative h-8 flex items-center">
@@ -92,7 +92,7 @@ const SettingsMenu = () => {
                 <li>
                     <div className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <label className="inline-flex items-center w-full cursor-pointer">
-                            <span className="mx-3 text-sm font-medium text-textPrimary">
+                            <span className="mx-3 text-sm font-medium dark:text-darkTextPrimary text-textPrimary">
                                 {lang === "de" ? TextContent.german.language : TextContent.english.language}
                             </span>
                             <input 
@@ -152,13 +152,17 @@ const SettingsMenu = () => {
 
 const DesktopNav = () => {
     const [isSettingOpen, setIsSettingOpen] = useState(false);
-    const language = document.documentElement.lang;
+    const { lang, theme} = useContext(SettingsContext);
+
+    const close = theme === "light" ? closeBlack : closeWhite;
+    const cog = theme === "light" ? cogBlack : cogWhite;
+    const logo = theme === "light" ? logoBlack : logoWhite;
 
     return (
         <>
-            <div className={`p-2 ml-6`}>
+            <div className={`ml-6`}>
                 <img 
-                    src={isSettingOpen ? closeBlack : cogBlack} 
+                    src={isSettingOpen ? close : cog} 
                     alt={isSettingOpen ? "close-settings" : "settings"}
                     className="w-[50px] h-[50px] cursor-pointer"
                     onClick={() => setIsSettingOpen(!isSettingOpen)}
@@ -167,22 +171,22 @@ const DesktopNav = () => {
 
             <Link
                 to="/"
-                className="justify-self-center p-2"
+                className="justify-self-center"
                 onClick={() => window.scrollTo(0, 0)}
             >
                 <img 
-                    src={logoBlack} 
-                    alt="page-logo-black" 
+                    src={logo}
+                    alt="page-logo" 
                     className="w-[50px] h-[50px]"
                 />
             </Link>
 
-            <ul className="justify-self-end flex xl:gap-16 gap-7 items-center p-2 mr-6 text-xl">
+            <ul className="justify-self-end flex xl:gap-16 gap-7 items-center mr-6 text-xl dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
                     <li
                         key={link.id}
                     >
-                        <a href={`#${link.id}`}>{language === "de" ? link.title_de : link.title_en}</a>
+                        <a href={`#${link.id}`}>{lang === "de" ? link.title_de : link.title_en}</a>
                     </li>
                 ))}
             </ul>
@@ -197,12 +201,18 @@ const DesktopNav = () => {
 const MobileNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSettingOpen, setIsSettingOpen] = useState(false);
+    const { theme } = useContext(SettingsContext);
+
+    const close = theme === "light" ? closeBlack : closeWhite;
+    const cog = theme === "light" ? cogBlack : cogWhite;
+    const logo = theme === "light" ? logoBlack : logoWhite;
+    const menu = theme === "light" ? menuBlack : menuWhite;
 
     return (
         <>
-            <div className={`${isSettingOpen ? "bg-baseSecondary" : ""} p-2`}>
+            <div className={`ml-6`}>
                 <img 
-                    src={isSettingOpen ? closeBlack : cogBlack} 
+                    src={isSettingOpen ? close : cog} 
                     alt={isSettingOpen ? "close-settings" : "settings"} 
                     className="w-[50px] h-[50px] cursor-pointer"
                     onClick={() => setIsSettingOpen(!isSettingOpen)}
@@ -217,15 +227,15 @@ const MobileNav = () => {
                 }}
             >
                 <img 
-                    src={logoBlack} 
-                    alt="page-logo-black" 
+                    src={logo} 
+                    alt="page-logo" 
                     className="w-[50px] h-[50px]" 
                 />
             </Link>
 
-            <div className={`${isMenuOpen ? "bg-baseSecondary" : ""} p-2`}>
+            <div className={`mr-6`}>
                 <img 
-                    src={isMenuOpen ? closeBlack : menuBlack}
+                    src={isMenuOpen ? close : menu}
                     alt={isMenuOpen ? "close-burger-menu" : "burger-menu"} 
                     className="w-[50px] h-[50px] cursor-pointer"
                     onClick={() => {
@@ -235,12 +245,12 @@ const MobileNav = () => {
             </div>
 
             <div 
-                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] right-0 w-[180px]`}
+                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(80px)] right-0 w-[180px]`}
             >
                 <NavMenu setIsMenuOpen={setIsMenuOpen} />
             </div>
 
-            <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] left-0`}>
+            <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(80px)] left-0`}>
                 <SettingsMenu />
             </div>
         </>
@@ -254,12 +264,12 @@ const Navbar = () => {
     return (
         <>
             <div ref={ref} />
-            <header className={`${isInView ? "bg-transparent" : "bg-base shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full z-50`}>
-                <nav>
-                    <div className="lg:grid grid-cols-3 hidden">
+            <header className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full h-[80px] z-50`}>
+                <nav className="h-full">
+                    <div className="h-full lg:grid grid-cols-3 items-center hidden">
                         <DesktopNav />
                     </div>
-                    <div className="lg:hidden flex items-center justify-between">
+                    <div className="h-full lg:hidden flex items-center justify-between">
                         <MobileNav />
                     </div>
                 </nav>

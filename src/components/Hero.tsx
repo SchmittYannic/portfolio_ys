@@ -86,20 +86,20 @@ const Hero = () => {
 
             <div className={`${styles.heroTextSection} ${styles.heroTextSectionPadding}`}>
 
-                <h2 className={`${styles.heroHeadText} mb-4`}>
+                <h2 className={`${styles.heroHeadText} dark:text-darkTextPrimary text-textPrimary mb-4`}>
                     {language === "de" ? TextContent.german.heroHeadText : TextContent.english.heroHeadText}<span className="text-actionOrange-900">Yannic</span>
                 </h2>
-                <p className={`${styles.heroSubText}`}>
+                <p className={`${styles.heroSubText} dark:text-darkTextPrimary text-textPrimary`}>
                     {language === "de" ? TextContent.german.heroSubText1 : TextContent.english.heroSubText1}
                     <span className="text-actionOrange-900">Frontend</span>
                     {language === "de" ? TextContent.german.heroSubText2 : TextContent.english.heroSubText2}
                 </p>
 
                 <div className="mt-12">
-                    <button className="sm:px-6 px-3 py-[8px] border-4 rounded border-textPrimary text-xl font-bold">
+                    <button className="sm:px-6 px-3 py-[8px] border-4 rounded dark:text-darkTextPrimary text-textPrimary dark:border-darkTextPrimary border-textPrimary text-xl font-bold">
                         Resume
                     </button>
-                    <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded bg-actionOrange-900 text-xl font-bold">
+                    <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded dark:text-darkTextPrimary text-textPrimary bg-actionOrange-900 text-xl font-bold">
                         {language === "de" ? TextContent.german.contact : TextContent.english.contact}
                     </a>
                 </div>
