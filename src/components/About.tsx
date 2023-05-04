@@ -204,7 +204,7 @@ const About = () => {
                     <EducationSubSection />
                 </div>
 
-                <div className="max-w-[700px] lg:pr-0 pr-10 pl-10 lg:w-full w-[60%] mx-auto">
+                <div className="max-w-[700px] lg:pr-0 pr-10 pl-10 lg:w-full sm:w-[60%] mx-auto">
                     <SkillsSubSection />
                 </div>
             </div>
