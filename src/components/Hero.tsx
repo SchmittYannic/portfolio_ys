@@ -1,8 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
 import { TextContent } from "../constants";
+import { SettingsContext } from "../context/SettingsProvider";
 
 const Hero = () => {
     const windowSize = useWindowSize();
@@ -18,7 +19,10 @@ const Hero = () => {
         //top: "0px", // default
         left: "0px", // default
     });
-    const language = document.documentElement.lang;
+    const {lang, color} = useContext(SettingsContext);
+    const bgColorClass900 = `bg-action${color}-900`;
+    const borderColorClass900 = `border-action${color}-900`;
+    const textColorClass900 = `text-action${color}-900`;
 
     useEffect(() => {
         const handleResize = () => {
@@ -71,7 +75,7 @@ const Hero = () => {
             >
                 <div 
                     ref={ref}
-                    className="absolute lg:w-2/3 bg-actionOrange-900 lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45"
+                    className={`absolute lg:w-2/3 lg:bottom-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:translate-y-1/2 rounded-bl-full rounded-br-full rotate-45 ${bgColorClass900}`}
                 >
                     <img 
                         src={placeholderProfile} 
@@ -80,27 +84,27 @@ const Hero = () => {
                 </div>
                 <div 
                     style={rectStyle}
-                    className="bg-actionOrange-900 border-[1px] border-actionOrange-900"
+                    className={`${bgColorClass900} border-[1px] ${borderColorClass900}`}
                 />
             </div>
 
             <div className={`${styles.heroTextSection} ${styles.heroTextSectionPadding}`}>
 
                 <h2 className={`${styles.heroHeadText} dark:text-darkTextPrimary text-textPrimary mb-4`}>
-                    {language === "de" ? TextContent.german.heroHeadText : TextContent.english.heroHeadText}<span className="text-actionOrange-900">Yannic</span>
+                    {lang === "de" ? TextContent.german.heroHeadText : TextContent.english.heroHeadText}<span className={`${textColorClass900}`}>Yannic</span>
                 </h2>
                 <p className={`${styles.heroSubText} dark:text-darkTextPrimary text-textPrimary`}>
-                    {language === "de" ? TextContent.german.heroSubText1 : TextContent.english.heroSubText1}
-                    <span className="text-actionOrange-900">Frontend</span>
-                    {language === "de" ? TextContent.german.heroSubText2 : TextContent.english.heroSubText2}
+                    {lang === "de" ? TextContent.german.heroSubText1 : TextContent.english.heroSubText1}
+                    <span className={`${textColorClass900}`}>Frontend</span>
+                    {lang === "de" ? TextContent.german.heroSubText2 : TextContent.english.heroSubText2}
                 </p>
 
                 <div className="mt-12">
                     <button className="sm:px-6 px-3 py-[8px] border-4 rounded dark:text-darkTextPrimary text-textPrimary dark:border-darkTextPrimary border-textPrimary text-xl font-bold">
                         Resume
                     </button>
-                    <a href="" className="ml-5 sm:px-6 px-3 py-[13px] rounded dark:text-darkTextPrimary text-textPrimary bg-actionOrange-900 text-xl font-bold">
-                        {language === "de" ? TextContent.german.contact : TextContent.english.contact}
+                    <a href="" className={`ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary text-xl font-bold`}>
+                        {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
                     </a>
                 </div>
             </div>

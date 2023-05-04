@@ -7,13 +7,13 @@ import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuB
 import { SettingsContext } from "../context/SettingsProvider";
 
 const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
-    const language = document.documentElement.lang;
+    const { lang } = useContext(SettingsContext);
 
     return (
         <div className={`xl:ml-6 xl:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary divide-y dark:divide-darkBaseSecondary divide-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-textPrimary dark:text-darkTextPrimary">
                 <div className="text-center font-medium truncate">
-                    {language === "de" ? TextContent.german.navigation : TextContent.english.navigation}
+                    {lang === "de" ? TextContent.german.navigation : TextContent.english.navigation}
                 </div>
             </div>
 
@@ -24,7 +24,7 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
                         onClick={() => {setIsMenuOpen(false)}}
                     >
                         <div className="p-2 h-12 w-full inline-flex items-center justify-center cursor-pointer dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <a href={`#${link.id}`}>{language === "de" ? link.title_de : link.title_en}</a>
+                            <a href={`#${link.id}`}>{lang === "de" ? link.title_de : link.title_en}</a>
                         </div>
                     </li>
                 ))}
@@ -172,14 +172,14 @@ const SettingsMenu = () => {
                                         <label className="flex items-center h-12 w-full px-5 text-sm font-medium text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
                                             <input 
                                                 type="radio"
-                                                value={`${option.id}`} 
+                                                value={`${option.name_en}`} 
                                                 name="color" 
                                                 className="sr-only peer"
                                                 onChange={(e) => handleChangeColor(e)}
-                                                checked={color === option.id ? true : false}
+                                                checked={color === option.name_en ? true : false}
                                             />
                                             <div className={`${colorClass} checkmark-container relative w-8 h-8 mr-4 rounded-full`}>
-                                                <svg className={`${color === option.id ? "opacity-100" : "opacity-0"} checkmark absolute w-4 h-4 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]`} width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                                                <svg className={`${color === option.name_en ? "opacity-100" : "opacity-0"} checkmark absolute w-4 h-4 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]`} width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
                                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
                                                     <g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"/> <g id="Shopicon"> <polygon points="18,33.172 6,21.172 3.171,24 18,38.828 44.829,12 42,9.172 "/> </g> </g>
@@ -307,7 +307,7 @@ const MobileNav = () => {
 
 const Navbar = () => {
     const ref = useRef(null);
-    const isInView = useInView(ref)
+    const isInView = useInView(ref);
 
     return (
         <>

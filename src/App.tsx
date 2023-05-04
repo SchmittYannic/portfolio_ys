@@ -26,7 +26,7 @@ const App = () => {
         if (localStorage.color) {
             setColor(localStorage.color);
         } else {
-            setColor("orange");
+            setColor("Orange");
         }
     }, [])
 
