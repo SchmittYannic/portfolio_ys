@@ -33,8 +33,12 @@ const NavMenu = ({ setIsMenuOpen }: { setIsMenuOpen: React.Dispatch<React.SetSta
     )
 }
 
-const SettingsMenu = () => {
-    const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
+type SettingsMenuPropsType = {
+    isOpen: boolean,
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+}
+
+const SettingsMenu = ({ isOpen, setIsOpen }: SettingsMenuPropsType) => {
     const { theme, setTheme, lang, setLang, color, setColor } = useContext(SettingsContext)
 
     const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
@@ -160,12 +164,12 @@ const SettingsMenu = () => {
                     <button 
                         type="button"
                         className="h-12 w-full px-5 py-2 flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white dark:text-darkTextPrimary text-textPrimary"
-                        onClick={() => setIsColorMenuOpen(!isColorMenuOpen)}
+                        onClick={() => setIsOpen(!isOpen)}
                     >
                         {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
                         <svg aria-hidden="true" className="w-4 h-4 rotate-90" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
                     </button>
-                    <div className={`${isColorMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-0 w-[100%] rounded-bl-lg rounded-br-lg dark:bg-darkBase bg-base border-2 border-t-[1px] dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}> 
+                    <div className={`${isOpen ? "visible opacity-100" : "invisible opacity-0"} absolute left-0 w-[100%] rounded-bl-lg rounded-br-lg dark:bg-darkBase bg-base border-2 border-t-[1px] dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}> 
                         <ul className="py-2 text-sm text-textPrimary dark:text-darkTextPrimary">
                             {colorOption.map(option => {
                                 const colorClass = `bg-action${option.name_en}-900`;
@@ -202,6 +206,7 @@ const SettingsMenu = () => {
 
 const DesktopNav = () => {
     const [isSettingOpen, setIsSettingOpen] = useState(false);
+    const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
     const { lang, theme} = useContext(SettingsContext);
 
     const close = theme === "light" ? closeBlack : closeWhite;
@@ -215,7 +220,10 @@ const DesktopNav = () => {
                     src={isSettingOpen ? close : cog} 
                     alt={isSettingOpen ? "close-settings" : "settings"}
                     className="w-[50px] h-[50px] cursor-pointer"
-                    onClick={() => setIsSettingOpen(!isSettingOpen)}
+                    onClick={() => {
+                        setIsSettingOpen(!isSettingOpen);
+                        setIsColorMenuOpen(false);
+                    }}
                 />
             </div>
 
@@ -242,7 +250,7 @@ const DesktopNav = () => {
             </ul>
 
             <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] left-0`}>
-                <SettingsMenu />
+                <SettingsMenu isOpen={isColorMenuOpen} setIsOpen={setIsColorMenuOpen} />
             </div>
         </>
     )
@@ -251,6 +259,7 @@ const DesktopNav = () => {
 const MobileNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSettingOpen, setIsSettingOpen] = useState(false);
+    const [isColorMenuOpen, setIsColorMenuOpen] = useState(false);
     const { theme } = useContext(SettingsContext);
 
     const close = theme === "light" ? closeBlack : closeWhite;
@@ -265,7 +274,10 @@ const MobileNav = () => {
                     src={isSettingOpen ? close : cog} 
                     alt={isSettingOpen ? "close-settings" : "settings"} 
                     className="w-[50px] h-[50px] cursor-pointer"
-                    onClick={() => setIsSettingOpen(!isSettingOpen)}
+                    onClick={() => {
+                        setIsSettingOpen(!isSettingOpen);
+                        setIsColorMenuOpen(false);
+                    }}
                 />
             </div>
 
@@ -301,7 +313,7 @@ const MobileNav = () => {
             </div>
 
             <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(80px)] left-0`}>
-                <SettingsMenu />
+                <SettingsMenu isOpen={isColorMenuOpen} setIsOpen={setIsColorMenuOpen} />
             </div>
         </>
     )
