@@ -1,3 +1,5 @@
+import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptLogo, germany, uk } from "../assets";
+
 const TextContent = {
     german: {
         settings: "Einstellungen",
@@ -17,6 +19,10 @@ const TextContent = {
         gpa: "Notenschnitt: ",
         thesis: "Thesis: ",
         focus: "Schwerpunkte: ",
+
+        skillsHead: "Kenntnisse",
+        itHead: "IT",
+        languageHead: "Sprachen",
     },
     english: {
         settings: "Settings",
@@ -36,6 +42,10 @@ const TextContent = {
         gpa: "GPA: ",
         thesis: "Thesis: ",
         focus: "Focus: ",
+
+        skillsHead: "Skills",
+        itHead: "IT",
+        languageHead: "Languages",
     }
 }
 
@@ -183,10 +193,52 @@ const education_en: educationType[] = [
     }
 ];
 
+const skillsIT = [
+    {
+        name: "HTML5",
+        logo: html5Logo,
+    },
+    {
+        name: "CSS3",
+        logo: css3Logo,
+    },
+    {
+        name: "Javascript",
+        logo: javascriptLogo,
+    },
+    {
+        name: "React",
+        logo: reactLogo,
+    },
+    {
+        name: "Python",
+        logo: pythonLogo,
+    },
+    {
+        name: "Typescript",
+        logo: typescriptLogo,
+    },
+];
+
+const skillsLanguage = [
+    {
+        name_de: "Deutsch",
+        name_en: "German",
+        logo: germany,
+    },
+    {
+        name_de: "Englisch",
+        name_en: "English",
+        logo: uk,
+    },
+];
+
 export {
     navLinks,
     TextContent,
     colorOption,
     education_de,
     education_en,
+    skillsIT,
+    skillsLanguage,
 }
