@@ -11,6 +11,7 @@ import uk from "./uk.svg";
 import germany from "./germany.svg";
 import checkmarkWhite from "./checkmarkWhite.svg";
 import checkmarkBlack from "./checkmarkBlack.svg";
+import calendarBlack from "./calendarBlack.svg";
 
 export {
     placeholderProfile,
@@ -25,5 +26,6 @@ export {
     uk,
     germany,
     checkmarkBlack,
-    checkmarkWhite
+    checkmarkWhite,
+    calendarBlack,
 }
