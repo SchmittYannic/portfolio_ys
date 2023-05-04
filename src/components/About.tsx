@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react"
 import { motion, useScroll, MotionValue } from "framer-motion"
 
-import { TextContent, education_de, educationType, education_en } from "../constants"
+import { TextContent, education_de, educationType, education_en, skillsIT, skillsLanguage } from "../constants"
 import { SettingsContext } from "../context/SettingsProvider"
 
 type fillColorType = `fill-${string}`
@@ -9,8 +9,6 @@ type fillColorType = `fill-${string}`
 const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, fillColor: fillColorType}) => {
     return (
         <svg className={`${classes}`} width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"> 
-            <title>calendar [#1196]</title>
-            <desc>Created with Sketch.</desc>
             <defs></defs>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g className={`${fillColor}`} id="Dribbble-Light-Preview" transform="translate(-300.000000, -2799.000000)">
@@ -69,7 +67,7 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 <h4 className="dark:text-darkTextPrimary text-textPrimary text-xl mb-1">
                     {entry.name}
                 </h4>
-                <span className="inline-flex items-center text-sm dark:text-darkTextPrimary/60 text-textPrimary/60">
+                <span className="flex items-center text-sm dark:text-darkTextPrimary/60 text-textPrimary/60">
                     <CalendarIcon classes={"w-3 h-3 mr-1"} fillColor={theme === "dark" ? "fill-darkTextPrimary/60" : "fill-textPrimary/60"} />
                     {entry.start} - {entry.end}
                 </span>
@@ -99,7 +97,7 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
     )
 }
 
-const About = () => {
+const EducationSubSection = () => {
     const { lang, color } = useContext(SettingsContext);
     const ref = useRef(null);
     const { scrollYProgress } = useScroll(
@@ -112,29 +110,102 @@ const About = () => {
     const education = lang === "de" ? education_de : education_en;
 
     return (
+        <>
+            <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
+                {lang === "de" ? TextContent.german.educationHead : TextContent.english.educationHead}
+            </h3>
+
+            <div ref={ref} className="relative w-full mx-auto">
+                <motion.div
+                    className={`absolute top-0 left-2 w-[4px] h-full origin-top ${bgColorClass900}`}
+                    style={{scaleY: scrollYProgress}}
+                />
+
+                <ul className="ml-12 flex flex-col items-start">
+                    {education.map(entry => (
+                        <TimelineEntry key={entry.name} entry={entry} />
+                    ))}
+                </ul>
+            </div>
+        </>
+    )
+}
+
+const SkillsSubSection = () => {
+    const { lang, color } = useContext(SettingsContext);
+    const bgColorClass900 = `bg-action${color}-900`;
+
+    return (
+        <>
+            <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
+                {lang === "de" ? TextContent.german.skillsHead : TextContent.english.skillsHead}
+            </h3>
+
+            <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+                {lang === "de" ? TextContent.german.itHead : TextContent.english.itHead}
+                <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
+            </h4>
+
+            <div className="mb-14 flex justify-center flex-wrap">
+                {skillsIT.map(skill => (
+                    <div
+                        key={skill.name}
+                        className="p-[10px] m-[5px] flex flex-col justify-center items-center"
+                    >
+                        <label className="text-center dark:text-darkTextPrimary text-textPrimary">
+                            <p className="py-3">{skill.name}</p>
+                            <img 
+                                src={skill.logo} 
+                                alt={skill.name} 
+                                className="w-[100px] h-[100px]" 
+                            />
+                        </label>
+                    </div>
+                ))}
+            </div>
+
+            <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+                {lang === "de" ? TextContent.german.languageHead : TextContent.english.languageHead}
+                <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
+            </h4>
+
+            <div className="flex justify-center flex-wrap">
+                {skillsLanguage.map(language => (
+                    <div
+                        key={language.name_en}
+                        className="p-[10px] m-[5px] flex flex-col justify-center items-center"
+                    >
+                        <label className="text-center dark:text-darkTextPrimary text-textPrimary">
+                            <p className="py-3">{lang === "de" ? language.name_de : language.name_en}</p>
+                            <img 
+                                src={language.logo} 
+                                alt={`${language.name_en}-icon`} 
+                                className="w-[100px] h-[100px]"
+                            />
+                        </label>
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+}
+
+const About = () => {
+    const { lang } = useContext(SettingsContext);
+
+    return (
         <section id="about" className="w-full mb-32">
             <h2 className="mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.aboutHead : TextContent.english.aboutHead}
             </h2>
 
             <div>
+                <div className="px-10 mb-16">
+                    <EducationSubSection />
+                </div>
+
                 <div className="px-10">
-                    <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
-                        {lang === "de" ? TextContent.german.educationHead : TextContent.english.educationHead}
-                    </h3>
-
-                    <div ref={ref} className="relative w-full mx-auto">
-                        <motion.div
-                            className={`absolute top-0 left-2 w-[4px] h-full origin-top ${bgColorClass900}`}
-                            style={{scaleY: scrollYProgress}}
-                        />
-
-                        <ul className="ml-12 flex flex-col items-start">
-                            {education.map(entry => (
-                                <TimelineEntry key={entry.name} entry={entry} />
-                            ))}
-                        </ul>
-                    </div>
+                    <SkillsSubSection />
                 </div>
             </div>
         </section>
