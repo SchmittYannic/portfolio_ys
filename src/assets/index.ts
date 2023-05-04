@@ -12,6 +12,12 @@ import germany from "./germany.svg";
 import checkmarkWhite from "./checkmarkWhite.svg";
 import checkmarkBlack from "./checkmarkBlack.svg";
 import calendarBlack from "./calendarBlack.svg";
+import html5Logo from "./html5.svg";
+import css3Logo from "./css3.svg";
+import javascriptLogo from "./javascript.svg";
+import reactLogo from "./react.svg";
+import pythonLogo from "./python.svg";
+import typescriptLogo from "./typescript.svg";
 
 export {
     placeholderProfile,
@@ -28,4 +34,10 @@ export {
     checkmarkBlack,
     checkmarkWhite,
     calendarBlack,
+    html5Logo,
+    css3Logo,
+    javascriptLogo,
+    reactLogo,
+    pythonLogo,
+    typescriptLogo,
 }
