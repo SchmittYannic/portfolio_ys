@@ -65,6 +65,7 @@ const SettingsMenu = () => {
         const value = e.target.value;
         
         setColor(value);
+        document.documentElement.setAttribute("data-color", value);
         localStorage.color = value;
     }
 

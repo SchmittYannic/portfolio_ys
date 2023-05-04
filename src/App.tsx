@@ -25,8 +25,10 @@ const App = () => {
 
         if (localStorage.color) {
             setColor(localStorage.color);
+            document.documentElement.setAttribute("data-color", localStorage.color);
         } else {
             setColor("Orange");
+            document.documentElement.setAttribute("data-color", "Orange");
         }
     }, [])
 

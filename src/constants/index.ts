@@ -5,10 +5,18 @@ const TextContent = {
         language: "Sprache",
         colorscheme: "Farbschema",
         navigation: "Navigation",
+        
         contact: "Kontakt",
         heroHeadText: "Hi, Ich bin ",
         heroSubText1: "angehender Webentwickler mit Fokus auf dem ",
-        heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken."
+        heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
+        
+        aboutHead: "Über mich",
+        educationHead: "Bildung",
+        noDegree: "ohne Abschluss",
+        gpa: "Notenschnitt: ",
+        thesis: "Thesis: ",
+        focus: "Schwerpunkte: ",
     },
     english: {
         settings: "Settings",
@@ -16,10 +24,18 @@ const TextContent = {
         language: "Language",
         colorscheme: "Colorscheme",
         navigation: "Navigation",
+
         contact: "Contact",
         heroHeadText: "Hi, I am ",
         heroSubText1: "aspiring web developer with focus on the ",
-        heroSubText2: ". Using the latest technologies, I will bring your designs to life."
+        heroSubText2: ". Using the latest technologies, I will bring your designs to life.",
+
+        aboutHead: "About me",
+        educationHead: "Education",
+        noDegree: "no degree",
+        gpa: "GPA: ",
+        thesis: "Thesis: ",
+        focus: "Focus: ",
     }
 }
 
@@ -80,8 +96,97 @@ const navLinks = [
     },
 ];
 
+export type educationType = {
+    name: string,
+    start: string,
+    end: string,
+    type: string,
+    location: string,
+    grade: number | "noDegree",
+    thesis?: string,
+    focus?: string
+}
+
+const education_de: educationType[] = [
+    {
+        name: "Master Wirtschaftsinformatik",
+        start: "10/2018",
+        end: "07/2022",
+        type: "Uni - Master",
+        location: "Julius-Maximilians-Universität Würzburg",
+        grade: 2.7,
+        thesis: "Edge Intelligence: Entwicklung eines Entscheidungsframeworks",
+        focus: "E-Business und Business Analytics"
+    },
+    {
+        name: "Bachelor Wirtschaftsinformatik",
+        start: "10/2014",
+        end: "08/2018",
+        type: "Uni - Bachelor",
+        location: "Julius-Maximilians-Universität Würzburg",
+        grade: 2.3,
+        thesis: "Analyse der Einsatzmöglichkeiten von Prototyping"
+    },
+    {
+        name: "Bachelor Informatik",
+        start: "10/2013",
+        end: "07/2014",
+        type: "Uni - Bachelor",
+        location: "Julius-Maximilians-Universität Würzburg",
+        grade: "noDegree"
+    },
+    {
+        name: "Allgemeine Hochschulreife",
+        start: "09/2004",
+        end: "07/2013",
+        type: "Gymnasium",
+        location: "Armin-Knab-Gymnasium, Kitzingen",
+        grade: 2.9
+    }
+];
+
+const education_en: educationType[] = [
+    {
+        name: "Master Information Systems",
+        start: "10/2018",
+        end: "07/2022",
+        type: "Uni - Master",
+        location: "Julius-Maximilians-Universität Würzburg",
+        grade: 2.7,
+        thesis: "Edge Intelligence: Development of a decision framework",
+        focus: "E-Business and Business Analytics"
+    },
+    {
+        name: "Bachelor Information Systems",
+        start: "10/2014",
+        end: "08/2018",
+        type: "Uni - Bachelor",
+        location: "Julius-Maximilians-Universität Würzburg",
+        grade: 2.3,
+        thesis: "Analysis of use of prototyping"
+    },
+    {
+        name: "Bachelor Computer Science",
+        start: "10/2013",
+        end: "07/2014",
+        type: "Uni - Bachelor",
+        location: "Julius-Maximilians-Universität Würzburg",
+        grade: "noDegree"
+    },
+    {
+        name: "General Higher Qualification for University Entrance",
+        start: "09/2004",
+        end: "07/2013",
+        type: "Gymnasium",
+        location: "Armin-Knab-Gymnasium, Kitzingen",
+        grade: 2.9
+    }
+];
+
 export {
     navLinks,
     TextContent,
-    colorOption
+    colorOption,
+    education_de,
+    education_en,
 }
