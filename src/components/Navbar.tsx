@@ -112,6 +112,7 @@ const SettingsMenu = () => {
                                 onChange={(e) => {
                                     handleChangeLang(e)
                                 }}
+                                checked={lang === "de" ? false : true}
                             />                         
                             <svg
                                 className="w-8 h-8"
