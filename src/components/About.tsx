@@ -29,9 +29,9 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const fillColorClass900 = `fill-action${color}-900`
 
     return (
-        <figure className="absolute xl:left-0 -left-7 dark:stroke-lightText stroke-darkText">
+        <figure className={`absolute -left-7 ${strokeColorClass900}`}>
             <svg className="-rotate-90" width="75" height="75" viewBox="0 0 100 100">
-                <circle cx="75" cy="50" r="20" className={`${strokeColorClass900} stroke-[4px] fill-none`} />
+                <circle cx="75" cy="50" r="20" className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
                 <motion.circle 
                     cx="75" cy="50" r="20" className="stroke-[5px] dark:fill-darkBase fill-base"
                     style={{
@@ -115,7 +115,7 @@ const EducationSubSection = () => {
                 {lang === "de" ? TextContent.german.educationHead : TextContent.english.educationHead}
             </h3>
 
-            <div ref={ref} className="relative w-full mx-auto">
+            <div ref={ref} className="relative w-full">
                 <motion.div
                     className={`absolute top-0 left-2 w-[4px] h-full origin-top ${bgColorClass900}`}
                     style={{scaleY: scrollYProgress}}
@@ -199,12 +199,12 @@ const About = () => {
                 {lang === "de" ? TextContent.german.aboutHead : TextContent.english.aboutHead}
             </h2>
 
-            <div>
-                <div className="px-10 mb-16">
+            <div className="lg:px-20 grid lg:grid-cols-[1fr_1fr] grid-cols-1">
+                <div className="max-w-[700px] lg:pl-0 pl-10 pr-10 mb-16 lg:w-full sm:w-[60%] w-full mx-auto">
                     <EducationSubSection />
                 </div>
 
-                <div className="px-10">
+                <div className="max-w-[700px] lg:pr-0 pr-10 pl-10 lg:w-full w-[60%] mx-auto">
                     <SkillsSubSection />
                 </div>
             </div>
