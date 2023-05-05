@@ -164,7 +164,7 @@ const SettingsMenu = () => {
     }, [focusedRadio])
 
     return (
-        <div className="lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10">
+        <div className="lg:mr-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10">
             <div className="h-12 w-full px-5 py-2 flex items-center text-sm dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
             </div>
