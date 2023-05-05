@@ -44,11 +44,11 @@ body {
 
 /* ColorScheme */
 
-html[data-color="Orange"] .flag-checkbox:not(:checked)~#german-flag .rect {
+html[data-color="Orange"] #flag-checkbox:not(:checked)~#german-flag .rect {
     stroke: rgba(var(--actionOrange-900));
 }
 
-html[data-color="Orange"] .flag-checkbox:checked~#uk-flag .rect {
+html[data-color="Orange"] #flag-checkbox:checked~#uk-flag .rect {
     stroke: rgba(var(--actionOrange-900));
 }
 
@@ -56,11 +56,11 @@ html[data-color="Orange"] ::marker {
     color: rgba(var(--actionOrange-900));
 }
 
-html[data-color="Blue"] .flag-checkbox:not(:checked)~#german-flag .rect {
+html[data-color="Blue"] #flag-checkbox:not(:checked)~#german-flag .rect {
     stroke: rgba(var(--actionBlue-900));
 }
 
-html[data-color="Blue"] .flag-checkbox:checked~#uk-flag .rect {
+html[data-color="Blue"] #flag-checkbox:checked~#uk-flag .rect {
     stroke: rgba(var(--actionBlue-900));
 }
 
@@ -68,11 +68,11 @@ html[data-color="Blue"] ::marker {
     color: rgba(var(--actionBlue-900));
 }
 
-html[data-color="Green"] .flag-checkbox:not(:checked)~#german-flag .rect {
+html[data-color="Green"] #flag-checkbox:not(:checked)~#german-flag .rect {
     stroke: rgba(var(--actionGreen-900));
 }
 
-html[data-color="Green"] .flag-checkbox:checked~#uk-flag .rect {
+html[data-color="Green"] #flag-checkbox:checked~#uk-flag .rect {
     stroke: rgba(var(--actionGreen-900));
 }
 
@@ -80,11 +80,11 @@ html[data-color="Green"] ::marker {
     color: rgba(var(--actionGreen-900));
 }
 
-html[data-color="Purple"] .flag-checkbox:not(:checked)~#german-flag .rect {
+html[data-color="Purple"] #flag-checkbox:not(:checked)~#german-flag .rect {
     stroke: rgba(var(--actionPurple-900));
 }
 
-html[data-color="Purple"] .flag-checkbox:checked~#uk-flag .rect {
+html[data-color="Purple"] #flag-checkbox:checked~#uk-flag .rect {
     stroke: rgba(var(--actionPurple-900));
 }
 
@@ -92,11 +92,11 @@ html[data-color="Purple"] ::marker {
     color: rgba(var(--actionPurple-900));
 }
 
-html[data-color="Magenta"] .flag-checkbox:not(:checked)~#german-flag .rect {
+html[data-color="Magenta"] #flag-checkbox:not(:checked)~#german-flag .rect {
     stroke: rgba(var(--actionMagenta-900));
 }
 
-html[data-color="Magenta"] .flag-checkbox:checked~#uk-flag .rect {
+html[data-color="Magenta"] #flag-checkbox:checked~#uk-flag .rect {
     stroke: rgba(var(--actionMagenta-900));
 }
 
@@ -104,11 +104,11 @@ html[data-color="Magenta"] ::marker {
     color: rgba(var(--actionMagenta-900));
 }
 
-html[data-color="Yellow"] .flag-checkbox:not(:checked)~#german-flag .rect {
+html[data-color="Yellow"] #flag-checkbox:not(:checked)~#german-flag .rect {
     stroke: rgba(var(--actionYellow-900));
 }
 
-html[data-color="Yellow"] .flag-checkbox:checked~#uk-flag .rect {
+html[data-color="Yellow"] #flag-checkbox:checked~#uk-flag .rect {
     stroke: rgba(var(--actionYellow-900));
 }
 

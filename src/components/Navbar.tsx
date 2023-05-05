@@ -5,6 +5,7 @@ import { useInView } from "framer-motion";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import { SettingsContext } from "../context/SettingsProvider";
+import { determineIfCheckbox } from "../utils/typeguards";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -201,8 +202,27 @@ const SettingsMenu = () => {
 const LanguageToggle = () => {
     const { lang, setLang } = useContext(SettingsContext);
 
+    const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+        const { code } = e;
+        if (code === "Space") {
+            e.preventDefault();
+            const checkbox = document.getElementById("flag-checkbox");
+
+            if (!checkbox) return;
+            if (!determineIfCheckbox(checkbox)) return;
+
+            const checkbox2 = document.getElementById("flag-checkbox") as HTMLInputElement;
+
+            changeLang(!checkbox2.checked);
+        }
+    };
+
     const handleChangeLang = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.checked) {
+        changeLang(e.target.checked)
+    };
+
+    const changeLang = (bool: boolean): void => {
+        if (bool) {
             setLang("en");
             localStorage.lang = "en";
             document.documentElement.setAttribute("lang", "en");
@@ -211,13 +231,18 @@ const LanguageToggle = () => {
             localStorage.lang = "de";
             document.documentElement.setAttribute("lang", "de");
         }
-    }
+    };
 
     return (
-        <div className="ml-6 flex p-2">
+        <div 
+            className="ml-6 flex p-2" 
+            tabIndex={0}
+            onKeyDown={(e) => handleKeyDown(e)}
+        >
             <label className="inline-flex items-center w-full cursor-pointer">
                 <input 
-                    className="flag-checkbox sr-only peer" 
+                    id="flag-checkbox"
+                    className="sr-only peer" 
                     type="checkbox" 
                     onChange={(e) => {
                         handleChangeLang(e)
