@@ -1,8 +1,8 @@
-import { useState, useRef, useContext, ChangeEvent } from "react";
+import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
-import { TextContent, colorOption, navLinks } from "../constants";
+import { ColorOptionType, TextContent, colorOption, navLinks } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import { SettingsContext } from "../context/SettingsProvider";
 
@@ -60,8 +60,81 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
     )
 }
 
+type ColorOptionPropsType = {
+    idx: number,
+    option: ColorOptionType,
+    liRef: React.MutableRefObject<HTMLInputElement | null>,
+    focusedRadio: number,
+    setFocusedRadio: React.Dispatch<React.SetStateAction<number>>,
+}
+
+const ColorOption = ({idx, option, liRef, focusedRadio, setFocusedRadio}: ColorOptionPropsType) => {
+    const { lang, color, setColor } = useContext(SettingsContext);
+
+    const bgColorClass900 = `bg-action${option.name_en}-900`;
+    const ringColorClass600 = `ring-action${option.name_en}-600`;
+
+    const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setFocusedRadio(idx);
+        setColor(value);
+        document.documentElement.setAttribute("data-color", value);
+        localStorage.color = value;
+    }
+
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+        const { key } = e
+        const colorOptionLength = colorOption.length
+        if (key === "ArrowDown") {
+            e.preventDefault();
+            setFocusedRadio(prev => {
+                const nextIndexCount = (prev + 1) % colorOptionLength
+                console.log("next: ", nextIndexCount)
+                return nextIndexCount
+            })
+        }
+
+        if (key === "ArrowUp") {
+            e.preventDefault();
+            setFocusedRadio(prev => {
+                const nextIndexCount = (prev + colorOptionLength - 1) % colorOptionLength;
+                console.log("next: ", nextIndexCount)
+                return nextIndexCount
+            })
+        }
+    }
+
+    return (
+        <li>
+            <label className="flex items-center h-12 w-full px-5 text-sm font-medium text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
+                <input 
+                    type="radio"
+                    value={`${option.name_en}`}
+                    ref={idx === focusedRadio ? liRef : null}
+                    name="color" 
+                    className="sr-only peer"
+                    onChange={(e) => handleChangeColor(e)}
+                    onKeyDown={(e) => handleKeyDown(e)}
+                    checked={color === option.name_en ? true : false}
+                />
+                <div className={`${bgColorClass900} checkmark-container relative w-8 h-8 mr-4 rounded-full peer-focus:ring-4 ${ringColorClass600}`}>
+                    <svg className={`${color === option.name_en ? "opacity-100" : "opacity-0"} checkmark absolute w-4 h-4 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]`} width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
+                        <g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"/> <g id="Shopicon"> <polygon points="18,33.172 6,21.172 3.171,24 18,38.828 44.829,12 42,9.172 "/> </g> </g>
+                    </svg>
+                </div>
+                {lang === "de" ? option.name_de : option.name_en}
+            </label>
+        </li>
+    )
+}
+
 const SettingsMenu = () => {
-    const { lang, color, theme, setTheme, setColor } = useContext(SettingsContext);
+    const { lang, color, theme, setTheme } = useContext(SettingsContext);
+    const currentFocusedRadio = colorOption.map(option => option.name_en).indexOf(color);
+    const [focusedRadio, setFocusedRadio] = useState(currentFocusedRadio);
+    const liRef = useRef<HTMLInputElement | null>(null);
 
     const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
@@ -75,46 +148,32 @@ const SettingsMenu = () => {
         }
     }
 
-    const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        
-        setColor(value);
-        document.documentElement.setAttribute("data-color", value);
-        localStorage.color = value;
-    }
+    useEffect(() => {
+        if(!liRef.current) return;
+
+        liRef.current.focus()
+
+    }, [focusedRadio])
 
     return (
-        <div className="lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl divide-y dark:divide-darkBaseSecondary divide-baseSecondary z-10">      
+        <div className="lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10">
+            <div className="h-12 w-full px-5 py-2 flex items-center dark:text-darkTextPrimary text-textPrimary">
+                {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
+            </div>
             <ul>
-                <li className="h-12 w-full px-5 py-2 flex items-center dark:text-darkTextPrimary text-textPrimary">
-                    {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
-                </li>
-                {colorOption.map(option => {
-                    const colorClass = `bg-action${option.name_en}-900`;
-                    return (
-                        <li key={option.id}>
-                            <label className="flex items-center h-12 w-full px-5 text-sm font-medium text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer">
-                                <input 
-                                    type="radio"
-                                    value={`${option.name_en}`} 
-                                    name="color" 
-                                    className="sr-only peer"
-                                    onChange={(e) => handleChangeColor(e)}
-                                    checked={color === option.name_en ? true : false}
-                                />
-                                <div className={`${colorClass} checkmark-container relative w-8 h-8 mr-4 rounded-full`}>
-                                    <svg className={`${color === option.name_en ? "opacity-100" : "opacity-0"} checkmark absolute w-4 h-4 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]`} width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
-                                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <g id="SVGRepo_iconCarrier"> <path d="M0 0h48v48H0z" fill="none"/> <g id="Shopicon"> <polygon points="18,33.172 6,21.172 3.171,24 18,38.828 44.829,12 42,9.172 "/> </g> </g>
-                                    </svg>
-                                </div>
-                                {lang === "de" ? option.name_de : option.name_en}
-                            </label>
-                        </li>
-                    )
-                })}
+                {colorOption.map((option, idx) => (
+                    <ColorOption 
+                        key={option.id} 
+                        idx={idx} 
+                        option={option} 
+                        liRef={liRef}
+                        focusedRadio={focusedRadio}
+                        setFocusedRadio={setFocusedRadio}
+                    />
+                ))}
             </ul>
+
+            <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
 
             <div className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                 <label className="inline-flex items-center w-full cursor-pointer">

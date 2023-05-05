@@ -49,7 +49,13 @@ const TextContent = {
     }
 }
 
-const colorOption = [
+export type ColorOptionType = {
+    id: string,
+    name_de: string,
+    name_en: string,
+}
+
+const colorOption: ColorOptionType[] = [
     {
         id: "blue",
         name_de: "Blau",
