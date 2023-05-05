@@ -291,7 +291,7 @@ const DesktopNav = () => {
                 />
             </Link>
 
-            <ul className="justify-self-end flex xl:gap-16 gap-7 items-center mr-6 text-xl dark:text-darkTextPrimary text-textPrimary">
+            <ul className="mr-6 justify-self-end flex xl:gap-16 gap-7 items-center xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
                     <li
                         key={link.id}
