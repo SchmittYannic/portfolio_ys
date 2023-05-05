@@ -63,12 +63,12 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
 type ColorOptionPropsType = {
     idx: number,
     option: ColorOptionType,
-    liRef: React.MutableRefObject<HTMLInputElement | null>,
+    radioRef: React.MutableRefObject<HTMLInputElement | null>,
     focusedRadio: number,
     setFocusedRadio: React.Dispatch<React.SetStateAction<number>>,
 }
 
-const ColorOption = ({idx, option, liRef, focusedRadio, setFocusedRadio}: ColorOptionPropsType) => {
+const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: ColorOptionPropsType) => {
     const { lang, color, setColor } = useContext(SettingsContext);
 
     const bgColorClass900 = `bg-action${option.name_en}-900`;
@@ -110,7 +110,7 @@ const ColorOption = ({idx, option, liRef, focusedRadio, setFocusedRadio}: ColorO
                 <input 
                     type="radio"
                     value={`${option.name_en}`}
-                    ref={idx === focusedRadio ? liRef : null}
+                    ref={idx === focusedRadio ? radioRef : null}
                     name="color" 
                     className="sr-only peer"
                     onChange={(e) => handleChangeColor(e)}
@@ -134,7 +134,7 @@ const SettingsMenu = () => {
     const { lang, color, theme, setTheme } = useContext(SettingsContext);
     const currentFocusedRadio = colorOption.map(option => option.name_en).indexOf(color);
     const [focusedRadio, setFocusedRadio] = useState(currentFocusedRadio);
-    const liRef = useRef<HTMLInputElement | null>(null);
+    const radioRef = useRef<HTMLInputElement | null>(null);
 
     const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.checked) {
@@ -149,9 +149,9 @@ const SettingsMenu = () => {
     }
 
     useEffect(() => {
-        if(!liRef.current) return;
+        if(!radioRef.current) return;
 
-        liRef.current.focus()
+        radioRef.current.focus()
 
     }, [focusedRadio])
 
@@ -166,7 +166,7 @@ const SettingsMenu = () => {
                         key={option.id} 
                         idx={idx} 
                         option={option} 
-                        liRef={liRef}
+                        radioRef={radioRef}
                         focusedRadio={focusedRadio}
                         setFocusedRadio={setFocusedRadio}
                     />
