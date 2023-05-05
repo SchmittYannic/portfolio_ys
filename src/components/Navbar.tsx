@@ -32,8 +32,13 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
                         key={link.id}
                         onClick={() => {setIsMenuOpen(false)}}
                     >
-                        <div className="p-2 h-12 w-full inline-flex items-center justify-center cursor-pointer dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <a href={`#${link.id}`}>{lang === "de" ? link.title_de : link.title_en}</a>
+                        <div className="h-12 w-full inline-flex items-center justify-center cursor-pointer dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <a 
+                                className="w-full h-full flex items-center justify-center"
+                                href={`#${link.id}`}
+                            >
+                                {lang === "de" ? link.title_de : link.title_en}
+                            </a>
                         </div>
                     </li>
                 ))}
@@ -160,7 +165,7 @@ const SettingsMenu = () => {
 
     return (
         <div className="lg:ml-6 lg:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10">
-            <div className="h-12 w-full px-5 py-2 flex items-center dark:text-darkTextPrimary text-textPrimary">
+            <div className="h-12 w-full px-5 py-2 flex items-center text-sm dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
             </div>
             <ul>
