@@ -96,9 +96,8 @@ const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: Col
         if (key === "ArrowDown") {
             e.preventDefault();
             setFocusedRadio(prev => {
-                const nextIndexCount = (prev + 1) % colorOptionLength
-                console.log("next: ", nextIndexCount)
-                return nextIndexCount
+                const nextIndexCount = (prev + 1) % colorOptionLength;
+                return nextIndexCount;
             })
         }
 
@@ -106,8 +105,7 @@ const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: Col
             e.preventDefault();
             setFocusedRadio(prev => {
                 const nextIndexCount = (prev + colorOptionLength - 1) % colorOptionLength;
-                console.log("next: ", nextIndexCount)
-                return nextIndexCount
+                return nextIndexCount;
             })
         }
     }
@@ -139,9 +137,8 @@ const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: Col
 }
 
 const SettingsMenu = () => {
-    const { lang, color, theme, setTheme } = useContext(SettingsContext);
-    const currentFocusedRadio = colorOption.map(option => option.name_en).indexOf(color);
-    const [focusedRadio, setFocusedRadio] = useState(currentFocusedRadio);
+    const { lang, theme, setTheme } = useContext(SettingsContext);
+    const [focusedRadio, setFocusedRadio] = useState<number>(-1);
     const radioRef = useRef<HTMLInputElement | null>(null);
 
     const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
@@ -158,9 +155,7 @@ const SettingsMenu = () => {
 
     useEffect(() => {
         if(!radioRef.current) return;
-
         radioRef.current.focus()
-
     }, [focusedRadio])
 
     return (
