@@ -275,7 +275,9 @@ const DesktopNav = () => {
 
     return (
         <>
-            <LanguageToggle />
+            <div className="w-fit h-fit">
+                <LanguageToggle />
+            </div>
 
             <Link
                 to="/"
@@ -330,10 +332,18 @@ const MobileNav = () => {
     const logo = theme === "light" ? logoBlack : logoWhite;
     const menu = theme === "light" ? menuBlack : menuWhite;
 
+    const handleKeyDown = (e: KeyboardEvent<HTMLImageElement>) => {
+        const { key } = e;
+        if (key === "Enter") {
+            e.preventDefault();
+            setIsMenuOpen(!isMenuOpen);
+        }
+    }
+
     return (
-        <>    
-            <LanguageToggle />
-            
+        <>             
+            <LanguageToggle />           
+         
             <Link
                 to="/"
                 onClick={() => {
@@ -352,9 +362,11 @@ const MobileNav = () => {
                     src={isMenuOpen ? close : menu}
                     alt={isMenuOpen ? "close-burger-menu" : "burger-menu"} 
                     className="w-[50px] h-[50px] cursor-pointer"
+                    tabIndex={0}
                     onClick={() => {
                         setIsMenuOpen(!isMenuOpen);
                     }}
+                    onKeyDown={handleKeyDown}
                 />
             </div>
 
