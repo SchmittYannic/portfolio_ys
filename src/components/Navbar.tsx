@@ -2,7 +2,7 @@ import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent } f
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
-import { ColorOptionType, TextContent, colorOption, navLinks } from "../constants";
+import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import { SettingsContext } from "../context/SettingsProvider";
 
@@ -51,7 +51,10 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
                 {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
             </button>
 
-            <div className="absolute top-0 right-[180px] ">
+            <div 
+                className="absolute top-0"
+                style={{right: menuWidth}}
+            >
                 {isSettingOpen &&
                     <SettingsMenu />
                 }
@@ -310,7 +313,10 @@ const DesktopNav = () => {
                 </li>
             </ul>
 
-            <div className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(1rem+50px)] right-0`}>
+            <div 
+                className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute right-0`}
+                style={{top: navbarHeight}}
+            >
                 <SettingsMenu />
             </div>
         </>
@@ -355,7 +361,11 @@ const MobileNav = () => {
             </div>
 
             <div 
-                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute top-[calc(80px)] right-0 w-[180px]`}
+                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute right-0`}
+                style={{
+                    top: navbarHeight,
+                    width: menuWidth,
+                }}
             >
                 <NavMenu setIsMenuOpen={setIsMenuOpen} isSettingOpen={isSettingOpen} setIsSettingOpen={setIsSettingOpen} />
             </div>
@@ -370,7 +380,10 @@ const Navbar = () => {
     return (
         <>
             <div ref={ref} />
-            <header className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full h-[80px] z-50`}>
+            <header 
+                className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full z-50`}
+                style={{height: navbarHeight}}
+            >
                 <nav className="h-full">
                     <div className="h-full lg:grid grid-cols-[1fr_50px_1fr] items-center hidden">
                         <DesktopNav />

@@ -1,5 +1,8 @@
 import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptLogo, germany, uk } from "../assets";
 
+const navbarHeight = 70;
+const menuWidth = 180;
+
 const TextContent = {
     german: {
         settings: "Einstellungen",
@@ -247,4 +250,7 @@ export {
     education_en,
     skillsIT,
     skillsLanguage,
+
+    navbarHeight,
+    menuWidth
 }
