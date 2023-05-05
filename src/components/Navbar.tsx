@@ -247,6 +247,7 @@ const LanguageToggle = (): ReactElement => {
                     onChange={(e) => {
                         handleChangeLang(e)
                     }}
+                    tabIndex={-1}
                     checked={lang === "de" ? false : true}
                 />                         
                 <svg
