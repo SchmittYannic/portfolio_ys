@@ -1,10 +1,10 @@
-import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent } from "react";
+import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
-import { SettingsContext } from "../context/SettingsProvider";
+import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 import { determineIfCheckbox } from "../utils/typeguards";
 
 type NavMenuPropsType = {
@@ -13,9 +13,9 @@ type NavMenuPropsType = {
     setIsSettingOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuPropsType) => {
-    const { lang, theme } = useContext(SettingsContext);
-    const cog = theme === "light" ? cogBlack : cogWhite;
+const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuPropsType): ReactElement => {
+    const { lang, theme } = useContext<UseSettingsContextType>(SettingsContext);
+    const cog: string = theme === "light" ? cogBlack : cogWhite;
 
     return (
         <div className={`xl:ml-6 xl:mt-6 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
@@ -75,23 +75,23 @@ type ColorOptionPropsType = {
     setFocusedRadio: React.Dispatch<React.SetStateAction<number>>,
 }
 
-const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: ColorOptionPropsType) => {
-    const { lang, color, setColor } = useContext(SettingsContext);
+const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: ColorOptionPropsType): ReactElement => {
+    const { lang, color, setColor } = useContext<UseSettingsContextType>(SettingsContext);
 
-    const bgColorClass900 = `bg-action${option.name_en}-900`;
-    const ringColorClass600 = `ring-action${option.name_en}-600`;
+    const bgColorClass900: string = `bg-action${option.name_en}-900`;
+    const ringColorClass600: string = `ring-action${option.name_en}-600`;
 
-    const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+    const handleChangeColor = (e: ChangeEvent<HTMLInputElement>): void => {
+        const value: string = e.target.value;
         setFocusedRadio(idx);
         setColor(value);
         document.documentElement.setAttribute("data-color", value);
         localStorage.color = value;
     }
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
         const { key } = e
-        const colorOptionLength = colorOption.length
+        const colorOptionLength: number = colorOption.length
         if (key === "ArrowDown") {
             e.preventDefault();
             setFocusedRadio(prev => {
@@ -136,11 +136,11 @@ const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: Col
 }
 
 const SettingsMenu = () => {
-    const { lang, theme, setTheme } = useContext(SettingsContext);
+    const { lang, theme, setTheme } = useContext<UseSettingsContextType>(SettingsContext);
     const [focusedRadio, setFocusedRadio] = useState<number>(-1);
     const radioRef = useRef<HTMLInputElement | null>(null);
 
-    const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeTheme = (e: ChangeEvent<HTMLInputElement>): void => {
         if (e.target.checked) {
             setTheme("dark");
             localStorage.theme = "dark";
@@ -199,10 +199,10 @@ const SettingsMenu = () => {
     )
 }
 
-const LanguageToggle = () => {
-    const { lang, setLang } = useContext(SettingsContext);
+const LanguageToggle = (): ReactElement => {
+    const { lang, setLang } = useContext<UseSettingsContextType>(SettingsContext);
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
         const { code } = e;
         if (code === "Space") {
             e.preventDefault();
@@ -217,7 +217,7 @@ const LanguageToggle = () => {
         }
     };
 
-    const handleChangeLang = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeLang = (e: ChangeEvent<HTMLInputElement>): void => {
         changeLang(e.target.checked)
     };
 
@@ -292,11 +292,11 @@ const LanguageToggle = () => {
 }
 
 const DesktopNav = () => {
-    const [isSettingOpen, setIsSettingOpen] = useState(false);
-    const { lang, theme} = useContext(SettingsContext);
+    const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
+    const { lang, theme} = useContext<UseSettingsContextType>(SettingsContext);
 
-    const cog = theme === "light" ? cogBlack : cogWhite;
-    const logo = theme === "light" ? logoBlack : logoWhite;
+    const cog: string = theme === "light" ? cogBlack : cogWhite;
+    const logo: string = theme === "light" ? logoBlack : logoWhite;
 
     return (
         <>
@@ -348,16 +348,16 @@ const DesktopNav = () => {
     )
 }
 
-const MobileNav = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSettingOpen, setIsSettingOpen] = useState(false);
-    const { theme } = useContext(SettingsContext);
+const MobileNav = (): ReactElement => {
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
+    const { theme } = useContext<UseSettingsContextType>(SettingsContext);
 
-    const close = theme === "light" ? closeBlack : closeWhite;
-    const logo = theme === "light" ? logoBlack : logoWhite;
-    const menu = theme === "light" ? menuBlack : menuWhite;
+    const close: string = theme === "light" ? closeBlack : closeWhite;
+    const logo: string = theme === "light" ? logoBlack : logoWhite;
+    const menu: string = theme === "light" ? menuBlack : menuWhite;
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLImageElement>) => {
+    const handleKeyDown = (e: KeyboardEvent<HTMLImageElement>): void => {
         const { key } = e;
         if (key === "Enter") {
             e.preventDefault();
@@ -408,8 +408,8 @@ const MobileNav = () => {
     )
 };
 
-const Navbar = () => {
-    const ref = useRef(null);
+const Navbar = (): ReactElement => {
+    const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
     const isInView = useInView(ref);
 
     return (

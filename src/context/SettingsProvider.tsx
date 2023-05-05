@@ -1,6 +1,6 @@
 import { useState, createContext, ReactElement } from "react"
 
-type UseSettingsContextType = {
+export type UseSettingsContextType = {
     theme: string,
     setTheme: React.Dispatch<React.SetStateAction<string>>,
     lang: string,
