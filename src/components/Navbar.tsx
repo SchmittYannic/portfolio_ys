@@ -57,12 +57,10 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
             </button>
 
             <div 
-                className="absolute top-0"
+                className={`${isSettingOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute top-0 origin-center transition-[transform]`}
                 style={{right: menuWidth}}
             >
-                {isSettingOpen &&
-                    <SettingsMenu />
-                }
+                <SettingsMenu />
             </div>
         </div>
     )
@@ -314,7 +312,7 @@ const DesktopNav = () => {
             </ul>
 
             <div 
-                className={`${isSettingOpen ? "visible opacity-100" : "invisible opacity-0"} absolute right-0`}
+                className={`${isSettingOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
                 style={{top: navbarHeight}}
             >
                 <SettingsMenu />
@@ -361,7 +359,7 @@ const MobileNav = () => {
             </div>
 
             <div 
-                className={`${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"} absolute right-0`}
+                className={`${isMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
                 style={{
                     top: navbarHeight,
                     width: menuWidth,
