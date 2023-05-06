@@ -58,8 +58,6 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
     const { lang } = useContext(SettingsContext);
     const description = lang === "de" ? project.description_de : project.description_en;
-    const linkCode = `http://${project.githubLink}`;
-    const linkLive = `http://${project.liveLink}`;
 
     return (
         <div className="p-10 lg:max-w-none max-w-[410px] hover:scale-105 hover:border-2 border-transparent rounded-xl hover:shadow-lg">
@@ -72,7 +70,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                         : `Image of the project ${project.title_en}`}`}
                 />
 
-                <a href={linkCode} target="_blank">
+                <a href={project.githubLink} target="_blank">
                     <img 
                         className="absolute top-4 right-4 w-12 h-12 hover:scale-125"
                         src={githubLogo} 
@@ -80,17 +78,19 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                     />
                 </a>
 
-                <a href={linkCode} target="_blank">
-                    <div 
-                        className="absolute top-4 right-20 w-12 h-12 rounded-full flex items-center justify-center bg-red-700 hover:scale-125"
-                    >
-                        <img 
-                            className="w-4 h-4 translate-x-0.5"
-                            src={playButton} 
-                            alt="Live version" 
-                        />
-                    </div>
-                </a>
+                {project.liveLink &&
+                    <a href={project.liveLink} target="_blank">
+                        <div 
+                            className="absolute top-4 right-20 w-12 h-12 rounded-full flex items-center justify-center bg-red-700 hover:scale-125"
+                        >
+                            <img 
+                                className="w-4 h-4 translate-x-0.5"
+                                src={playButton} 
+                                alt="Live version" 
+                            />
+                        </div>
+                    </a>
+                }
             </div>
 
             <h4 className="my-10 text-2xl text-center dark:text-darkTextPrimary text-textPrimary">

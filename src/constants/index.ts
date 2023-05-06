@@ -289,7 +289,7 @@ export type ProjectType = {
     description_en: string,
     tags: TagKeyType[],
     githubLink: string,
-    liveLink: string,
+    liveLink?: string,
 }
 
 const projects: ProjectType[] = [
@@ -300,8 +300,8 @@ const projects: ProjectType[] = [
         description_de: "Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten.",
         description_en: "My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly.",
         tags: ["React", "Typescript", "Tailwind"],
-        githubLink: "www.google.com",
-        liveLink: "www.google.com",
+        githubLink: "https://github.com/SchmittYannic/portfolio_ys",
+        liveLink: "https://www.google.com",
     },
     {
         title_de: "Elden Ring Buildplanner",
@@ -310,8 +310,8 @@ const projects: ProjectType[] = [
         description_de: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
         description_en: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
         tags: ["React", "Typescript", "SCSS"],
-        githubLink: "www.google.com",
-        liveLink: "www.google.com",
+        githubLink: "https://www.google.com",
+        liveLink: "https://www.google.com",
     },
     {
         title_de: "Mein Portfolio",
@@ -320,8 +320,7 @@ const projects: ProjectType[] = [
         description_de: "Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten.",
         description_en: "My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly.",
         tags: ["React", "Typescript", "Tailwind"],
-        githubLink: "www.google.com",
-        liveLink: "www.google.com",
+        githubLink: "https://www.google.com",
     },
     {
         title_de: "Elden Ring Buildplanner",
@@ -330,8 +329,8 @@ const projects: ProjectType[] = [
         description_de: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
         description_en: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
         tags: ["React", "Typescript", "SCSS"],
-        githubLink: "www.google.com",
-        liveLink: "www.google.com",
+        githubLink: "https://www.google.com",
+        liveLink: "https://www.google.com",
     },
 ]
 
