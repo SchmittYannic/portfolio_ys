@@ -25,7 +25,11 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 }
 
 const ProjectDescription = ({ text }: {text: string}): ReactElement => {
-    const [isOpen, setIsOpen] = useState(false);  
+    const { lang } = useContext(SettingsContext);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const expandText = lang === "de" ? TextContent.german.expandButton : TextContent.english.expandButton;
+    const collapseText = lang === "de" ? TextContent.german.collapseButton : TextContent.english.collapseButton;
 
     return (
         <>
@@ -39,12 +43,12 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
                 </p>
                 <div className={`absolute bottom-0 w-full h-20 ${isOpen ? "bg-transparent" : "bg-gradient-to-t"} dark:from-darkBase from-base from-0% to-transparent to-100%`} />
             </div>
-            <div className="w-full mt-3 mb-8 flex items-center justify-center bg-darkBase">
+            <div className="w-full mt-3 mb-8 flex items-center justify-center dark:bg-darkBase bg-base">
                 <button 
                     className="dark:text-darkTextPrimary text-textPrimary"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    Read more
+                    {isOpen ? collapseText : expandText}
                 </button>
             </div>
         </>
@@ -53,11 +57,12 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
 
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
     const { lang } = useContext(SettingsContext);
-    const title = lang === "de" ? project.title_de : project.title_en;
     const description = lang === "de" ? project.description_de : project.description_en;
+    const linkCode = `http://${project.githubLink}`;
+    const linkLive = `http://${project.liveLink}`;
 
     return (
-        <div className="p-10 max-w-[410px]">
+        <div className="p-10 lg:max-w-none max-w-[410px] hover:scale-105 hover:border-2 border-transparent rounded-xl hover:shadow-lg">
             <div className="relative">
                 <img 
                     className="rounded-xl w-full"
@@ -66,21 +71,29 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                         ? `Bild des Projects ${project.title_de}` 
                         : `Image of the project ${project.title_en}`}`}
                 />
-                <img 
-                    className="absolute top-2 right-2 w-8 h-8 hover:scale-125"
-                    src={githubLogo} 
-                    alt="Github Logo" 
-                />
-                <div className="absolute top-2 right-12 w-8 h-8 rounded-full flex items-center justify-center bg-red-700 hover:scale-125">
+
+                <a href={linkCode} target="_blank">
                     <img 
-                        className="w-4 h-4 translate-x-0.5"
-                        src={playButton} 
-                        alt="Live version" 
+                        className="absolute top-4 right-4 w-12 h-12 hover:scale-125"
+                        src={githubLogo} 
+                        alt="Github Logo"
                     />
-                </div>
+                </a>
+
+                <a href={linkCode} target="_blank">
+                    <div 
+                        className="absolute top-4 right-20 w-12 h-12 rounded-full flex items-center justify-center bg-red-700 hover:scale-125"
+                    >
+                        <img 
+                            className="w-4 h-4 translate-x-0.5"
+                            src={playButton} 
+                            alt="Live version" 
+                        />
+                    </div>
+                </a>
             </div>
 
-            <h4 className="my-6 text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
+            <h4 className="my-10 text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? project.title_de : project.title_en}
             </h4>
 
@@ -100,7 +113,7 @@ const Projects = () => {
                 {lang === "de" ? TextContent.german.projectsHead : TextContent.english.projectsHead}
             </h2>
 
-            <div className="lg:px-20 flex lg:flex-row flex-col lg:flex-wrap lg:items-start items-center justify-around gap-3">
+            <div className="lg:px-20 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
                 {projects.map(project => (
                     <ProjectCard project={project} />
                 ))}

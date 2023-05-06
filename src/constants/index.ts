@@ -28,6 +28,8 @@ const TextContent = {
         languageHead: "Sprachen",
 
         projectsHead: "Projekte",
+        expandButton: "Weiterlesen...",
+        collapseButton: "Schließen",
     },
     english: {
         settings: "Settings",
@@ -53,6 +55,8 @@ const TextContent = {
         languageHead: "Languages",
 
         projectsHead: "Projects",
+        expandButton: "Read more",
+        collapseButton: "Close",
     }
 }
 
@@ -269,7 +273,7 @@ const tagData: TagDataType = {
     },
     Tailwind: {
         textColor: "text-cyan-500",
-        backgroundColor: "bg-white",
+        backgroundColor: "bg-gray-300",
     },
     SCSS: {
         textColor: "text-white",
