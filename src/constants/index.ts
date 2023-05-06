@@ -1,4 +1,4 @@
-import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptLogo, germany, uk } from "../assets";
+import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptLogo, germany, uk, placeholderProject } from "../assets";
 
 const navbarHeight = 70;
 const menuWidth = 180;
@@ -26,6 +26,8 @@ const TextContent = {
         skillsHead: "Kenntnisse",
         itHead: "IT",
         languageHead: "Sprachen",
+
+        projectsHead: "Projekte",
     },
     english: {
         settings: "Settings",
@@ -49,6 +51,8 @@ const TextContent = {
         skillsHead: "Skills",
         itHead: "IT",
         languageHead: "Languages",
+
+        projectsHead: "Projects",
     }
 }
 
@@ -93,18 +97,18 @@ const colorOption: ColorOptionType[] = [
 
 const navLinks = [
     {
-        id: "about",
-        //logoLight: aboutBlack,
-        //logoDark: aboutWhite,
-        title_en: "About",
-        title_de: "Über mich",
-    },
-    {
         id: "projects",
         //logoLight: htmlTagBlack,
         //logoDark: htmlTagWhite,
         title_en: "Projects",
         title_de: "Projekte"
+    },
+    {
+        id: "about",
+        //logoLight: aboutBlack,
+        //logoDark: aboutWhite,
+        title_en: "About",
+        title_de: "Über mich",
     },
     {
         id: "contact",
@@ -242,6 +246,91 @@ const skillsLanguage = [
     },
 ];
 
+const tags = ["React", "Typescript", "Tailwind", "SCSS"] as const;
+export type TagKeyType = typeof tags[number];
+
+type TagType = {
+    textColor: string,
+    backgroundColor: string,
+}
+
+type TagDataType = {
+    [key in TagKeyType as key]: TagType
+}
+
+const tagData: TagDataType = {
+    React: {
+        textColor: "",
+        backgroundColor: "bg-sky-400",
+    },
+    Typescript: {
+        textColor: "text-white",
+        backgroundColor: "bg-blue-700",
+    },
+    Tailwind: {
+        textColor: "text-cyan-500",
+        backgroundColor: "bg-white",
+    },
+    SCSS: {
+        textColor: "text-white",
+        backgroundColor: "bg-pink-500",
+    },
+}
+
+export type ProjectType = {
+    title_de: string,
+    title_en: string,
+    image: string,
+    description_de: string,
+    description_en: string,
+    tags: TagKeyType[],
+    githubLink: string,
+    liveLink: string,
+}
+
+const projects: ProjectType[] = [
+    {
+        title_de: "Mein Portfolio",
+        title_en: "My Portfolio",
+        image: placeholderProject,
+        description_de: "Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten.",
+        description_en: "My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly.",
+        tags: ["React", "Typescript", "Tailwind"],
+        githubLink: "www.google.com",
+        liveLink: "www.google.com",
+    },
+    {
+        title_de: "Elden Ring Buildplanner",
+        title_en: "Elden Ring Buildplanner",
+        image: placeholderProject,
+        description_de: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
+        description_en: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
+        tags: ["React", "Typescript", "SCSS"],
+        githubLink: "www.google.com",
+        liveLink: "www.google.com",
+    },
+    {
+        title_de: "Mein Portfolio",
+        title_en: "My Portfolio",
+        image: placeholderProject,
+        description_de: "Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten.",
+        description_en: "My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly.",
+        tags: ["React", "Typescript", "Tailwind"],
+        githubLink: "www.google.com",
+        liveLink: "www.google.com",
+    },
+    {
+        title_de: "Elden Ring Buildplanner",
+        title_en: "Elden Ring Buildplanner",
+        image: placeholderProject,
+        description_de: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
+        description_en: "No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo",
+        tags: ["React", "Typescript", "SCSS"],
+        githubLink: "www.google.com",
+        liveLink: "www.google.com",
+    },
+]
+
 export {
     navLinks,
     TextContent,
@@ -250,6 +339,8 @@ export {
     education_en,
     skillsIT,
     skillsLanguage,
+    projects,
+    tagData,
 
     navbarHeight,
     menuWidth

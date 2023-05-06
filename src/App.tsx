@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom"
 import { Hero, Navbar, About } from "./components"
 import { useContext, useEffect } from "react"
 import { SettingsContext } from "./context/SettingsProvider"
+import Projects from "./components/Projects"
 
 const App = () => {
     const { setTheme, setLang, setColor } = useContext(SettingsContext)
@@ -37,6 +38,7 @@ const App = () => {
             <div className="App w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
+                <Projects />
                 <About />
             </div>
         </BrowserRouter>

@@ -1,4 +1,6 @@
 import placeholderProfile from "./placeholderProfile.png";
+import placeholderProject from "./placeholder.jpg";
+
 import closeBlack from "./closeBlack.svg";
 import closeWhite from "./closeWhite.svg";
 import cogBlack from "./cogBlack.svg";
@@ -12,6 +14,7 @@ import germany from "./germany.svg";
 import checkmarkWhite from "./checkmarkWhite.svg";
 import checkmarkBlack from "./checkmarkBlack.svg";
 import calendarBlack from "./calendarBlack.svg";
+
 import html5Logo from "./html5.svg";
 import css3Logo from "./css3.svg";
 import javascriptLogo from "./javascript.svg";
@@ -19,8 +22,12 @@ import reactLogo from "./react.svg";
 import pythonLogo from "./python.svg";
 import typescriptLogo from "./typescript.svg";
 
+import githubLogo from "./github.svg";
+import playButton from "./playButton.svg";
+
 export {
     placeholderProfile,
+    placeholderProject,
     closeBlack,
     closeWhite,
     cogBlack,
@@ -40,4 +47,6 @@ export {
     reactLogo,
     pythonLogo,
     typescriptLogo,
+    githubLogo,
+    playButton,
 }
