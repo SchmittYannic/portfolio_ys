@@ -114,8 +114,11 @@ const Projects = () => {
             </h2>
 
             <div className="lg:px-20 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center">
-                {projects.map(project => (
-                    <ProjectCard project={project} />
+                {projects.map((project, idx) => (
+                    <ProjectCard 
+                        key={idx}
+                        project={project} 
+                    />
                 ))}
             </div>
         </section>
