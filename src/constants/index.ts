@@ -307,7 +307,7 @@ const projects: ProjectType[] = [
         title_de: "Mein Portfolio",
         title_en: "My Portfolio",
         image: placeholderProject,
-        description_de: "Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten.",
+        description_de: "Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegang, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten.",
         description_en: "My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly.",
         tags: ["React", "Typescript", "Tailwind"],
         githubLink: "https://github.com/SchmittYannic/portfolio_ys",
