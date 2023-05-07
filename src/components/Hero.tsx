@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useContext } from "react";
 import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
-import { TextContent } from "../constants";
+import { TextContent, navLinks } from "../constants";
 import { SettingsContext } from "../context/SettingsProvider";
 
 const Hero = () => {
@@ -103,7 +103,7 @@ const Hero = () => {
                     <button className="sm:px-6 px-3 py-[8px] border-4 rounded dark:text-darkTextPrimary text-textPrimary dark:border-darkTextPrimary border-textPrimary text-xl font-bold">
                         Resume
                     </button>
-                    <a href="" className={`ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary text-xl font-bold`}>
+                    <a href="#contact" className={`ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary text-xl font-bold`}>
                         {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
                     </a>
                 </div>
