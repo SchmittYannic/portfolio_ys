@@ -48,6 +48,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
             <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
 
             <button 
+                type="button"
                 className="w-full px-4 py-3 flex items-center justify-center gap-2 text-sm dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600"
                 onClick={() => {
                     setIsSettingOpen(!isSettingOpen);
@@ -328,6 +329,7 @@ const DesktopNav = () => {
 
                 <li>
                     <button 
+                        type="button"
                         className="flex items-center gap-2"
                         onClick={() => {
                             setIsSettingOpen(!isSettingOpen)

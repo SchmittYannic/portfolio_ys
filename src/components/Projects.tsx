@@ -45,6 +45,7 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
             </div>
             <div className="w-full mt-3 mb-8 flex items-center justify-center dark:bg-darkBase bg-base">
                 <button 
+                    type="button"
                     className="dark:text-darkTextPrimary text-textPrimary"
                     onClick={() => setIsOpen(!isOpen)}
                 >
