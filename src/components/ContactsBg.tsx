@@ -21,8 +21,9 @@ const ContactsBg = () => {
     const colorRect1 = "#3B415C"; //background default: #3B415C               //
     const colorRect2 = "white";
 
+    //og: width="2169" height="896  absolute top-0 left-0"
     return (
-        <svg className="w-full h-full" width="2169" height="896" viewBox="0 0 2169 896" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="absolute top-0 left-0 h-full" viewBox="0 0 2169 896" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1524_33)">
                 <rect className="dark:fill-darkBase fill-base" width="2169" height="896" fill={colorRect1}/>
                 <g opacity="0.5">

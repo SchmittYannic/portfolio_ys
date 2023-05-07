@@ -30,6 +30,10 @@ const TextContent = {
         projectsHead: "Projekte",
         expandButton: "Weiterlesen...",
         collapseButton: "Schließen",
+
+        nameLabel: "Ihr Name",
+        emailLabel: "Ihre E-Mail-Adresse",
+        messageLabel: "Nachricht",
     },
     english: {
         settings: "Settings",
@@ -57,6 +61,10 @@ const TextContent = {
         projectsHead: "Projects",
         expandButton: "Read more",
         collapseButton: "Close",
+
+        nameLabel: "Your Name",
+        emailLabel: "Your Email",
+        messageLabel: "Message",
     }
 }
 
