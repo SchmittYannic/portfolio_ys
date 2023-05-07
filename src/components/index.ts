@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import About from "./About";
 import Contact from "./Contact";
 import ContactsBg from "./ContactsBg";
+import Toggle from "./Toggle";
 
 export {
     Hero,
@@ -10,4 +11,5 @@ export {
     About,
     Contact,
     ContactsBg,
+    Toggle,
 }

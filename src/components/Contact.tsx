@@ -122,7 +122,7 @@ const ContactForm = () => {
                 className="py-3 px-8 rounded-md dark:bg-darkBase bg-base"
                 type="submit"
             >
-                Test
+                {lang === "de" ? TextContent.german.sendButton : TextContent.english.sendButton}
             </button>
         </form>
     )

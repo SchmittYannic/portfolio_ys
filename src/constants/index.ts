@@ -34,6 +34,7 @@ const TextContent = {
         nameLabel: "Ihr Name",
         emailLabel: "Ihre E-Mail-Adresse",
         messageLabel: "Nachricht",
+        sendButton: "Senden",
     },
     english: {
         settings: "Settings",
@@ -65,6 +66,7 @@ const TextContent = {
         nameLabel: "Your Name",
         emailLabel: "Your Email",
         messageLabel: "Message",
+        sendButton: "Send",
     }
 }
 

@@ -2,6 +2,7 @@ import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent, Re
 import { Link } from "react-router-dom";
 import { useInView } from "framer-motion";
 
+import { Toggle } from ".";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
@@ -183,17 +184,10 @@ const SettingsMenu = () => {
                     <span className="mx-3 text-sm font-medium text-textPrimary dark:text-darkTextPrimary">
                         {lang === "de" ? TextContent.german.darkmode : TextContent.english.darkmode}
                     </span>
-                    <div className="relative h-8 flex items-center">
-                        <input 
-                            type="checkbox" 
-                            className="sr-only peer" 
-                            onChange={(e) => {
-                                handleChangeTheme(e)
-                            }}
-                            checked={theme === "light" ? false : true}
-                        />
-                        <div className="w-9 h-5 mr-3 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-actionOrange-400 dark:peer-focus:ring-actionOrange-900 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[50%] after:-translate-y-[50%] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-actionOrange-700" />
-                    </div>
+                    <Toggle 
+                        onChange={(e) => handleChangeTheme(e)} 
+                        initial={theme === "light" ? false : true}
+                    />
                 </label>
             </div>
         </div>
