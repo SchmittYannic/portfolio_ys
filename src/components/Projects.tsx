@@ -70,27 +70,35 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                         : `Image of the project ${project.title_en}`}`}
                 />
 
-                <a href={project.githubLink} target="_blank">
-                    <img 
-                        className="absolute top-4 right-4 w-12 h-12 hover:scale-125"
-                        src={githubLogo} 
-                        alt="Github Logo"
-                    />
-                </a>
-
                 {project.liveLink &&
-                    <a href={project.liveLink} target="_blank">
+                    <a 
+                        className="group outline-none"
+                        href={project.liveLink} 
+                        target="_blank"
+                    >
                         <div 
-                            className="absolute top-4 right-20 w-12 h-12 rounded-full flex items-center justify-center bg-red-700 hover:scale-125"
+                            className="absolute top-4 right-20 w-12 h-12 rounded-full flex items-center justify-center bg-red-700 hover:scale-125 group-focus:ring-4 ring-red-700/30 ring-offset-2"
                         >
                             <img 
-                                className="w-4 h-4 translate-x-0.5"
+                                className="w-5 h-5 translate-x-0.5"
                                 src={playButton} 
                                 alt="Live version" 
                             />
                         </div>
                     </a>
                 }
+
+                <a 
+                    className="group outline-none"
+                    href={project.githubLink} 
+                    target="_blank"
+                >
+                    <img 
+                        className="absolute top-4 right-4 w-12 h-12 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2"
+                        src={githubLogo} 
+                        alt="Github Logo"
+                    />
+                </a>
             </div>
 
             <h4 className="my-10 text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
@@ -109,7 +117,7 @@ const Projects = () => {
 
     return (
         <section id="projects" className="w-full py-16">
-            <h2 className="mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
+            <h2 className="mt-8 mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.projectsHead : TextContent.english.projectsHead}
             </h2>
 
