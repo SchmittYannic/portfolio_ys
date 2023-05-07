@@ -4,6 +4,7 @@ import About from "./About";
 import Contact from "./Contact";
 import ContactsBg from "./ContactsBg";
 import Toggle from "./Toggle";
+import LanguageToggle from "./LanguageToggle";
 
 export {
     Hero,
@@ -12,4 +13,5 @@ export {
     Contact,
     ContactsBg,
     Toggle,
+    LanguageToggle,
 }

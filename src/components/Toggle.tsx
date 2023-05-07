@@ -1,10 +1,12 @@
+import { ReactElement } from "react"
+
 type TogglePropsType = {
     onChange: React.ChangeEventHandler<HTMLInputElement>,
     initial: boolean,
 }
 
 
-const Toggle = ({ onChange, initial=false }: TogglePropsType) => {
+const Toggle = ({ onChange, initial=false }: TogglePropsType): ReactElement => {
 
     return (
         <div className="relative h-8 flex items-center">

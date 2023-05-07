@@ -8,9 +8,7 @@ const ContactsBg = () => {
     const colorClass800 = `fill-action${color}-800`; // replaces color2
     const colorClass600 = `fill-action${color}-600`; // replaces color3
     const colorClass900 = `fill-action${color}-900`; // replaces color4
-    //const colorClass300 = `fill-action${color}-300`; // replaces color5
     const colorClass700 = `fill-action${color}-700`; // replaces color6
-    //const colorClass900 = `fill-action${color}-900`; // replaces colorRect1
 
     const color1 = "#646980"; //big stripes
     const color2 = "#3C4673"; //1px stripes insidde left 2 big stripes
@@ -18,7 +16,7 @@ const ContactsBg = () => {
     const color4 = "#202D64"; //middle 2px and right most 1px stripes
     const color5 = "#5A607B"; //right most big stripes
     const color6 = "#4A506A"; //surounding middle stripes
-    const colorRect1 = "#3B415C"; //background default: #3B415C               //
+    const colorRect1 = "#3B415C"; //background default: #3B415C
     const colorRect2 = "white";
 
     //og: width="2169" height="896  absolute top-0 left-0"

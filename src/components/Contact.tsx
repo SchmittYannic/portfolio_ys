@@ -1,16 +1,16 @@
-import { useContext, useState, ChangeEvent, SyntheticEvent } from "react";
+import { useContext, useState, ChangeEvent, SyntheticEvent, ReactElement } from "react";
 import emailjs from "@emailjs/browser";
 
 import { ContactsBg } from ".";
 import { TextContent } from "../constants";
-import { SettingsContext } from "../context/SettingsProvider";
+import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn
 //service id: service_upmv0ki
 
-const ContactForm = () => {
-    const { lang } = useContext(SettingsContext);
+const ContactForm = (): ReactElement => {
+    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
 
     type FormType = {
         name: string,
@@ -24,9 +24,9 @@ const ContactForm = () => {
         message: "",
     });
 
-    const [isSending, setIsSending] = useState(false);
+    const [isSending, setIsSending] = useState<boolean>(false);
 
-    const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
         setIsSending(true)
 
@@ -59,7 +59,7 @@ const ContactForm = () => {
         })
     }
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         const { name, value } = e.target;
         console.log(name in form)
         setForm(prevState => {
@@ -128,9 +128,9 @@ const ContactForm = () => {
     )
 }
 
-const Contact = () => {
+const Contact = (): ReactElement => {
     return (
-        <section id="contact" className="w-full min-h-[840px] relative overflow-x-hidden" tabIndex={-1}>
+        <section id="contact" className="w-full min-h-[840px] h-screen relative overflow-x-hidden" tabIndex={-1}>
             <ContactsBg />
 
             <div className="py-16 max-w-[500px] lg:w-[50%] sm:w-[75%] w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
