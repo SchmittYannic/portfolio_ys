@@ -108,7 +108,7 @@ const Projects = () => {
     const { lang } = useContext(SettingsContext);
 
     return (
-        <section id="projects" className="w-full mb-32">
+        <section id="projects" className="w-full py-16">
             <h2 className="mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.projectsHead : TextContent.english.projectsHead}
             </h2>

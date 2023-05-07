@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom"
-import { Hero, Navbar, About } from "./components"
+import { Hero, Navbar, About, Contact } from "./components"
 import { useContext, useEffect } from "react"
 import { SettingsContext } from "./context/SettingsProvider"
 import Projects from "./components/Projects"
@@ -40,6 +40,7 @@ const App = () => {
                 <Hero />
                 <Projects />
                 <About />
+                <Contact />
             </div>
         </BrowserRouter>
     )
