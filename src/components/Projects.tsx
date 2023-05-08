@@ -63,8 +63,10 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
 
 
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
-    const { lang } = useContext(SettingsContext);
+    const { lang, color } = useContext(SettingsContext);
     const description = lang === "de" ? project.description_de : project.description_en;
+
+    const ringColorClass = `ring-action${color}-900/30`;
 
     return (
         <Tilt
@@ -95,7 +97,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                                 target="_blank"
                             >
                                 <div 
-                                    className="liveLink w-12 h-12 relative rounded-full flex items-center justify-center hover:scale-125 transition-[transform] duration-500 ease-linear group-focus:ring-4 ring-black/30 ring-offset-2 z-10 before:inset-0 before:absolute before:content-[''] before:rounded-full before:opacity-0 before:-z-10 before:transition-opacity before:duration-500 before:ease-linear before:hover:opacity-100"
+                                    className={`liveLink w-12 h-12 relative rounded-full flex items-center justify-center hover:scale-125 transition-[transform] duration-500 ease-linear group-focus:ring-4 ${ringColorClass} ring-offset-2 z-10 before:inset-0 before:absolute before:content-[''] before:rounded-full before:opacity-0 before:-z-10 before:transition-opacity before:duration-500 before:ease-linear before:hover:opacity-100`}
                                 >
                                     <img 
                                         className="w-5 h-5 translate-x-0.5"
