@@ -1,6 +1,6 @@
 import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { useInView } from "framer-motion";
+import { useInView, useScroll, motion } from "framer-motion";
 
 import { Toggle, LanguageToggle } from ".";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
@@ -314,8 +314,14 @@ const MobileNav = (): ReactElement => {
 };
 
 const Navbar = (): ReactElement => {
+    const { color } = useContext(SettingsContext);
     const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
+
     const isInView = useInView(ref);
+    const { scrollYProgress } = useScroll();
+    const scaleX = scrollYProgress;
+
+    const bgColorClass600 = `bg-action${color}-600`;
 
     return (
         <>
@@ -332,6 +338,8 @@ const Navbar = (): ReactElement => {
                         <MobileNav />
                     </div>
                 </nav>
+
+                <motion.div className={`h-1 ${bgColorClass600} origin-left`} style={{ scaleX }} />
             </header>
         </>
     )
