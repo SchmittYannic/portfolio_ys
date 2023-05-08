@@ -7,6 +7,7 @@ export default {
             colors: {
                 base: "#fff",
                 baseSecondary: "#e8e8e8",
+                baseTertiary: "#e6e6e6",
                 textPrimary: "#000000",
                 actionBlue: {
                     900: "#1d9bf0",
@@ -76,6 +77,7 @@ export default {
                 },
                 darkBase: "#15202b",
                 darkBaseSecondary: "#38444d",
+                darkBaseTertiary: "#060a0d", //"#0f161e",
                 darkTextPrimary: "#fff",
             },
             screens: {
