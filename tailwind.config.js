@@ -7,7 +7,7 @@ export default {
             colors: {
                 base: "#fff",
                 baseSecondary: "#e8e8e8",
-                baseTertiary: "#e6e6e6",
+                baseTertiary: "#f0f0f0",
                 textPrimary: "#000000",
                 actionBlue: {
                     900: "#1d9bf0",
