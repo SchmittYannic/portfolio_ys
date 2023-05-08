@@ -140,7 +140,7 @@ const Contact = (): ReactElement => {
                     {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
                 </h2>
 
-                <div className="mx-auto p-10 rounded-xl dark:bg-darkBaseSecondary bg-baseSecondary">
+                <div className="mx-auto p-10 rounded-xl dark:bg-darkBaseTertiary bg-baseSecondary">
                     <ContactForm />
                 </div>
             </div>
