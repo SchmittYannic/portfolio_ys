@@ -90,12 +90,12 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
 
                         {project.liveLink &&
                             <a 
-                                className="group outline-none"
+                                className="group outline-none absolute top-4 right-20"
                                 href={project.liveLink} 
                                 target="_blank"
                             >
                                 <div 
-                                    className="absolute top-4 right-20 w-12 h-12 rounded-full flex items-center justify-center bg-red-700 hover:scale-125 group-focus:ring-4 ring-red-700/30 ring-offset-2"
+                                    className="liveLink w-12 h-12 relative rounded-full flex items-center justify-center hover:scale-125 transition-[transform] duration-500 ease-linear group-focus:ring-4 ring-black/30 ring-offset-2 z-10 before:inset-0 before:absolute before:content-[''] before:rounded-full before:opacity-0 before:-z-10 before:transition-opacity before:duration-500 before:ease-linear before:hover:opacity-100"
                                 >
                                     <img 
                                         className="w-5 h-5 translate-x-0.5"
@@ -112,21 +112,21 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                             target="_blank"
                         >
                             <img 
-                                className="absolute top-4 right-4 w-12 h-12 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2"
+                                className="absolute top-4 right-4 w-12 h-12 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2 transition-[transform] duration-500 ease-linear"
                                 src={githubLogo} 
                                 alt="Github Logo"
                             />
                         </a>
                     </div>
 
-                    <h4 className="project-header my-10 text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
+                    <h4 className="my-10 text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
                         {lang === "de" ? project.title_de : project.title_en}
                     </h4>
                 </div>
 
                 <ProjectDescription text={description} />
 
-                <div className="tags px-10 pb-10 relative z-40">
+                <div className="px-10 pb-10 relative z-40">
                     <Tags tags={project.tags} />
                 </div>
             </div>

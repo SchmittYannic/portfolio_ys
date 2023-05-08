@@ -94,6 +94,14 @@ html[data-color="Orange"] .projectcard::after {
     background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionOrange-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
 }
 
+html[data-color="Orange"] .liveLink {
+    background: radial-gradient(rgb(var(--actionOrange-400)), rgb(255,255,255));
+}
+
+html[data-color="Orange"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionOrange-900)), rgb(255,255,255));
+}
+
 
 
 
@@ -127,6 +135,14 @@ html[data-color="Blue"] .projectcard::before {
 
 html[data-color="Blue"] .projectcard::after {
     background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionBlue-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Blue"] .liveLink {
+    background: radial-gradient(rgb(var(--actionBlue-400)), rgb(255,255,255));
+}
+
+html[data-color="Blue"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionBlue-900)), rgb(255,255,255));
 }
 
 
@@ -164,6 +180,14 @@ html[data-color="Green"] .projectcard::after {
     background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionGreen-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
 }
 
+html[data-color="Green"] .liveLink {
+    background: radial-gradient(rgb(var(--actionGreen-400)), rgb(255,255,255));
+}
+
+html[data-color="Green"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionGreen-900)), rgb(255,255,255));
+}
+
 
 
 
@@ -197,6 +221,14 @@ html[data-color="Purple"] .projectcard::before {
 
 html[data-color="Purple"] .projectcard::after {
     background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionPurple-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Purple"] .liveLink {
+    background: radial-gradient(rgb(var(--actionPurple-400)), rgb(255,255,255));
+}
+
+html[data-color="Purple"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionPurple-900)), rgb(255,255,255));
 }
 
 
@@ -234,6 +266,14 @@ html[data-color="Magenta"] .projectcard::after {
     background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionMagenta-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
 }
 
+html[data-color="Magenta"] .liveLink {
+    background: radial-gradient(rgb(var(--actionMagenta-400)), rgb(255,255,255));
+}
+
+html[data-color="Magenta"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionMagenta-900)), rgb(255,255,255));
+}
+
 
 
 
@@ -267,4 +307,12 @@ html[data-color="Yellow"] .projectcard::before {
 
 html[data-color="Yellow"] .projectcard::after {
     background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionYellow-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Yellow"] .liveLink {
+    background: radial-gradient(rgb(var(--actionYellow-400)), rgb(255,255,255));
+}
+
+html[data-color="Yellow"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionYellow-900)), rgb(255,255,255));
 }
