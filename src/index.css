@@ -80,6 +80,14 @@ html[data-color="Orange"] .toggleCheckbox:checked ~ .toggle {
     --tw-ring-color: rgba(var(--actionOrange-900));
 }
 
+html[data-color="Orange"] .projectcard::before {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+}
+
+html[data-color="Orange"] .projectcard::after {
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40%);
+}
+
 
 
 
