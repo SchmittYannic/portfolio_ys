@@ -65,7 +65,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
     const description = lang === "de" ? project.description_de : project.description_en;
 
     return (
-        <div className="projectcard relative rounded-xl dark:bg-darkBaseTertiary/10 bg-baseTertiary/10 before:absolute before:top-0 before:left-0 before:h-full before:w-full before:rounded-xl before:content-[''] before:z-30 before:opacity-0 before:transition-opacity before:duration-500 before:hover:opacity-100 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:rounded-xl after:content-[''] after:z-10 after:opacity-0 after:transition-opacity after:duration-500 group-hover:after:opacity-100">
+        <div className="projectcard lg:max-w-none max-w-[410px] relative rounded-xl dark:bg-darkBaseTertiary/10 bg-baseTertiary/10  shadow-lg before:absolute before:top-0 before:left-0 before:h-full before:w-full before:rounded-xl before:content-[''] before:z-30 before:opacity-0 before:transition-opacity before:duration-500 before:hover:opacity-100 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:rounded-xl after:content-[''] after:z-10 after:opacity-0 after:transition-opacity after:duration-500 group-hover:after:opacity-100">
             {/* card background div. z-Index needs to be between ::before and ::after of parent */}
             <div className="inset-[1px] absolute z-20 rounded-xl dark:bg-darkBaseTertiary bg-baseTertiary" />
             
@@ -128,7 +128,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
 
 const Projects = () => {
     const { lang } = useContext(SettingsContext);
-    const projectsRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
+    const projectsRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -149,12 +149,12 @@ const Projects = () => {
     }, [projectsRef])
 
     return (
-        <section id="projects" className="w-full py-16">
+        <section id="projects" className="group w-full py-16" ref={projectsRef}>
             <h2 className="mt-8 mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.projectsHead : TextContent.english.projectsHead}
             </h2>
 
-            <div ref={projectsRef} className="projects group lg:px-20 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center gap-2">
+            <div className="lg:px-20 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center gap-4">
                 {projects.map((project, idx) => (
                     <ProjectCard
                         key={idx}

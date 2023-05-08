@@ -26,7 +26,7 @@
         --actionYellow-400: 255, 234, 128;
 
         --projectcard-radialGradient-size: 800px;
-        --projectcard-borderColor-opacity: 0.3;
+        --projectcard-borderColor-opacity: 0.6;
         --projectcard-color-opacity: 0.1;
         --projectcard-radialGradient-opacity: 40%;
     }
@@ -191,6 +191,14 @@ html[data-color="Purple"] .toggleCheckbox:checked ~ .toggle {
     --tw-ring-color: rgb(var(--actionPurple-900));
 }
 
+html[data-color="Purple"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionPurple-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Purple"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionPurple-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
 
 
 
@@ -218,6 +226,14 @@ html[data-color="Magenta"] .toggleCheckbox:checked ~ .toggle {
     --tw-ring-color: rgba(var(--actionMagenta-900));
 }
 
+html[data-color="Magenta"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionMagenta-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Magenta"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionMagenta-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
 
 
 
@@ -243,4 +259,12 @@ html[data-color="Yellow"] .toggleCheckbox:checked ~ .toggle {
 
 .dark[data-color="Yellow"] .toggleCheckbox:focus ~ .toggle {
     --tw-ring-color: rgba(var(--actionYellow-900));
+}
+
+html[data-color="Yellow"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionYellow-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Yellow"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionYellow-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
 }
