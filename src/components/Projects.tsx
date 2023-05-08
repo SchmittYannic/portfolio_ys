@@ -154,7 +154,7 @@ const Projects = () => {
                 {lang === "de" ? TextContent.german.projectsHead : TextContent.english.projectsHead}
             </h2>
 
-            <div className="lg:px-20 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center gap-4">
+            <div className="lg:px-20 px-2 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-items-center gap-4">
                 {projects.map((project, idx) => (
                     <ProjectCard
                         key={idx}

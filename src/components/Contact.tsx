@@ -135,7 +135,7 @@ const Contact = (): ReactElement => {
         <section id="contact" className="w-full min-h-[840px] h-screen relative overflow-x-hidden" tabIndex={-1}>
             <ContactsBg />
 
-            <div className="py-16 max-w-[500px] lg:w-[50%] sm:w-[75%] w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+            <div className="py-16 px-2 max-w-[500px] lg:w-[50%] sm:w-[75%] w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
                 <h2 className="mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                     {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
                 </h2>
