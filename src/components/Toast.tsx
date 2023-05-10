@@ -1,15 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { ToastType } from "../context/ToastProvider";
 import { closeBlack, closeWhite } from "../assets";
-import { SettingsContext } from "../context/SettingsProvider";
+import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 
 const Toast = ({ toastList }: {toastList: ToastType[]}) => {
-    const { theme } = useContext(SettingsContext);
+    const { theme } = useContext<UseSettingsContextType>(SettingsContext);
     const [list, setList] = useState<ToastType[]>(toastList);
 
-    const close = theme === "dark" ? closeWhite : closeBlack;
+    const close: string = theme === "dark" ? closeWhite : closeBlack;
 
-    const deleteToast = (id: number) => {
+    const deleteToast = (id: number): void => {
         const listItemIndex = list.findIndex(e => e.id === id);
         const toastListItem = toastList.findIndex(e => e.id === id);
         list.splice(listItemIndex, 1);

@@ -1,7 +1,9 @@
-import { SettingsProvider } from "./SettingsProvider";
-import { ToastProvider } from "./ToastProvider";
+import { SettingsProvider, SettingsContext } from "./SettingsProvider";
+import { ToastProvider, ToastContext } from "./ToastProvider";
 
 export {
     SettingsProvider,
+    SettingsContext,
     ToastProvider,
+    ToastContext,
 }

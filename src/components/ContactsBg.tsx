@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { SettingsContext } from "../context/SettingsProvider";
+import { SettingsContext } from "../context/";
+import { UseSettingsContextType } from "../context/SettingsProvider";
 
 const ContactsBg = () => {
-    const { color } = useContext(SettingsContext);
+    const { color } = useContext<UseSettingsContextType>(SettingsContext);
 
     const colorClass500 = `fill-action${color}-500`; // replaces color1
     const colorClass800 = `fill-action${color}-800`; // replaces color2

@@ -2,13 +2,14 @@ import { useRef, useState, useEffect, useContext } from "react";
 import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
-import { TextContent, navLinks } from "../constants";
-import { SettingsContext } from "../context/SettingsProvider";
+import { TextContent } from "../constants";
+import { SettingsContext } from "../context/";
+import { UseSettingsContextType } from "../context/SettingsProvider";
 
 const Hero = () => {
     const windowSize = useWindowSize();
     const isMobile = windowSize.width && windowSize.width < 1024;
-    const ref = useRef<HTMLDivElement>(null);
+    const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     const [rectStyle, setRectStyle] = useState<React.CSSProperties>({
         position: "absolute",
         transformOrigin: "bottom left", //"top left"
@@ -19,13 +20,13 @@ const Hero = () => {
         //top: "0px", // default
         left: "0px", // default
     });
-    const {lang, color} = useContext(SettingsContext);
+    const {lang, color} = useContext<UseSettingsContextType>(SettingsContext);
     const bgColorClass900 = `bg-action${color}-900`;
     const borderColorClass900 = `border-action${color}-900`;
     const textColorClass900 = `text-action${color}-900`;
 
     useEffect(() => {
-        const handleResize = () => {
+        const handleResize = (): void => {
             if (!ref?.current?.clientHeight) {
                 return;
             }

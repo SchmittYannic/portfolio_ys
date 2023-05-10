@@ -1,7 +1,7 @@
 import { ReactElement, useContext, useState, useEffect, useRef } from "react"
 import Tilt from "react-parallax-tilt"
 
-import { SettingsContext } from "../context/SettingsProvider";
+import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 import { ProjectType, TagKeyType, TextContent, projects, tagData } from "../constants";
 import { githubLogo, playButton } from "../assets";
 
@@ -27,8 +27,8 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 }
 
 const ProjectDescription = ({ text }: {text: string}): ReactElement => {
-    const { lang } = useContext(SettingsContext);
-    const [isOpen, setIsOpen] = useState(false);
+    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const expandText = lang === "de" ? TextContent.german.expandButton : TextContent.english.expandButton;
     const collapseText = lang === "de" ? TextContent.german.collapseButton : TextContent.english.collapseButton;
@@ -63,10 +63,10 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
 
 
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
-    const { lang, color } = useContext(SettingsContext);
-    const description = lang === "de" ? project.description_de : project.description_en;
+    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
+    const description: string = lang === "de" ? project.description_de : project.description_en;
 
-    const ringColorClass = `ring-action${color}-900/30`;
+    const ringColorClass: string = `ring-action${color}-900/30`;
 
     return (
         <Tilt
@@ -138,7 +138,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
 
 
 const Projects = () => {
-    const { lang } = useContext(SettingsContext);
+    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
     const projectsRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
 
     useEffect(() => {

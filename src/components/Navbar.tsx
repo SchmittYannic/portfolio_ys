@@ -314,14 +314,14 @@ const MobileNav = (): ReactElement => {
 };
 
 const Navbar = (): ReactElement => {
-    const { color } = useContext(SettingsContext);
+    const { color } = useContext<UseSettingsContextType>(SettingsContext);
     const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
     const isInView = useInView(ref);
     const { scrollYProgress } = useScroll();
     const scaleX = scrollYProgress;
 
-    const bgColorClass600 = `bg-action${color}-600`;
+    const bgColorClass600: string = `bg-action${color}-600`;
 
     return (
         <>

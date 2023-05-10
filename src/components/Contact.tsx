@@ -3,8 +3,8 @@ import emailjs from "@emailjs/browser";
 
 import { ContactsBg } from ".";
 import { TextContent } from "../constants";
-import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
-import { ToastContext } from "../context/ToastProvider";
+import { ToastContext, SettingsContext } from "../context/";
+import { UseSettingsContextType } from "../context/SettingsProvider";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn

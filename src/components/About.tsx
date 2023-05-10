@@ -2,9 +2,10 @@ import { useContext, useRef } from "react"
 import { motion, useScroll, MotionValue } from "framer-motion"
 
 import { TextContent, education_de, educationType, education_en, skillsIT, skillsLanguage } from "../constants"
-import { SettingsContext } from "../context/SettingsProvider"
+import { SettingsContext } from "../context/"
+import { UseSettingsContextType } from "../context/SettingsProvider";
 
-type fillColorType = `fill-${string}`
+type fillColorType = `fill-${string}`;
 
 const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, fillColor: fillColorType}) => {
     return (
@@ -24,7 +25,7 @@ const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, f
 }
 
 const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
-    const { color } = useContext(SettingsContext);
+    const { color } = useContext<UseSettingsContextType>(SettingsContext);
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
 
@@ -45,8 +46,8 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
 }
 
 const TimelineEntry = ({ entry }: { entry: educationType }) => {
-    const { lang, theme } = useContext(SettingsContext);
-    const ref = useRef(null);
+    const { lang, theme } = useContext<UseSettingsContextType>(SettingsContext);
+    const ref: React.MutableRefObject<null | HTMLLIElement> = useRef(null);
     const { scrollYProgress } = useScroll(
         {
             target: ref,
@@ -98,8 +99,8 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
 }
 
 const EducationSubSection = () => {
-    const { lang, color } = useContext(SettingsContext);
-    const ref = useRef(null);
+    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
+    const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     const { scrollYProgress } = useScroll(
         {
             target: ref,
@@ -132,7 +133,7 @@ const EducationSubSection = () => {
 }
 
 const SkillsSubSection = () => {
-    const { lang, color } = useContext(SettingsContext);
+    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
     const bgColorClass900 = `bg-action${color}-900`;
 
     return (
@@ -191,7 +192,7 @@ const SkillsSubSection = () => {
 }
 
 const About = () => {
-    const { lang } = useContext(SettingsContext);
+    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
 
     return (
         <section id="about" className="w-full py-16">
