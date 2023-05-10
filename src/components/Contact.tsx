@@ -70,61 +70,64 @@ const ContactForm = (): ReactElement => {
     }
 
     return (
-        <form 
-            className="flex flex-col gap-6 dark:text-darkTextPrimary text-textPrimary"
-            onSubmit={handleSubmit}
-        >
-            <label
-                className="flex flex-col gap-2"
+        <div className="form-wrapper mx-auto p-10 relative rounded-xl dark:bg-darkBaseTertiary bg-baseSecondary overflow-hidden
+        before:content-[''] before:absolute before:-inset-[50%] before:rounded-xl before:z-0 after:content-[''] after:inset-1 after:absolute after:rounded-xl after:z-10 after:dark:bg-darkBaseTertiary after:bg-baseSecondary">
+            <form 
+                className="relative flex flex-col gap-6 dark:text-darkTextPrimary text-textPrimary z-20"
+                onSubmit={handleSubmit}
             >
-                <span>{lang === "de" ? TextContent.german.nameLabel : TextContent.english.nameLabel}</span>
-                <input 
-                    className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
-                    type="text"
-                    name="name"
-                    placeholder="What's your name?"
-                    value={form.name}
-                    onChange={handleChange}
-                />
-            </label>
-
-            <label
-                className="flex flex-col gap-2"
-            >
-                <span>{lang === "de" ? TextContent.german.emailLabel : TextContent.english.emailLabel}</span>
-                <input 
-                    className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
-                    type="email"
-                    name="email"
-                    placeholder="What's your email?"
-                    value={form.email}
-                    onChange={handleChange}
-                />
-            </label>
-
-            <label
-                className="flex flex-col gap-2"
-            >
-                <span>{lang === "de" ? TextContent.german.messageLabel : TextContent.english.messageLabel}</span>
-                <textarea 
-                    className="py-4 px-6 rounded-md dark:bg-darkBase bg-base resize-none"
-                    name="message" 
-                    rows={7}
-                    placeholder="What's your message?"
-                    value={form.message}
-                    onChange={handleChange}
+                <label
+                    className="flex flex-col gap-2"
                 >
+                    <span>{lang === "de" ? TextContent.german.nameLabel : TextContent.english.nameLabel}</span>
+                    <input 
+                        className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
+                        type="text"
+                        name="name"
+                        placeholder="What's your name?"
+                        value={form.name}
+                        onChange={handleChange}
+                    />
+                </label>
 
-                </textarea>
-            </label>
+                <label
+                    className="flex flex-col gap-2"
+                >
+                    <span>{lang === "de" ? TextContent.german.emailLabel : TextContent.english.emailLabel}</span>
+                    <input 
+                        className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
+                        type="email"
+                        name="email"
+                        placeholder="What's your email?"
+                        value={form.email}
+                        onChange={handleChange}
+                    />
+                </label>
 
-            <button
-                className="py-3 px-8 rounded-md dark:bg-darkBase bg-base"
-                type="submit"
-            >
-                {lang === "de" ? TextContent.german.sendButton : TextContent.english.sendButton}
-            </button>
-        </form>
+                <label
+                    className="flex flex-col gap-2"
+                >
+                    <span>{lang === "de" ? TextContent.german.messageLabel : TextContent.english.messageLabel}</span>
+                    <textarea 
+                        className="py-4 px-6 rounded-md dark:bg-darkBase bg-base resize-none"
+                        name="message" 
+                        rows={7}
+                        placeholder="What's your message?"
+                        value={form.message}
+                        onChange={handleChange}
+                    >
+
+                    </textarea>
+                </label>
+
+                <button
+                    className="py-3 px-8 rounded-md dark:bg-darkBase bg-base"
+                    type="submit"
+                >
+                    {lang === "de" ? TextContent.german.sendButton : TextContent.english.sendButton}
+                </button>
+            </form>
+        </div>
     )
 }
 
@@ -140,9 +143,7 @@ const Contact = (): ReactElement => {
                     {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
                 </h2>
 
-                <div className="mx-auto p-10 rounded-xl dark:bg-darkBaseTertiary bg-baseSecondary">
-                    <ContactForm />
-                </div>
+                <ContactForm />
             </div>
         </section>
     )

@@ -32,7 +32,9 @@
     }
 }
 
-* {
+*, 
+*::after, 
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -104,6 +106,23 @@ html[data-color="Orange"] .liveLink {
 
 html[data-color="Orange"] .liveLink::before {
     background: radial-gradient(rgb(var(--actionOrange-900)), rgb(255,255,255));
+}
+
+html[data-color="Orange"] .form-wrapper::before {
+    background-image: conic-gradient(
+        #04b0ee 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        #04b0ee 180deg,
+        transparent 280deg
+    );
+    animation: rotate 5s infinite linear;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(-360deg);
+    }
 }
 
 
