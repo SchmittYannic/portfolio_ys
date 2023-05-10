@@ -28,7 +28,7 @@ const ContactForm = (): ReactElement => {
 
     const handleSubmit = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        setIsSending(true)
+        setIsSending(true);
 
         emailjs.send(
             "service_upmv0ki", 

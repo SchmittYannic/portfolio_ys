@@ -65,6 +65,16 @@ body {
     align-items: center;
 }
 
+.form-wrapper::before {
+    animation: rotate 5s infinite linear;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
 /* ColorScheme */
 
 html[data-color="Orange"] #flag-checkbox:not(:checked)~#german-flag .rect {
@@ -110,19 +120,12 @@ html[data-color="Orange"] .liveLink::before {
 
 html[data-color="Orange"] .form-wrapper::before {
     background-image: conic-gradient(
-        #04b0ee 20deg,
+        rgb(var(--actionOrange-900)) 20deg,
         transparent 120deg,
         transparent 180deg,
-        #04b0ee 180deg,
+        rgb(var(--actionOrange-900)) 180deg,
         transparent 280deg
     );
-    animation: rotate 5s infinite linear;
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(-360deg);
-    }
 }
 
 
@@ -168,6 +171,16 @@ html[data-color="Blue"] .liveLink::before {
     background: radial-gradient(rgb(var(--actionBlue-900)), rgb(255,255,255));
 }
 
+html[data-color="Blue"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionBlue-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionBlue-900)) 180deg,
+        transparent 280deg
+    );
+}
+
 
 
 
@@ -209,6 +222,16 @@ html[data-color="Green"] .liveLink {
 
 html[data-color="Green"] .liveLink::before {
     background: radial-gradient(rgb(var(--actionGreen-900)), rgb(255,255,255));
+}
+
+html[data-color="Green"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionGreen-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionGreen-900)) 180deg,
+        transparent 280deg
+    );
 }
 
 
@@ -254,6 +277,16 @@ html[data-color="Purple"] .liveLink::before {
     background: radial-gradient(rgb(var(--actionPurple-900)), rgb(255,255,255));
 }
 
+html[data-color="Purple"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionPurple-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionPurple-900)) 180deg,
+        transparent 280deg
+    );
+}
+
 
 
 
@@ -297,6 +330,16 @@ html[data-color="Magenta"] .liveLink::before {
     background: radial-gradient(rgb(var(--actionMagenta-900)), rgb(255,255,255));
 }
 
+html[data-color="Magenta"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionMagenta-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionMagenta-900)) 180deg,
+        transparent 280deg
+    );
+}
+
 
 
 
@@ -338,4 +381,14 @@ html[data-color="Yellow"] .liveLink {
 
 html[data-color="Yellow"] .liveLink::before {
     background: radial-gradient(rgb(var(--actionYellow-900)), rgb(255,255,255));
+}
+
+html[data-color="Yellow"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionYellow-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionYellow-900)) 180deg,
+        transparent 280deg
+    );
 }
