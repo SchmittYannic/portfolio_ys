@@ -35,6 +35,8 @@ const TextContent = {
         emailLabel: "Ihre E-Mail-Adresse",
         messageLabel: "Nachricht",
         sendButton: "Senden",
+        successMessage: "Nachricht erfolgreich versendet.",
+        failureMessage: "Etwas ist schief gelaufen.",
     },
     english: {
         settings: "Settings",
@@ -67,6 +69,8 @@ const TextContent = {
         emailLabel: "Your Email",
         messageLabel: "Message",
         sendButton: "Send",
+        successMessage: "Message sent successfully.",
+        failureMessage: "Something went wrong.",
     }
 }
 

@@ -1,11 +1,13 @@
 import { BrowserRouter } from "react-router-dom"
-import { Hero, Navbar, About, Contact } from "./components"
+import { Hero, Navbar, About, Contact, Toast } from "./components"
 import { useContext, useEffect } from "react"
 import { SettingsContext } from "./context/SettingsProvider"
 import Projects from "./components/Projects"
+import { ToastContext } from "./context/ToastProvider"
 
 const App = () => {
-    const { setTheme, setLang, setColor } = useContext(SettingsContext)
+    const { setTheme, setLang, setColor } = useContext(SettingsContext);
+    const { toastList } = useContext(ToastContext);
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -41,6 +43,7 @@ const App = () => {
                 <Projects />
                 <About />
                 <Contact />
+                <Toast toastList={toastList} />
             </div>
         </BrowserRouter>
     )

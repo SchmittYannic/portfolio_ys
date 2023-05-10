@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import { ContactsBg } from ".";
 import { TextContent } from "../constants";
 import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
+import { ToastContext } from "../context/ToastProvider";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn
@@ -11,6 +12,7 @@ import { SettingsContext, UseSettingsContextType } from "../context/SettingsProv
 
 const ContactForm = (): ReactElement => {
     const { lang } = useContext<UseSettingsContextType>(SettingsContext);
+    const { addToast } = useContext(ToastContext);
 
     type FormType = {
         name: string,
@@ -43,7 +45,9 @@ const ContactForm = (): ReactElement => {
             "gdcYzt-5KPdG9Jqcn"
         ).then(() => {
             setIsSending(false);
-            alert("Thank you. I will get back to you as soon as possible");
+            //alert("Thank you. I will get back to you as soon as possible");
+            const toastText = lang === "de" ? TextContent.german.successMessage : TextContent.english.successMessage;
+            addToast("success", toastText);
 
             setForm({
                 name: "",
@@ -54,8 +58,9 @@ const ContactForm = (): ReactElement => {
             setIsSending(false);
 
             console.log(error);
-
-            alert("Something went wrong.");
+            //alert("Something went wrong.");
+            const toastText = lang === "de" ? TextContent.german.failureMessage : TextContent.english.failureMessage;
+            addToast("failure", toastText);
         })
     }
 
