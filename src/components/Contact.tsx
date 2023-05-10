@@ -3,8 +3,8 @@ import emailjs from "@emailjs/browser";
 
 import { ContactsBg } from ".";
 import { TextContent } from "../constants";
-import { ToastContext, SettingsContext } from "../context/";
-import { UseSettingsContextType } from "../context/SettingsProvider";
+import { ToastContext, UseToastContextType } from "../context/ToastProvider";
+import { UseSettingsContextType, SettingsContext } from "../context/SettingsProvider";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn
@@ -12,7 +12,7 @@ import { UseSettingsContextType } from "../context/SettingsProvider";
 
 const ContactForm = (): ReactElement => {
     const { lang } = useContext<UseSettingsContextType>(SettingsContext);
-    const { addToast } = useContext(ToastContext);
+    const { addToast } = useContext<UseToastContextType>(ToastContext);
 
     type FormType = {
         name: string,

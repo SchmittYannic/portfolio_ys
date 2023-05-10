@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { SettingsContext } from "../context/";
-import { UseSettingsContextType } from "../context/SettingsProvider";
+import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 
 const ContactsBg = () => {
     const { color } = useContext<UseSettingsContextType>(SettingsContext);

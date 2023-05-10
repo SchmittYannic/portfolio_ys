@@ -2,8 +2,7 @@ import { useContext, useRef } from "react"
 import { motion, useScroll, MotionValue } from "framer-motion"
 
 import { TextContent, education_de, educationType, education_en, skillsIT, skillsLanguage } from "../constants"
-import { SettingsContext } from "../context/"
-import { UseSettingsContextType } from "../context/SettingsProvider";
+import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider"
 
 type fillColorType = `fill-${string}`;
 

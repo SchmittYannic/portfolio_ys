@@ -3,8 +3,7 @@ import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
 import { TextContent } from "../constants";
-import { SettingsContext } from "../context/";
-import { UseSettingsContextType } from "../context/SettingsProvider";
+import { UseSettingsContextType, SettingsContext } from "../context/SettingsProvider";
 
 const Hero = () => {
     const windowSize = useWindowSize();
