@@ -57,7 +57,7 @@ const ContactForm = (): ReactElement => {
         }, (error) => {
             setIsSending(false);
 
-            //console.log(error);
+            console.log(error);
             //alert("Something went wrong.");
             const toastText = lang === "de" ? TextContent.german.failureMessage : TextContent.english.failureMessage;
             addToast("failure", toastText);
