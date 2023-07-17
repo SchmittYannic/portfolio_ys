@@ -24,6 +24,7 @@ import typescriptLogo from "./typescript.svg";
 
 import githubLogo from "./github.svg";
 import playButton from "./playButton.svg";
+import DataVisualizerImg from "./DataVisualizerImg.png";
 
 export {
     placeholderProfile,
@@ -49,4 +50,5 @@ export {
     typescriptLogo,
     githubLogo,
     playButton,
+    DataVisualizerImg,
 }

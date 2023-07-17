@@ -89,7 +89,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                 <div className="px-10 pt-10 relative z-40">
                     <div className="relative">
                         <img 
-                            className="rounded-xl w-full"
+                            className="rounded-xl w-full aspect-video"
                             src={project.image} 
                             alt={`${lang === "de" 
                                 ? `Bild des Projects ${project.title_de}` 

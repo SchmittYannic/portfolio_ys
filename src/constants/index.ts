@@ -1,4 +1,4 @@
-import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptLogo, germany, uk, placeholderProject } from "../assets";
+import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptLogo, germany, uk, placeholderProject, DataVisualizerImg } from "../assets";
 
 const navbarHeight = 70;
 const menuWidth = 180;
@@ -318,7 +318,7 @@ const projects: ProjectType[] = [
     {
         title_de: "DataVisualizer",
         title_en: "DataVisualizer",
-        image: placeholderProject,
+        image: DataVisualizerImg,
         description_de: ["DataVisualizer ist ein Tool, das die Erstellung von Diagrammen ermöglicht. Ein Nutzer kann Daten in Form einer CSV-Datei hochgeladen und ein Diagramm aus einer großen Auswahl an Diagrammtypen auswählen.", "DataVisualizer unterstützt die Erstellung von Boxplots, Säulen-, Kreis-, Streu-, Linien- und Flächendiagrammen. Eine einfache Anpassung der Dimensionen, Farbgestaltung und Textinhalte der Diagramme anhand individueller Bedürfnisse ist gegeben.", "Das Projekt nutzt React im Frontend, Flask als Backend und D3 für die Erstellung der Diagramme"],
         description_en: ["DataVisualizer is a tool that allows the creation of charts. A user can upload data in the form of a CSV file and select a chart from a wide range of chart types.", "DataVisualizer supports the creation of boxplots, bar, pie, scatter, line and area charts.The dimensions, coloring and text content of the charts can be easily adjusted based on individual needs.", "The project uses React on the frontend, Flask on the backend and D3 for creating the diagrams"],
         tags: ["React", "Flask", "D3"],
