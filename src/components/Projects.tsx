@@ -26,7 +26,7 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
     )
 }
 
-const ProjectDescription = ({ text }: {text: string}): ReactElement => {
+const ProjectDescription = ({ text }: {text: string[]}): ReactElement => {
     const { lang } = useContext<UseSettingsContextType>(SettingsContext);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -39,11 +39,17 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
             <div 
                 className={`${isOpen ? "max-h-[1000px]" : "max-h-20"} px-10 relative z-20 overflow-hidden transition-[max-height] duration-200`}
             >
-                <p 
-                    className="dark:text-darkTextPrimary text-textPrimary"
-                >
-                    {text}
-                </p>
+                {text.map((paragraph, idx) => 
+                    <>
+                        <p 
+                            key={idx}
+                            className="dark:text-darkTextPrimary text-textPrimary"
+                        >
+                            {paragraph}
+                        </p>
+                        {text.length !== idx+1 && <br />}
+                    </>
+                )}
                 <div className={`absolute bottom-0 w-[calc(100%-5rem)] h-20 ${isOpen ? "bg-transparent" : "bg-gradient-to-t"} dark:from-darkBaseTertiary from-baseTertiary from-0% to-transparent to-100%`} />
             </div>
 
@@ -64,7 +70,7 @@ const ProjectDescription = ({ text }: {text: string}): ReactElement => {
 
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
     const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
-    const description: string = lang === "de" ? project.description_de : project.description_en;
+    const description: string[] = lang === "de" ? project.description_de : project.description_en;
 
     const ringColorClass: string = `ring-action${color}-900/30`;
 
