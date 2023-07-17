@@ -89,7 +89,7 @@ const ContactForm = (): ReactElement => {
                         className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
                         type="text"
                         name="name"
-                        placeholder="What's your name?"
+                        placeholder=""
                         value={form.name}
                         onChange={handleChange}
                     />
@@ -103,7 +103,7 @@ const ContactForm = (): ReactElement => {
                         className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
                         type="email"
                         name="email"
-                        placeholder="What's your email?"
+                        placeholder=""
                         value={form.email}
                         onChange={handleChange}
                     />
@@ -117,7 +117,7 @@ const ContactForm = (): ReactElement => {
                         className="py-4 px-6 rounded-md dark:bg-darkBase bg-base resize-none"
                         name="message" 
                         rows={7}
-                        placeholder="What's your message?"
+                        placeholder=""
                         value={form.message}
                         onChange={handleChange}
                     >
