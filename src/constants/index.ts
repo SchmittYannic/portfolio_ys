@@ -342,7 +342,7 @@ const projects: ProjectType[] = [
         description_de: ["Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten."],
         description_en: ["My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly."],
         tags: ["React", "Typescript", "Tailwind"],
-        githubLink: "https://www.google.com",
+        githubLink: "https://github.com/SchmittYannic/portfolio_ys",
     },
     {
         title_de: "Elden Ring Buildplanner",
