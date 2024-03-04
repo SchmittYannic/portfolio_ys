@@ -8,18 +8,16 @@ const Hero = () => {
 
     const {lang, color} = useContext<UseSettingsContextType>(SettingsContext);
     const bgColorClass900 = `bg-action${color}-900`;
-    const borderColorClass900 = `border-action${color}-900`;
     const textColorClass900 = `text-action${color}-900`;
 
-
     return (
-        <section className="hero-section relative w-full lg:h-screen lg:pt-0 pt-32">
+        <section className="hero-section relative w-full lg:h-screen lg:max-h-[1200px] lg:pt-0 pt-32">
 
             <div className="hero-background absolute lg:inset-0 top-0 left-0 w-full min-h-[428px] flex justify-end -z-1">
                 <div className="lg:w-[50%] w-full flex items-center overflow-hidden">
                     <div className="relative lg:max-w-[960px] w-full lg:h-0 h-full">
                         <div className={`img-background absolute lg:top-[50%] bottom-0 left-[50%] -translate-x-1/2 lg:-translate-y-1/2 ${styles.heroImgWidth} ${styles.heroImgHeight} rounded-bl-full rounded-br-full rotate-45 ${bgColorClass900}`} />
-                        <div className={`rect-corner absolute lg:bottom-[50%] bottom-[150px] left-[50%] ${styles.heroImgWidth} h-[1500px] -translate-x-1/2 origin-bottom rotate-45 ${bgColorClass900}`} />
+                        <div className={`rect-corner absolute lg:bottom-[50%] sm:bottom-[150px] left-[50%] ${styles.heroImgWidth} h-[1500px] -translate-x-1/2 origin-bottom rotate-45 ${bgColorClass900}`} />
                     </div>
                 </div>
             </div>
