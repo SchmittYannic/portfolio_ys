@@ -194,7 +194,7 @@ const About = () => {
     const { lang } = useContext<UseSettingsContextType>(SettingsContext);
 
     return (
-        <section id="about" className="w-full py-16">
+        <section id="about" className="max-w-[1920px] min-w-[320px] w-full mx-auto py-16">
             <h2 className="mt-8 mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.aboutHead : TextContent.english.aboutHead}
             </h2>

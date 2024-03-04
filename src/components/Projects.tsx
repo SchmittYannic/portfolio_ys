@@ -166,7 +166,7 @@ const Projects = () => {
     }, [projectsRef])
 
     return (
-        <section id="projects" className="group w-full py-16" ref={projectsRef}>
+        <section id="projects" className="group max-w-[1920px] min-w-[320px] w-full mx-auto py-16" ref={projectsRef}>
             <h2 className="mt-8 mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.projectsHead : TextContent.english.projectsHead}
             </h2>
