@@ -13,22 +13,25 @@ const Hero = () => {
 
 
     return (
-        <section className="hero-section relative w-full lg:h-screen">
+        <section className="hero-section relative w-full lg:h-screen lg:pt-0 pt-32">
+
             <div className="hero-background absolute inset-0 flex justify-end -z-1">
-                <div className="w-[50%] flex items-center">
+                <div className="lg:w-[50%] w-full flex items-center overflow-hidden">
                     <div className="max-w-[960px] w-full relative">
-                        <div className="img-background absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 lg:w-[680px] lg:h-[680px] bg-red-600 rounded-bl-full rounded-br-full rotate-45" />
-                        <div className="rect-corner absolute bottom-[50%] left-[50%] w-[680px] h-[1000px] -translate-x-1/2 bg-blue-600 origin-bottom rotate-45" />
+                        <div className={`img-background absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 ${styles.heroImgWidth} ${styles.heroImgHeight} rounded-bl-full rounded-br-full rotate-45 ${bgColorClass900}`} />
+                        <div className={`rect-corner absolute bottom-[50%] left-[50%] ${styles.heroImgWidth} h-[1500px] -translate-x-1/2 origin-bottom rotate-45 ${bgColorClass900}`} />
                     </div>
                 </div>
             </div>
+
+
             <div className="hero-content absolute inset-0">
                 <div className="max-w-[1920px] min-w-[320px] h-full mx-auto flex lg:flex-row-reverse flex-col items-center">
                     <div className="hero-img-container w-[50%] flex justify-center">
                         <img 
                             src={placeholderProfile} 
                             alt="" 
-                            className="lg:w-[680px] lg:h-[680px]"
+                            className={`${styles.heroImgHeight} ${styles.heroImgWidth}`}
                         />
                     </div>
 
