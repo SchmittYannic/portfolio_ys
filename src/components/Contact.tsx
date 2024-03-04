@@ -146,7 +146,7 @@ const Contact = (): ReactElement => {
     const { lang } = useContext(SettingsContext);
 
     return (
-        <section id="contact" className="relative max-w-[1920px] min-w-[320px] w-full min-h-[1000px] mx-auto overflow-x-hidden" tabIndex={-1}>
+        <section id="contact" className="relative max-w-[1920px] min-w-[320px] w-full min-h-[1000px] h-screen max-h-[1400px] mx-auto overflow-x-hidden" tabIndex={-1}>
             <ContactsBg />
 
             <div className="py-16 px-2 max-w-[500px] lg:w-[50%] sm:w-[75%] w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
