@@ -327,10 +327,10 @@ const Navbar = (): ReactElement => {
         <>
             <div ref={ref} />
             <header 
-                className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl"} fixed max-w-[1920px] min-w-[320px] w-full z-50`}
+                className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl"} fixed w-full z-50`}
                 style={{height: navbarHeight}}
             >
-                <nav className="h-full">
+                <nav className="h-full mx-auto max-w-[1920px] min-w-[320px]">
                     <div className="h-full lg:grid grid-cols-[1fr_50px_1fr] items-center hidden">
                         <DesktopNav />
                     </div>
