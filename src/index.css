@@ -52,7 +52,6 @@ html {
 
 body {
     margin: 0 auto;
-    max-width: 1920px;
     min-width: 320px;
     min-height: 100vh;
     display: flex;
@@ -61,8 +60,9 @@ body {
 #root {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 .form-wrapper::before {
