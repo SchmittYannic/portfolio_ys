@@ -31,7 +31,7 @@ export const ToastProvider = ({children}: ChildrenType): ReactElement => {
         if (toastList.length === 0) {
             id = 1;
         } else {
-            id = toastList[toastList.length].id + 1;
+            id = toastList[toastList.length - 1].id + 1;
         }
 
         const newListItem = {
