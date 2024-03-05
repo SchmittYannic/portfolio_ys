@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 import { ProjectType, TagKeyType, TextContent, projects, tagData } from "../constants";
 import { githubLogo, playButton } from "../assets";
+import { removeItemFromArray } from "../constants/array";
 
 const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 
@@ -28,6 +29,7 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 const Projects = () => {
     const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
     const [activeProject, setActiveProject] = useState<ProjectType>(projects[0]);
+    const [selectedProjects, setSelectedProjects] = useState<ProjectType[]>(projects.filter(p => p.title_en !== projects[0].title_en));
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
 
     const description: string[] = lang === "en" ? activeProject.description_en : activeProject.description_de;
@@ -152,55 +154,46 @@ const Projects = () => {
                             
                         </motion.div>
                     </div>
-                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col`}>
-                        {projects.map((project) => {
+                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col grow`}>
+                        <AnimatePresence mode="popLayout">
+                            {selectedProjects.map((project) => {
 
-                            const isActiveProject = activeProject.title_en === project.title_en;
-                            // const variants = {
-                            //     active: { backgroundColor: "#f0f0f0" },
-                            //     inactive: { backgroundColor: "#fff" },
-                            // }
+                                const handleSelectProjectClicked = () => {
+                                    setSelectedProjects((prevState) => {
+                                        const copy = [...prevState];
+                                        removeItemFromArray(copy, project);
+                                        copy.push(activeProject);
+                                        return copy
+                                    })
 
-                            return (
-                                <>
-                                    <button 
-                                        className="project-preview relative dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base dark:disabled:bg-darkBase"
-                                        type="button"
-                                        disabled={isActiveProject}
-                                        onClick={() => setActiveProject(project)}
+                                    setActiveProject(project)
+                                };
+
+                                return (
+                                    <motion.div
+                                        key={project.title_en}
+                                        className="flex flex-col"
+                                        initial={{ scale: 0.8, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}                                
+                                        transition={{ type: "spring" }}
                                     >
-                                        <div className="relative p-4 flex z-0">
-                                            <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass900}`} />
-                                            <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
-                                                {lang === "en" ? project.title_en : project.title_de}
-                                            </h4>
-                                        </div>
-                                        <AnimatePresence>
-                                            {isActiveProject && (
-                                                <>
-                                                    <motion.div 
-                                                        className={`absolute left-0 right-0 opacity-25 z-1 ${bgColorClass900}`}
-                                                        initial={{ height: "0%", top: "50%" }}
-                                                        animate={{ height: "100%", top: "0%" }}
-                                                        exit={{ height: "0%", top: "50%", transition: { delay: 0.1 } }}
-                                                    >
-                                                    </motion.div>
-                                                    <motion.div 
-                                                        className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 overflow-hidden ${bgColorClass900}`}
-                                                        initial={{ right: "100%" }}
-                                                        animate={{ right: "0%", transition: { delay: 0.1 } }}
-                                                        exit={{ left: "100%" }}
-                                                    >
-                                                        <p className="text-2xl whitespace-nowrap">Aktiv Preview</p>
-                                                    </motion.div>
-                                                </>
-                                            )}
-                                        </AnimatePresence>
-                                    </button>
-                                    <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
-                                </>
-                            )
-                        })}
+                                        <button 
+                                            className="project-preview relative grow dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base dark:disabled:bg-darkBase"
+                                            type="button"
+                                            onClick={handleSelectProjectClicked}
+                                        >
+                                            <div className="relative p-4 flex z-0">
+                                                <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass900}`} />
+                                                <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
+                                                    {lang === "en" ? project.title_en : project.title_de}
+                                                </h4>
+                                            </div>
+                                        </button>
+                                        <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
+                                    </motion.div>
+                                )
+                            })}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
