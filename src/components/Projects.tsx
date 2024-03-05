@@ -26,28 +26,31 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
     )
 }
 
-const ProjectDescription = ({ text }: {text: string[]}): ReactElement => {
+const ProjectDescription = ({ project }: {project: ProjectType}): ReactElement => {
     const { lang } = useContext<UseSettingsContextType>(SettingsContext);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const expandText = lang === "de" ? TextContent.german.expandButton : TextContent.english.expandButton;
     const collapseText = lang === "de" ? TextContent.german.collapseButton : TextContent.english.collapseButton;
 
+    const project_title: string = lang === "de" ? project.title_de : project.title_en;
+    const description: string[] = lang === "de" ? project.description_de : project.description_en;
+    
     return (
         <>
             {/* First div needs to have z-Index of 20 so it can be overlapped by the radiant Gradient of the ProjectCard */}
             <div 
                 className={`${isOpen ? "max-h-[1000px]" : "max-h-20"} px-10 relative z-20 overflow-hidden transition-[max-height] duration-200`}
             >
-                {text.map((paragraph, idx) => 
+                {description.map((paragraph, idx) => 
                     <>
                         <p 
-                            key={idx}
+                            key={project_title + idx}
                             className="dark:text-darkTextPrimary text-textPrimary"
                         >
                             {paragraph}
                         </p>
-                        {text.length !== idx+1 && <br />}
+                        {description.length !== idx+1 && <br />}
                     </>
                 )}
                 <div className={`absolute bottom-0 w-[calc(100%-5rem)] h-20 ${isOpen ? "bg-transparent" : "bg-gradient-to-t"} dark:from-darkBaseTertiary from-baseTertiary from-0% to-transparent to-100%`} />
@@ -70,7 +73,6 @@ const ProjectDescription = ({ text }: {text: string[]}): ReactElement => {
 
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
     const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
-    const description: string[] = lang === "de" ? project.description_de : project.description_en;
 
     const ringColorClass: string = `ring-action${color}-900/30`;
 
@@ -132,7 +134,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
                     </h4>
                 </div>
 
-                <ProjectDescription text={description} />
+                <ProjectDescription project={project} />
 
                 <div className="px-10 pb-10 relative z-40">
                     <Tags tags={project.tags} />
