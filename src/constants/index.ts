@@ -30,6 +30,8 @@ const TextContent = {
         projectsHead: "Projekte",
         expandButton: "Weiterlesen...",
         collapseButton: "Schließen",
+        livelinktitle: "Live-Demo ansehen",
+        githubtitle: "Code auf GitHub anzeigen",
 
         nameLabel: "Ihr Name",
         emailLabel: "Ihre E-Mail-Adresse",
@@ -64,6 +66,8 @@ const TextContent = {
         projectsHead: "Projects",
         expandButton: "Read more",
         collapseButton: "Close",
+        livelinktitle: "View Live Demo",
+        githubtitle: "View Code on GitHub",
 
         nameLabel: "Your Name",
         emailLabel: "Your Email",
