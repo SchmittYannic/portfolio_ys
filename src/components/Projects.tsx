@@ -34,7 +34,7 @@ const Projects = () => {
     const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
 
     const bgColorClass900: string = `bg-action${color}-900`;
-    const borderColorClass200: string = `border-action${color}-200`;
+    const borderColorClass900: string = `border-action${color}-900`;
     const ringColorClass: string = `ring-action${color}-900/30`;
 
     return (
@@ -54,7 +54,7 @@ const Projects = () => {
                             <img 
                                 src={activeProject.image} 
                                 alt="" 
-                                className={`w-[1024px] h-[576px] border-2 ${borderColorClass200}`}
+                                className={`w-[1024px] h-[576px] border-2 ${borderColorClass900}`}
                             />
 
                             <a 
@@ -148,7 +148,7 @@ const Projects = () => {
                                     type="button"
                                     onClick={() => setActiveProject(project)}
                                 >
-                                    <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass200}`} />
+                                    <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass900}`} />
                                     <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
                                         {lang === "en" ? project.title_en : project.title_de}
                                     </h4>
