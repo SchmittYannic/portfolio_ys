@@ -1,10 +1,10 @@
-import { ReactElement, useContext, KeyboardEvent, ChangeEvent } from 'react'
-import { UseSettingsContextType, SettingsContext } from '../context/SettingsProvider';
+import { ReactElement, KeyboardEvent, ChangeEvent } from 'react'
 import { determineIfCheckbox } from '../utils/typeguards';
+import useSettings from '../hooks/useSettings';
 
 
 const LanguageToggle = (): ReactElement => {
-    const { lang, setLang } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, setLang } = useSettings();
 
     const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
         const { code } = e;

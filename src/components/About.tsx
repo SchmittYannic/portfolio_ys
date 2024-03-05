@@ -1,8 +1,8 @@
-import { useContext, useRef } from "react"
+import { useRef } from "react"
 import { motion, useScroll, MotionValue } from "framer-motion"
 
 import { TextContent, education_de, educationType, education_en, skillsIT, skillsLanguage } from "../constants"
-import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider"
+import useSettings from "../hooks/useSettings";
 
 type fillColorType = `fill-${string}`;
 
@@ -24,7 +24,7 @@ const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, f
 }
 
 const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
-    const { color } = useContext<UseSettingsContextType>(SettingsContext);
+    const { color } = useSettings();
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
 
@@ -45,7 +45,7 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
 }
 
 const TimelineEntry = ({ entry }: { entry: educationType }) => {
-    const { lang, theme } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, theme } = useSettings();
     const ref: React.MutableRefObject<null | HTMLLIElement> = useRef(null);
     const { scrollYProgress } = useScroll(
         {
@@ -98,7 +98,7 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
 }
 
 const EducationSubSection = () => {
-    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, color } = useSettings();
     const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     const { scrollYProgress } = useScroll(
         {
@@ -132,7 +132,7 @@ const EducationSubSection = () => {
 }
 
 const SkillsSubSection = () => {
-    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, color } = useSettings();
     const bgColorClass900 = `bg-action${color}-900`;
 
     return (
@@ -191,7 +191,7 @@ const SkillsSubSection = () => {
 }
 
 const About = () => {
-    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang } = useSettings();
 
     return (
         <section id="about" className="max-w-[1920px] min-w-[320px] w-full mx-auto py-16">

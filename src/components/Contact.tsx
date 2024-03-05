@@ -4,14 +4,14 @@ import emailjs from "@emailjs/browser";
 import { ContactsBg } from ".";
 import { TextContent } from "../constants";
 import { ToastContext, UseToastContextType } from "../context/ToastProvider";
-import { UseSettingsContextType, SettingsContext } from "../context/SettingsProvider";
+import useSettings from "../hooks/useSettings";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn
 //service id: service_upmv0ki
 
 const ContactForm = (): ReactElement => {
-    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang } = useSettings();
     const { addToast } = useContext<UseToastContextType>(ToastContext);
 
     type FormType = {
@@ -143,7 +143,7 @@ const ContactForm = (): ReactElement => {
 }
 
 const Contact = (): ReactElement => {
-    const { lang } = useContext(SettingsContext);
+    const { lang } = useSettings();
 
     return (
         <section id="contact" className="relative max-w-[1920px] min-w-[320px] w-full min-h-[1000px] h-screen max-h-[1400px] mx-auto overflow-x-hidden" tabIndex={-1}>

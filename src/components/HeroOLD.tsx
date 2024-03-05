@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect } from "react";
 import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
 import { TextContent } from "../constants";
-import { UseSettingsContextType, SettingsContext } from "../context/SettingsProvider";
+import useSettings from "../hooks/useSettings";
 
 const Hero = () => {
     const windowSize = useWindowSize();
@@ -19,7 +19,7 @@ const Hero = () => {
         //top: "0px", // default
         left: "0px", // default
     });
-    const {lang, color} = useContext<UseSettingsContextType>(SettingsContext);
+    const {lang, color} = useSettings();
     const bgColorClass900 = `bg-action${color}-900`;
     const borderColorClass900 = `border-action${color}-900`;
     const textColorClass900 = `text-action${color}-900`;

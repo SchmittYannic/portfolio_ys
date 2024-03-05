@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router-dom"
 import { useContext, useEffect } from "react"
 import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
-import { UseSettingsContextType, SettingsContext } from "./context/SettingsProvider"
 import { UseToastContextType, ToastContext } from "./context/ToastProvider"
+import useSettings from "./hooks/useSettings"
 
 const App = () => {
-    const { setTheme, setLang, setColor } = useContext<UseSettingsContextType>(SettingsContext);
+    const { setTheme, setLang, setColor } = useSettings();
     const { toastList } = useContext<UseToastContextType>(ToastContext);
 
     useEffect(() => {

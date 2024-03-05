@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { placeholderProfile } from "../assets";
 import { TextContent } from "../constants";
 import { styles } from "../styles";
-import { UseSettingsContextType, SettingsContext } from "../context/SettingsProvider";
+import useSettings from "../hooks/useSettings";
 
 const Hero = () => {
 
-    const {lang, color} = useContext<UseSettingsContextType>(SettingsContext);
+    const {lang, color} = useSettings();
     const bgColorClass900 = `bg-action${color}-900`;
     const textColorClass900 = `text-action${color}-900`;
 

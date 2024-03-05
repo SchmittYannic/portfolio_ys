@@ -1,9 +1,9 @@
-import { ReactElement, useContext, useState, useEffect, useRef } from "react"
+import { ReactElement, useState, useEffect, useRef } from "react"
 import Tilt from "react-parallax-tilt"
 
-import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 import { ProjectType, TagKeyType, TextContent, projects, tagData } from "../constants";
 import { githubLogo, playButton } from "../assets";
+import useSettings from "../hooks/useSettings";
 
 const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 
@@ -27,7 +27,7 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 }
 
 const ProjectDescription = ({ project }: {project: ProjectType}): ReactElement => {
-    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang } = useSettings();
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const expandText = lang === "de" ? TextContent.german.expandButton : TextContent.english.expandButton;
@@ -72,7 +72,7 @@ const ProjectDescription = ({ project }: {project: ProjectType}): ReactElement =
 
 
 const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
-    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, color } = useSettings();
 
     const ringColorClass: string = `ring-action${color}-900/30`;
 
@@ -146,7 +146,7 @@ const ProjectCard = ({ project }: {project: ProjectType}): ReactElement => {
 
 
 const Projects = () => {
-    const { lang } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang } = useSettings();
     const projectsRef: React.MutableRefObject<null | HTMLElement> = useRef(null);
 
     useEffect(() => {

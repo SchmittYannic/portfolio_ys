@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { ToastType } from "../context/ToastProvider";
 import { closeBlack, closeWhite } from "../assets";
-import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
+import useSettings from "../hooks/useSettings";
 
 const Toast = ({ toastList }: {toastList: ToastType[]}) => {
-    const { theme } = useContext<UseSettingsContextType>(SettingsContext);
+    const { theme } = useSettings();
     const [list, setList] = useState<ToastType[]>(toastList);
 
     const close: string = theme === "dark" ? closeWhite : closeBlack;

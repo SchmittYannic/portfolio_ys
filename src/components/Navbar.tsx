@@ -1,11 +1,11 @@
-import { useState, useRef, useContext, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
+import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { useInView, useScroll, motion } from "framer-motion";
 
 import { Toggle, LanguageToggle } from ".";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
-import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
+import useSettings from "../hooks/useSettings";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -14,7 +14,7 @@ type NavMenuPropsType = {
 }
 
 const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuPropsType): ReactElement => {
-    const { lang, theme } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, theme } = useSettings();
     const cog: string = theme === "light" ? cogBlack : cogWhite;
 
     return (
@@ -77,7 +77,7 @@ type ColorOptionPropsType = {
 }
 
 const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: ColorOptionPropsType): ReactElement => {
-    const { lang, color, setColor } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, color, setColor } = useSettings();
 
     const bgColorClass900: string = `bg-action${option.name_en}-900`;
     const ringColorClass600: string = `ring-action${option.name_en}-600`;
@@ -137,7 +137,7 @@ const ColorOption = ({idx, option, radioRef, focusedRadio, setFocusedRadio}: Col
 }
 
 const SettingsMenu = () => {
-    const { lang, theme, setTheme } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, theme, setTheme } = useSettings();
     const [focusedRadio, setFocusedRadio] = useState<number>(-1);
     const radioRef = useRef<HTMLInputElement | null>(null);
 
@@ -195,7 +195,7 @@ const SettingsMenu = () => {
 
 const DesktopNav = () => {
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
-    const { lang, theme} = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, theme} = useSettings();
 
     const cog: string = theme === "light" ? cogBlack : cogWhite;
     const logo: string = theme === "light" ? logoBlack : logoWhite;
@@ -252,9 +252,9 @@ const DesktopNav = () => {
 }
 
 const MobileNav = (): ReactElement => {
+    const { theme } = useSettings();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
-    const { theme } = useContext<UseSettingsContextType>(SettingsContext);
 
     const close: string = theme === "light" ? closeBlack : closeWhite;
     const logo: string = theme === "light" ? logoBlack : logoWhite;
@@ -314,7 +314,7 @@ const MobileNav = (): ReactElement => {
 };
 
 const Navbar = (): ReactElement => {
-    const { color } = useContext<UseSettingsContextType>(SettingsContext);
+    const { color } = useSettings();
     const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
     const isInView = useInView(ref);

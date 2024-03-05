@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
+
+import useSettings from "../hooks/useSettings";
 import { ProjectType, TagKeyType, TextContent, projects, tagData } from "../constants";
 import { githubLogo, playButton } from "../assets";
 import { removeItemFromArray } from "../constants/array";
@@ -27,7 +28,7 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 }
 
 const Projects = () => {
-    const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
+    const { lang, color } = useSettings();
     const [activeProject, setActiveProject] = useState<ProjectType>(projects[0]);
     const [selectedProjects, setSelectedProjects] = useState<ProjectType[]>(projects.filter(p => p.title_en !== projects[0].title_en));
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
