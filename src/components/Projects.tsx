@@ -50,11 +50,16 @@ const Projects = () => {
 
                 <div className="flex gap-8">
                     <div className="project-display w-[1024px] pb-32">
-                        <div className="project-display-img-wrapper relative">
-                            <img 
+                        <div className={`project-display-img-wrapper relative dark:bg-darkBase bg-base border-2 ${borderColorClass900}`}>
+                            <motion.img 
+                                key={activeProject.image}
                                 src={activeProject.image} 
                                 alt="" 
-                                className={`w-[1024px] h-[576px] border-2 ${borderColorClass900}`}
+                                className={`w-[1024px] h-[576px]`}
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                transition={{duration: 1, ease: "linear"}}
                             />
 
                             <a 
@@ -89,7 +94,14 @@ const Projects = () => {
                                 </a>
                             )}
                         </div>
-                        <div className="project-description">
+                        <motion.div 
+                            key={activeProject.title_en}
+                            className="project-description"
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                            transition={{duration: 1, ease: "linear"}}
+                        >
                             <h3 className="mt-8 mb-4 text-4xl dark:text-darkTextPrimary text-textPrimary">
                                 {lang === "en" ? activeProject.title_en : activeProject.title_de}
                             </h3>
@@ -138,24 +150,57 @@ const Projects = () => {
 
                             <Tags tags={activeProject.tags} />
                             
-                        </div>
+                        </motion.div>
                     </div>
                     <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col`}>
-                        {projects.map((project) => 
-                            <>
-                                <button 
-                                    className="project-preview flex p-4 dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary"
-                                    type="button"
-                                    onClick={() => setActiveProject(project)}
-                                >
-                                    <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass900}`} />
-                                    <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
-                                        {lang === "en" ? project.title_en : project.title_de}
-                                    </h4>
-                                </button>
-                                <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
-                            </>
-                        )}
+                        {projects.map((project) => {
+
+                            const isActiveProject = activeProject.title_en === project.title_en;
+                            // const variants = {
+                            //     active: { backgroundColor: "#f0f0f0" },
+                            //     inactive: { backgroundColor: "#fff" },
+                            // }
+
+                            return (
+                                <>
+                                    <button 
+                                        className="project-preview relative dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base dark:disabled:bg-darkBase"
+                                        type="button"
+                                        disabled={isActiveProject}
+                                        onClick={() => setActiveProject(project)}
+                                    >
+                                        <div className="relative p-4 flex z-0">
+                                            <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass900}`} />
+                                            <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
+                                                {lang === "en" ? project.title_en : project.title_de}
+                                            </h4>
+                                        </div>
+                                        <AnimatePresence>
+                                            {isActiveProject && (
+                                                <>
+                                                    <motion.div 
+                                                        className={`absolute left-0 right-0 opacity-25 z-1 ${bgColorClass900}`}
+                                                        initial={{ height: "0%", top: "50%" }}
+                                                        animate={{ height: "100%", top: "0%" }}
+                                                        exit={{ height: "0%", top: "50%", transition: { delay: 0.1 } }}
+                                                    >
+                                                    </motion.div>
+                                                    <motion.div 
+                                                        className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 overflow-hidden ${bgColorClass900}`}
+                                                        initial={{ right: "100%" }}
+                                                        animate={{ right: "0%", transition: { delay: 0.1 } }}
+                                                        exit={{ left: "100%" }}
+                                                    >
+                                                        <p className="text-2xl whitespace-nowrap">Aktiv Preview</p>
+                                                    </motion.div>
+                                                </>
+                                            )}
+                                        </AnimatePresence>
+                                    </button>
+                                    <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
+                                </>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
