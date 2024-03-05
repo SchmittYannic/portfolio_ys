@@ -27,6 +27,7 @@ const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 const Projects = () => {
     const { lang, color } = useContext<UseSettingsContextType>(SettingsContext);
     const [activeProject, setActiveProject] = useState<ProjectType>(projects[0]);
+    const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
 
     const description: string[] = lang === "en" ? activeProject.description_en : activeProject.description_de;
     const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
@@ -55,9 +56,22 @@ const Projects = () => {
                                 className={`w-[1024px] h-[576px] border-2 ${borderColorClass200}`}
                             />
 
+                            <a 
+                                className="group outline-none"
+                                href={activeProject.githubLink} 
+                                target="_blank"
+                                title={PageTextContent.githubtitle}
+                            >
+                                <img 
+                                    className="absolute bottom-6 left-6 w-16 h-16 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2 transition-[transform] duration-500 ease-linear"
+                                    src={githubLogo} 
+                                    alt="Github Logo"
+                                />
+                            </a>
+
                             {activeProject.liveLink && (
                                 <a 
-                                    className="group outline-none absolute bottom-6 left-6"
+                                    className="group outline-none absolute bottom-6 left-28"
                                     href={activeProject.liveLink} 
                                     target="_blank"
                                     title={PageTextContent.livelinktitle}
@@ -73,19 +87,6 @@ const Projects = () => {
                                     </div>
                                 </a>
                             )}
-
-                            <a 
-                                className="group outline-none"
-                                href={activeProject.githubLink} 
-                                target="_blank"
-                                title={PageTextContent.githubtitle}
-                            >
-                                <img 
-                                    className="absolute bottom-6 left-28 w-16 h-16 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2 transition-[transform] duration-500 ease-linear"
-                                    src={githubLogo} 
-                                    alt="Github Logo"
-                                />
-                            </a>
                         </div>
                         <div className="project-description">
                             <h3 className="mt-8 mb-4 text-4xl dark:text-darkTextPrimary text-textPrimary">
@@ -93,19 +94,32 @@ const Projects = () => {
                             </h3>
                         
                             <div className="mb-4 dark:text-darkTextPrimary text-textPrimary">
-                                {/* {description.map((paragraph, idx) => 
-                                    <>
-                                        <p 
-                                            key={activeProject.title_en + idx}
-                                            className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary"
-                                        >
-                                            {paragraph}
-                                        </p>
-                                    </>
-                                )} */}
                                 <p className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary">
                                     {description[0]}
                                 </p>
+
+                                {isDescExpanded && description.map((paragraph, idx) => 
+                                    <>
+                                        {idx !== 0 && (
+                                            <p 
+                                                key={activeProject.title_en + idx}
+                                                className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary"
+                                            >
+                                                {paragraph}
+                                            </p>
+                                        )}
+                                    </>
+                                )}
+                            </div>
+
+                            <div className="mb-6">
+                                <button 
+                                    className="px-4 py-2 w-[130px] rounded-full dark:bg-darkBaseSecondary bg-baseSecondary dark:text-darkTextPrimary text-textPrimary"
+                                    type="button"
+                                    onClick={() => setIsDescExpanded(!isDescExpanded)}
+                                >
+                                    {isDescExpanded ? PageTextContent.collapseButton : PageTextContent.expandButton}
+                                </button>
                             </div>
 
                             <Tags tags={activeProject.tags} />
