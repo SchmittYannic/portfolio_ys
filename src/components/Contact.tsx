@@ -1,10 +1,10 @@
-import { useContext, useState, ChangeEvent, SyntheticEvent, ReactElement } from "react";
+import { useState, ChangeEvent, SyntheticEvent, ReactElement } from "react";
 import emailjs from "@emailjs/browser";
 
 import { ContactsBg } from ".";
 import { TextContent } from "../constants";
-import { ToastContext, UseToastContextType } from "../context/ToastProvider";
 import useSettings from "../hooks/useSettings";
+import useToast from "../hooks/useToast";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn
@@ -12,7 +12,7 @@ import useSettings from "../hooks/useSettings";
 
 const ContactForm = (): ReactElement => {
     const { lang } = useSettings();
-    const { addToast } = useContext<UseToastContextType>(ToastContext);
+    const { addToast } = useToast();
 
     type FormType = {
         name: string,

@@ -1,12 +1,12 @@
 import { BrowserRouter } from "react-router-dom"
-import { useContext, useEffect } from "react"
+import { useEffect } from "react"
 import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
-import { UseToastContextType, ToastContext } from "./context/ToastProvider"
 import useSettings from "./hooks/useSettings"
+import useToast from "./hooks/useToast"
 
 const App = () => {
     const { setTheme, setLang, setColor } = useSettings();
-    const { toastList } = useContext<UseToastContextType>(ToastContext);
+    const { toastList } = useToast();
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
