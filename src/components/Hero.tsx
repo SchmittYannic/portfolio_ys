@@ -11,7 +11,7 @@ const Hero = () => {
     const textColorClass900 = `text-action${color}-900`;
 
     return (
-        <section className="hero-section relative w-full lg:h-screen lg:max-h-[1200px] lg:pt-0 pt-32">
+        <section className="hero-section relative w-full lg:h-screen lg:max-h-[1200px] lg:min-h-[900px] lg:pt-0 pt-32">
 
             <div className="hero-background absolute lg:inset-0 top-0 left-0 w-full min-h-[428px] flex justify-end -z-1">
                 <div className="lg:w-[50%] w-full flex items-center overflow-hidden">
