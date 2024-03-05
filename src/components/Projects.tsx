@@ -50,7 +50,7 @@ const Projects = () => {
                     {PageTextContent.projectsHead}
                 </h2>
 
-                <div className="flex gap-8">
+                <div className={`flex gap-8 items-start`}>
                     <div className="project-display w-[1024px] pb-32">
                         <div className={`project-display-img-wrapper relative dark:bg-darkBase bg-base border-2 ${borderColorClass900}`}>
                             <motion.img 
@@ -154,7 +154,7 @@ const Projects = () => {
                             
                         </motion.div>
                     </div>
-                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col grow`}>
+                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col grow border-2 ${borderColorClass900}`}>
                         <AnimatePresence mode="popLayout">
                             {selectedProjects.map((project) => {
 
@@ -183,7 +183,7 @@ const Projects = () => {
                                             onClick={handleSelectProjectClicked}
                                         >
                                             <div className="relative p-4 flex z-0">
-                                                <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 ${borderColorClass900}`} />
+                                                <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 dark:border-darkTextPrimary border-textPrimary rounded-lg`} />
                                                 <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
                                                     {lang === "en" ? project.title_en : project.title_de}
                                                 </h4>
