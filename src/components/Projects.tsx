@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { SettingsContext, UseSettingsContextType } from "../context/SettingsProvider";
 import { ProjectType, TagKeyType, TextContent, projects, tagData } from "../constants";
 import { githubLogo, playButton } from "../assets";
@@ -98,29 +99,42 @@ const Projects = () => {
                                     {description[0]}
                                 </p>
 
-                                {isDescExpanded && description.map((paragraph, idx) => 
-                                    <>
-                                        {idx !== 0 && (
-                                            <p 
-                                                key={activeProject.title_en + idx}
-                                                className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary"
-                                            >
-                                                {paragraph}
-                                            </p>
-                                        )}
-                                    </>
-                                )}
+                                <AnimatePresence>
+                                    {isDescExpanded && (
+                                        <motion.div
+                                            initial={{maxHeight: "0px", opacity: 0}}
+                                            animate={{maxHeight: "1000px", opacity: 1}}
+                                            exit={{maxHeight: "0px", opacity: 0}}
+                                            transition={{duration: 1}}
+                                        >
+                                            {description.map((paragraph, idx) => 
+                                                <>
+                                                    {idx !== 0 && (
+                                                        <p 
+                                                            key={activeProject.title_en + idx}
+                                                            className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary"
+                                                        >
+                                                            {paragraph}
+                                                        </p>
+                                                    )}
+                                                </>
+                                            )}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
 
-                            <div className="mb-6">
-                                <button 
-                                    className="px-4 py-2 w-[130px] rounded-full dark:bg-darkBaseSecondary bg-baseSecondary dark:text-darkTextPrimary text-textPrimary"
-                                    type="button"
-                                    onClick={() => setIsDescExpanded(!isDescExpanded)}
-                                >
-                                    {isDescExpanded ? PageTextContent.collapseButton : PageTextContent.expandButton}
-                                </button>
-                            </div>
+                            {description.length > 1 && (
+                                <div className="mb-6">
+                                    <button 
+                                        className="px-4 py-2 w-[130px] rounded-full dark:bg-darkBaseSecondary bg-baseSecondary dark:text-darkTextPrimary text-textPrimary"
+                                        type="button"
+                                        onClick={() => setIsDescExpanded(!isDescExpanded)}
+                                    >
+                                        {isDescExpanded ? PageTextContent.collapseButton : PageTextContent.expandButton}
+                                    </button>
+                                </div>
+                            )}
 
                             <Tags tags={activeProject.tags} />
                             
