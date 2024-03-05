@@ -87,6 +87,11 @@ export default {
             }
         },
     },
+    variants: {
+        extend: {
+            backgroundColor: ["disabled"],
+        },
+    },
     plugins: [],
     safelist: [{
         pattern: /(bg|text|border|stroke|fill|ring)-action(Blue|Green|Purple|Magenta|Yellow|Orange)-(900|800|700|600|500|400|300|200|100)/
