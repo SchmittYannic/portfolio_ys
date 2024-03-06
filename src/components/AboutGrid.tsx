@@ -105,7 +105,7 @@ const EducationSubSection = () => {
     const { scrollYProgress } = useScroll(
         {
             target: ref,
-            offset: ["start end", "center start"]
+            offset: ["start 1", "center 0.5"]
         }
     );
     const bgColorClass900 = `bg-action${color}-900`;
