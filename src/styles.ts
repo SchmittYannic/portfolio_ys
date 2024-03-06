@@ -1,5 +1,6 @@
 const styles = {
-    grid: "grid gap-[24px] lg:grid-cols-12 grid-cols-8 items-center",
+    grid: "grid gap-[24px] grid-cols-12 items-center",
+    gridTablet: "grid gap-[24px] grid-cols-8 items-center",
 
 
     heroImgSection:
@@ -35,8 +36,8 @@ const heroStyles = {
     heroImgPosition: "2xl:col-end-11 col-end-12 col-span-4", //2xl:col-span-4 col-span-5
     heroImgWidth: "2xl:w-[462px] xl:w-[410px] w-[320px]",
     heroImgHeight: "2xl:h-[462px] xl:h-[410px] h-[320px]", //410 //350
-    heroHeadText: "3xl:text-7xl 2xl:text-6xl xl:text-6xl lg:text-5xl",
-    heroSubText: "3xl:text-[25px] 2xl:text-[22px] xl:text-[22px] lg:text-[20px]",
+    heroHeadText: "3xl:text-7xl 2xl:text-6xl xl:text-6xl lg:text-5xl md:text-5xl",
+    heroSubText: "3xl:text-[25px] 2xl:text-[22px] xl:text-[22px] lg:text-[20px] md:text-[20px]",
     heroSubTextMaxWidth: "3xl:max-w-[580px] xl:max-w-[500px] max-w-[460px]", //2xl
 }
 
