@@ -54,6 +54,8 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
         }
     );
 
+    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
+
     return (
         <li ref={ref}>
             <LiIcon progress={scrollYProgress} />
@@ -77,18 +79,18 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 <ul className="ml-4 list-disc list-outside dark:text-darkTextPrimary text-textPrimary">
                     <li>
                         {entry.grade === "noDegree" 
-                            ? lang === "de" ? TextContent.german.noDegree : TextContent.english.noDegree 
-                            : lang === "de" ? TextContent.german.gpa + entry.grade : TextContent.english.gpa + entry.grade
+                            ? PageTextContent.noDegree 
+                            : PageTextContent.gpa + entry.grade
                         }
                     </li>
                     {entry.thesis &&
                         <li>
-                            {lang === "de" ? TextContent.german.thesis : TextContent.english.thesis}{entry.thesis}
+                            {PageTextContent.thesis}{entry.thesis}
                         </li>
                     }
                     {entry.focus &&
                         <li>
-                            {lang === "de" ? TextContent.german.focus : TextContent.english.focus}{entry.focus}
+                            {PageTextContent.focus}{entry.focus}
                         </li>
                     }
                 </ul>
@@ -135,14 +137,16 @@ const SkillsSubSection = () => {
     const { lang, color } = useSettings();
     const bgColorClass900 = `bg-action${color}-900`;
 
+    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
+
     return (
         <>
             <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.skillsHead : TextContent.english.skillsHead}
+                {PageTextContent.skillsHead}
             </h3>
 
             <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.itHead : TextContent.english.itHead}
+                {PageTextContent.itHead}
                 <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
             </h4>
 
@@ -165,7 +169,7 @@ const SkillsSubSection = () => {
             </div>
 
             <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.languageHead : TextContent.english.languageHead}
+                {PageTextContent.languageHead}
                 <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
             </h4>
 
@@ -194,13 +198,15 @@ const AboutGrid = () => {
 
     const { lang } = useSettings();
 
+    const PageTextContent = lang === "en" ? TextContent.german : TextContent.english;
+
     return (
         <section id="about">
             <div className="about-content">
                 <div className="max-container max-w-[1920px] min-w-[320px] mx-auto">
                     <div className={`w-full h-full ${styles.grid}`}>
                         <h2 className="mt-8 mb-16 col-span-full justify-self-center text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
-                            {lang === "de" ? TextContent.german.aboutHead : TextContent.english.aboutHead}
+                            {PageTextContent.aboutHead}
                         </h2>
 
                         <div className="education-wrapper col-start-2 col-span-5">
