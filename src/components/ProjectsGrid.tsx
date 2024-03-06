@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TextContent, ProjectType, projects } from "../constants"
 import useSettings from "../hooks/useSettings";
-import { styles } from "../styles"
+import { projectsStyles, styles } from "../styles"
 import { removeItemFromArray } from "../constants/array";
 import TechTags from "./ui/TechTags";
 import { githubLogo, playButton } from "../assets";
@@ -37,13 +37,13 @@ const ProjectsGrid = () => {
                             {PageTextContent.projectsHead}
                         </h2>
 
-                        <div className={`project-display pb-32 col-start-2 col-span-7 ${styles.projectDisplayWidth}`}>
+                        <div className={`project-display pb-32 col-start-2 col-span-7 ${projectsStyles.projectDisplayWidth}`}>
                             <div className={`project-display-img-wrapper relative dark:bg-darkBase bg-base border-2 ${borderColorClass900}`}>
                                 <motion.img 
                                     key={activeProject.image}
                                     src={activeProject.image} 
                                     alt="" 
-                                    className={`${styles.projectDisplayWidth} ${styles.projectDisplayImgHeight}`}
+                                    className={`${projectsStyles.projectDisplayWidth} ${projectsStyles.projectDisplayImgHeight}`}
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     exit={{opacity: 0}}
@@ -141,7 +141,7 @@ const ProjectsGrid = () => {
                             </motion.div>
                         </div>
 
-                        <div className={`projects-selection mb-8 col-end-12 col-span-3 self-start justify-self-end ${styles.projectsSelectionWidth} dark:bg-darkBase bg-base flex flex-col`}>
+                        <div className={`projects-selection mb-8 col-end-12 col-span-3 self-start justify-self-end ${projectsStyles.projectsSelectionWidth} dark:bg-darkBase bg-base flex flex-col`}>
                             <AnimatePresence>
                                 {selectedProjects.map((project) => {
 
