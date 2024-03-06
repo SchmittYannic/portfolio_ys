@@ -198,7 +198,7 @@ const AboutGrid = () => {
 
     const { lang } = useSettings();
 
-    const PageTextContent = lang === "en" ? TextContent.german : TextContent.english;
+    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
 
     return (
         <section id="about">
@@ -209,10 +209,10 @@ const AboutGrid = () => {
                             {PageTextContent.aboutHead}
                         </h2>
 
-                        <div className="education-wrapper col-start-2 col-span-5">
+                        <div className="education-wrapper col-start-2 col-span-5 self-start">
                             <EducationSubSection />
                         </div>
-                        <div className="skills-wrapper col-end-12 col-span-5">
+                        <div className="skills-wrapper col-end-12 col-span-5 self-start">
                             <SkillsSubSection />
                         </div>
                     </div>
