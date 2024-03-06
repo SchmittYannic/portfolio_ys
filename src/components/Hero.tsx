@@ -47,11 +47,11 @@ const Hero = () => {
                         <div className="mt-12">
                             <button 
                                 type="button"
-                                className="sm:px-6 px-3 py-[8px] border-4 rounded dark:text-darkTextPrimary text-textPrimary dark:border-darkTextPrimary border-textPrimary text-xl font-bold">
+                                className="sm:px-6 px-3 py-[9px] border-4 rounded dark:text-darkTextPrimary text-textPrimary dark:border-darkTextPrimary border-textPrimary text-xl font-bold">
                                 Resume
                             </button>
-                            <a href="#contact" className={`ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary text-xl font-bold`}>
-                                {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
+                            <a href="#contact" className={`relative inline-flex ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary dark:hover:text-textPrimary hover:text-darkTextPrimary text-xl font-bold transition-[color] ease-button duration-[1500ms] z-0 before:absolute before:top-0 before:right-0 before:w-[0%] before:h-[100%] dark:before:bg-darkTextPrimary before:bg-textPrimary before:rounded before:z-0 hover:before:w-[100%] hover:before:left-0 hover:before:right-unset before:ease-button before:duration-[1500ms]`}>
+                                <p className="relative z-10">{lang === "de" ? TextContent.german.contact : TextContent.english.contact}</p>
                             </a>
                         </div>
                     </div>
