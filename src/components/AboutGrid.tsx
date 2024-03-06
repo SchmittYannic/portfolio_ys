@@ -202,10 +202,10 @@ const AboutGrid = () => {
 
     return (
         <section id="about">
-            <div className="about-content">
+            <div className="about-content pb-32">
                 <div className="max-container max-w-[1920px] min-w-[320px] mx-auto">
                     <div className={`w-full h-full ${styles.grid}`}>
-                        <h2 className="mt-8 mb-16 col-span-full justify-self-center text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
+                        <h2 className="mt-12 mb-12 col-span-full justify-self-center text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                             {PageTextContent.aboutHead}
                         </h2>
 
