@@ -12,8 +12,6 @@ const App = () => {
 
     const isXlScreen = windowSize.width && windowSize.width >= 1280;
 
-    console.log(isXlScreen)
-
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
