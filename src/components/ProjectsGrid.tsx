@@ -6,14 +6,18 @@ import { projectsStyles, styles } from "../styles"
 import { removeItemFromArray } from "../constants/array";
 import TechTags from "./ui/TechTags";
 import { githubLogo, playButton } from "../assets";
+import useWindowSize from "../hooks/useWindowSize";
 
 
 const ProjectsGrid = () => {
 
     const { color, lang } = useSettings();
+    const windowSize = useWindowSize();
     const [activeProject, setActiveProject] = useState<ProjectType>(projects[0]);
     const [selectedProjects, setSelectedProjects] = useState<ProjectType[]>(projects.filter(p => p.title_en !== projects[0].title_en));
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
+
+    const is2XlScreen = windowSize.width && windowSize.width >= 1536;
 
     const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
 
@@ -169,8 +173,12 @@ const ProjectsGrid = () => {
                                                 type="button"
                                                 onClick={handleSelectProjectClicked}
                                             >
-                                                <div className="relative p-4 grid grid-cols-2 z-0">
-                                                    <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 rounded-lg ${borderColorClass900}`} />
+                                                <div className="relative p-4 grid 2xl:grid-cols-2 z-0">
+
+                                                    {is2XlScreen && (
+                                                        <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 rounded-lg ${borderColorClass900}`} />
+                                                    )}
+                                                    
                                                     <h4 className="p-4 text-xl dark:text-darkTextPrimary text-textPrimary">
                                                         {lang === "en" ? project.title_en : project.title_de}
                                                     </h4>
