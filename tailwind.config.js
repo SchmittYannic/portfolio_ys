@@ -84,7 +84,10 @@ export default {
                 xs: "450px",
                 "2xs": "320px",
                 "3xl": "1920px",
-            }
+            },
+            transitionTimingFunction: {
+                "button": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
+            },
         },
     },
     variants: {
