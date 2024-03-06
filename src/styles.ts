@@ -1,4 +1,7 @@
 const styles = {
+    grid: "grid gap-[24px] lg:grid-cols-12 grid-cols-8 items-center",
+
+
     heroImgSection:
         "lg:max-w-[50%] lg:min-h-[100%] md:min-h-[500px] sm:min-h-[400px] min-h-[300px]",
     heroImg:
@@ -28,13 +31,13 @@ const styles = {
 }
 
 const heroStyles = {
-    heroTextPosition: "2xl:col-start-3 col-start-2 2xl:col-span-4 col-span-5",
-    heroImgPosition: "2xl:col-end-11 col-end-12 2xl:col-span-4 col-span-5",
-    heroImgWidth: "w-[462px]",
-    heroImgHeight: "h-[462px]",
-    heroHeadText: "3xl:text-7xl 2xl:text-6xl xl:text-6xl",
-    heroSubText: "3xl:text-[25px] 2xl:text-[22px] xl:text-[22px]",
-    heroSubTextMaxWidth: "3xl:max-w-[580px] max-w-[500px]", //2xl
+    heroTextPosition: "2xl:col-start-3 col-start-2 2xl:col-span-4 col-span-5 col-span-6",
+    heroImgPosition: "2xl:col-end-11 col-end-12 col-span-4", //2xl:col-span-4 col-span-5
+    heroImgWidth: "2xl:w-[462px] xl:w-[410px] w-[320px]",
+    heroImgHeight: "2xl:h-[462px] xl:h-[410px] h-[320px]", //410 //350
+    heroHeadText: "3xl:text-7xl 2xl:text-6xl xl:text-6xl lg:text-5xl",
+    heroSubText: "3xl:text-[25px] 2xl:text-[22px] xl:text-[22px] lg:text-[20px]",
+    heroSubTextMaxWidth: "3xl:max-w-[580px] xl:max-w-[500px] max-w-[460px]", //2xl
 }
 
 export {

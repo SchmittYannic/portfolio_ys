@@ -1,7 +1,7 @@
 import { placeholderProfile } from "../assets";
 import { TextContent } from "../constants";
 import useSettings from "../hooks/useSettings";
-import { heroStyles } from "../styles";
+import { heroStyles, styles } from "../styles";
 
 const HeroGrid = () => {
 
@@ -14,10 +14,10 @@ const HeroGrid = () => {
     const beforeColorClass = `before:bg-action${color}-900`;
 
     return (
-        <section className="hero-section relative w-full lg:h-screen">
+        <section className="hero-section relative w-full h-screen">
             <div className="hero-background absolute inset-0 overflow-hidden">
                 <div className="max-container max-w-[1920px] min-w-[320px] h-full mx-auto">
-                    <div className="w-full h-full grid gap-[24px] grid-cols-12 items-center">
+                    <div className={`w-full h-full ${styles.grid}`}>
                         <div className={`relative order-last justify-self-end ${heroStyles.heroImgPosition}`}>
                             <div className={`${heroStyles.heroImgHeight} ${heroStyles.heroImgWidth} rounded-bl-full rounded-br-full rotate-45 ${bgColorClass900}`} />
                             <div className={`rect-corner absolute bottom-1/2 left-1/2 -translate-x-1/2 origin-bottom rotate-45 w-full h-[1500px] ${bgColorClass900}`} />
@@ -27,7 +27,7 @@ const HeroGrid = () => {
             </div>
             <div className="hero-content absolute inset-0">
                 <div className="max-container max-w-[1920px] min-w-[320px] h-full mx-auto border-2">
-                    <div className="w-full h-full grid gap-[24px] grid-cols-12 items-center">
+                    <div className={`w-full h-full ${styles.grid}`}>
                         <div className={`hero-img-container order-last justify-self-end ${heroStyles.heroImgPosition}`}>
                             <img 
                                 src={placeholderProfile} 
