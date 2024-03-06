@@ -8,6 +8,7 @@ const Hero = () => {
     const {lang, color} = useSettings();
     const bgColorClass900 = `bg-action${color}-900`;
     const textColorClass900 = `text-action${color}-900`;
+    const beforeColorClass = `before:bg-action${color}-900`
 
     return (
         <section className="hero-section relative w-full lg:h-screen lg:max-h-[1400px] lg:min-h-[900px] lg:pt-0 pt-32">
@@ -45,12 +46,17 @@ const Hero = () => {
                         </p>
 
                         <div className="mt-12">
-                            <button 
+                            <button
                                 type="button"
-                                className="sm:px-6 px-3 py-[9px] border-4 rounded dark:text-darkTextPrimary text-textPrimary dark:border-darkTextPrimary border-textPrimary text-xl font-bold">
-                                Resume
+                                className={`relative p-1 rounded dark:bg-darkTextPrimary bg-textPrimary before:absolute before:top-0 before:right-0 before:h-full before:w-0 before:rounded ${beforeColorClass} before:ease-button before:duration-1500 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
+                            >
+                                <p 
+                                    className="relative z-10 sm:px-6 px-3 py-[9px] text-xl font-bold dark:bg-darkBase bg-base dark:text-darkTextPrimary text-textPrimary"
+                                >
+                                    Resume
+                                </p>
                             </button>
-                            <a href="#contact" className={`relative inline-flex ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary dark:hover:text-textPrimary hover:text-darkTextPrimary text-xl font-bold transition-[color] ease-button duration-[1500ms] z-0 before:absolute before:top-0 before:right-0 before:w-[0%] before:h-[100%] dark:before:bg-darkTextPrimary before:bg-textPrimary before:rounded before:z-0 hover:before:w-[100%] hover:before:left-0 hover:before:right-unset before:ease-button before:duration-[1500ms]`}>
+                            <a href="#contact" className={`relative inline-flex ml-5 sm:px-6 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary dark:hover:text-textPrimary hover:text-darkTextPrimary text-xl font-bold transition-[color] ease-button duration-1500 z-0 before:absolute before:top-0 before:right-0 before:w-0 before:h-full dark:before:bg-darkTextPrimary before:bg-textPrimary before:rounded before:z-0 hover:before:w-full hover:before:left-0 hover:before:right-unset before:ease-button before:duration-1500`}>
                                 <p className="relative z-10">{lang === "de" ? TextContent.german.contact : TextContent.english.contact}</p>
                             </a>
                         </div>
