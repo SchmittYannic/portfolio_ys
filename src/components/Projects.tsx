@@ -42,8 +42,9 @@ const Projects = () => {
 
     return (
         <section id="projects" className="relative">
-            <div className="projects-background absolute inset-0 flex flex-col justify-between">
+            <div className="projects-background absolute inset-0 flex flex-col">
                 <div className={`w-full h-[200px] ${bgColorClass900}`} />
+                <div className={`w-full dark:bg-darkBaseTertiary bg-baseTertiary grow`} />
                 <div className={`w-full h-[10px] ${bgColorClass900}`} />
             </div>
             <div className="projects-content relative max-w-[1920px] min-w-[320px] mx-auto lg:px-48">
@@ -155,7 +156,7 @@ const Projects = () => {
                             
                         </motion.div>
                     </div>
-                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col grow border-2 ${borderColorClass900}`}>
+                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col grow`}>
                         <AnimatePresence mode="popLayout">
                             {selectedProjects.map((project) => {
 
@@ -184,7 +185,7 @@ const Projects = () => {
                                             onClick={handleSelectProjectClicked}
                                         >
                                             <div className="relative p-4 flex z-0">
-                                                <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 dark:border-darkTextPrimary border-textPrimary rounded-lg`} />
+                                                <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 rounded-lg ${borderColorClass900}`} />
                                                 <h4 className="p-4 text-xl grow dark:text-darkTextPrimary text-textPrimary">
                                                     {lang === "en" ? project.title_en : project.title_de}
                                                 </h4>
