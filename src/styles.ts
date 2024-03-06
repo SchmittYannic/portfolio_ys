@@ -6,9 +6,9 @@ const styles = {
         // "lg:w-full lg:max-w-none sm:max-w-[300px] max-w-[215px]",
 
     heroImgWidth: 
-        "3xl:w-[680px] 2xl:w-[500px] xl:w-[450px] sm:w-[300px] w-[250px]",
+        "2xl:w-[500px] xl:w-[450px] sm:w-[300px] w-[250px]",
     heroImgHeight:
-        "3xl:h-[680px] 2xl:h-[500px] xl:h-[450px] sm:h-[300px] w-[250px]",
+        "2xl:h-[500px] xl:h-[450px] sm:h-[300px] w-[250px]",
 
     heroTextSection: 
         "3xl:max-w-[700px] 2xl:max-w-[600px] lg:max-w-[500px] md:max-w-[500px] sm:max-w-[400px] max-w-[360px]",
