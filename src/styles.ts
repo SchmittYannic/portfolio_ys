@@ -27,4 +27,17 @@ const styles = {
         "2xl:w-[450px] xl:w-[300px]",
 }
 
-export { styles }
+const heroStyles = {
+    heroTextPosition: "2xl:col-start-3 col-start-2 2xl:col-span-4 col-span-5",
+    heroImgPosition: "2xl:col-end-11 col-end-12 2xl:col-span-4 col-span-5",
+    heroImgWidth: "w-[462px]",
+    heroImgHeight: "h-[462px]",
+    heroHeadText: "3xl:text-7xl 2xl:text-6xl xl:text-6xl",
+    heroSubText: "3xl:text-[25px] 2xl:text-[22px] xl:text-[22px]",
+    heroSubTextMaxWidth: "3xl:max-w-[580px] max-w-[500px]", //2xl
+}
+
+export {
+    styles,
+    heroStyles,
+}
