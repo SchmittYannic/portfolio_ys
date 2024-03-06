@@ -5,6 +5,7 @@ import useSettings from "../hooks/useSettings";
 import { ProjectType, TagKeyType, TextContent, projects, tagData } from "../constants";
 import { githubLogo, playButton } from "../assets";
 import { removeItemFromArray } from "../constants/array";
+import { styles } from "../styles";
 
 const Tags = ({ tags }: {tags: TagKeyType[]}) => {
 
@@ -47,19 +48,20 @@ const Projects = () => {
                 <div className={`w-full dark:bg-darkBaseTertiary bg-baseTertiary grow`} />
                 <div className={`w-full h-[10px] ${bgColorClass900}`} />
             </div>
-            <div className="projects-content relative max-w-[1920px] min-w-[320px] mx-auto lg:px-48">
+            <div className="projects-content relative max-w-[1920px] min-w-[320px] mx-auto 4xl:px-48"> 
+            {/* 3xl:px-36 px-24 */}
                 <h2 className="pt-12 mb-12 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                     {PageTextContent.projectsHead}
                 </h2>
 
-                <div className={`flex gap-8 items-start`}>
-                    <div className="project-display w-[1024px] pb-32">
+                <div className={`flex gap-8 justify-center items-start`}>
+                    <div className={`project-display pb-32 ${styles.projectDisplayWidth}`}>
                         <div className={`project-display-img-wrapper relative dark:bg-darkBase bg-base border-2 ${borderColorClass900}`}>
                             <motion.img 
                                 key={activeProject.image}
                                 src={activeProject.image} 
                                 alt="" 
-                                className={`w-[1024px] h-[576px]`}
+                                className={`${styles.projectDisplayWidth} ${styles.projectDisplayImgHeight}`}
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 exit={{opacity: 0}}
@@ -156,7 +158,7 @@ const Projects = () => {
                             
                         </motion.div>
                     </div>
-                    <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col grow`}>
+                    <div className={`projects-selection ${styles.projectsSelectionWidth} mb-8 dark:bg-darkBase bg-base flex flex-col`}>
                         <AnimatePresence mode="popLayout">
                             {selectedProjects.map((project) => {
 

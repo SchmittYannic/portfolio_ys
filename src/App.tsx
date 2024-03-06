@@ -3,10 +3,16 @@ import { useEffect } from "react"
 import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
 import useSettings from "./hooks/useSettings"
 import useToast from "./hooks/useToast"
+import useWindowSize from "./hooks/useWindowSize"
 
 const App = () => {
     const { setTheme, setLang, setColor } = useSettings();
     const { toastList } = useToast();
+    const windowSize = useWindowSize();
+
+    const isXlScreen = windowSize.width && windowSize.width >= 1280;
+
+    console.log(isXlScreen)
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -39,7 +45,11 @@ const App = () => {
             <div className="App w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
-                <Projects />
+                {isXlScreen ? (
+                    <Projects />
+                ) : (
+                    <div>mobile</div>
+                )}
                 <About />
                 <Contact />
                 <Toast toastList={toastList} />

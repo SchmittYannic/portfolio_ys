@@ -11,13 +11,20 @@ const styles = {
         "2xl:h-[500px] xl:h-[450px] sm:h-[300px] w-[250px]",
 
     heroTextSection: 
-        "3xl:max-w-[700px] 2xl:max-w-[600px] lg:max-w-[500px] md:max-w-[500px] sm:max-w-[400px] max-w-[360px]",
+        "4xl:max-w-[700px] 2xl:max-w-[600px] lg:max-w-[500px] md:max-w-[500px] sm:max-w-[400px] max-w-[360px]",
     heroTextSectionPadding:
         "lg:py-0 md:py-24 sm:py-16 py-10 lg:mx-auto lg:pl-20 lg:pr-0 px-10",
     heroHeadText:
-        "3xl:text-7xl 2xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-bold",
+        "4xl:text-7xl 2xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-bold",
     heroSubText:
-        "3xl:text-[25px] 2xl:text-[22px] md:text-[20px] sm:text-[18px]",
+        "4xl:text-[25px] 2xl:text-[22px] md:text-[20px] sm:text-[18px]",
+
+    projectDisplayWidth:
+        "3xl:w-[1024px] 2xl:w-[896px] xl:w-[768px]",
+    projectDisplayImgHeight:
+        "3xl:h-[576px] 2xl:h-[504px] xl:h-[432px]",
+    projectsSelectionWidth:
+        "2xl:w-[450px] xl:w-[300px]",
 }
 
 export { styles }
