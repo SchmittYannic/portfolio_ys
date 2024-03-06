@@ -1,6 +1,6 @@
 const styles = {
-    grid: "grid gap-x-[24px] grid-cols-12 items-center",
-    gridTablet: "grid gap-x-[24px] grid-cols-8 items-center",
+    grid: "grid grid-cols-12 items-center",
+    gridTablet: "grid grid-cols-8 items-center",
 
 
     heroImgSection:
