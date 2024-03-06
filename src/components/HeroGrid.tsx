@@ -1,62 +1,8 @@
-import { ButtonHTMLAttributes, LinkHTMLAttributes, PropsWithChildren, ReactElement } from "react";
 import { placeholderProfile } from "../assets";
 import { TextContent } from "../constants";
 import useSettings from "../hooks/useSettings";
 import { heroStyles, styles } from "../styles";
-
-type CtaButtonPropsType = {
-    tag: "link" | "button",
-};
-
-const CtaButton = ({ tag, children, ...rest }: PropsWithChildren<CtaButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement> & LinkHTMLAttributes<HTMLAnchorElement>>): ReactElement => {
-
-    const { color } = useSettings();
-    const bgColorClass900 = `bg-action${color}-900`;
-
-    if( tag === "link" ) {
-        return (
-            <a 
-                {...rest}
-                className={`relative ml-5 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary text-xl font-bold transition-[color] ease-button duration-1500 dark:hover:text-textPrimary hover:text-darkTextPrimary before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:rounded dark:before:bg-darkTextPrimary before:bg-textPrimary before:ease-button before:duration-1500 
-                before:z-0 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
-            >
-                <p className="relative z-10">
-                    {children}
-                </p>
-            </a>
-        )
-    } else {
-        return (
-            <button 
-                {...rest}
-                className={`relative ml-5 px-3 py-[13px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary text-xl font-bold transition-[color] ease-button duration-1500 dark:hover:text-textPrimary hover:text-darkTextPrimary before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:rounded dark:before:bg-darkTextPrimary before:bg-textPrimary before:ease-button before:duration-1500 
-                before:z-0 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
-            >
-                <p className="relative z-10">
-                    {children}
-                </p>
-            </button>
-        )
-    }
-}
-
-const Button = ({ children, ...rest }: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>): ReactElement => {
-    const { color } = useSettings();
-
-    const beforeColorClass = `before:bg-action${color}-900`;
-
-    return (
-        <button
-            {...rest}
-            type="button"
-            className={`relative p-1 rounded dark:bg-darkTextPrimary bg-textPrimary before:absolute before:top-0 before:right-0 before:h-full before:w-0 before:rounded ${beforeColorClass} before:ease-button before:duration-1500 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
-        >
-            <p className="relative z-10 px-3 py-[9px] text-xl font bold dark:bg-darkBase bg-base dark:text-darkTextPrimary text-textPrimary">
-                {children}
-            </p>
-        </button>
-    )
-}
+import { CtaButton, Button } from "./ui";
 
 const HeroGrid = () => {
 
@@ -68,7 +14,7 @@ const HeroGrid = () => {
     const textColorClass900 = `text-action${color}-900`;
 
     return (
-        <section className="hero-section relative w-full h-screen">
+        <section className="hero-section relative w-full h-screen max-h-[1400px] min-h-[620px]">
             <div className="hero-background absolute inset-0 overflow-hidden">
                 <div className="max-container max-w-[1920px] min-w-[320px] h-full mx-auto">
                     <div className={`w-full h-full ${styles.grid}`}>
@@ -80,7 +26,7 @@ const HeroGrid = () => {
                 </div>
             </div>
             <div className="hero-content absolute inset-0">
-                <div className="max-container max-w-[1920px] min-w-[320px] h-full mx-auto border-2">
+                <div className="max-container max-w-[1920px] min-w-[320px] h-full mx-auto">
                     <div className={`w-full h-full ${styles.grid}`}>
                         <div className={`hero-img-container order-last justify-self-end ${heroStyles.heroImgPosition}`}>
                             <img 
