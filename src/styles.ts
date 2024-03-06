@@ -1,6 +1,6 @@
 const styles = {
-    grid: "grid gap-[24px] grid-cols-12 items-center",
-    gridTablet: "grid gap-[24px] grid-cols-8 items-center",
+    grid: "grid gap-x-[24px] grid-cols-12 items-center",
+    gridTablet: "grid gap-x-[24px] grid-cols-8 items-center",
 
 
     heroImgSection:
@@ -41,7 +41,14 @@ const heroStyles = {
     heroSubTextMaxWidth: "3xl:max-w-[580px] xl:max-w-[500px] max-w-[460px]", //2xl
 }
 
+const projectsStyles = {
+    projectDisplayWidth: "4xl:w-[1024px] 2xl:w-[896px] xl:w-[768px] w-[640px]",
+    projectDisplayImgHeight: "4xl:h-[576px] 2xl:h-[504px] xl:h-[432px] h-[360px]",
+    projectsSelectionWidth: "3xl:w-[450px] 2xl:w-[360px] xl:w-[260px] w-[180px]", //xl
+}
+
 export {
     styles,
     heroStyles,
+    projectsStyles,
 }
