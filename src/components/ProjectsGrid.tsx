@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TextContent, ProjectType, projects } from "../constants"
 import useSettings from "../hooks/useSettings";
@@ -113,16 +113,15 @@ const ProjectsGrid = () => {
                                                 transition={{duration: 1}}
                                             >
                                                 {description.map((paragraph, idx) => 
-                                                    <>
+                                                    <Fragment key={activeProject.title_en + idx}>
                                                         {idx !== 0 && (
-                                                            <p 
-                                                                key={activeProject.title_en + idx}
+                                                            <p
                                                                 className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary"
                                                             >
                                                                 {paragraph}
                                                             </p>
                                                         )}
-                                                    </>
+                                                    </Fragment>
                                                 )}
                                             </motion.div>
                                         )}
@@ -146,7 +145,7 @@ const ProjectsGrid = () => {
                         </div>
 
                         <div className={`projects-selection mb-8 col-end-12 col-span-3 self-start justify-self-end ${projectsStyles.projectsSelectionWidth} dark:bg-darkBase bg-base flex flex-col`}>
-                            <AnimatePresence>
+                            <AnimatePresence mode="popLayout">
                                 {selectedProjects.map((project) => {
 
                                     const handleSelectProjectClicked = () => {
