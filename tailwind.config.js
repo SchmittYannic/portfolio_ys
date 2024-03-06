@@ -88,6 +88,9 @@ export default {
             transitionTimingFunction: {
                 "button": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
             },
+            transitionDuration: {
+                "1500": "1500ms",
+            },
         },
     },
     variants: {
@@ -96,9 +99,15 @@ export default {
         },
     },
     plugins: [],
-    safelist: [{
-        pattern: /(bg|text|border|stroke|fill|ring)-action(Blue|Green|Purple|Magenta|Yellow|Orange)-(900|800|700|600|500|400|300|200|100)/
-    }],
+    safelist: [
+        {pattern: /(bg|text|border|stroke|fill|ring)-action(Blue|Green|Purple|Magenta|Yellow|Orange)-(900|800|700|600|500|400|300|200|100)/},
+        "before:bg-actionBlue-900",
+        "before:bg-actionGreen-900",
+        "before:bg-actionPurple-900",
+        "before:bg-actionMagenta-900",
+        "before:bg-actionYellow-900",
+        "before:bg-actionOrange-900",
+    ],
     darkMode: "class",
 }
 
