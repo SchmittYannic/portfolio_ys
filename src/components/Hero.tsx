@@ -17,7 +17,7 @@ const Hero = () => {
     return (
         <section className="hero-section relative w-full xl:h-screen xl:max-h-[1400px] xl:min-h-[900px]">
             <div className="hero-background absolute inset-0 overflow-hidden">
-                <div className={`max-container ${styles.maxContainer} h-full ${heroStyles.heroPaddingTop}`}>
+                <div className={`max-container ${styles.maxContainer} h-full ${heroStyles.heroPaddingY}`}>
                     <div className="w-full h-full flex xl:flex-row-reverse flex-col items-center xl:justify-between">
                         <div className="hero-img-container xl:w-[50%] flex justify-center">
                             <div className={`relative ${heroStyles.heroImgWidth} ${heroStyles.heroImgHeight}`}>
@@ -30,7 +30,7 @@ const Hero = () => {
             </div>
 
             <div className="hero-content xl:absolute relative inset-0">
-                <div className={`max-container ${styles.maxContainer} h-full ${heroStyles.heroPaddingTop}`}>
+                <div className={`max-container ${styles.maxContainer} h-full ${heroStyles.heroPaddingY}`}>
                     <div className={`w-full h-full flex xl:flex-row-reverse flex-col items-center xl:justify-between ${heroStyles.heroImgTextGap}`}>
                         <div className="hero-img-container xl:w-[50%] flex justify-center">
                             <img 
