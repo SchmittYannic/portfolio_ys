@@ -80,8 +80,6 @@ const ProjectsMobile = () => {
     const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
 
     const bgColorClass900: string = `bg-action${color}-900`;
-    const borderColorClass900: string = `border-action${color}-900`;
-    const ringColorClass: string = `ring-action${color}-900/30`;
 
     return (
         <section id="projects" className="relative">
