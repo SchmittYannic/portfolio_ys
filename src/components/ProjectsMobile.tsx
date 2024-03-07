@@ -1,10 +1,11 @@
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { ProjectType, TextContent, projects } from "../constants";
+import { ProjectType, TextContent, navbarHeight, projects } from "../constants";
 import useSettings from "../hooks/useSettings"
 import { projectsMobileStyles, styles } from "../styles";
 import TechTags from "./ui/TechTags";
+import useDynamicClasses from "../hooks/useDynamicClasses";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
@@ -75,15 +76,11 @@ const Project = ({ project }: { project: ProjectType }) => {
 }
 
 const ProjectsMobile = () => {
-    const { color, lang } = useSettings();
-
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
-
-    const bgColorClass900: string = `bg-action${color}-900`;
+    const { sectionPaddingTop, PageTextContent, bgColorClass900 } = useDynamicClasses();
 
     return (
-        <section id="projects" className="relative">
-            <div className="projects-background absolute inset-0 flex flex-col">
+        <section id="projects" className={`relative ${sectionPaddingTop}`}>
+            <div className={`projects-background absolute inset-0 flex flex-col ${sectionPaddingTop}`}>
                 <div className={`w-full h-[200px] ${bgColorClass900}`} />
                 <div className={`w-full dark:bg-darkBaseTertiary bg-baseTertiary grow`} />
                 <div className={`w-full h-[10px] ${bgColorClass900}`} />
