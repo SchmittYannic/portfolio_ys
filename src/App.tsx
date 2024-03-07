@@ -1,9 +1,11 @@
 import { BrowserRouter } from "react-router-dom"
 import { useEffect } from "react"
-import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
+
 import useSettings from "./hooks/useSettings"
 import useToast from "./hooks/useToast"
 import useWindowSize from "./hooks/useWindowSize"
+import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
+import ProjectsMobile from "./components/ProjectsMobile"
 
 const App = () => {
     const { setTheme, setLang, setColor } = useSettings();
@@ -11,9 +13,6 @@ const App = () => {
     const windowSize = useWindowSize();
 
     const isXlScreen = windowSize.width && windowSize.width >= 1280;
-
-
-    const isLgScreen = windowSize.width && windowSize.width >= 1024;
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -43,24 +42,13 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            {/* <div className="App w-full h-full dark:bg-darkBase bg-base">
-                <Navbar />
-                <Hero />
-                {isXlScreen ? (
-                    <Projects />
-                ) : (
-                    <div>mobile</div>
-                )}
-                <About />
-                <Contact />
-                <Toast toastList={toastList} />
-            </div> */}
-
-
             <div className="app relative w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
-                <Projects />
+                {isXlScreen ? <Projects /> : <ProjectsMobile />}
+                <About />
+                <Contact />
+                <Toast toastList={toastList} />
             </div>
         </BrowserRouter>
     )
