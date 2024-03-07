@@ -1,8 +1,8 @@
-import { useRef } from "react";
-import { useScroll, motion, MotionValue } from "framer-motion";
-import { TextContent, education_de, education_en, educationType, skillsLanguage, skillsIT } from "../constants";
-import useSettings from "../hooks/useSettings"
-import { styles } from "../styles"
+import { useRef } from "react"
+import { motion, useScroll, MotionValue } from "framer-motion"
+
+import { TextContent, education_de, educationType, education_en, skillsIT, skillsLanguage } from "../constants"
+import useSettings from "../hooks/useSettings";
 
 type fillColorType = `fill-${string}`;
 
@@ -54,8 +54,6 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
         }
     );
 
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
-
     return (
         <li ref={ref}>
             <LiIcon progress={scrollYProgress} />
@@ -79,18 +77,18 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 <ul className="ml-4 list-disc list-outside dark:text-darkTextPrimary text-textPrimary">
                     <li>
                         {entry.grade === "noDegree" 
-                            ? PageTextContent.noDegree 
-                            : PageTextContent.gpa + entry.grade
+                            ? lang === "de" ? TextContent.german.noDegree : TextContent.english.noDegree 
+                            : lang === "de" ? TextContent.german.gpa + entry.grade : TextContent.english.gpa + entry.grade
                         }
                     </li>
                     {entry.thesis &&
                         <li>
-                            {PageTextContent.thesis}{entry.thesis}
+                            {lang === "de" ? TextContent.german.thesis : TextContent.english.thesis}{entry.thesis}
                         </li>
                     }
                     {entry.focus &&
                         <li>
-                            {PageTextContent.focus}{entry.focus}
+                            {lang === "de" ? TextContent.german.focus : TextContent.english.focus}{entry.focus}
                         </li>
                     }
                 </ul>
@@ -105,7 +103,7 @@ const EducationSubSection = () => {
     const { scrollYProgress } = useScroll(
         {
             target: ref,
-            offset: ["start 1", "center 0.5"]
+            offset: ["start end", "center start"]
         }
     );
     const bgColorClass900 = `bg-action${color}-900`;
@@ -137,16 +135,14 @@ const SkillsSubSection = () => {
     const { lang, color } = useSettings();
     const bgColorClass900 = `bg-action${color}-900`;
 
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
-
     return (
         <>
             <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
-                {PageTextContent.skillsHead}
+                {lang === "de" ? TextContent.german.skillsHead : TextContent.english.skillsHead}
             </h3>
 
             <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
-                {PageTextContent.itHead}
+                {lang === "de" ? TextContent.german.itHead : TextContent.english.itHead}
                 <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
             </h4>
 
@@ -169,7 +165,7 @@ const SkillsSubSection = () => {
             </div>
 
             <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
-                {PageTextContent.languageHead}
+                {lang === "de" ? TextContent.german.languageHead : TextContent.english.languageHead}
                 <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
             </h4>
 
@@ -194,32 +190,26 @@ const SkillsSubSection = () => {
     )
 }
 
-const AboutGrid = () => {
-
+const About = () => {
     const { lang } = useSettings();
 
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
-
     return (
-        <section id="about">
-            <div className="about-content pb-32">
-                <div className="max-container max-w-[1920px] min-w-[320px] mx-auto">
-                    <div className={`w-full h-full ${styles.grid}`}>
-                        <h2 className="mt-12 mb-12 col-span-full justify-self-center text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
-                            {PageTextContent.aboutHead}
-                        </h2>
+        <section id="about" className="max-w-[1920px] min-w-[320px] w-full mx-auto py-16">
+            <h2 className="mt-8 mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
+                {lang === "de" ? TextContent.german.aboutHead : TextContent.english.aboutHead}
+            </h2>
 
-                        <div className="education-wrapper col-start-2 col-span-5 self-start">
-                            <EducationSubSection />
-                        </div>
-                        <div className="skills-wrapper col-end-12 col-span-5 self-start">
-                            <SkillsSubSection />
-                        </div>
-                    </div>
+            <div className="lg:px-20 grid lg:grid-cols-[1fr_1fr] grid-cols-1">
+                <div className="max-w-[700px] lg:pl-0 pl-10 pr-10 mb-16 lg:w-full sm:w-[60%] w-full mx-auto">
+                    <EducationSubSection />
+                </div>
+
+                <div className="max-w-[700px] lg:pr-0 pr-10 pl-10 lg:w-full sm:w-[60%] mx-auto">
+                    <SkillsSubSection />
                 </div>
             </div>
         </section>
     )
 }
 
-export default AboutGrid
+export default About

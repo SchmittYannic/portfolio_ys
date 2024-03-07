@@ -2,6 +2,7 @@ import { html5Logo, css3Logo, javascriptLogo, reactLogo, pythonLogo, typescriptL
 
 const navbarHeight = 70;
 const menuWidth = 180;
+const liIconCircleRadius = 40;
 
 const TextContent = {
     german: {
@@ -362,5 +363,6 @@ export {
     tagData,
 
     navbarHeight,
-    menuWidth
+    menuWidth,
+    liIconCircleRadius,
 }

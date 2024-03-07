@@ -1,8 +1,10 @@
-import { useRef } from "react"
-import { motion, useScroll, MotionValue } from "framer-motion"
+import { useRef } from "react";
+import { motion, MotionValue, useScroll } from "framer-motion";
 
-import { TextContent, education_de, educationType, education_en, skillsIT, skillsLanguage } from "../constants"
+import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
+import { styles } from "../styles"
+import { education_de, education_en, educationType, liIconCircleRadius, skillsIT, skillsLanguage } from "../constants";
 
 type fillColorType = `fill-${string}`;
 
@@ -21,7 +23,7 @@ const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, f
             </g>
         </svg>
     )
-}
+};
 
 const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const { color } = useSettings();
@@ -29,23 +31,24 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const fillColorClass900 = `fill-action${color}-900`
 
     return (
-        <figure className={`absolute -left-7 ${strokeColorClass900}`}>
-            <svg className="-rotate-90" width="75" height="75" viewBox="0 0 100 100">
-                <circle cx="75" cy="50" r="20" className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
+        <figure className={`absolute left-0 ${strokeColorClass900}`}>
+            <svg className="-rotate-90" width={liIconCircleRadius} height={liIconCircleRadius} viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r={liIconCircleRadius} className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
                 <motion.circle 
-                    cx="75" cy="50" r="20" className="stroke-[5px] dark:fill-darkBase fill-base"
+                    cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase fill-base"
                     style={{
                         pathLength : progress
                     }}
                 />
-                <circle cx="75" cy="50" r="10" className={`animate-pulse stroke-1 ${fillColorClass900}`} />
+                <circle cx="50" cy="50" r={liIconCircleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
             </svg>
         </figure>
     )
-}
+};
 
 const TimelineEntry = ({ entry }: { entry: educationType }) => {
-    const { lang, theme } = useSettings();
+    const { theme } = useSettings();
+    const { PageTextContent } = useDynamicClasses();
     const ref: React.MutableRefObject<null | HTMLLIElement> = useRef(null);
     const { scrollYProgress } = useScroll(
         {
@@ -77,51 +80,50 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 <ul className="ml-4 list-disc list-outside dark:text-darkTextPrimary text-textPrimary">
                     <li>
                         {entry.grade === "noDegree" 
-                            ? lang === "de" ? TextContent.german.noDegree : TextContent.english.noDegree 
-                            : lang === "de" ? TextContent.german.gpa + entry.grade : TextContent.english.gpa + entry.grade
+                            ? PageTextContent.noDegree 
+                            : PageTextContent.gpa + entry.grade
                         }
                     </li>
                     {entry.thesis &&
                         <li>
-                            {lang === "de" ? TextContent.german.thesis : TextContent.english.thesis}{entry.thesis}
+                            {PageTextContent.thesis}{entry.thesis}
                         </li>
                     }
                     {entry.focus &&
                         <li>
-                            {lang === "de" ? TextContent.german.focus : TextContent.english.focus}{entry.focus}
+                            {PageTextContent.focus}{entry.focus}
                         </li>
                     }
                 </ul>
             </motion.div>
         </li>
     )
-}
+};
 
 const EducationSubSection = () => {
-    const { lang, color } = useSettings();
+    const { lang } = useSettings();
+    const { PageTextContent, bgColorClass900 } = useDynamicClasses();
     const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
-    const { scrollYProgress } = useScroll(
-        {
-            target: ref,
-            offset: ["start end", "center start"]
-        }
-    );
-    const bgColorClass900 = `bg-action${color}-900`;
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start 1", "center 0.5"],
+    });
     const education = lang === "de" ? education_de : education_en;
 
     return (
         <>
             <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.educationHead : TextContent.english.educationHead}
+                {PageTextContent.educationHead}
             </h3>
 
             <div ref={ref} className="relative w-full">
+                {/* left position should be liIconCirleRadius in pixel */}
                 <motion.div
-                    className={`absolute top-0 left-2 w-[4px] h-full origin-top ${bgColorClass900}`}
+                    className={`absolute top-0 left-[20px] w-[4px] h-full origin-top ${bgColorClass900}`}
                     style={{scaleY: scrollYProgress}}
                 />
 
-                <ul className="ml-12 flex flex-col items-start">
+                <ul className="ml-16 flex flex-col items-start">
                     {education.map(entry => (
                         <TimelineEntry key={entry.name} entry={entry} />
                     ))}
@@ -129,20 +131,20 @@ const EducationSubSection = () => {
             </div>
         </>
     )
-}
+};
 
 const SkillsSubSection = () => {
-    const { lang, color } = useSettings();
-    const bgColorClass900 = `bg-action${color}-900`;
+    const { lang } = useSettings();
+    const { PageTextContent, bgColorClass900 } = useDynamicClasses();
 
     return (
         <>
             <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.skillsHead : TextContent.english.skillsHead}
+                {PageTextContent.skillsHead}
             </h3>
 
             <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.itHead : TextContent.english.itHead}
+                {PageTextContent.itHead}
                 <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
             </h4>
 
@@ -165,7 +167,7 @@ const SkillsSubSection = () => {
             </div>
 
             <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.languageHead : TextContent.english.languageHead}
+                {PageTextContent.languageHead}
                 <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
             </h4>
 
@@ -188,24 +190,31 @@ const SkillsSubSection = () => {
             </div>
         </>
     )
-}
+};
 
 const About = () => {
-    const { lang } = useSettings();
+    const { PageTextContent, sectionPaddingTop, bgColorClass900 } = useDynamicClasses();
 
     return (
-        <section id="about" className="max-w-[1920px] min-w-[320px] w-full mx-auto py-16">
-            <h2 className="mt-8 mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
-                {lang === "de" ? TextContent.german.aboutHead : TextContent.english.aboutHead}
-            </h2>
+        <section id="about" className={`relative ${sectionPaddingTop}`}>
+            <div className={`about-background absolute inset-0 flex flex-col-reverse ${sectionPaddingTop}`}>
+                <div className={`w-full h-[10px] ${bgColorClass900}`} />
+            </div>
+            <div className="about-content relative">
+                <div className={`max-container ${styles.maxContainer}`}>
+                    <h2 className="pt-12 mb-12 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
+                        {PageTextContent.aboutHead}
+                    </h2>
 
-            <div className="lg:px-20 grid lg:grid-cols-[1fr_1fr] grid-cols-1">
-                <div className="max-w-[700px] lg:pl-0 pl-10 pr-10 mb-16 lg:w-full sm:w-[60%] w-full mx-auto">
-                    <EducationSubSection />
-                </div>
-
-                <div className="max-w-[700px] lg:pr-0 pr-10 pl-10 lg:w-full sm:w-[60%] mx-auto">
-                    <SkillsSubSection />
+                    <div className={`grid xl:grid-cols-2 grid-cols-1 ${styles.sectionPaddingBottom}`}>
+                        {/* margin bottom should be the same as sectionPaddingBottom */}
+                        <div className="education-wrapper xl:mb-0 mb-24">
+                            <EducationSubSection />
+                        </div>
+                        <div className="skills-wrapper">
+                            <SkillsSubSection />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

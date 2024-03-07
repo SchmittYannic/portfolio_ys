@@ -1,9 +1,11 @@
 import { BrowserRouter } from "react-router-dom"
 import { useEffect } from "react"
-import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
+
 import useSettings from "./hooks/useSettings"
 import useToast from "./hooks/useToast"
 import useWindowSize from "./hooks/useWindowSize"
+import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
+import ProjectsMobile from "./components/ProjectsMobile"
 
 const App = () => {
     const { setTheme, setLang, setColor } = useSettings();
@@ -40,14 +42,10 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="App w-full h-full dark:bg-darkBase bg-base">
+            <div className="app relative w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
-                {isXlScreen ? (
-                    <Projects />
-                ) : (
-                    <div>mobile</div>
-                )}
+                {isXlScreen ? <Projects /> : <ProjectsMobile />}
                 <About />
                 <Contact />
                 <Toast toastList={toastList} />
