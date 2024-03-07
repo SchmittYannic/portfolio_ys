@@ -60,6 +60,7 @@ const App = () => {
             <div className="app relative w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
+                <Projects />
             </div>
         </BrowserRouter>
     )

@@ -61,9 +61,15 @@ const heroStyles = {
     heroSubText: "2xl:text-[25px] xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xs:text-[18px] text-[16px]",
     heroSubTextMaxWidth: "2xl:max-w-[530px] xl:max-w-[510px] lg:max-w-[450px] md:max-w-[450px] sm:max-w-[450px] xs:max-w-[340px] max-w-[340px]",
     heroTextButtonGap: "2xl:mb-12 mb-8",
-}
+};
+
+const projectsStyles = {
+    projectDisplayWidth: "w-[1024px]",
+    projectDisplayImgHeight: "h-[576px]",
+};
 
 export {
     styles,
     heroStyles,
+    projectsStyles,
 }
