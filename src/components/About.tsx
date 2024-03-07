@@ -30,17 +30,19 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
 
+    const circleRadius = 40;
+
     return (
-        <figure className={`absolute -left-7 ${strokeColorClass900}`}>
-            <svg className="-rotate-90" width="75" height="75" viewBox="0 0 100 100">
-                <circle cx="75" cy="50" r="20" className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
+        <figure className={`absolute left-0 ${strokeColorClass900}`}>
+            <svg className="-rotate-90" width={circleRadius} height={circleRadius} viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r={circleRadius} className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
                 <motion.circle 
-                    cx="75" cy="50" r="20" className="stroke-[5px] dark:fill-darkBase fill-base"
+                    cx="50" cy="50" r={circleRadius} className="stroke-[10px] dark:fill-darkBase fill-base"
                     style={{
                         pathLength : progress
                     }}
                 />
-                <circle cx="75" cy="50" r="10" className={`animate-pulse stroke-1 ${fillColorClass900}`} />
+                <circle cx="50" cy="50" r={circleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
             </svg>
         </figure>
     )
@@ -107,7 +109,7 @@ const EducationSubSection = () => {
     const { scrollYProgress } = useScroll(
         {
             target: ref,
-            offset: ["start end", "center start"]
+            offset: ["start 1", "center 0.5"],
         }
     );
     const bgColorClass900 = `bg-action${color}-900`;
@@ -121,11 +123,11 @@ const EducationSubSection = () => {
 
             <div ref={ref} className="relative w-full">
                 <motion.div
-                    className={`absolute top-0 left-2 w-[4px] h-full origin-top ${bgColorClass900}`}
+                    className={`absolute top-0 left-[20px] w-[4px] h-full origin-top ${bgColorClass900}`}
                     style={{scaleY: scrollYProgress}}
                 />
 
-                <ul className="ml-12 flex flex-col items-start">
+                <ul className="ml-16 flex flex-col items-start">
                     {education.map(entry => (
                         <TimelineEntry key={entry.name} entry={entry} />
                     ))}
