@@ -212,7 +212,8 @@ const About = () => {
                     </h2>
 
                     <div className={`grid xl:grid-cols-2 grid-cols-1 ${styles.sectionPaddingBottom}`}>
-                        <div className="education-wrapper xl:mb-0 mb-16">
+                        {/* margin bottom should be the same as sectionPaddingBottom */}
+                        <div className="education-wrapper xl:mb-0 mb-24">
                             <EducationSubSection />
                         </div>
                         <div className="skills-wrapper">
