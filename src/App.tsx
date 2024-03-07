@@ -12,6 +12,9 @@ const App = () => {
 
     const isXlScreen = windowSize.width && windowSize.width >= 1280;
 
+
+    const isLgScreen = windowSize.width && windowSize.width >= 1024;
+
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
@@ -40,7 +43,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="App w-full h-full dark:bg-darkBase bg-base">
+            {/* <div className="App w-full h-full dark:bg-darkBase bg-base">
                 <Navbar />
                 <Hero />
                 {isXlScreen ? (
@@ -51,6 +54,12 @@ const App = () => {
                 <About />
                 <Contact />
                 <Toast toastList={toastList} />
+            </div> */}
+
+
+            <div className="app relative w-full h-full dark:bg-darkBase bg-base">
+                <Navbar />
+                <Hero />
             </div>
         </BrowserRouter>
     )
