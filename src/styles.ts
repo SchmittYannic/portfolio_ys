@@ -73,8 +73,8 @@ const projectsStyles = {
 };
 
 const projectsMobileStyles = {
-    projectImgWidth: "w-[768px]",
-    projectImgHeight: "h-[432px]",
+    projectImgWidth: "lg:w-[768px] md:w-[512px] sm:w-[512px] w-[384px]",
+    projectImgHeight: "lg:h-[432px] md:h-[288px] sm:h-[288px] h-[216px]",
 }
 
 export {
