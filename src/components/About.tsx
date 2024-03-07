@@ -198,17 +198,17 @@ const SkillsSubSection = () => {
 };
 
 const About = () => {
-    const { PageTextContent } = useDynamicClasses();
+    const { PageTextContent, sectionPaddingTop } = useDynamicClasses();
 
     return (
-        <section id="about" className="relative">
+        <section id="about" className={`relative ${sectionPaddingTop}`}>
             <div className="about-content relative">
                 <div className={`max-container ${styles.maxContainer}`}>
                     <h2 className="pt-12 mb-12 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                         {PageTextContent.aboutHead}
                     </h2>
 
-                    <div className="grid xl:grid-cols-2 grid-cols-1">
+                    <div className="grid xl:grid-cols-2 grid-cols-1 pb-32">
                         <div className="education-wrapper xl:mb-0 mb-16">
                             <EducationSubSection />
                         </div>
