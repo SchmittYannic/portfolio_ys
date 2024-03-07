@@ -4,7 +4,7 @@ import { motion, MotionValue, useScroll } from "framer-motion";
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles"
-import { education_de, education_en, educationType, liIconCircleRadius } from "../constants";
+import { education_de, education_en, educationType, liIconCircleRadius, skillsIT, skillsLanguage } from "../constants";
 
 type fillColorType = `fill-${string}`;
 
@@ -23,7 +23,7 @@ const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, f
             </g>
         </svg>
     )
-}
+};
 
 const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const { color } = useSettings();
@@ -44,7 +44,7 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
             </svg>
         </figure>
     )
-}
+};
 
 const TimelineEntry = ({ entry }: { entry: educationType }) => {
     const { theme } = useSettings();
@@ -98,7 +98,7 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
             </motion.div>
         </li>
     )
-}
+};
 
 const EducationSubSection = () => {
     const { lang, color } = useSettings();
@@ -134,7 +134,68 @@ const EducationSubSection = () => {
             </div>
         </>
     )
-}
+};
+
+const SkillsSubSection = () => {
+    const { lang, color } = useSettings();
+    const { PageTextContent } = useDynamicClasses();
+
+    const bgColorClass900 = `bg-action${color}-900`;
+
+    return (
+        <>
+            <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
+                {PageTextContent.skillsHead}
+            </h3>
+
+            <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+                {PageTextContent.itHead}
+                <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
+            </h4>
+
+            <div className="mb-14 flex justify-center flex-wrap">
+                {skillsIT.map(skill => (
+                    <div
+                        key={skill.name}
+                        className="p-[10px] m-[5px] flex flex-col justify-center items-center"
+                    >
+                        <label className="text-center dark:text-darkTextPrimary text-textPrimary">
+                            <p className="py-3">{skill.name}</p>
+                            <img 
+                                src={skill.logo} 
+                                alt={skill.name} 
+                                className="w-[100px] h-[100px]" 
+                            />
+                        </label>
+                    </div>
+                ))}
+            </div>
+
+            <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+                {PageTextContent.languageHead}
+                <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
+            </h4>
+
+            <div className="flex justify-center flex-wrap">
+                {skillsLanguage.map(language => (
+                    <div
+                        key={language.name_en}
+                        className="p-[10px] m-[5px] flex flex-col justify-center items-center"
+                    >
+                        <label className="text-center dark:text-darkTextPrimary text-textPrimary">
+                            <p className="py-3">{lang === "de" ? language.name_de : language.name_en}</p>
+                            <img 
+                                src={language.logo} 
+                                alt={`${language.name_en}-icon`} 
+                                className="w-[100px] h-[100px]"
+                            />
+                        </label>
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+};
 
 const About = () => {
     const { PageTextContent } = useDynamicClasses();
@@ -147,12 +208,12 @@ const About = () => {
                         {PageTextContent.aboutHead}
                     </h2>
 
-                    <div className="">
-                        <div className="education-wrapper">
+                    <div className="grid xl:grid-cols-2 grid-cols-1">
+                        <div className="education-wrapper xl:mb-0 mb-16">
                             <EducationSubSection />
                         </div>
                         <div className="skills-wrapper">
-
+                            <SkillsSubSection />
                         </div>
                     </div>
                 </div>
