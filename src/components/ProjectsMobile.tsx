@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { ProjectType, TextContent, navbarHeight, projects } from "../constants";
+import { ProjectType, projects } from "../constants";
 import useSettings from "../hooks/useSettings"
 import { projectsMobileStyles, styles } from "../styles";
 import TechTags from "./ui/TechTags";
@@ -9,10 +9,10 @@ import useDynamicClasses from "../hooks/useDynamicClasses";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
+    const { PageTextContent } = useDynamicClasses();
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
 
     const description: string[] = lang === "en" ? project.description_en : project.description_de;
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
 
     return (
         <div key={project.title_en} className="project-mobile pb-32 flex flex-col items-center">
