@@ -64,9 +64,12 @@ const heroStyles = {
 };
 
 const projectsStyles = {
-    projectDisplayWidth: "w-[1024px]",
-    projectDisplayImgHeight: "h-[576px]",
-    projectsSelectionWidth: "w-[550px]",
+    projectDisplayWidth: "4xl:w-[1024px] 3xl:w-[896px] 2xl:w-[896px] xl:w-[768px]",
+    projectDisplayImgHeight: "4xl:h-[576px] 3xl:h-[504px] 2xl:h-[504px] xl:h-[432px]",
+    projectsSelectionWidth: "4xl:w-[550px] 3xl:w-[500px] 2xl:w-[400px] xl:w-[240px]",
+    projectSelectHeadText: "4xl:text-2xl 3xl:text-xl 2xl:text-lg xl:text-lg",
+    projectSelectImgWidth: "3xl:w-[176px] 2xl:w-[128px] xl:w-[176px]",
+    projectSelectImgHeight: "3xl:h-[99px] 2xl:h-[72px] xl:h-[99px]",
 };
 
 export {

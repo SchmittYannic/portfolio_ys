@@ -169,9 +169,13 @@ const Projects = () => {
                                                 type="button"
                                                 onClick={handleSelectProjectClicked}
                                             >
-                                                <div className="relative p-4 flex items-center z-0">
-                                                    <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 rounded-lg ${borderColorClass900}`} />
-                                                    <h4 className="p-4 text-2xl grow dark:text-darkTextPrimary text-textPrimary">
+                                                <div className="relative p-4 flex 2xl:flex-row flex-col items-center z-0">
+                                                    <img 
+                                                        src={project.image} 
+                                                        alt="" 
+                                                        className={`2xl:mb-0 mb-4 border-2 rounded-lg ${borderColorClass900} ${projectsStyles.projectSelectImgWidth} ${projectsStyles.projectSelectImgHeight}`}
+                                                    />
+                                                    <h4 className={`2xl:p-4 grow dark:text-darkTextPrimary text-textPrimary ${projectsStyles.projectSelectHeadText}`}>
                                                         {lang === "en" ? project.title_en : project.title_de}
                                                     </h4>
                                                 </div>
