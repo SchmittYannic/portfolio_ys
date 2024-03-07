@@ -68,7 +68,7 @@ const ContactForm = (): ReactElement => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         const { name, value } = e.target;
-        console.log(name in form)
+        
         setForm(prevState => {
             const newState = { ...prevState }
             newState[name as keyof FormType] = value
