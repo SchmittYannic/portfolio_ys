@@ -4,7 +4,7 @@ import { motion, MotionValue, useScroll } from "framer-motion";
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles"
-import { education_de, education_en, educationType } from "../constants";
+import { education_de, education_en, educationType, liIconCircleRadius } from "../constants";
 
 type fillColorType = `fill-${string}`;
 
@@ -30,19 +30,17 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
 
-    const circleRadius = 40;
-
     return (
         <figure className={`absolute left-0 ${strokeColorClass900}`}>
-            <svg className="-rotate-90" width={circleRadius} height={circleRadius} viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r={circleRadius} className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
+            <svg className="-rotate-90" width={liIconCircleRadius} height={liIconCircleRadius} viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r={liIconCircleRadius} className="dark:stroke-base stroke-darkBase stroke-[4px] fill-none" />
                 <motion.circle 
-                    cx="50" cy="50" r={circleRadius} className="stroke-[10px] dark:fill-darkBase fill-base"
+                    cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase fill-base"
                     style={{
                         pathLength : progress
                     }}
                 />
-                <circle cx="50" cy="50" r={circleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
+                <circle cx="50" cy="50" r={liIconCircleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
             </svg>
         </figure>
     )
@@ -122,6 +120,7 @@ const EducationSubSection = () => {
             </h3>
 
             <div ref={ref} className="relative w-full">
+                {/* left position should be liIconCirleRadius in pixel */}
                 <motion.div
                     className={`absolute top-0 left-[20px] w-[4px] h-full origin-top ${bgColorClass900}`}
                     style={{scaleY: scrollYProgress}}
