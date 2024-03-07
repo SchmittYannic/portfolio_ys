@@ -101,16 +101,13 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
 };
 
 const EducationSubSection = () => {
-    const { lang, color } = useSettings();
-    const { PageTextContent } = useDynamicClasses();
+    const { lang } = useSettings();
+    const { PageTextContent, bgColorClass900 } = useDynamicClasses();
     const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
-    const { scrollYProgress } = useScroll(
-        {
-            target: ref,
-            offset: ["start 1", "center 0.5"],
-        }
-    );
-    const bgColorClass900 = `bg-action${color}-900`;
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start 1", "center 0.5"],
+    });
     const education = lang === "de" ? education_de : education_en;
 
     return (
@@ -137,10 +134,8 @@ const EducationSubSection = () => {
 };
 
 const SkillsSubSection = () => {
-    const { lang, color } = useSettings();
-    const { PageTextContent } = useDynamicClasses();
-
-    const bgColorClass900 = `bg-action${color}-900`;
+    const { lang } = useSettings();
+    const { PageTextContent, bgColorClass900 } = useDynamicClasses();
 
     return (
         <>

@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, LinkHTMLAttributes, PropsWithChildren, ReactElement } from "react";
-import useSettings from "../../hooks/useSettings";
+import useDynamicClasses from "../../hooks/useDynamicClasses";
 
 type CtaButtonPropsType = {
     tag: "link" | "button",
@@ -7,8 +7,7 @@ type CtaButtonPropsType = {
 
 const CtaButton = ({ tag, children, ...rest }: PropsWithChildren<CtaButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement> & LinkHTMLAttributes<HTMLAnchorElement>>): ReactElement => {
 
-    const { color } = useSettings();
-    const bgColorClass900 = `bg-action${color}-900`;
+    const { bgColorClass900 } = useDynamicClasses();
 
     if( tag === "link" ) {
         return (

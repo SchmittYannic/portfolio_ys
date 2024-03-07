@@ -1,18 +1,11 @@
 import { placeholderProfile } from "../assets"
-import { TextContent } from "../constants";
-import useSettings from "../hooks/useSettings";
 import { Button, CtaButton } from "./ui";
 import { heroStyles, styles } from "../styles";
+import useDynamicClasses from "../hooks/useDynamicClasses";
 
 
 const Hero = () => {
-
-    const {lang, color} = useSettings();
-
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
-
-    const bgColorClass900 = `bg-action${color}-900`;
-    const textColorClass900 = `text-action${color}-900`;
+    const { PageTextContent, bgColorClass900, textColorClass900 } = useDynamicClasses();
 
     return (
         <section className="hero-section relative w-full xl:h-screen xl:max-h-[1400px] xl:min-h-[900px]">
