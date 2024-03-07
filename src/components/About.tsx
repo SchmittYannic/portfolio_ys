@@ -206,7 +206,7 @@ const About = () => {
                         {PageTextContent.aboutHead}
                     </h2>
 
-                    <div className={`grid xl:grid-cols-2 grid-cols-1 ${styles.sectionPaddingBottom}`}>
+                    <div className={`grid xl:grid-cols-2 xl:gap-16 grid-cols-1 ${styles.sectionPaddingBottom}`}>
                         {/* margin bottom should be the same as sectionPaddingBottom */}
                         <div className="education-wrapper xl:mb-0 mb-24">
                             <EducationSubSection />
