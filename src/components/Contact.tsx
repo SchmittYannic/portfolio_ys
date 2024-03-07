@@ -6,6 +6,7 @@ import { TextContent } from "../constants";
 import useSettings from "../hooks/useSettings";
 import useToast from "../hooks/useToast";
 import { styles } from "../styles";
+import useDynamicClasses from "../hooks/useDynamicClasses";
 
 //public key: gdcYzt-5KPdG9Jqcn
 //template id: template_bm7dtbn
@@ -144,22 +145,26 @@ const ContactForm = (): ReactElement => {
 }
 
 const Contact = (): ReactElement => {
-    const { lang } = useSettings();
+    const { PageTextContent } = useDynamicClasses();
 
     return (
-        <section id="contact" className="relative xl:h-screen xl:max-h-[1400px] xl:min-h-[900px]" tabIndex={-1}>
+        <section id="contact" className="relative xl:h-screen xl:max-h-[1400px] min-h-[900px]" tabIndex={-1}>
 
             <div className="contact-background absolute inset-0 overflow-hidden">
                 <ContactsBg />
             </div>
 
-            <div className={`max-container ${styles.maxContainer}`}>
-                <div className="py-16 px-2 max-w-[500px] lg:w-[50%] sm:w-[75%] w-full absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
-                    <h2 className="mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
-                        {lang === "de" ? TextContent.german.contact : TextContent.english.contact}
-                    </h2>
+            <div className="contact-content relative h-full">
+                <div className={`max-container ${styles.maxContainer} h-full`}>
+                    <div className="h-full grid grid-cols-1 justify-items-center items-center">
+                        <div className="py-16 px-2 max-w-[500px] lg:w-[50%] sm:w-[75%] w-full">
+                            <h2 className="mb-16 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
+                                {PageTextContent.contact}
+                            </h2>
 
-                    <ContactForm />
+                            <ContactForm />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
