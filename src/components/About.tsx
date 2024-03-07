@@ -136,6 +136,16 @@ const EducationSubSection = () => {
 const SkillsSubSection = () => {
     const { lang } = useSettings();
     const { PageTextContent, bgColorClass900 } = useDynamicClasses();
+    const itRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
+    const langRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
+    const { scrollYProgress: itProgress } = useScroll({
+        target: itRef,
+        offset: ["start 1", "center 0.3"],
+    });
+    const { scrollYProgress: langProgress } = useScroll({
+        target: langRef,
+        offset: ["start 1", "center 0.6"],
+    });
 
     return (
         <>
@@ -143,9 +153,9 @@ const SkillsSubSection = () => {
                 {PageTextContent.skillsHead}
             </h3>
 
-            <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+            <h4 ref={itRef} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
                 {PageTextContent.itHead}
-                <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
+                <motion.div className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`} style={{ scaleX: itProgress }}/>
             </h4>
 
             <div className="mb-14 flex justify-center flex-wrap">
@@ -166,9 +176,9 @@ const SkillsSubSection = () => {
                 ))}
             </div>
 
-            <h4 className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+            <h4 ref={langRef} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
                 {PageTextContent.languageHead}
-                <div className={`ml-2 w-full h-1 ${bgColorClass900}`}/>
+                <motion.div className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`} style={{ scaleX: langProgress }}/>
             </h4>
 
             <div className="flex justify-center flex-wrap">
