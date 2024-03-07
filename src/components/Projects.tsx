@@ -141,7 +141,7 @@ const Projects = () => {
                             </motion.div>
                         </div>
 
-                        <div className={`projects-selection mb-8 dark:bg-darkBase bg-base flex flex-col`}>
+                        <div className={`projects-selection ${projectsStyles.projectsSelectionWidth} mb-8 dark:bg-darkBase bg-base flex flex-col`}>
                             <AnimatePresence mode="popLayout">
                                 {selectedProjects.map((project) => {
 
@@ -169,9 +169,9 @@ const Projects = () => {
                                                 type="button"
                                                 onClick={handleSelectProjectClicked}
                                             >
-                                                <div className="relative p-4 grid grid-cols-2 z-0">
+                                                <div className="relative p-4 flex items-center z-0">
                                                     <img src={project.image} alt="" className={`w-[180px] h-[100px] border-2 rounded-lg ${borderColorClass900}`} />
-                                                    <h4 className="p-4 text-xl dark:text-darkTextPrimary text-textPrimary">
+                                                    <h4 className="p-4 text-2xl grow dark:text-darkTextPrimary text-textPrimary">
                                                         {lang === "en" ? project.title_en : project.title_de}
                                                     </h4>
                                                 </div>

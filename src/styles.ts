@@ -66,6 +66,7 @@ const heroStyles = {
 const projectsStyles = {
     projectDisplayWidth: "w-[1024px]",
     projectDisplayImgHeight: "h-[576px]",
+    projectsSelectionWidth: "w-[550px]",
 };
 
 export {
