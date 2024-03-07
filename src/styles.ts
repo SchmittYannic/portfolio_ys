@@ -50,7 +50,7 @@
 const styles = {
     maxContainer: 
         "4xl:max-w-[1920px] 3xl:max-w-[1728px] 2xl:max-w-[1536px] xl:max-w-[1280px] lg:max-w-[1024px] md:max-w-[768px] sm:max-w-[640px] xs:max-w-[450px] min-w-[320px] mx-auto 3xl:px-36 md:px-24 sm:px-12 px-4",
-    sectionPaddingBottom: "pb-48", 
+    sectionPaddingBottom: "sm:pb-48 pb-24", 
 }
 
 const heroStyles = {
