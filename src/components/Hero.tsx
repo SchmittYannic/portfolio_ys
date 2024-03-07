@@ -50,7 +50,7 @@ const Hero = () => {
                                 <span className={`${textColorClass900}`}>Frontend</span>
                                 {PageTextContent.heroSubText2}
                             </p>
-                            <div className="inline-flex">
+                            <div className="inline-flex gap-5">
                                 <Button
                                     type="button"
                                 >
