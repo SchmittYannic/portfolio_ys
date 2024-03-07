@@ -72,8 +72,14 @@ const projectsStyles = {
     projectSelectImgHeight: "3xl:h-[99px] 2xl:h-[72px] xl:h-[99px]",
 };
 
+const projectsMobileStyles = {
+    projectImgWidth: "w-[768px]",
+    projectImgHeight: "h-[432px]",
+}
+
 export {
     styles,
     heroStyles,
     projectsStyles,
+    projectsMobileStyles,
 }
