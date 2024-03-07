@@ -198,10 +198,13 @@ const SkillsSubSection = () => {
 };
 
 const About = () => {
-    const { PageTextContent, sectionPaddingTop } = useDynamicClasses();
+    const { PageTextContent, sectionPaddingTop, bgColorClass900 } = useDynamicClasses();
 
     return (
         <section id="about" className={`relative ${sectionPaddingTop}`}>
+            <div className={`about-background absolute inset-0 flex flex-col-reverse ${sectionPaddingTop}`}>
+                <div className={`w-full h-[10px] ${bgColorClass900}`} />
+            </div>
             <div className="about-content relative">
                 <div className={`max-container ${styles.maxContainer}`}>
                     <h2 className="pt-12 mb-12 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
