@@ -53,7 +53,8 @@ const styles = {
 }
 
 const heroStyles = {
-    heroPaddingY: "xl:py-0 md:py-48 py-36",
+    heroPaddingTop: "xl:pt-0 md:pt-48 pt-36",
+    heroPaddingBottom: "xl:pb-0 md:pb-[122px] pb-[74px]", // difference between Top and Bottom is the height of the navbar in px
     heroImgTextGap: "xl:gap-0 md:gap-32 sm:gap-24 xs:gap-20 gap-16",
     heroImgWidth: "2xl:w-[500px] xl:w-[400px] lg:w-[400px] md:w-[320px] sm:w-[280px] xs:w-[200px] w-[160px]",
     heroImgHeight: "2xl:h-[500px] xl:h-[400px] lg:h-[400px] md:h-[320px] sm:h-[280px] xs:h-[200px] h-[160px]",
