@@ -208,7 +208,7 @@ const About = () => {
                         {PageTextContent.aboutHead}
                     </h2>
 
-                    <div className="grid xl:grid-cols-2 grid-cols-1 pb-32">
+                    <div className={`grid xl:grid-cols-2 grid-cols-1 ${styles.sectionPaddingBottom}`}>
                         <div className="education-wrapper xl:mb-0 mb-16">
                             <EducationSubSection />
                         </div>

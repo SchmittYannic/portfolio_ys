@@ -34,7 +34,7 @@ const Projects = () => {
                     </h2>
 
                     <div className={`flex justify-between items-start`}>
-                        <div className={`project-display pb-32 ${projectsStyles.projectDisplayWidth}`}>
+                        <div className={`project-display ${styles.sectionPaddingBottom} ${projectsStyles.projectDisplayWidth}`}>
                             <div className={`project-display-img-wrapper relative dark:bg-darkBase bg-base border-2 ${borderColorClass900}`}>
                                 <motion.img 
                                     key={activeProject.image}

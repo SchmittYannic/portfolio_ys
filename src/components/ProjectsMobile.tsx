@@ -15,7 +15,7 @@ const Project = ({ project }: { project: ProjectType }) => {
     const description: string[] = lang === "en" ? project.description_en : project.description_de;
 
     return (
-        <div key={project.title_en} className="project-mobile pb-32 flex flex-col items-center">
+        <div key={project.title_en} className={`project-mobile ${styles.sectionPaddingBottom} flex flex-col items-center`}>
             <div className="project-mobile-img-wrapper">
                 <img 
                     src={project.image} 
