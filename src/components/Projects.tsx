@@ -1,30 +1,27 @@
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { TextContent, ProjectType, projects } from "../constants";
+import { ProjectType, projects } from "../constants";
 import useSettings from "../hooks/useSettings";
 import { projectsStyles, styles } from "../styles";
 import { githubLogo, playButton } from "../assets";
 import TechTags from "./ui/TechTags";
 import { removeItemFromArray } from "../constants/array";
+import useDynamicClasses from "../hooks/useDynamicClasses";
 
 
 const Projects = () => {
-    const { lang, color } = useSettings();
+    const { lang } = useSettings();
+    const { bgColorClass900, borderColorClass900, ringColorClass, PageTextContent, sectionPaddingTop } = useDynamicClasses();
     const [activeProject, setActiveProject] = useState<ProjectType>(projects[0]);
     const [selectedProjects, setSelectedProjects] = useState<ProjectType[]>(projects.filter(p => p.title_en !== projects[0].title_en));
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
 
     const description: string[] = lang === "en" ? activeProject.description_en : activeProject.description_de;
-    const PageTextContent = lang === "en" ? TextContent.english : TextContent.german;
-
-    const bgColorClass900: string = `bg-action${color}-900`;
-    const borderColorClass900: string = `border-action${color}-900`;
-    const ringColorClass: string = `ring-action${color}-900/30`;
 
     return (
-        <section id="projects" className="relative">
-            <div className="projects-background absolute inset-0 flex flex-col">
+        <section id="projects" className={`relative ${sectionPaddingTop}`}>
+            <div className={`projects-background absolute inset-0 flex flex-col ${sectionPaddingTop}`}>
                 <div className={`w-full h-[200px] ${bgColorClass900}`} />
                 <div className={`w-full dark:bg-darkBaseTertiary bg-baseTertiary grow`} />
                 <div className={`w-full h-[10px] ${bgColorClass900}`} />
