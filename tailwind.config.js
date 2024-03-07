@@ -108,6 +108,7 @@ export default {
         "before:bg-actionMagenta-900",
         "before:bg-actionYellow-900",
         "before:bg-actionOrange-900",
+        "pt-[70px]", // number needs to be the same as navbarHeight in constants file
     ],
     darkMode: "class",
 }
