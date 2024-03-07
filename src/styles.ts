@@ -49,7 +49,7 @@
 
 const styles = {
     maxContainer: 
-        "4xl:max-w-[1920px] 3xl:max-w-[1728px] 2xl:max-w-[1536px] xl:max-w-[1280px] lg:max-w-[1024px] md:max-w-[768px] sm:max-w-[640px] xs:max-w-[450px] min-w-[320px] mx-auto 3xl:px-36 md:px-24 sm:px-12 px-4",
+        "4xl:max-w-[1920px] 3xl:max-w-[1728px] 2xl:max-w-[1536px] xl:max-w-[1280px] lg:max-w-[1024px] md:max-w-[768px] sm:max-w-[640px] xs:max-w-[450px] min-w-[320px] mx-auto 3xl:px-36 md:px-24 sm:px-12 px-4", 
 }
 
 const heroStyles = {
@@ -60,6 +60,7 @@ const heroStyles = {
     heroHeadText: "2xl:text-7xl xl:text-6xl lg:text-5xl md:text-5xl sm:text-5xl xs:text-4xl text-3xl",
     heroSubText: "2xl:text-[25px] xl:text-[22px] lg:text-[20px] md:text-[20px] sm:text-[20px] xs:text-[18px] text-[16px]",
     heroSubTextMaxWidth: "2xl:max-w-[530px] xl:max-w-[510px] lg:max-w-[450px] md:max-w-[450px] sm:max-w-[450px] xs:max-w-[340px] max-w-[340px]",
+    heroTextButtonGap: "2xl:mb-12 mb-8",
 }
 
 export {

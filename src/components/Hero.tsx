@@ -45,7 +45,7 @@ const Hero = () => {
                                 {PageTextContent.heroHeadText}
                                 <span className={`${textColorClass900}`}>Yannic</span>
                             </h2>
-                            <p className={`mb-12 ${heroStyles.heroSubTextMaxWidth} dark:text-darkTextPrimary text-textPrimary ${heroStyles.heroSubText}`}>
+                            <p className={`${heroStyles.heroTextButtonGap} ${heroStyles.heroSubTextMaxWidth} dark:text-darkTextPrimary text-textPrimary ${heroStyles.heroSubText}`}>
                                 {PageTextContent.heroSubText1}
                                 <span className={`${textColorClass900}`}>Frontend</span>
                                 {PageTextContent.heroSubText2}
