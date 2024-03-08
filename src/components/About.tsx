@@ -180,6 +180,7 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
             viewport={{ once: true }}
         >
             <label 
+                id={skill.id}
                 className="text-center dark:text-darkTextPrimary text-textPrimary"
                 title={skill.description}
             >
