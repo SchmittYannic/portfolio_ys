@@ -244,15 +244,23 @@ const skillsIT = [
     },
     {
         name: "React",
-        logo: reactLogo,
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
     },
     {
-        name: "Python",
-        logo: pythonLogo,
+        name: "D3",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg",
+    },
+    {
+        name: "Framer Motion",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
     },
     {
         name: "Typescript",
         logo: typescriptLogo,
+    },
+    {
+        name: "Node.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
     },
 ];
 
