@@ -1,29 +1,29 @@
-import { ReactElement, KeyboardEvent, ChangeEvent } from "react"
+import { ReactElement, KeyboardEvent, useRef } from "react"
 import { determineIfCheckbox } from "../utils/typeguards";
 import useSettings from "../hooks/useSettings";
 
 
 const LanguageToggle = (): ReactElement => {
     const { lang, setLang } = useSettings();
+    const checkboxRef = useRef<HTMLInputElement | null>(null);
 
     const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
         const { code } = e;
         if (code === "Space") {
             e.preventDefault();
-            const checkbox = document.getElementById("flag-checkbox");
 
-            if (!checkbox) return;
-            if (!determineIfCheckbox(checkbox)) return;
+            if(!checkboxRef.current) return
+            if (!determineIfCheckbox(checkboxRef.current)) return;
 
-            const checkbox2 = document.getElementById("flag-checkbox") as HTMLInputElement;
-
-            changeLang(!checkbox2.checked);
+            changeLang(!checkboxRef.current.checked);
         }
     };
 
-    const handleChangeLang = (e: ChangeEvent<HTMLInputElement>): void => {
-        changeLang(e.target.checked)
-    };
+    const handleClick = () => {
+        if(!checkboxRef.current) return
+        if (!determineIfCheckbox(checkboxRef.current)) return;
+        changeLang(checkboxRef.current.checked)
+    }
 
     const changeLang = (bool: boolean): void => {
         if (bool) {
@@ -43,16 +43,15 @@ const LanguageToggle = (): ReactElement => {
             className="flex p-2" 
             tabIndex={0}
             onKeyDown={(e) => handleKeyDown(e)}
+            onClick={handleClick}
         >
             <label className="inline-flex items-center w-full cursor-pointer">
                 <span className="sr-only peer">Select Language</span>
                 <input 
+                    ref={checkboxRef}
                     id="flag-checkbox"
                     className="sr-only peer" 
                     type="checkbox" 
-                    onChange={(e) => {
-                        handleChangeLang(e)
-                    }}
                     tabIndex={-1}
                     checked={lang === "de" ? false : true}
                 />                         
