@@ -229,67 +229,121 @@ const education_en: educationType[] = [
     }
 ];
 
-const skillsIT = [
+export type SkillsType = {
+    name: string,
+    logo: string,
+    description: string,
+};
+
+const skillsIT_de: SkillsType[] = [
     {
         name: "HTML5",
         logo: html5Logo,
-        description_en: "The markup language defining the structure of web pages, facilitating content presentation and interaction.",
-        description_de: "Die Auszeichnungssprache, die die Struktur von Webseiten definiert und die Präsentation und Interaktion von Inhalten ermöglicht.",
+        description: "Die Auszeichnungssprache, die die Struktur von Webseiten definiert und die Präsentation und Interaktion von Inhalten ermöglicht.",
     },
     {
         name: "CSS3",
         logo: css3Logo,
-        description_en: "The style sheet language enhancing the visual presentation of HTML elements across web pages",
-        description_de: "Die Stylesheet-Sprache zur Verbesserung der visuellen Präsentation von HTML-Elementen auf Webseiten.",
+        description: "Die Stylesheet-Sprache zur Verbesserung der visuellen Präsentation von HTML-Elementen auf Webseiten.",
     },
     {
         name: "Javascript",
         logo: javascriptLogo,
-        description_en: "A programming language enabling dynamic behavior and interactivity within web pages",
-        description_de: "Die Programmiersprache, die dynamisches Verhalten und Interaktivität innerhalb von Webseiten ermöglicht.",
+        description: "Die Programmiersprache, die dynamisches Verhalten und Interaktivität innerhalb von Webseiten ermöglicht.",
     },
     {
         name: "React",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-        description_en: "A JavaScript library for building user interfaces, offering efficient rendering and component-based architecture.",
-        description_de: "Eine JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, die effiziente Renderung und eine komponentenbasierte Architektur bietet.",
+        description: "Eine JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, die effiziente Renderung und eine komponentenbasierte Architektur bietet.",
     },
     {
         name: "D3",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg",
-        description_en: "A JavaScript library for manipulating documents based on data, enabling dynamic and interactive data visualizations on the web.",
-        description_de: "Eine JavaScript-Bibliothek zum Manipulieren von Dokumenten basierend auf Daten, die dynamische und interaktive Datenvisualisierungen im Web ermöglicht.",
+        description: "Eine JavaScript-Bibliothek zum Manipulieren von Dokumenten basierend auf Daten, die dynamische und interaktive Datenvisualisierungen im Web ermöglicht.",
     },
     {
         name: "Framer Motion",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
-        description_en: "A React library for creating fluid animations and gestures, enhancing user experience in web applications.",
-        description_de: "Eine React-Bibliothek zum Erstellen flüssiger Animationen und Gesten, die die Benutzererfahrung in Webanwendungen verbessert.",
+        description: "Eine React-Bibliothek zum Erstellen flüssiger Animationen und Gesten, die die Benutzererfahrung in Webanwendungen verbessert.",
     },
     {
         name: "Typescript",
         logo: typescriptLogo,
-        description_en: "A superset of JavaScript adding static typing, enhancing code quality and scalability in large-scale applications.",
-        description_de: "Eine Erweiterung von JavaScript, die statische Typisierung hinzufügt und die Codequalität und Skalierbarkeit in großen Anwendungen verbessert.",
+        description: "Eine Erweiterung von JavaScript, die statische Typisierung hinzufügt und die Codequalität und Skalierbarkeit in großen Anwendungen verbessert.",
     },
     {
         name: "Node.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-        description_en: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
-        description_de: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
+        description: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
     },
 ];
 
-const skillsLanguage = [
+const skillsIT_en: SkillsType[] = [
     {
-        name_de: "Deutsch",
-        name_en: "German",
-        logo: germany,
+        name: "HTML5",
+        logo: html5Logo,
+        description: "The markup language defining the structure of web pages, facilitating content presentation and interaction.",
     },
     {
-        name_de: "Englisch",
-        name_en: "English",
+        name: "CSS3",
+        logo: css3Logo,
+        description: "The style sheet language enhancing the visual presentation of HTML elements across web pages",
+    },
+    {
+        name: "Javascript",
+        logo: javascriptLogo,
+        description: "A programming language enabling dynamic behavior and interactivity within web pages",
+    },
+    {
+        name: "React",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+        description: "A JavaScript library for building user interfaces, offering efficient rendering and component-based architecture.",
+    },
+    {
+        name: "D3",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg",
+        description: "A JavaScript library for manipulating documents based on data, enabling dynamic and interactive data visualizations on the web.",
+    },
+    {
+        name: "Framer Motion",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+        description: "A React library for creating fluid animations and gestures, enhancing user experience in web applications.",
+    },
+    {
+        name: "Typescript",
+        logo: typescriptLogo,
+        description: "A superset of JavaScript adding static typing, enhancing code quality and scalability in large-scale applications.",
+    },
+    {
+        name: "Node.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+        description: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
+    },
+];
+
+const skillsLanguage_de: SkillsType[] = [
+    {
+        name: "Deutsch",
+        logo: germany,
+        description: "Deutsch",
+    },
+    {
+        name: "Englisch",
         logo: uk,
+        description: "Englisch",
+    },
+];
+
+const skillsLanguage_en: SkillsType[] = [
+    {
+        name: "German",
+        logo: germany,
+        description: "German",
+    },
+    {
+        name: "English",
+        logo: uk,
+        description: "English",
     },
 ];
 
@@ -381,8 +435,10 @@ export {
     colorOption,
     education_de,
     education_en,
-    skillsIT,
-    skillsLanguage,
+    skillsIT_de,
+    skillsIT_en,
+    skillsLanguage_de,
+    skillsLanguage_en,
     projects,
     tagData,
 
