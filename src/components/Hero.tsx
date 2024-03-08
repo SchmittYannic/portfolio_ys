@@ -40,7 +40,7 @@ const Hero = () => {
                             </h2>
                             <p className={`${heroStyles.heroTextButtonGap} ${heroStyles.heroSubTextMaxWidth} dark:text-darkTextPrimary text-textPrimary ${heroStyles.heroSubText}`}>
                                 {PageTextContent.heroSubText1}
-                                <span className={`${textColorClass900}`}>Frontend</span>
+                                <span className={`${textColorClass900} font-bold`}>Frontend</span>
                                 {PageTextContent.heroSubText2}
                             </p>
                             <div className="inline-flex gap-5">
