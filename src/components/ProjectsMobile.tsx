@@ -1,11 +1,12 @@
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { ProjectType, projects } from "../constants";
 import useSettings from "../hooks/useSettings"
-import { projectsMobileStyles, styles } from "../styles";
-import TechTags from "./ui/TechTags";
 import useDynamicClasses from "../hooks/useDynamicClasses";
+import { projectsMobileStyles, styles } from "../styles";
+import { ProjectType, projects } from "../constants";
+import TechTags from "./ui/TechTags";
+import { ExpandButton } from "./ui";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
@@ -59,13 +60,12 @@ const Project = ({ project }: { project: ProjectType }) => {
 
                 {description.length > 1 && (
                     <div className="mb-6">
-                        <button 
-                            className={`"px-4 py-2 w-[130px] rounded-full ${styles.secondaryBackground} dark:text-darkTextPrimary text-textPrimary"`}
+                        <ExpandButton
                             type="button"
                             onClick={() => setIsDescExpanded(!isDescExpanded)}
                         >
                             {isDescExpanded ? PageTextContent.collapseButton : PageTextContent.expandButton}
-                        </button>
+                        </ExpandButton>
                     </div>
                 )}
 

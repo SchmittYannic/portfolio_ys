@@ -1,13 +1,14 @@
 import { Fragment, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { ProjectType, projects } from "../constants";
 import useSettings from "../hooks/useSettings";
+import useDynamicClasses from "../hooks/useDynamicClasses";
 import { projectsStyles, styles } from "../styles";
 import { githubLogo, playButton } from "../assets";
-import TechTags from "./ui/TechTags";
 import { removeItemFromArray } from "../constants/array";
-import useDynamicClasses from "../hooks/useDynamicClasses";
+import { ProjectType, projects } from "../constants";
+import TechTags from "./ui/TechTags";
+import { ExpandButton } from "./ui";
 
 
 const Projects = () => {
@@ -123,13 +124,12 @@ const Projects = () => {
 
                                 {description.length > 1 && (
                                     <div className="mb-6">
-                                        <button 
-                                            className={`px-4 py-2 w-[130px] rounded-full ${styles.secondaryBackground} dark:text-darkTextPrimary text-textPrimary`}
+                                        <ExpandButton
                                             type="button"
                                             onClick={() => setIsDescExpanded(!isDescExpanded)}
                                         >
                                             {isDescExpanded ? PageTextContent.collapseButton : PageTextContent.expandButton}
-                                        </button>
+                                        </ExpandButton>
                                     </div>
                                 )}
 
