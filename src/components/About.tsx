@@ -50,12 +50,10 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
     const { theme } = useSettings();
     const { PageTextContent } = useDynamicClasses();
     const ref: React.MutableRefObject<null | HTMLLIElement> = useRef(null);
-    const { scrollYProgress } = useScroll(
-        {
-            target: ref,
-            offset: ["center end", "center center"]
-        }
-    );
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["center end", "center center"]
+    });
 
     return (
         <li ref={ref}>
@@ -144,7 +142,7 @@ const SkillsSubSection = () => {
     });
     const { scrollYProgress: langProgress } = useScroll({
         target: langRef,
-        offset: ["start 1", "center 0.6"],
+        offset: ["start 1", "center 0.5"],
     });
 
     return (
