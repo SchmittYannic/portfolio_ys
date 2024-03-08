@@ -35,7 +35,7 @@ const Projects = () => {
 
                     <div className={`flex justify-between items-start`}>
                         <div className={`project-display ${styles.sectionPaddingBottom} ${projectsStyles.projectDisplayWidth}`}>
-                            <div className={`project-display-img-wrapper relative dark:bg-darkBase bg-base border-2 ${borderColorClass900}`}>
+                            <div className={`project-display-img-wrapper relative border-2 ${borderColorClass900} ${styles.primaryBackground}`}>
                                 <motion.img 
                                     key={activeProject.image}
                                     src={activeProject.image} 
@@ -138,7 +138,7 @@ const Projects = () => {
                             </motion.div>
                         </div>
 
-                        <div className={`projects-selection ${projectsStyles.projectsSelectionWidth} mb-8 dark:bg-darkBase bg-base flex flex-col`}>
+                        <div className={`projects-selection ${projectsStyles.projectsSelectionWidth} mb-8 flex flex-col ${styles.primaryBackground}`}>
                             <AnimatePresence mode="popLayout">
                                 {selectedProjects.map((project) => {
 
@@ -162,7 +162,7 @@ const Projects = () => {
                                             transition={{ type: "spring" }}
                                         >
                                             <button 
-                                                className="project-preview relative grow dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base dark:disabled:bg-darkBase"
+                                                className="project-preview relative grow dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base dark:disabled:bg-darkBase-900"
                                                 type="button"
                                                 onClick={handleSelectProjectClicked}
                                             >

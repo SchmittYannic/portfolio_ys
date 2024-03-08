@@ -88,7 +88,7 @@ const ContactForm = (): ReactElement => {
                 >
                     <span>{lang === "de" ? TextContent.german.nameLabel : TextContent.english.nameLabel}</span>
                     <input 
-                        className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
+                        className={`py-2 px-6 rounded-md ${styles.primaryBackground}`}
                         type="text"
                         name="name"
                         placeholder=""
@@ -102,7 +102,7 @@ const ContactForm = (): ReactElement => {
                 >
                     <span>{lang === "de" ? TextContent.german.emailLabel : TextContent.english.emailLabel}</span>
                     <input 
-                        className="py-2 px-6 rounded-md dark:bg-darkBase bg-base"
+                        className={`py-2 px-6 rounded-md ${styles.primaryBackground}`}
                         type="email"
                         name="email"
                         placeholder=""
@@ -116,7 +116,7 @@ const ContactForm = (): ReactElement => {
                 >
                     <span>{lang === "de" ? TextContent.german.messageLabel : TextContent.english.messageLabel}</span>
                     <textarea 
-                        className="py-4 px-6 rounded-md dark:bg-darkBase bg-base resize-none"
+                        className={`py-4 px-6 rounded-md resize-none ${styles.primaryBackground}`}
                         name="message" 
                         rows={7}
                         placeholder=""
@@ -128,7 +128,7 @@ const ContactForm = (): ReactElement => {
                 </label>
 
                 <button
-                    className="py-3 px-8 rounded-md flex flex-row justify-center items-center dark:bg-darkBase bg-base"
+                    className={`py-3 px-8 rounded-md flex flex-row justify-center items-center ${styles.primaryBackground}`}
                     type="submit"
                 >
                     {isSending &&

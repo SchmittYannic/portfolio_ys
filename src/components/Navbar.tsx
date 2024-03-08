@@ -6,6 +6,7 @@ import { Toggle, LanguageToggle } from ".";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import useSettings from "../hooks/useSettings";
+import { styles } from "../styles";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -18,7 +19,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
     const cog: string = theme === "light" ? cogBlack : cogWhite;
 
     return (
-        <div className={`xl:ml-6 xl:mt-6 mt-1 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
+        <div className={`xl:ml-6 xl:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-textPrimary dark:text-darkTextPrimary">
                 <div className="text-center font-medium truncate">
                     {lang === "de" ? TextContent.german.navigation : TextContent.english.navigation}
@@ -159,7 +160,7 @@ const SettingsMenu = () => {
     }, [focusedRadio])
 
     return (
-        <div className="lg:mr-6 lg:mt-6 mt-1 rounded-lg dark:bg-darkBase bg-base border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10">
+        <div className={`lg:mr-6 lg:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="h-12 w-full px-5 py-2 flex items-center text-sm dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
             </div>
@@ -327,7 +328,7 @@ const Navbar = (): ReactElement => {
         <>
             <div ref={ref} />
             <header 
-                className={`${isInView ? "bg-transparent" : "dark:bg-darkBase bg-base dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl"} fixed w-full z-50`}
+                className={`${isInView ? "bg-transparent" : `${styles.primaryBackground} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl`} fixed w-full z-50`}
                 style={{height: navbarHeight}}
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">

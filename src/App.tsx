@@ -6,6 +6,7 @@ import useToast from "./hooks/useToast"
 import useWindowSize from "./hooks/useWindowSize"
 import { Hero, Navbar, About, Contact, Toast, Projects } from "./components"
 import ProjectsMobile from "./components/ProjectsMobile"
+import { styles } from "./styles"
 
 const App = () => {
     const { setTheme, setLang, setColor } = useSettings();
@@ -42,7 +43,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div className="app relative w-full h-full dark:bg-darkBase bg-base">
+            <div className={`app relative w-full h-full ${styles.primaryBackground}`}>
                 <Navbar />
                 <Hero />
                 {isXlScreen ? <Projects /> : <ProjectsMobile />}
