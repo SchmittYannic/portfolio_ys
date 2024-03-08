@@ -11,7 +11,7 @@ const TechTags = ({ tags }: {tags: TagKeyType[]}) => {
                     <a 
                         key={idx}
                         className={`px-2 rounded-sm ${tagTextColor} ${tagBgColor}`}
-                        href={tagData[tag].name}
+                        href={tagData[tag].link}
                         target="_blank"
                     >
                         # {tagData[tag].name}
