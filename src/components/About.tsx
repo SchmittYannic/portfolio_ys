@@ -1,10 +1,11 @@
-import { useRef } from "react";
-import { motion, MotionValue, useScroll } from "framer-motion";
+import { PropsWithChildren, useRef, useState } from "react";
+import { motion, MotionValue, useMotionValueEvent, useScroll } from "framer-motion";
 
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles"
 import { education_de, education_en, educationType, liIconCircleRadius, skillsIT_de, skillsIT_en, skillsLanguage_de, skillsLanguage_en, SkillsType } from "../constants";
+import { ScrollOffset } from "../utils/types";
 
 type fillColorType = `fill-${string}`;
 
@@ -27,8 +28,13 @@ const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, f
 
 const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const { color } = useSettings();
+    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
+
+    useMotionValueEvent(progress, "change", (latest) => {
+        if (latest === 1) setIsAnimationComplete(true);
+    });
 
     return (
         <figure className={`absolute left-0 ${strokeColorClass900}`}>
@@ -37,7 +43,7 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
                 <motion.circle 
                     cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase fill-base"
                     style={{
-                        pathLength : progress
+                        pathLength: isAnimationComplete ? 1 : progress
                     }}
                 />
                 <circle cx="50" cy="50" r={liIconCircleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
@@ -114,6 +120,13 @@ const EducationSubSection = () => {
         target: ref,
         offset: ["start 1", "center 0.5"],
     });
+
+    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        if (latest === 1) setIsAnimationComplete(true);
+    });
+
     const education = lang === "de" ? education_de : education_en;
 
     return (
@@ -126,7 +139,7 @@ const EducationSubSection = () => {
                 {/* left position should be liIconCirleRadius in pixel */}
                 <motion.div
                     className={`absolute top-0 left-[20px] w-[4px] h-full origin-top ${bgColorClass900}`}
-                    style={{scaleY: scrollYProgress}}
+                    style={{ scaleY: isAnimationComplete ? 1 : scrollYProgress }}
                 />
 
                 <ul className="ml-16 flex flex-col items-start">
@@ -181,19 +194,33 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
     )
 };
 
+const SkillsSubSectionHeadText = ({ children, offset }: PropsWithChildren<{offset: ScrollOffset}>) => {
+    const { bgColorClass900 } = useDynamicClasses();
+    const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: offset,
+    });
+    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        if (latest === 1) setIsAnimationComplete(true);
+    });
+
+    return (
+        <h4 ref={ref} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+            {children}
+            <motion.div
+                className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`}
+                style={{ scaleX: isAnimationComplete ? 1 : scrollYProgress }}
+            />
+        </h4>
+    )
+}
+
 const SkillsSubSection = () => {
     const { lang } = useSettings();
-    const { PageTextContent, bgColorClass900 } = useDynamicClasses();
-    const itRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
-    const langRef: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
-    const { scrollYProgress: itProgress } = useScroll({
-        target: itRef,
-        offset: ["start 1", "center 0.3"],
-    });
-    const { scrollYProgress: langProgress } = useScroll({
-        target: langRef,
-        offset: ["start 1", "center 0.5"],
-    });
+    const { PageTextContent } = useDynamicClasses();
 
     const skillsIT = lang === "en" ? skillsIT_en : skillsIT_de;
     const skillsLanguage = lang === "en" ? skillsLanguage_en : skillsLanguage_de;
@@ -204,10 +231,9 @@ const SkillsSubSection = () => {
                 {PageTextContent.skillsHead}
             </h3>
 
-            <h4 ref={itRef} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+            <SkillsSubSectionHeadText offset={["start 1", "center 0.3"]}>
                 {PageTextContent.itHead}
-                <motion.div className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`} style={{ scaleX: itProgress }}/>
-            </h4>
+            </SkillsSubSectionHeadText>
 
             <div className="mb-14 flex justify-center flex-wrap">
                 {skillsIT.map((skill, idx) => (
@@ -219,10 +245,9 @@ const SkillsSubSection = () => {
                 ))}
             </div>
 
-            <h4 ref={langRef} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+            <SkillsSubSectionHeadText offset={["start 1", "center 0.5"]}>
                 {PageTextContent.languageHead}
-                <motion.div className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`} style={{ scaleX: langProgress }}/>
-            </h4>
+            </SkillsSubSectionHeadText>
 
             <div className="flex justify-center flex-wrap">
                 {skillsLanguage.map((language, idx) => (
