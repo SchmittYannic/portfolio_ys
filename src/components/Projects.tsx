@@ -162,7 +162,7 @@ const Projects = () => {
                                             transition={{ type: "spring" }}
                                         >
                                             <button 
-                                                className="project-preview relative grow dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base dark:disabled:bg-darkBase-900"
+                                                className="project-preview relative grow dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base-900 dark:disabled:bg-darkBase-900"
                                                 type="button"
                                                 onClick={handleSelectProjectClicked}
                                             >

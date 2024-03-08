@@ -45,7 +45,7 @@ const Toast = ({ toastList }: {toastList: ToastType[]}) => {
                         <div className="ml-3 text-sm font-normal">{toast.text}</div>
                         <button
                             type="button"
-                            className="ml-auto -mx-1.5 -my-1.5 bg-baseTertiary text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-base inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-darkBaseSecondary dark:hover:bg-darkBaseTertiary" 
+                            className="ml-auto -mx-1.5 -my-1.5 bg-baseTertiary text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-base-900 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-darkBaseSecondary dark:hover:bg-darkBaseTertiary" 
                             data-dismiss-target={toast.type === "success" ? "#toast-success" : "#toast-failure"} 
                             aria-label="Close"
                             onClick={() => deleteToast(toast.id)}

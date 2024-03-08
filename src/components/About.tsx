@@ -41,7 +41,7 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
             <svg className="-rotate-90" width={liIconCircleRadius} height={liIconCircleRadius} viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r={liIconCircleRadius} className="dark:stroke-base stroke-darkBase-900 stroke-[4px] fill-none" />
                 <motion.circle 
-                    cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase-900 fill-base"
+                    cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase-900 fill-base-900"
                     style={{
                         pathLength: isAnimationComplete ? 1 : progress
                     }}

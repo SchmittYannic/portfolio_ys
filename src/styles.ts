@@ -4,7 +4,7 @@ const styles = {
     sectionPaddingBottom: 
         "sm:pb-48 pb-24",
     primaryBackground: 
-        "dark:bg-darkBase-900 bg-base",
+        "dark:bg-darkBase-900 bg-base-900",
 }
 
 const heroStyles = {
