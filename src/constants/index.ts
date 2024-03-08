@@ -347,10 +347,11 @@ const skillsLanguage_en: SkillsType[] = [
     },
 ];
 
-const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3"] as const;
+const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3", "framermotion"] as const;
 export type TagKeyType = typeof tags[number];
 
 type TagType = {
+    name: string,
     textColor: string,
     backgroundColor: string,
 }
@@ -361,29 +362,40 @@ type TagDataType = {
 
 const tagData: TagDataType = {
     React: {
+        name: "React",
         textColor: "",
         backgroundColor: "bg-sky-400",
     },
     Typescript: {
+        name: "Typescript",
         textColor: "text-white",
         backgroundColor: "bg-blue-700",
     },
     Tailwind: {
+        name: "Tailwind",
         textColor: "text-cyan-500",
         backgroundColor: "bg-gray-300",
     },
     SCSS: {
+        name: "SCSS",
         textColor: "text-white",
         backgroundColor: "bg-pink-500",
     },
     Flask: {
+        name: "Flask",
         textColor: "text-black",
         backgroundColor: "bg-white",
     },
     D3: {
+        name: "D3",
         textColor: "text-white",
         backgroundColor: "bg-orange-500",
-    }
+    },
+    framermotion: {
+        name: "Framer Motion",
+        textColor: "dark:text-black text-white",
+        backgroundColor: "dark:bg-white bg-black",
+    },
 }
 
 export type ProjectType = {

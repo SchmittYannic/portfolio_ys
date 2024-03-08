@@ -12,7 +12,7 @@ const TechTags = ({ tags }: {tags: TagKeyType[]}) => {
                         key={idx}
                         className={`px-2 rounded-sm ${tagTextColor} ${tagBgColor}`}
                     >
-                        # {tag}
+                        # {tagData[tag].name}
                     </div>
                 )
             })}
