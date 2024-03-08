@@ -127,7 +127,7 @@ const EducationSubSection = () => {
             <div ref={ref} className="relative w-full">
                 {/* left position should be liIconCirleRadius in pixel minus half the width of the line */}
                 <motion.div
-                    className={`absolute top-0 left-[18px] w-[4px] h-full origin-top ${bgColorClass900}`}
+                    className={`absolute top-[2px] left-[18px] w-[4px] h-full origin-top ${bgColorClass900}`}
                     style={{ scaleY: scrollYProgress }}
                 />
 
