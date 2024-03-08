@@ -1,4 +1,4 @@
-import { ReactElement, KeyboardEvent, useRef } from "react"
+import { ReactElement, KeyboardEvent, useRef, ChangeEvent } from "react"
 import { determineIfCheckbox } from "../utils/typeguards";
 import useSettings from "../hooks/useSettings";
 
@@ -19,11 +19,9 @@ const LanguageToggle = (): ReactElement => {
         }
     };
 
-    const handleClick = () => {
-        if(!checkboxRef.current) return
-        if (!determineIfCheckbox(checkboxRef.current)) return;
-        changeLang(checkboxRef.current.checked)
-    }
+    const handleChangeLang = (e: ChangeEvent<HTMLInputElement>): void => {
+        changeLang(e.target.checked)
+    };
 
     const changeLang = (bool: boolean): void => {
         if (bool) {
@@ -40,10 +38,7 @@ const LanguageToggle = (): ReactElement => {
     return (
         <div 
             id="flag-checkbox-wrapper"
-            className="flex p-2" 
-            tabIndex={0}
-            onKeyDown={(e) => handleKeyDown(e)}
-            onClick={handleClick}
+            className="flex p-2 dark:focus-within:bg-darkBase-700 focus-within:bg-base-700 rounded-md" 
         >
             <label className="inline-flex items-center w-full cursor-pointer">
                 <span className="sr-only peer">Select Language</span>
@@ -52,7 +47,8 @@ const LanguageToggle = (): ReactElement => {
                     id="flag-checkbox"
                     className="sr-only peer" 
                     type="checkbox" 
-                    tabIndex={-1}
+                    onKeyDown={(e) => handleKeyDown(e)}
+                    onChange={handleChangeLang}
                     checked={lang === "de" ? false : true}
                 />                         
                 <svg
