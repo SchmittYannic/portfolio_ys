@@ -1,5 +1,5 @@
-import { PropsWithChildren, useRef, useState } from "react";
-import { motion, MotionValue, useMotionValueEvent, useScroll } from "framer-motion";
+import { PropsWithChildren, useRef } from "react";
+import { motion, MotionValue, useScroll } from "framer-motion";
 
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
@@ -28,13 +28,8 @@ const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, f
 
 const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const { color } = useSettings();
-    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
-
-    useMotionValueEvent(progress, "change", (latest) => {
-        if (latest === 1) setIsAnimationComplete(true);
-    });
 
     return (
         <figure className={`absolute left-0 ${strokeColorClass900}`}>
@@ -43,7 +38,7 @@ const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
                 <motion.circle 
                     cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase-900 fill-base-900"
                     style={{
-                        pathLength: isAnimationComplete ? 1 : progress
+                        pathLength: progress,
                     }}
                 />
                 <circle cx="50" cy="50" r={liIconCircleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
@@ -121,12 +116,6 @@ const EducationSubSection = () => {
         offset: ["start 1", "center 0.5"],
     });
 
-    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
-
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        if (latest === 1) setIsAnimationComplete(true);
-    });
-
     const education = lang === "de" ? education_de : education_en;
 
     return (
@@ -139,7 +128,7 @@ const EducationSubSection = () => {
                 {/* left position should be liIconCirleRadius in pixel minus half the width of the line */}
                 <motion.div
                     className={`absolute top-0 left-[18px] w-[4px] h-full origin-top ${bgColorClass900}`}
-                    style={{ scaleY: isAnimationComplete ? 1 : scrollYProgress }}
+                    style={{ scaleY: scrollYProgress }}
                 />
 
                 <ul className="ml-16 flex flex-col items-start">
@@ -202,18 +191,13 @@ const SkillsSubSectionHeadText = ({ children, offset }: PropsWithChildren<{offse
         target: ref,
         offset: offset,
     });
-    const [isAnimationComplete, setIsAnimationComplete] = useState(false);
-
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        if (latest === 1) setIsAnimationComplete(true);
-    });
 
     return (
         <h4 ref={ref} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
             {children}
             <motion.div
                 className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`}
-                style={{ scaleX: isAnimationComplete ? 1 : scrollYProgress }}
+                style={{ scaleX: scrollYProgress }}
             />
         </h4>
     )
