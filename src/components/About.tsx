@@ -61,9 +61,17 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
 
             <motion.div
                 className="mb-8"
-                initial={{ y:50 }}
-                whileInView={{ y:0 }}
-                transition={{duration:0.5, type:"spring"}}
+                initial={{ 
+                    y: 50,
+                }}
+                whileInView={{
+                    y: 0,
+                }}
+                transition={{
+                    duration: 0.5,
+                    type:"spring",
+                }}
+                viewport={{ once: true }}
             >
                 <h4 className="dark:text-darkTextPrimary text-textPrimary text-2xl mb-2">
                     {entry.name}
@@ -143,10 +151,12 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
             initial={{
                 y: 300,
                 rotate: 75,
+                opacity: 0,
             }}
             whileInView={{
                 y: 0,
                 rotate: 0,
+                opacity: 1,
                 transition: {
                     type: "spring",
                     bounce: 0.4,
@@ -154,6 +164,7 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
                     delay: (idx % 3)*0.1,
                 }
             }}
+            viewport={{ once: true }}
         >
             <label 
                 className="text-center dark:text-darkTextPrimary text-textPrimary"
@@ -253,6 +264,7 @@ const About = () => {
                                     duration: 1,
                                 }
                             }}
+                            viewport={{ once: true }}
                         >
                             <EducationSubSection />
                         </motion.div>
@@ -267,6 +279,7 @@ const About = () => {
                                     duration: 1,
                                 }
                             }}
+                            viewport={{ once: true }}
                         >
                             <SkillsSubSection />
                         </motion.div>
