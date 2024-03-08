@@ -77,7 +77,16 @@ const TextContent = {
         successMessage: "Message sent successfully.",
         failureMessage: "Something went wrong.",
     }
-}
+};
+
+const TooltipTextContent = {
+    german: {
+        languageToggle: "Sprache wechseln"
+    },
+    english: {
+        languageToggle: "Switch languages"
+    }
+};
 
 export type ColorOptionType = {
     id: string,
@@ -497,6 +506,7 @@ const projects: ProjectType[] = [
 export {
     navLinks,
     TextContent,
+    TooltipTextContent,
     colorOption,
     education_de,
     education_en,
