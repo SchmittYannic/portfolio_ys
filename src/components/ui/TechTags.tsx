@@ -8,12 +8,14 @@ const TechTags = ({ tags }: {tags: TagKeyType[]}) => {
                 const tagBgColor = tagData[tag].backgroundColor
 
                 return (
-                    <div 
+                    <a 
                         key={idx}
                         className={`px-2 rounded-sm ${tagTextColor} ${tagBgColor}`}
+                        href={tagData[tag].name}
+                        target="_blank"
                     >
                         # {tagData[tag].name}
-                    </div>
+                    </a>
                 )
             })}
         </div>

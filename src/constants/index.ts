@@ -354,6 +354,7 @@ type TagType = {
     name: string,
     textColor: string,
     backgroundColor: string,
+    link: string,
 }
 
 type TagDataType = {
@@ -365,46 +366,55 @@ const tagData: TagDataType = {
         name: "React",
         textColor: "",
         backgroundColor: "bg-sky-400",
+        link: "https://react.dev/",
     },
     Typescript: {
         name: "Typescript",
         textColor: "text-white",
         backgroundColor: "bg-blue-700",
+        link: "https://www.typescriptlang.org/",
     },
     Tailwind: {
         name: "Tailwind",
         textColor: "text-cyan-500",
         backgroundColor: "bg-gray-300",
+        link: "https://tailwindcss.com/",
     },
     SCSS: {
         name: "SCSS",
         textColor: "text-white",
         backgroundColor: "bg-pink-500",
+        link: "https://sass-lang.com/",
     },
     Flask: {
         name: "Flask",
         textColor: "text-black",
         backgroundColor: "bg-white",
+        link: "https://flask.palletsprojects.com/",
     },
     D3: {
         name: "D3",
         textColor: "text-white",
         backgroundColor: "bg-orange-500",
+        link: "https://d3js.org/",
     },
     Framermotion: {
         name: "Framer Motion",
         textColor: "dark:text-black text-white",
         backgroundColor: "dark:bg-white bg-black",
+        link: "https://www.framer.com/motion/",
     },
     Node: {
         name: "Node js",
         textColor: "text-white",
-        backgroundColor: "bg-green-600"
+        backgroundColor: "bg-green-600",
+        link: "https://nodejs.org/",
     },
     Mongodb: {
         name: "MongoDB",
         textColor: "text-green-600",
         backgroundColor: "bg-whiteChocolate",
+        link: "https://www.mongodb.com/",
     }
 }
 
