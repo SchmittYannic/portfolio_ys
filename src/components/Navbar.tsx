@@ -7,6 +7,7 @@ import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarH
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles";
+import useWindowSize from "../hooks/useWindowSize";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -316,6 +317,7 @@ const MobileNav = (): ReactElement => {
 
 const Navbar = (): ReactElement => {
     const { color } = useSettings();
+    const windowSize = useWindowSize();
     const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
     const isInView = useInView(ref);
@@ -323,6 +325,7 @@ const Navbar = (): ReactElement => {
     const scaleX = scrollYProgress;
 
     const bgColorClass600: string = `bg-action${color}-600`;
+    const isLgScreen = windowSize.width && windowSize.width >= 1024;
 
     return (
         <>
@@ -332,12 +335,15 @@ const Navbar = (): ReactElement => {
                 style={{height: navbarHeight}}
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">
-                    <div className="h-full lg:grid grid-cols-[1fr_50px_1fr] items-center hidden">
-                        <DesktopNav />
-                    </div>
-                    <div className="h-full lg:hidden flex items-center justify-between">
-                        <MobileNav />
-                    </div>
+                    {isLgScreen ? (
+                        <div className="h-full grid grid-cols-[1fr_50px_1fr] items-center">
+                            <DesktopNav />
+                        </div>
+                    ) : (
+                        <div className="h-full flex items-center justify-between">
+                            <MobileNav />
+                        </div>
+                    )}
                 </nav>
 
                 <motion.div className={`h-1 ${bgColorClass600} origin-left`} style={{ scaleX }} />
