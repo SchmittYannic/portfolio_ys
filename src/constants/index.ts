@@ -14,7 +14,7 @@ const TextContent = {
         
         contact: "Kontakt",
         heroHeadText: "Hi, Ich bin ",
-        heroSubText1: "angehender Webentwickler mit Fokus auf dem ",
+        heroSubText1: "Junior Webentwickler mit Fokus auf dem ",
         heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
         
         aboutHead: "Über mich",
