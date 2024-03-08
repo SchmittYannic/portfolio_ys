@@ -5,9 +5,21 @@ export default {
     theme: {
         extend: {
             colors: {
-                base: "#fff",
-                baseSecondary: "#e8e8e8",
-                baseTertiary: "#f0f0f0",
+                base: {
+                    900: "#ffffff",
+                    800: "#e6e6e6",
+                    700: "#cccccc",
+                    600: "#b3b3b3",
+                    500: "#999999",
+                    400: "#808080",
+                    300: "#666666",
+                    200: "#4c4c4c",
+                    100: "#333333",
+                    50: "#191919",
+                    0: "#000000",
+                },
+                baseSecondary: "#e8e8e8", // delete once fully unused
+                baseTertiary: "#f0f0f0", // delete once fully unused
                 textPrimary: "#000000",
                 actionBlue: {
                     900: "#1d9bf0",
@@ -76,9 +88,21 @@ export default {
                     100: "#fff6cc",
                 },
                 whiteChocolate: "rgb(232, 231, 213)",
-                darkBase: "#15202b",
-                darkBaseSecondary: "#38444d",
-                darkBaseTertiary: "#060a0d", //"#0f161e",
+                darkBase: {
+                    900: "#15202b",
+                    800: "#2c3640",
+                    700: "#444d55",
+                    600: "#5b636b",
+                    500: "#737980",
+                    400: "#8a9095",
+                    300: "#a1a6aa",
+                    200: "#b9bcbf",
+                    100: "#d0d2d5",
+                    50: "#e8e9ea",
+                    0: "#ffffff",
+                },
+                darkBaseSecondary: "#38444d", // delete once fully unused
+                darkBaseTertiary: "#060a0d", // delete once fully unused
                 darkTextPrimary: "#fff",
             },
             screens: {
