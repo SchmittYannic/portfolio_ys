@@ -75,6 +75,7 @@ export default {
                     200: "#fff2b3",
                     100: "#fff6cc",
                 },
+                whiteChocolate: "rgb(232, 231, 213)",
                 darkBase: "#15202b",
                 darkBaseSecondary: "#38444d",
                 darkBaseTertiary: "#060a0d", //"#0f161e",
