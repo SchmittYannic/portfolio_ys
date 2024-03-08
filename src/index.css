@@ -63,6 +63,15 @@ body {
     flex-direction: column;
 }
 
+#framermotion img {
+    mask-image: url("https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg");
+    background-color: black;
+}
+
+.dark #framermotion img {
+    background-color: white;
+}
+
 .form-wrapper::before {
     animation: rotate 5s infinite linear;
 }
