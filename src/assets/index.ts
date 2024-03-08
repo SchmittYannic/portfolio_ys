@@ -45,8 +45,8 @@ export {
     html5Logo,
     css3Logo,
     javascriptLogo,
-    reactLogo,
-    pythonLogo,
+    reactLogo, //currently not used
+    pythonLogo, //currently not used
     typescriptLogo,
     githubLogo,
     playButton,
