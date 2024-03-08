@@ -1,6 +1,6 @@
-import { ReactElement, KeyboardEvent, ChangeEvent } from 'react'
-import { determineIfCheckbox } from '../utils/typeguards';
-import useSettings from '../hooks/useSettings';
+import { ReactElement, KeyboardEvent, ChangeEvent } from "react"
+import { determineIfCheckbox } from "../utils/typeguards";
+import useSettings from "../hooks/useSettings";
 
 
 const LanguageToggle = (): ReactElement => {
@@ -39,11 +39,13 @@ const LanguageToggle = (): ReactElement => {
 
     return (
         <div 
+            id="flag-checkbox-wrapper"
             className="flex p-2" 
             tabIndex={0}
             onKeyDown={(e) => handleKeyDown(e)}
         >
             <label className="inline-flex items-center w-full cursor-pointer">
+                <span className="sr-only peer">Select Language</span>
                 <input 
                     id="flag-checkbox"
                     className="sr-only peer" 
