@@ -262,6 +262,12 @@ const skillsIT_de: SkillsType[] = [
         description: "Eine JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, die effiziente Renderung und eine komponentenbasierte Architektur bietet.",
     },
     {
+        id: "tailwind",
+        name: "Tailwind",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+        description: "Ein Utility-First-CSS-Framework, das die Webentwicklung vereinfacht, indem es eine Reihe vordefinierter Utility-Klassen zur Gestaltung von HTML-Elementen bereitstellt.",
+    },
+    {
         id: "d3",
         name: "D3",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg",
@@ -311,6 +317,12 @@ const skillsIT_en: SkillsType[] = [
         name: "React",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
         description: "A JavaScript library for building user interfaces, offering efficient rendering and component-based architecture.",
+    },
+    {
+        id: "tailwind",
+        name: "Tailwind",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+        description: "A utility-first CSS framework that streamlines web development by providing a set of pre-defined utility classes for styling HTML elements.",
     },
     {
         id: "d3",
