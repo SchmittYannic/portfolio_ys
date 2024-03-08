@@ -19,14 +19,14 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
     const cog: string = theme === "light" ? cogBlack : cogWhite;
 
     return (
-        <div className={`xl:ml-6 xl:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
+        <div className={`xl:ml-6 xl:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 ${styles.primaryBorderColor} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-textPrimary dark:text-darkTextPrimary">
                 <div className="text-center font-medium truncate">
                     {lang === "de" ? TextContent.german.navigation : TextContent.english.navigation}
                 </div>
             </div>
 
-            <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
+            <hr className={`${styles.primaryBorderColor}`} />
 
             <ul className="py-2 text-sm">
                 {navLinks.map(link => (
@@ -46,7 +46,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
                 ))}
             </ul>
 
-            <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
+            <hr className={`${styles.primaryBorderColor}`} />
 
             <button 
                 type="button"
@@ -160,7 +160,7 @@ const SettingsMenu = () => {
     }, [focusedRadio])
 
     return (
-        <div className={`lg:mr-6 lg:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 dark:border-darkBaseSecondary border-baseSecondary dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
+        <div className={`lg:mr-6 lg:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 ${styles.primaryBorderColor} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="h-12 w-full px-5 py-2 flex items-center text-sm dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
             </div>
@@ -177,7 +177,7 @@ const SettingsMenu = () => {
                 ))}
             </ul>
 
-            <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
+            <hr className={`${styles.primaryBorderColor}`} />
 
             <div className="flex p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                 <label className="inline-flex items-center w-full cursor-pointer">

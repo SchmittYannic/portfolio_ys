@@ -60,7 +60,7 @@ const Project = ({ project }: { project: ProjectType }) => {
                 {description.length > 1 && (
                     <div className="mb-6">
                         <button 
-                            className="px-4 py-2 w-[130px] rounded-full dark:bg-darkBaseSecondary bg-baseSecondary dark:text-darkTextPrimary text-textPrimary"
+                            className={`"px-4 py-2 w-[130px] rounded-full ${styles.secondaryBackground} dark:text-darkTextPrimary text-textPrimary"`}
                             type="button"
                             onClick={() => setIsDescExpanded(!isDescExpanded)}
                         >
@@ -82,7 +82,7 @@ const ProjectsMobile = () => {
         <section id="projects" className={`relative ${sectionPaddingTop}`}>
             <div className={`projects-background absolute inset-0 flex flex-col ${sectionPaddingTop}`}>
                 <div className={`w-full h-[200px] ${bgColorClass900}`} />
-                <div className={`w-full dark:bg-darkBaseTertiary bg-baseTertiary grow`} />
+                <div className={`w-full ${styles.primaryBackground} grow`} />
                 <div className={`w-full h-[10px] ${bgColorClass900}`} />
             </div>
 

@@ -23,7 +23,7 @@ const Projects = () => {
         <section id="projects" className={`relative ${sectionPaddingTop}`}>
             <div className={`projects-background absolute inset-0 flex flex-col ${sectionPaddingTop}`}>
                 <div className={`w-full h-[200px] ${bgColorClass900}`} />
-                <div className={`w-full dark:bg-darkBaseTertiary bg-baseTertiary grow`} />
+                <div className={`w-full ${styles.primaryBackground} grow`} />
                 <div className={`w-full h-[10px] ${bgColorClass900}`} />
             </div>
 
@@ -124,7 +124,7 @@ const Projects = () => {
                                 {description.length > 1 && (
                                     <div className="mb-6">
                                         <button 
-                                            className="px-4 py-2 w-[130px] rounded-full dark:bg-darkBaseSecondary bg-baseSecondary dark:text-darkTextPrimary text-textPrimary"
+                                            className={`px-4 py-2 w-[130px] rounded-full ${styles.secondaryBackground} dark:text-darkTextPrimary text-textPrimary`}
                                             type="button"
                                             onClick={() => setIsDescExpanded(!isDescExpanded)}
                                         >
@@ -138,7 +138,7 @@ const Projects = () => {
                             </motion.div>
                         </div>
 
-                        <div className={`projects-selection ${projectsStyles.projectsSelectionWidth} mb-8 flex flex-col ${styles.primaryBackground}`}>
+                        <div className={`projects-selection ${projectsStyles.projectsSelectionWidth} mb-8 flex flex-col`}>
                             <AnimatePresence mode="popLayout">
                                 {selectedProjects.map((project) => {
 
@@ -162,7 +162,7 @@ const Projects = () => {
                                             transition={{ type: "spring" }}
                                         >
                                             <button 
-                                                className="project-preview relative grow dark:hover:bg-darkBaseSecondary hover:bg-baseSecondary disabled:bg-base-900 dark:disabled:bg-darkBase-900"
+                                                className={`project-preview relative grow ${styles.secondaryBackground} ${styles.secondaryHoverBackground} disabled:bg-base-900 dark:disabled:bg-darkBase-900`}
                                                 type="button"
                                                 onClick={handleSelectProjectClicked}
                                             >
@@ -177,7 +177,7 @@ const Projects = () => {
                                                     </h4>
                                                 </div>
                                             </button>
-                                            <hr className="dark:border-darkBaseSecondary border-baseSecondary" />
+                                            <hr className={`${styles.primaryBorderColor}`} />
                                         </motion.div>
                                     )
                                 })}

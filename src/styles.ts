@@ -5,6 +5,14 @@ const styles = {
         "sm:pb-48 pb-24",
     primaryBackground: 
         "dark:bg-darkBase-900 bg-base-900",
+    primaryHoverBackground:
+        "hover:dark:bg-darkBase-700 hover:bg-base-700",
+    primaryBorderColor:
+        "dark:border-darkBase-700 border-base-700",
+    secondaryBackground:
+        "dark:bg-darkBase-800 bg-base-800",
+    secondaryHoverBackground:
+        "hover:dark:bg-darkBase-600 hover:bg-base-600",
 }
 
 const heroStyles = {
