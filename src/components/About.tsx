@@ -62,35 +62,35 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
             <LiIcon progress={scrollYProgress} />
 
             <motion.div
-                className="mb-6"
-                initial={{y:50}}
-                whileInView={{y:0}}
+                className="mb-8"
+                initial={{ y:50 }}
+                whileInView={{ y:0 }}
                 transition={{duration:0.5, type:"spring"}}
             >
-                <h4 className="dark:text-darkTextPrimary text-textPrimary text-xl mb-1">
+                <h4 className="dark:text-darkTextPrimary text-textPrimary text-2xl mb-2">
                     {entry.name}
                 </h4>
-                <span className="flex items-center text-sm dark:text-darkTextPrimary/60 text-textPrimary/60">
+                <span className="flex items-center text-md dark:text-darkTextPrimary/60 text-textPrimary/60">
                     <CalendarIcon classes={"w-3 h-3 mr-1"} fillColor={theme === "dark" ? "fill-darkTextPrimary/60" : "fill-textPrimary/60"} />
                     {entry.start} - {entry.end}
                 </span>
-                <p className="mb-2 text-sm dark:text-darkTextPrimary text-textPrimary">
+                <p className="mb-3 text-md dark:text-darkTextPrimary text-textPrimary">
                     {entry.location}
                 </p>
                 <ul className="ml-4 list-disc list-outside dark:text-darkTextPrimary text-textPrimary">
-                    <li>
+                    <li className="text-lg">
                         {entry.grade === "noDegree" 
                             ? PageTextContent.noDegree 
                             : PageTextContent.gpa + entry.grade
                         }
                     </li>
                     {entry.thesis &&
-                        <li>
+                        <li className="text-lg">
                             {PageTextContent.thesis}{entry.thesis}
                         </li>
                     }
                     {entry.focus &&
-                        <li>
+                        <li className="text-lg">
                             {PageTextContent.focus}{entry.focus}
                         </li>
                     }
