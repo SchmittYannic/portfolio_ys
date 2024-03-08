@@ -8,10 +8,6 @@ import useToast from "../hooks/useToast";
 import { styles } from "../styles";
 import useDynamicClasses from "../hooks/useDynamicClasses";
 
-//public key: gdcYzt-5KPdG9Jqcn
-//template id: template_bm7dtbn
-//service id: service_upmv0ki
-
 const ContactForm = (): ReactElement => {
     const { lang } = useSettings();
     const { addToast } = useToast();
@@ -35,8 +31,8 @@ const ContactForm = (): ReactElement => {
         setIsSending(true);
 
         emailjs.send(
-            "service_upmv0ki", 
-            "template_bm7dtbn",
+            process.env.EMAILJS_SERVICE_ID ?? "", 
+            process.env.EMAILJS_TEMPLATE_ID ?? "",
             {
                 from_name: form.name,
                 to_name: "Yannic",
@@ -44,7 +40,7 @@ const ContactForm = (): ReactElement => {
                 to_email: "schmitt.yannic@web.com",
                 message: form.message
             },
-            "gdcYzt-5KPdG9Jqcn"
+            process.env.EMAILJS_PUBLIC_KEY
         ).then(() => {
             setIsSending(false);
             //alert("Thank you. I will get back to you as soon as possible");
