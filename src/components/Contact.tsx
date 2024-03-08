@@ -12,6 +12,10 @@ const ContactForm = (): ReactElement => {
     const { lang } = useSettings();
     const { addToast } = useToast();
 
+    const serviceId = String(process.env.EMAILJS_SERVICE_ID);
+    const templateId = String(process.env.EMAILJS_TEMPLATE_ID);
+    const publicKey = String(process.env.EMAILJS_PUBLIC_KEY);
+
     type FormType = {
         name: string,
         email: string,
@@ -31,8 +35,8 @@ const ContactForm = (): ReactElement => {
         setIsSending(true);
 
         emailjs.send(
-            process.env.EMAILJS_SERVICE_ID ?? "", 
-            process.env.EMAILJS_TEMPLATE_ID ?? "",
+            serviceId, 
+            templateId,
             {
                 from_name: form.name,
                 to_name: "Yannic",
@@ -40,7 +44,7 @@ const ContactForm = (): ReactElement => {
                 to_email: "schmitt.yannic@web.com",
                 message: form.message
             },
-            process.env.EMAILJS_PUBLIC_KEY
+            publicKey
         ).then(() => {
             setIsSending(false);
             //alert("Thank you. I will get back to you as soon as possible");
