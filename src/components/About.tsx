@@ -4,7 +4,7 @@ import { motion, MotionValue, useScroll } from "framer-motion";
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles"
-import { education_de, education_en, educationType, liIconCircleRadius, skillsIT, skillsLanguage } from "../constants";
+import { education_de, education_en, educationType, liIconCircleRadius, skillsIT_de, skillsIT_en, skillsLanguage_de, skillsLanguage_en, SkillsType } from "../constants";
 
 type fillColorType = `fill-${string}`;
 
@@ -131,6 +131,45 @@ const EducationSubSection = () => {
     )
 };
 
+type SkillPropsType = {
+    skill: SkillsType,
+    idx: number,
+}
+
+const Skill = ({ skill, idx }: SkillPropsType) => {
+    return (
+        <motion.div
+            className="p-[10px] m-[5px] flex flex-col justify-center items-center"
+            initial={{
+                y: 300,
+                rotate: 75,
+            }}
+            whileInView={{
+                y: 0,
+                rotate: 0,
+                transition: {
+                    type: "spring",
+                    bounce: 0.4,
+                    duration: 1,
+                    delay: (idx % 3)*0.1,
+                }
+            }}
+        >
+            <label 
+                className="text-center dark:text-darkTextPrimary text-textPrimary"
+                title={skill.description}
+            >
+                <p className="py-3">{skill.name}</p>
+                <img 
+                    src={skill.logo} 
+                    alt={skill.name} 
+                    className="w-[100px] h-[100px]" 
+                />
+            </label>
+        </motion.div>
+    )
+};
+
 const SkillsSubSection = () => {
     const { lang } = useSettings();
     const { PageTextContent, bgColorClass900 } = useDynamicClasses();
@@ -145,6 +184,9 @@ const SkillsSubSection = () => {
         offset: ["start 1", "center 0.5"],
     });
 
+    const skillsIT = lang === "en" ? skillsIT_en : skillsIT_de;
+    const skillsLanguage = lang === "en" ? skillsLanguage_en : skillsLanguage_de;
+
     return (
         <>
             <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
@@ -157,23 +199,12 @@ const SkillsSubSection = () => {
             </h4>
 
             <div className="mb-14 flex justify-center flex-wrap">
-                {skillsIT.map(skill => (
-                    <div
-                        key={skill.name}
-                        className="p-[10px] m-[5px] flex flex-col justify-center items-center"
-                    >
-                        <label 
-                            className="text-center dark:text-darkTextPrimary text-textPrimary"
-                            title={lang === "en" ? skill.description_en : skill.description_de}
-                        >
-                            <p className="py-3">{skill.name}</p>
-                            <img 
-                                src={skill.logo} 
-                                alt={skill.name} 
-                                className="w-[100px] h-[100px]" 
-                            />
-                        </label>
-                    </div>
+                {skillsIT.map((skill, idx) => (
+                    <Skill 
+                        key={skill.name + idx} 
+                        skill={skill} 
+                        idx={idx}
+                    />
                 ))}
             </div>
 
@@ -183,20 +214,12 @@ const SkillsSubSection = () => {
             </h4>
 
             <div className="flex justify-center flex-wrap">
-                {skillsLanguage.map(language => (
-                    <div
-                        key={language.name_en}
-                        className="p-[10px] m-[5px] flex flex-col justify-center items-center"
-                    >
-                        <label className="text-center dark:text-darkTextPrimary text-textPrimary">
-                            <p className="py-3">{lang === "de" ? language.name_de : language.name_en}</p>
-                            <img 
-                                src={language.logo} 
-                                alt={`${language.name_en}-icon`} 
-                                className="w-[100px] h-[100px]"
-                            />
-                        </label>
-                    </div>
+                {skillsLanguage.map((language, idx) => (
+                    <Skill 
+                        key={language.name}
+                        skill={language}
+                        idx={idx}
+                    />
                 ))}
             </div>
         </>
