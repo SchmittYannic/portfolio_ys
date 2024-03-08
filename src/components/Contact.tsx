@@ -12,9 +12,9 @@ const ContactForm = (): ReactElement => {
     const { lang } = useSettings();
     const { addToast } = useToast();
 
-    const serviceId = String(process.env.EMAILJS_SERVICE_ID);
-    const templateId = String(process.env.EMAILJS_TEMPLATE_ID);
-    const publicKey = String(process.env.EMAILJS_PUBLIC_KEY);
+    const serviceId = String(import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    const templateId = String(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    const publicKey = String(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
     type FormType = {
         name: string,
