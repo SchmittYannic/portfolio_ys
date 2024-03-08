@@ -162,7 +162,10 @@ const SkillsSubSection = () => {
                         key={skill.name}
                         className="p-[10px] m-[5px] flex flex-col justify-center items-center"
                     >
-                        <label className="text-center dark:text-darkTextPrimary text-textPrimary">
+                        <label 
+                            className="text-center dark:text-darkTextPrimary text-textPrimary"
+                            title={lang === "en" ? skill.description_en : skill.description_de}
+                        >
                             <p className="py-3">{skill.name}</p>
                             <img 
                                 src={skill.logo} 
