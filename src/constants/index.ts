@@ -294,12 +294,18 @@ const skillsIT_de: SkillsType[] = [
         logo: typescriptLogo,
         description: "Eine Erweiterung von JavaScript, die statische Typisierung hinzufügt und die Codequalität und Skalierbarkeit in großen Anwendungen verbessert.",
     },
-    {
-        id: "nodejs",
-        name: "Node.js",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-        description: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
-    },
+    // {
+    //     id: "nodejs",
+    //     name: "Node.js",
+    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    //     description: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
+    // },
+    // {
+    //     id: "express",
+    //     name: "Express",
+    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+    //     description: "Ein minimalistisches Webanwendungs-Framework für Node.js, das einen robusten Satz von Funktionen zum Erstellen von Webanwendungen und APIs bereitstellt.",
+    // },
 ];
 
 const skillsIT_en: SkillsType[] = [
@@ -351,12 +357,18 @@ const skillsIT_en: SkillsType[] = [
         logo: typescriptLogo,
         description: "A superset of JavaScript adding static typing, enhancing code quality and scalability in large-scale applications.",
     },
-    {
-        id: "nodejs",
-        name: "Node.js",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-        description: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
-    },
+    // {
+    //     id: "nodejs",
+    //     name: "Node.js",
+    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    //     description: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
+    // },
+    // {
+    //     id: "express",
+    //     name: "Express",
+    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+    //     description: "A minimalist web application framework for Node.js, providing a robust set of features for building web applications and APIs.",
+    // },
 ];
 
 const skillsLanguage_de: SkillsType[] = [
@@ -389,7 +401,7 @@ const skillsLanguage_en: SkillsType[] = [
     },
 ];
 
-const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3", "Framermotion", "Node", "Mongodb"] as const;
+const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3", "Framermotion", "Node", "Mongodb", "Express"] as const;
 export type TagKeyType = typeof tags[number];
 
 type TagType = {
@@ -457,7 +469,13 @@ const tagData: TagDataType = {
         textColor: "text-green-600",
         backgroundColor: "bg-whiteChocolate",
         link: "https://www.mongodb.com/",
-    }
+    },
+    Express: {
+        name: "Express",
+        textColor: "dark:text-black text-white",
+        backgroundColor: "dark:bg-white bg-black",
+        link: "https://expressjs.com/",
+    },
 }
 
 export type ProjectType = {
@@ -488,7 +506,7 @@ const projects: ProjectType[] = [
         image: placeholderProject,
         description_de: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         description_en: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
-        tags: ["React", "Typescript", "SCSS", "Node", "Mongodb"],
+        tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
         githubLink: "https://www.google.com",
         liveLink: "https://www.google.com",
     },
