@@ -1,10 +1,13 @@
 import { ReactElement, KeyboardEvent, useRef, ChangeEvent } from "react"
 import { determineIfCheckbox } from "../utils/typeguards";
 import useSettings from "../hooks/useSettings";
+import useDynamicClasses from "../hooks/useDynamicClasses";
+import { styles } from "../styles";
 
 
 const LanguageToggle = (): ReactElement => {
     const { lang, setLang } = useSettings();
+    const { TooltipContent } = useDynamicClasses();
     const checkboxRef = useRef<HTMLInputElement | null>(null);
 
     const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>): void => {
@@ -17,6 +20,12 @@ const LanguageToggle = (): ReactElement => {
 
             changeLang(!checkboxRef.current.checked);
         }
+    };
+
+    const handleClick = () => {
+        if(!checkboxRef.current) return
+        if (!determineIfCheckbox(checkboxRef.current)) return;
+        changeLang(checkboxRef.current.checked);
     };
 
     const handleChangeLang = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -38,7 +47,11 @@ const LanguageToggle = (): ReactElement => {
     return (
         <div 
             id="flag-checkbox-wrapper"
-            className="flex p-2 dark:focus-within:bg-darkBase-700 focus-within:bg-base-700 rounded-md" 
+            className={`flex p-2 dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 rounded-md ${styles.primaryHoverBackground}`} 
+            title={TooltipContent.languageToggle}
+            tabIndex={0}
+            onKeyDown={(e) => handleKeyDown(e)}
+            onClick={handleClick}
         >
             <label className="inline-flex items-center w-full cursor-pointer">
                 <span className="sr-only peer">Select Language</span>
@@ -47,7 +60,7 @@ const LanguageToggle = (): ReactElement => {
                     id="flag-checkbox"
                     className="sr-only peer" 
                     type="checkbox" 
-                    onKeyDown={(e) => handleKeyDown(e)}
+                    tabIndex={-1}
                     onChange={handleChangeLang}
                     checked={lang === "de" ? false : true}
                 />                         
