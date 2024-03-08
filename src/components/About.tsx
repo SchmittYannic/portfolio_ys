@@ -242,12 +242,34 @@ const About = () => {
 
                     <div className={`grid xl:grid-cols-2 xl:gap-16 grid-cols-1 ${styles.sectionPaddingBottom}`}>
                         {/* margin bottom should be the same as sectionPaddingBottom */}
-                        <div className="education-wrapper xl:mb-0 mb-24">
+                        <motion.div 
+                            className="education-wrapper xl:mb-0 mb-24"
+                            initial={{
+                                x: -200
+                            }}
+                            whileInView={{
+                                x: 0,
+                                transition: {
+                                    duration: 1,
+                                }
+                            }}
+                        >
                             <EducationSubSection />
-                        </div>
-                        <div className="skills-wrapper">
+                        </motion.div>
+                        <motion.div 
+                            className="skills-wrapper"
+                            initial={{
+                                x: 200
+                            }}
+                            whileInView={{
+                                x: 0,
+                                transition: {
+                                    duration: 1,
+                                }
+                            }}
+                        >
                             <SkillsSubSection />
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
