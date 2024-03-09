@@ -201,12 +201,12 @@ const DesktopNavLink = ({ children }: PropsWithChildren) => {
         lastHoveredNavElement,
         setLastHoveredNavElement,
     } = useNavHoverState();
-    const ref = useRef<HTMLLIElement | null>(null);
+    const ref = useRef<HTMLDivElement | null>(null);
 
     return (
-        <li
+        <div
             ref={ref}
-            className={`relative group px-2 flex items-center rounded-md focus-within:dark:bg-darkBase-800 focus-within:bg-base-800`}
+            className={`group h-full rounded-md focus-within:dark:bg-darkBase-800 focus-within:bg-base-800`}
             onMouseOver={() => setLastHoveredNavElement(ref.current)}
         >
             {ref.current && ref.current === lastHoveredNavElement && (
@@ -216,7 +216,7 @@ const DesktopNavLink = ({ children }: PropsWithChildren) => {
                 />
             )}
             {children}
-        </li>
+        </div>
     )
 }
 
@@ -234,40 +234,48 @@ const DesktopNav = () => {
             </div>
 
             <div className="py-2">
-                <Link
-                    to="/"
-                    className={`w-full h-full flex items-center justify-center rounded-md dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 ${styles.primaryHoverBackground}`}
-                    onClick={() => window.scrollTo(0, 0)}
-                >
-                    <img 
-                        src={logo}
-                        alt="page-logo" 
-                        className="w-[50px] h-[50px]"
-                    />
-                </Link>
+                <div className="relative h-full">
+                    <DesktopNavLink>
+                        <Link
+                            to="/"
+                            className="relative h-full flex items-center justify-center z-20 rounded-md"
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
+                            <img 
+                                src={logo}
+                                alt="page-logo" 
+                                className="w-[50px] h-[50px]"
+                            />
+                        </Link>
+                    </DesktopNavLink>
+                </div>
             </div>
 
             <ul className="mr-6 py-2 justify-self-end flex xl:gap-16 gap-7 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
-                    <DesktopNavLink key={link.id}>
-                        <a className="relative z-20" href={`#${link.id}`}>
-                            {lang === "de" ? link.title_de : link.title_en}
-                        </a>
-                    </DesktopNavLink>
+                    <li className="relative">
+                        <DesktopNavLink key={link.id}>
+                            <a className="relative px-2 h-full flex items-center z-20 rounded-md" href={`#${link.id}`}>
+                                {lang === "de" ? link.title_de : link.title_en}
+                            </a>
+                        </DesktopNavLink>
+                    </li>
                 ))}
 
-                <DesktopNavLink>
-                    <button 
-                        type="button"
-                        className="relative flex items-center gap-2 z-20"
-                        onClick={() => {
-                            setIsSettingOpen(!isSettingOpen)
-                        }}
-                    >
-                        <img src={cog} alt="settings" className="w-5 h-5" />
-                        {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
-                    </button>
-                </DesktopNavLink>
+                <li className="relative">
+                    <DesktopNavLink>
+                        <button 
+                            type="button"
+                            className="relative px-2 h-full flex items-center gap-2 z-20 rounded-md"
+                            onClick={() => {
+                                setIsSettingOpen(!isSettingOpen)
+                            }}
+                        >
+                            <img src={cog} alt="settings" className="w-5 h-5" />
+                            {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
+                        </button>
+                    </DesktopNavLink>
+                </li>
             </ul>
 
             <div 
