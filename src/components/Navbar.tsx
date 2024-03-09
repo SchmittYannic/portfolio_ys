@@ -9,6 +9,7 @@ import { cogBlack, cogWhite, logoBlack, logoWhite } from "../assets";
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
+import useDynamicClasses from "../hooks/useDynamicClasses";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -270,6 +271,7 @@ const DesktopNav = () => {
 
 const MobileNav = (): ReactElement => {
     const { theme } = useSettings();
+    const { TooltipContent } = useDynamicClasses();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
     const [scope, animate] = useAnimate();
@@ -355,6 +357,7 @@ const MobileNav = (): ReactElement => {
                             ref={scope}
                             className="relative px-2 h-full w-14 z-20 rounded-md"
                             type="button"
+                            title={isMenuOpen ? TooltipContent.closeMenu : TooltipContent.burgerMenu}
                             onClick={() => {
                                 setIsMenuOpen(!isMenuOpen);
                                 setIsSettingOpen(false);

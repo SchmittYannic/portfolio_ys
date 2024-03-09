@@ -81,10 +81,14 @@ const TextContent = {
 
 const TooltipTextContent = {
     german: {
-        languageToggle: "Sprache wechseln"
+        languageToggle: "Sprache wechseln",
+        burgerMenu: "Navigation öffnen",
+        closeMenu: "Navigation schließen",
     },
     english: {
-        languageToggle: "Switch languages"
+        languageToggle: "Switch languages",
+        burgerMenu: "Open Navigation",
+        closeMenu: "Close Navigation",
     }
 };
 
