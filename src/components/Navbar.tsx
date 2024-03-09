@@ -233,8 +233,8 @@ const DesktopNav = () => {
 
             <ul className="mr-6 py-2 justify-self-end flex 2xl:gap-16 xl:gap-10 gap-1 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
-                    <li className="relative">
-                        <NavElement key={link.id}>
+                    <li key={link.id} className="relative">
+                        <NavElement>
                             <a className="relative px-2 h-full flex items-center z-20 rounded-md" href={`#${link.id}`}>
                                 {lang === "de" ? link.title_de : link.title_en}
                             </a>
