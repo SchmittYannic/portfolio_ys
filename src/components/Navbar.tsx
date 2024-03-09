@@ -196,7 +196,7 @@ const SettingsMenu = () => {
     )
 }
 
-const DesktopNavLink = ({ children }: PropsWithChildren) => {
+const DesktopNavElement = ({ children }: PropsWithChildren) => {
     const { 
         lastHoveredNavElement,
         setLastHoveredNavElement,
@@ -235,7 +235,7 @@ const DesktopNav = () => {
 
             <div className="py-2">
                 <div className="relative h-full">
-                    <DesktopNavLink>
+                    <DesktopNavElement>
                         <Link
                             to="/"
                             className="relative h-full flex items-center justify-center z-20 rounded-md"
@@ -247,23 +247,23 @@ const DesktopNav = () => {
                                 className="w-[50px] h-[50px]"
                             />
                         </Link>
-                    </DesktopNavLink>
+                    </DesktopNavElement>
                 </div>
             </div>
 
             <ul className="mr-6 py-2 justify-self-end flex xl:gap-16 gap-7 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
                     <li className="relative">
-                        <DesktopNavLink key={link.id}>
+                        <DesktopNavElement key={link.id}>
                             <a className="relative px-2 h-full flex items-center z-20 rounded-md" href={`#${link.id}`}>
                                 {lang === "de" ? link.title_de : link.title_en}
                             </a>
-                        </DesktopNavLink>
+                        </DesktopNavElement>
                     </li>
                 ))}
 
                 <li className="relative">
-                    <DesktopNavLink>
+                    <DesktopNavElement>
                         <button 
                             type="button"
                             className="relative px-2 h-full flex items-center gap-2 z-20 rounded-md"
@@ -274,7 +274,7 @@ const DesktopNav = () => {
                             <img src={cog} alt="settings" className="w-5 h-5" />
                             {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
                         </button>
-                    </DesktopNavLink>
+                    </DesktopNavElement>
                 </li>
             </ul>
 
