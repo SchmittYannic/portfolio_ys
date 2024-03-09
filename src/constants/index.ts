@@ -1,6 +1,6 @@
 import { html5Logo, css3Logo, javascriptLogo, typescriptLogo, germany, uk, placeholderProject, DataVisualizerImg } from "../assets";
 
-const navbarHeight = 70;
+const navbarHeight = 72;
 const menuWidth = 180;
 const liIconCircleRadius = 40;
 
