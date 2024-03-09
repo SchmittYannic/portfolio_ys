@@ -50,7 +50,7 @@ const TextContent = {
 
         contact: "Contact",
         heroHeadText: "Hi, I am ",
-        heroSubText1: "aspiring web developer with focus on the ",
+        heroSubText1: "junior web developer with a focus on the ",
         heroSubText2: ". Using the latest technologies, I will bring your designs to life.",
 
         aboutHead: "About me",
