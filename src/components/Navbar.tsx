@@ -204,32 +204,35 @@ const DesktopNav = () => {
 
     return (
         <>
-            <div className="w-fit h-fit ml-6">
+            <div className="ml-6 py-2 w-fit flex items-center">
                 <LanguageToggle />
             </div>
 
-            <Link
-                to="/"
-                className="justify-self-center"
-                onClick={() => window.scrollTo(0, 0)}
-            >
-                <img 
-                    src={logo}
-                    alt="page-logo" 
-                    className="w-[50px] h-[50px]"
-                />
-            </Link>
+            <div className="py-2">
+                <Link
+                    to="/"
+                    className={`w-full h-full flex items-center justify-center rounded-md dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 ${styles.primaryHoverBackground}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                >
+                    <img 
+                        src={logo}
+                        alt="page-logo" 
+                        className="w-[50px] h-[50px]"
+                    />
+                </Link>
+            </div>
 
-            <ul className="mr-6 justify-self-end flex xl:gap-16 gap-7 items-center xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
+            <ul className="mr-6 py-2 justify-self-end flex xl:gap-16 gap-7 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
                     <li
                         key={link.id}
+                        className={`px-2 flex items-center rounded-md dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 ${styles.primaryHoverBackground}`}
                     >
                         <a href={`#${link.id}`}>{lang === "de" ? link.title_de : link.title_en}</a>
                     </li>
                 ))}
 
-                <li>
+                <li className={`px-2 flex items-center rounded-md dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 ${styles.primaryHoverBackground}`}>
                     <button 
                         type="button"
                         className="flex items-center gap-2"
@@ -336,7 +339,7 @@ const Navbar = (): ReactElement => {
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">
                     {isLgScreen ? (
-                        <div className="h-full grid grid-cols-[1fr_50px_1fr] items-center">
+                        <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
                             <DesktopNav />
                         </div>
                     ) : (

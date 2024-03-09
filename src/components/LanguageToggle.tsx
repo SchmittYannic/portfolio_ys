@@ -47,7 +47,7 @@ const LanguageToggle = (): ReactElement => {
     return (
         <div 
             id="flag-checkbox-wrapper"
-            className={`flex p-2 dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 rounded-md ${styles.primaryHoverBackground}`} 
+            className={`px-2 h-full flex dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 rounded-md ${styles.primaryHoverBackground}`} 
             title={TooltipContent.languageToggle}
             tabIndex={0}
             onKeyDown={(e) => handleKeyDown(e)}
