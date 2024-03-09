@@ -1,6 +1,6 @@
 import { html5Logo, css3Logo, javascriptLogo, typescriptLogo, germany, uk, placeholderProject, DataVisualizerImg } from "../assets";
 
-const navbarHeight = 72;
+const navbarHeight = 72; // when changing also change safelist in tailwind.config -> pt-[${navbarHeight}px]
 const menuWidth = 180;
 const liIconCircleRadius = 40;
 
