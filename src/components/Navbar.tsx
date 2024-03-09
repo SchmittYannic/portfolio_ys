@@ -340,7 +340,7 @@ const Navbar = (): ReactElement => {
     const scaleX = scrollYProgress;
 
     const bgColorClass600: string = `bg-action${color}-600`;
-    const isLgScreen = windowSize.width && windowSize.width >= 1024;
+    const isXlScreen = windowSize.width && windowSize.width >= 1280;
 
     return (
         <>
@@ -350,7 +350,7 @@ const Navbar = (): ReactElement => {
                 style={{height: navbarHeight}}
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">
-                    {isLgScreen ? (
+                    {isXlScreen ? (
                         <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
                             <DesktopNav />
                         </div>
