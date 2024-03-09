@@ -127,13 +127,19 @@ const colorOption: ColorOptionType[] = [
     },
 ]
 
-const navLinks = [
+export type NavLinkType = {
+    id: string,
+    title_en: string,
+    title_de: string,
+}
+
+const navLinks: NavLinkType[] = [
     {
         id: "projects",
         //logoLight: htmlTagBlack,
         //logoDark: htmlTagWhite,
         title_en: "Projects",
-        title_de: "Projekte"
+        title_de: "Projekte",
     },
     {
         id: "about",
@@ -147,7 +153,7 @@ const navLinks = [
         //logoLight: emailBlack,
         //logoDark: emailWhite,
         title_en: "Contact",
-        title_de: "Kontakt"
+        title_de: "Kontakt",
     },
 ];
 
