@@ -287,34 +287,55 @@ const MobileNav = (): ReactElement => {
 
     return (
         <>  
-            <div className="ml-6">
-                <LanguageToggle />
-            </div>                      
+            <div className="ml-6 py-2 w-fit flex items-center">
+                <div className="relative h-full">
+                    <NavElement>
+                        <LanguageToggle />
+                    </NavElement>
+                </div>
+            </div>                     
          
-            <Link
-                to="/"
-                onClick={() => {
-                    window.scrollTo(0, 0);
-                }}
-            >
-                <img 
-                    src={logo} 
-                    alt="page-logo" 
-                    className="w-[50px] h-[50px]" 
-                />
-            </Link>
+            <div className="py-2">
+                <div className="relative h-full">
+                    <NavElement>
+                        <Link
+                            to="/"
+                            className="relative h-full flex items-center justify-center z-20 rounded-md"
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
+                            <img 
+                                src={logo}
+                                alt="page-logo" 
+                                className="w-[50px] h-[50px]"
+                            />
+                        </Link>
+                    </NavElement>
+                </div>
+            </div>
 
-            <div className={`mr-6`}>
-                <img 
-                    src={isMenuOpen ? close : menu}
-                    alt={isMenuOpen ? "close-burger-menu" : "burger-menu"} 
-                    className="w-[50px] h-[50px] cursor-pointer"
-                    tabIndex={0}
-                    onClick={() => {
-                        setIsMenuOpen(!isMenuOpen);
-                    }}
-                    onKeyDown={handleKeyDown}
-                />
+            <div className={`mr-6 py-2 justify-self-end`}>
+                <div className="relative h-full">
+                    <NavElement>
+                        <button
+                            className="relative px-2 h-full z-20 rounded-md"
+                            type="button"
+                            onClick={() => {
+                                setIsMenuOpen(!isMenuOpen);
+                            }}
+                        >
+                            <img 
+                                src={isMenuOpen ? close : menu}
+                                alt={isMenuOpen ? "close-burger-menu" : "burger-menu"} 
+                                className="w-[50px] h-[50px] cursor-pointer"
+                                tabIndex={0}
+                                onClick={() => {
+                                    setIsMenuOpen(!isMenuOpen);
+                                }}
+                                onKeyDown={handleKeyDown}
+                            />
+                        </button>
+                    </NavElement>
+                </div>
             </div>
 
             <div 
@@ -350,15 +371,9 @@ const Navbar = (): ReactElement => {
                 style={{height: navbarHeight}}
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">
-                    {isXlScreen ? (
-                        <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
-                            <DesktopNav />
-                        </div>
-                    ) : (
-                        <div className="h-full flex items-center justify-between">
-                            <MobileNav />
-                        </div>
-                    )}
+                    <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
+                        {isXlScreen ? <DesktopNav /> : <MobileNav />}
+                    </div>
                 </nav>
 
                 <motion.div className={`h-1 ${bgColorClass600} origin-left`} style={{ scaleX }} />
