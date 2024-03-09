@@ -341,7 +341,7 @@ const MobileNav = (): ReactElement => {
             }
         }
         animateBurgerMenu();
-    }, [isMenuOpen])
+    }, [isMenuOpen]);
 
     return (
         <>  
@@ -427,7 +427,8 @@ const Navbar = (): ReactElement => {
     const scaleX = scrollYProgress;
 
     const bgColorClass600: string = `bg-action${color}-600`;
-    const isXlScreen = windowSize.width && windowSize.width >= 1280;
+    const isInitialRender: boolean = windowSize.width === undefined;
+    const isXlScreen: boolean = windowSize.width !== undefined && windowSize.width >= 1280;
 
     return (
         <>
@@ -438,7 +439,12 @@ const Navbar = (): ReactElement => {
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">
                     <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
-                        {isXlScreen ? <DesktopNav /> : <MobileNav />}
+                        {isInitialRender 
+                            ? <></> 
+                            : isXlScreen 
+                            ? <DesktopNav /> 
+                            : <MobileNav />
+                        }     
                     </div>
                 </nav>
 
