@@ -211,7 +211,7 @@ const DesktopNav = () => {
     useEffect(() => {
         if (!scope.current) return
 
-        const rotationAnimation = animate("img", { rotate: 360 }, { ease: "linear", repeat: Infinity, duration: 1, });
+        const rotationAnimation = animate("img", { rotate: 360 }, { ease: "linear", repeat: Infinity, duration: 2, });
         rotationAnimation.pause();
         setAnimation(rotationAnimation);
     }, [])
