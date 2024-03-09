@@ -10,6 +10,7 @@ import useSettings from "../hooks/useSettings";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
 import useDynamicClasses from "../hooks/useDynamicClasses";
+import useNavHoverState from "../hooks/useNavHoverState";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -419,6 +420,7 @@ const MobileNav = (): ReactElement => {
 
 const Navbar = (): ReactElement => {
     const { color } = useSettings();
+    const { setLastHoveredNavElement } = useNavHoverState();
     const windowSize = useWindowSize();
     const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
@@ -436,6 +438,7 @@ const Navbar = (): ReactElement => {
             <header 
                 className={`${isInView ? "bg-transparent" : `${styles.primaryBackground} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl`} fixed w-full z-50`}
                 style={{height: navbarHeight}}
+                onMouseLeave={() => setLastHoveredNavElement(null)}
             >
                 <nav className="relative h-full mx-auto max-w-[1920px] min-w-[320px]">
                     <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
