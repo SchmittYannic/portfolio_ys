@@ -12,7 +12,7 @@ const NavElement = ({ children }: PropsWithChildren): ReactElement => {
     return (
         <div
             ref={ref}
-            className={`group h-full rounded-md focus-within:dark:bg-darkBase-800 focus-within:bg-base-800`}
+            className={`group h-full rounded-md [&:has(:focus-visible)]:dark:bg-darkBase-800 [&:has(:focus-visible)]:bg-base-800`}
             onMouseOver={() => setLastHoveredNavElement(ref.current)}
         >
             {ref.current && ref.current === lastHoveredNavElement && (
