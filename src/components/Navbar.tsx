@@ -1,4 +1,4 @@
-import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
+import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement, PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 import { useInView, useScroll, motion } from "framer-motion";
 
@@ -8,6 +8,7 @@ import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuB
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
+import useNavHoverState from "../hooks/useNavHoverState";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -195,6 +196,30 @@ const SettingsMenu = () => {
     )
 }
 
+const DesktopNavLink = ({ children }: PropsWithChildren) => {
+    const { 
+        lastHoveredNavElement,
+        setLastHoveredNavElement,
+    } = useNavHoverState();
+    const ref = useRef<HTMLLIElement | null>(null);
+
+    return (
+        <li
+            ref={ref}
+            className={`relative group px-2 flex items-center rounded-md focus-within:dark:bg-darkBase-800 focus-within:bg-base-800`}
+            onMouseOver={() => setLastHoveredNavElement(ref.current)}
+        >
+            {ref.current && ref.current === lastHoveredNavElement && (
+                <motion.div 
+                    layoutId="hover-box" 
+                    className={`absolute inset-0 rounded-md z-10 group-hover:dark:bg-darkBase-700  group-hover:bg-base-700`} 
+                />
+            )}
+            {children}
+        </li>
+    )
+}
+
 const DesktopNav = () => {
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
     const { lang, theme} = useSettings();
@@ -224,18 +249,17 @@ const DesktopNav = () => {
 
             <ul className="mr-6 py-2 justify-self-end flex xl:gap-16 gap-7 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
-                    <li
-                        key={link.id}
-                        className={`px-2 flex items-center rounded-md dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 ${styles.primaryHoverBackground}`}
-                    >
-                        <a href={`#${link.id}`}>{lang === "de" ? link.title_de : link.title_en}</a>
-                    </li>
+                    <DesktopNavLink key={link.id}>
+                        <a className="relative z-20" href={`#${link.id}`}>
+                            {lang === "de" ? link.title_de : link.title_en}
+                        </a>
+                    </DesktopNavLink>
                 ))}
 
-                <li className={`px-2 flex items-center rounded-md dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 ${styles.primaryHoverBackground}`}>
+                <DesktopNavLink>
                     <button 
                         type="button"
-                        className="flex items-center gap-2"
+                        className="relative flex items-center gap-2 z-20"
                         onClick={() => {
                             setIsSettingOpen(!isSettingOpen)
                         }}
@@ -243,7 +267,7 @@ const DesktopNav = () => {
                         <img src={cog} alt="settings" className="w-5 h-5" />
                         {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
                     </button>
-                </li>
+                </DesktopNavLink>
             </ul>
 
             <div 
