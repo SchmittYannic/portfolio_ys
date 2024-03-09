@@ -35,8 +35,8 @@ export {
     cogWhite,
     logoBlack,
     logoWhite,
-    menuBlack,
-    menuWhite,
+    menuBlack, //currently not used
+    menuWhite, //currently not used
     uk,
     germany,
     checkmarkBlack,
