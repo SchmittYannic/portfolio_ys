@@ -1,11 +1,11 @@
 import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { useInView, useScroll, motion } from "framer-motion";
+import { useInView, useScroll, motion, useAnimate } from "framer-motion";
 
 import { Toggle, LanguageToggle } from ".";
 import { NavElement } from "./ui";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
-import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
+import { cogBlack, cogWhite, logoBlack, logoWhite } from "../assets";
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
@@ -272,18 +272,53 @@ const MobileNav = (): ReactElement => {
     const { theme } = useSettings();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
+    const [scope, animate] = useAnimate();
 
-    const close: string = theme === "light" ? closeBlack : closeWhite;
     const logo: string = theme === "light" ? logoBlack : logoWhite;
-    const menu: string = theme === "light" ? menuBlack : menuWhite;
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLImageElement>): void => {
-        const { key } = e;
-        if (key === "Enter") {
-            e.preventDefault();
-            setIsMenuOpen(!isMenuOpen);
+    useEffect(() => {
+        const animateLinesTogether = async () => {
+            await Promise.all([
+                animate("#burger-line1", { top: "50%" }),
+                animate("#burger-line2", { opacity: 0 }),
+                animate("#burger-line3", { top: "50%" }),
+            ])
+        };
+
+        const animateLinesApart = async () => {
+            await Promise.all([
+                animate("#burger-line1", { top: "25%" }),
+                animate("#burger-line2", { opacity: 1 }),
+                animate("#burger-line3", { top: "75%" }),
+            ])
+        };
+
+        const animateLineRotation = async () => {
+            await Promise.all([
+                animate("#burger-line1", { rotate: 45 }),
+                animate("#burger-line3", { rotate: -45 }),
+            ])
+        };
+
+        const animateLineHorizontal = async () => {
+            await Promise.all([
+                animate("#burger-line1", { rotate: 0 }),
+                animate("#burger-line3", { rotate: 0 }),
+            ])
         }
-    }
+
+
+        const animateBurgerMenu = async () => {
+            if (isMenuOpen) {
+                await animateLinesTogether();
+                await animateLineRotation();
+            } else {
+                await animateLineHorizontal();
+                await animateLinesApart();
+            }
+        }
+        animateBurgerMenu();
+    }, [isMenuOpen])
 
     return (
         <>  
@@ -317,21 +352,27 @@ const MobileNav = (): ReactElement => {
                 <div className="relative h-full">
                     <NavElement>
                         <button
-                            className="relative px-2 h-full z-20 rounded-md"
+                            ref={scope}
+                            className="relative px-2 h-full w-14 z-20 rounded-md"
                             type="button"
                             onClick={() => {
                                 setIsMenuOpen(!isMenuOpen);
                             }}
                         >
-                            <img 
-                                src={isMenuOpen ? close : menu}
-                                alt={isMenuOpen ? "close-burger-menu" : "burger-menu"} 
-                                className="w-[50px] h-[50px] cursor-pointer"
-                                tabIndex={0}
-                                onClick={() => {
-                                    setIsMenuOpen(!isMenuOpen);
-                                }}
-                                onKeyDown={handleKeyDown}
+                            <motion.span 
+                                id="burger-line1" 
+                                className="absolute block h-1 w-10 top-[25%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary" 
+                                initial={{ y: "-50%", x: "-50%" }} 
+                            />
+                            <motion.span 
+                                id="burger-line2" 
+                                className="absolute block h-1 w-10 top-[50%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary" 
+                                initial={{ y: "-50%", x: "-50%" }} 
+                            />
+                            <motion.span 
+                                id="burger-line3" 
+                                className="absolute block h-1 w-10 top-[75%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary" 
+                                initial={{ y: "-50%", x: "-50%" }} 
                             />
                         </button>
                     </NavElement>
