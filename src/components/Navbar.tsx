@@ -1,6 +1,6 @@
 import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { useInView, useScroll, motion, useAnimate } from "framer-motion";
+import { useInView, useScroll, motion, useAnimate, AnimationPlaybackControls } from "framer-motion";
 
 import { Toggle, LanguageToggle } from ".";
 import { NavElement } from "./ui";
@@ -198,11 +198,28 @@ const SettingsMenu = () => {
 }
 
 const DesktopNav = () => {
+    const { lang, theme } = useSettings();
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
-    const { lang, theme} = useSettings();
+    const [isSettingsButtonHovered, setIsSettingsButtonHovered] = useState<boolean>(false);
+    const [scope, animate] = useAnimate();
+    const [animation, setAnimation] = useState<AnimationPlaybackControls | null>(null);
 
     const cog: string = theme === "light" ? cogBlack : cogWhite;
     const logo: string = theme === "light" ? logoBlack : logoWhite;
+
+    useEffect(() => {
+        if (!scope.current) return
+
+        const rotationAnimation = animate("img", { rotate: 360 }, { ease: "linear", repeat: Infinity, duration: 1, });
+        rotationAnimation.pause();
+        setAnimation(rotationAnimation);
+    }, [])
+
+    useEffect(() => {
+        if (!animation) return
+        if (isSettingsButtonHovered) animation.play();
+        if (!isSettingsButtonHovered) animation.pause();
+    }, [isSettingsButtonHovered])
 
     return (
         <>
@@ -246,8 +263,11 @@ const DesktopNav = () => {
                 <li className="relative">
                     <NavElement>
                         <button 
+                            ref={scope}
                             type="button"
                             className="relative px-2 h-full flex items-center gap-2 z-20 rounded-md"
+                            onMouseEnter={() => setIsSettingsButtonHovered(true)}
+                            onMouseLeave={() => setIsSettingsButtonHovered(false)}
                             onClick={() => {
                                 setIsSettingOpen(!isSettingOpen)
                             }}
@@ -279,6 +299,7 @@ const MobileNav = (): ReactElement => {
     const logo: string = theme === "light" ? logoBlack : logoWhite;
 
     useEffect(() => {
+        if (!scope.current) return
         const animateLinesTogether = async () => {
             await Promise.all([
                 animate("#burger-line1", { top: "50%" }),
