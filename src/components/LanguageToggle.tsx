@@ -2,8 +2,6 @@ import { ReactElement, KeyboardEvent, useRef, ChangeEvent } from "react"
 import { determineIfCheckbox } from "../utils/typeguards";
 import useSettings from "../hooks/useSettings";
 import useDynamicClasses from "../hooks/useDynamicClasses";
-import { styles } from "../styles";
-
 
 const LanguageToggle = (): ReactElement => {
     const { lang, setLang } = useSettings();
@@ -47,13 +45,13 @@ const LanguageToggle = (): ReactElement => {
     return (
         <div 
             id="flag-checkbox-wrapper"
-            className={`px-2 h-full flex dark:focus-visible:bg-darkBase-600 focus-visible:bg-base-600 rounded-md ${styles.primaryHoverBackground}`} 
+            className="relative h-full flex items-stretch z-20 rounded-md" 
             title={TooltipContent.languageToggle}
             tabIndex={0}
             onKeyDown={(e) => handleKeyDown(e)}
             onClick={handleClick}
         >
-            <label className="inline-flex items-center w-full cursor-pointer">
+            <label className="px-2 inline-flex items-center w-full cursor-pointer">
                 <span className="sr-only peer">Select Language</span>
                 <input 
                     ref={checkboxRef}

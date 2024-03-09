@@ -1,14 +1,14 @@
-import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement, PropsWithChildren } from "react";
+import { useState, useRef, ChangeEvent, useEffect, KeyboardEvent, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { useInView, useScroll, motion } from "framer-motion";
 
 import { Toggle, LanguageToggle } from ".";
+import { NavElement } from "./ui";
 import { ColorOptionType, TextContent, colorOption, menuWidth, navLinks, navbarHeight } from "../constants";
 import { closeBlack, closeWhite, cogBlack, cogWhite, logoBlack, logoWhite, menuBlack, menuWhite } from "../assets";
 import useSettings from "../hooks/useSettings";
 import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
-import useNavHoverState from "../hooks/useNavHoverState";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -196,30 +196,6 @@ const SettingsMenu = () => {
     )
 }
 
-const NavElement = ({ children }: PropsWithChildren) => {
-    const { 
-        lastHoveredNavElement,
-        setLastHoveredNavElement,
-    } = useNavHoverState();
-    const ref = useRef<HTMLDivElement | null>(null);
-
-    return (
-        <div
-            ref={ref}
-            className={`group h-full rounded-md focus-within:dark:bg-darkBase-800 focus-within:bg-base-800`}
-            onMouseOver={() => setLastHoveredNavElement(ref.current)}
-        >
-            {ref.current && ref.current === lastHoveredNavElement && (
-                <motion.div 
-                    layoutId="hover-box" 
-                    className={`absolute inset-0 rounded-md z-10 group-hover:dark:bg-darkBase-700  group-hover:bg-base-700`} 
-                />
-            )}
-            {children}
-        </div>
-    )
-}
-
 const DesktopNav = () => {
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
     const { lang, theme} = useSettings();
@@ -230,7 +206,11 @@ const DesktopNav = () => {
     return (
         <>
             <div className="ml-6 py-2 w-fit flex items-center">
-                <LanguageToggle />
+                <div className="relative h-full">
+                    <NavElement>
+                        <LanguageToggle />
+                    </NavElement>
+                </div>
             </div>
 
             <div className="py-2">
@@ -251,7 +231,7 @@ const DesktopNav = () => {
                 </div>
             </div>
 
-            <ul className="mr-6 py-2 justify-self-end flex xl:gap-16 gap-7 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
+            <ul className="mr-6 py-2 justify-self-end flex 2xl:gap-16 xl:gap-10 gap-1 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
                 {navLinks.map(link => (
                     <li className="relative">
                         <NavElement key={link.id}>
