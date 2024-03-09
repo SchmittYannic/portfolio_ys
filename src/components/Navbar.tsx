@@ -357,6 +357,7 @@ const MobileNav = (): ReactElement => {
                             type="button"
                             onClick={() => {
                                 setIsMenuOpen(!isMenuOpen);
+                                setIsSettingOpen(false);
                             }}
                         >
                             <motion.span 
