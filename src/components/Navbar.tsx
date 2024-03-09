@@ -21,7 +21,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
     const cog: string = theme === "light" ? cogBlack : cogWhite;
 
     return (
-        <div className={`xl:ml-6 xl:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 ${styles.primaryBorderColor} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
+        <div className={`mt-1 mr-1 rounded-lg ${styles.primaryBackground} border-2 ${styles.primaryBorderColor} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="px-4 py-3 text-sm text-textPrimary dark:text-darkTextPrimary">
                 <div className="text-center font-medium truncate">
                     {lang === "de" ? TextContent.german.navigation : TextContent.english.navigation}
@@ -162,7 +162,7 @@ const SettingsMenu = () => {
     }, [focusedRadio])
 
     return (
-        <div className={`lg:mr-6 lg:mt-6 mt-1 rounded-lg ${styles.primaryBackground} border-2 ${styles.primaryBorderColor} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
+        <div className={`mt-1 mr-1 rounded-lg ${styles.primaryBackground} border-2 ${styles.primaryBorderColor} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl z-10`}>
             <div className="h-12 w-full px-5 py-2 flex items-center text-sm dark:text-darkTextPrimary text-textPrimary">
                 {lang === "de" ? TextContent.german.colorscheme : TextContent.english.colorscheme}
             </div>
