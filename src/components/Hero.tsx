@@ -2,6 +2,7 @@
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { Button, CtaButton } from "./ui";
 import { placeholderProfile } from "../assets";
+import { styles } from "../styles";
 
 const Hero = () => {
     const { PageTextContent } = useDynamicClasses();
@@ -13,7 +14,7 @@ const Hero = () => {
         >
             <div
                 id="hero-wrapper"
-                className={`max-w-[1400px] mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10`}
+                className={`${styles.maxContainer} mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10`}
             >
                 <div
                     id="hero-text"
@@ -25,12 +26,12 @@ const Hero = () => {
                         Yannic Schmitt
                     </h1>
                     <h2
-                        className="text-xl font-medium text-gray-500 dark:text-gray-400"
+                        className={`text-xl font-medium ${styles.primaryTextColor}`}
                     >
                         Junior Web Developer
                     </h2>
                     <p
-                        className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400"
+                        className={`max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
                     >
                         {PageTextContent.heroSubText1}
                         Frontend
