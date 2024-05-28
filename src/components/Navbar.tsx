@@ -453,6 +453,7 @@ const Navbar = (): ReactElement => {
 
                 <motion.div className={`h-1 ${bgColorClass600} origin-left`} style={{ scaleX }} />
             </header>
+            <div style={{ height: navbarHeight }}></div>
         </>
     )
 }
