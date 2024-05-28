@@ -41,7 +41,7 @@ const Layout = () => {
             id="app"
         //className={`app relative w-full h-full ${styles.primaryBackground}`}
         >
-            {/* <Navbar /> */}
+            <Navbar />
             <Outlet />
             <Toast toastList={toastList} />
         </div>
