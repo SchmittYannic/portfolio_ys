@@ -2,6 +2,7 @@ import useWindowSize from "../hooks/useWindowSize";
 import Hero from "./Hero"
 import Projects from "./Projects"
 import ProjectsMobile from "./ProjectsMobile";
+import About from "./About";
 
 const Portfolio = () => {
 
@@ -13,6 +14,7 @@ const Portfolio = () => {
         <main id="portfolio">
             <Hero />
             {isLgScreen ? <Projects /> : <ProjectsMobile />}
+            <About />
         </main>
     )
 }
