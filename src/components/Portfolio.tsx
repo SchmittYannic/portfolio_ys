@@ -3,6 +3,7 @@ import Hero from "./Hero"
 import Projects from "./Projects"
 import ProjectsMobile from "./ProjectsMobile";
 import About from "./About";
+import Contact from "./Contact";
 
 const Portfolio = () => {
 
@@ -15,6 +16,7 @@ const Portfolio = () => {
             <Hero />
             {isLgScreen ? <Projects /> : <ProjectsMobile />}
             <About />
+            <Contact />
         </main>
     )
 }
