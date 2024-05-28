@@ -26,7 +26,7 @@ const Projects = () => {
         >
             <div
                 id="projects-content"
-                className={`${styles.maxContainer} mx-auto px-4 md:px-6`}
+                className={`${styles.maxSiteWidth} mx-auto px-4 md:px-6`}
             >
                 <div
                     id="projects-header"
@@ -38,7 +38,7 @@ const Projects = () => {
                         {PageTextContent.projectsHead}
                     </h2>
                     <p
-                        className={`mx-auto max-w-[700px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                        className={`mx-auto ${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
                     >
                         Check out some of my recent web development projects.
                     </p>

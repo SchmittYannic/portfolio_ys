@@ -10,11 +10,11 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className={`w-full py-12 md:py-24 lg:py-32`}
+            className={`w-full lg:py-32 md:py-24 pb-12 pt-24`}
         >
             <div
                 id="hero-wrapper"
-                className={`${styles.maxContainer} mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10`}
+                className={`${styles.maxSiteWidth} mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10`}
             >
                 <div
                     id="hero-text"
@@ -31,7 +31,7 @@ const Hero = () => {
                         Junior Web Developer
                     </h2>
                     <p
-                        className={`max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                        className={`${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
                     >
                         {PageTextContent.heroSubText1}
                         Frontend

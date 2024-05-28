@@ -17,7 +17,7 @@ const Project = ({ project }: { project: ProjectType }) => {
     return (
         <div
             key={project.title_en}
-            className={`project-mobile max-w-[600px] lg:mt-14 md:mt-10 mt-8 mx-auto flex flex-col items-center`} //sm:pb-48 pb-24
+            className={`project-mobile ${styles.maxContainer} lg:mt-14 md:mt-10 mt-8 mx-auto flex flex-col items-center`} //sm:pb-48 pb-24
         >
             <div className="project-mobile-img-wrapper">
                 <img
@@ -91,7 +91,7 @@ const ProjectsMobile = () => {
         >
             <div
                 id="projects-content"
-                className={`relative ${styles.maxContainer} mx-auto px-4 md:px-6`}
+                className={`relative ${styles.maxSiteWidth} mx-auto px-4 md:px-6`}
             >
                 <div
                     id="projects-header"
@@ -103,7 +103,7 @@ const ProjectsMobile = () => {
                         {PageTextContent.projectsHead}
                     </h2>
                     <p
-                        className={`mx-auto max-w-[700px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                        className={`mx-auto ${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
                     >
                         Check out some of my recent web development projects.
                     </p>

@@ -440,7 +440,7 @@ const Navbar = (): ReactElement => {
                 style={{ height: navbarHeight }}
                 onMouseLeave={() => setLastHoveredNavElement(null)}
             >
-                <nav className={`relative h-full mx-auto ${styles.maxContainer} min-w-[320px]`}>
+                <nav className={`relative h-full mx-auto ${styles.maxSiteWidth} min-w-[320px]`}>
                     <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
                         {isInitialRender
                             ? <></>
@@ -453,7 +453,7 @@ const Navbar = (): ReactElement => {
 
                 <motion.div className={`h-1 ${bgColorClass600} origin-left`} style={{ scaleX }} />
             </header>
-            <div style={{ height: navbarHeight }}></div>
+            {/* <div style={{ height: navbarHeight }}></div> */}
         </>
     )
 }

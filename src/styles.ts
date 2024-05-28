@@ -1,6 +1,8 @@
 const styles = {
-    maxContainer:
+    maxSiteWidth:
         "max-w-[1400px]",
+    maxContainer:
+        "max-w-[600px]",
     primaryBackground:
         "dark:bg-darkBase-900 bg-base-900",
     primaryHoverBackground:
