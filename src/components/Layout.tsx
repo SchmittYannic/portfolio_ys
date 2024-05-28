@@ -4,6 +4,7 @@ import useToast from "../hooks/useToast";
 import useSettings from "../hooks/useSettings";
 import Navbar from "./Navbar"
 import Toast from "./Toast"
+import { styles } from "../styles";
 
 const Layout = () => {
 
@@ -39,7 +40,7 @@ const Layout = () => {
     return (
         <div
             id="app"
-        //className={`app relative w-full h-full ${styles.primaryBackground}`}
+            className={`relative w-full h-full ${styles.primaryBackground}`}
         >
             <Navbar />
             <Outlet />

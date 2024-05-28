@@ -21,7 +21,7 @@ const Hero = () => {
                     className="mx-auto space-y-4 order-1 lg:-order-1"
                 >
                     <h1
-                        className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl"
+                        className={`text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl ${styles.headlineTextColor}`}
                     >
                         Yannic Schmitt
                     </h1>
