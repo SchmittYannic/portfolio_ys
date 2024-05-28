@@ -23,12 +23,12 @@ const Hero = () => {
                     <h1
                         className={`text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl ${styles.headlineTextColor}`}
                     >
-                        Yannic Schmitt
+                        {PageTextContent.firstName} {PageTextContent.lastName}
                     </h1>
                     <h2
                         className={`text-xl font-medium ${styles.primaryTextColor}`}
                     >
-                        Junior Web Developer
+                        {PageTextContent.jobTitle}
                     </h2>
                     <p
                         className={`${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}

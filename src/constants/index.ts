@@ -11,12 +11,15 @@ const TextContent = {
         language: "Sprache",
         colorscheme: "Farbschema",
         navigation: "Navigation",
-        
+
         contact: "Kontakt",
         heroHeadText: "Hi, Ich bin ",
         heroSubText1: "Junior Webentwickler mit Fokus auf dem ",
         heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
-        
+        jobTitle: "Junior Webentwickler",
+        firstName: "Yannic",
+        lastName: "Schmitt",
+
         aboutHead: "Über mich",
         educationHead: "Bildung",
         noDegree: "ohne Abschluss",
@@ -29,6 +32,7 @@ const TextContent = {
         languageHead: "Sprachen",
 
         projectsHead: "Projekte",
+        projectsSub: "Schauen Sie sich einige meiner letzten Projekte an.",
         expandButton: "Weiterlesen...",
         collapseButton: "Schließen",
         livelinktitle: "Live-Demo ansehen",
@@ -52,6 +56,9 @@ const TextContent = {
         heroHeadText: "Hi, I am ",
         heroSubText1: "junior web developer with a focus on the ",
         heroSubText2: ". Using the latest technologies, I will bring your designs to life.",
+        jobTitle: "Junior Web Developer",
+        firstName: "Yannic",
+        lastName: "Schmitt",
 
         aboutHead: "About me",
         educationHead: "Education",
@@ -65,6 +72,7 @@ const TextContent = {
         languageHead: "Languages",
 
         projectsHead: "Projects",
+        projectsSub: "Check out some of my recent projects.",
         expandButton: "Read more",
         collapseButton: "Close",
         livelinktitle: "View Live Demo",

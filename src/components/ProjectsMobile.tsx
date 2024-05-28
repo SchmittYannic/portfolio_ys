@@ -105,7 +105,7 @@ const ProjectsMobile = () => {
                     <p
                         className={`mx-auto ${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
                     >
-                        Check out some of my recent web development projects.
+                        {PageTextContent.projectsSub}
                     </p>
                 </div>
 
