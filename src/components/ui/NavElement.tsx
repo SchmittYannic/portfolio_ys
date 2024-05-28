@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import useNavHoverState from "../../hooks/useNavHoverState";
 
 const NavElement = ({ children }: PropsWithChildren): ReactElement => {
-    const { 
+    const {
         lastHoveredNavElement,
         setLastHoveredNavElement,
     } = useNavHoverState();
@@ -16,9 +16,10 @@ const NavElement = ({ children }: PropsWithChildren): ReactElement => {
             onMouseOver={() => setLastHoveredNavElement(ref.current)}
         >
             {ref.current && ref.current === lastHoveredNavElement && (
-                <motion.div 
-                    layoutId="hover-box" 
-                    className={`absolute inset-0 rounded-md z-10 group-hover:dark:bg-darkBase-700  group-hover:bg-base-700`} 
+                <motion.div
+                    layoutId="hover-box"
+                    style={{ originY: "0px" }} //fixes bug where change in height of page will animate this div in y direction
+                    className={`absolute inset-0 rounded-md z-10 group-hover:dark:bg-darkBase-700 group-hover:bg-base-700`}
                 />
             )}
             {children}
