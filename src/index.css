@@ -4,6 +4,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+        --actionBlue-900: 29, 155, 240;
+        --actionBlue-700: 74, 175, 243;
+        --actionBlue-400: 142, 205, 248;
+        --actionOrange-900: 254, 91, 2;
+        --actionOrange-700: 254, 124, 53;
+        --actionOrange-400: 255, 189, 154;
+        --actionGreen-900: 0, 186, 124;
+        --actionGreen-700: 51, 200, 150;
+        --actionGreen-400: 128, 221, 190;
+        --actionPurple-900: 120, 86, 255;
+        --actionPurple-700: 147, 120, 255;
+        --actionPurple-400: 188, 171, 255;
+        --actionMagenta-900: 249, 24, 128;
+        --actionMagenta-700: 250, 70, 153;
+        --actionMagenta-400: 252, 140, 192;
+        --actionYellow-900: 255, 212, 0;
+        --actionYellow-700: 255, 221, 51;
+        --actionYellow-400: 255, 234, 128;
+
+        --projectcard-radialGradient-size: 800px;
+        --projectcard-borderColor-opacity: 0.6;
+        --projectcard-color-opacity: 0.1;
+        --projectcard-radialGradient-opacity: 40%;
+    }
+}
+
 *, 
 *::after, 
 *::before {
@@ -43,4 +71,323 @@ h4,
 h5,
 h6 {
     font-family: "Libre Franklin", sans-serif;
+}
+
+
+/* ColorScheme */
+
+html[data-color="Orange"] #flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgb(var(--actionOrange-900));
+}
+
+html[data-color="Orange"] #flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgb(var(--actionOrange-900));
+}
+
+html[data-color="Orange"] ::marker {
+    color: rgb(var(--actionOrange-900));
+}
+
+html[data-color="Orange"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionOrange-400));
+}
+
+html[data-color="Orange"] .toggleCheckbox:checked ~ .toggle {
+    background-color: rgb(var(--actionOrange-700));
+}
+
+.dark[data-color="Orange"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionOrange-900));
+}
+
+html[data-color="Orange"] .projectcard::before {
+    /* background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%); */
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionOrange-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Orange"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionOrange-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Orange"] .liveLink {
+    background: radial-gradient(rgb(var(--actionOrange-400)), rgb(255,255,255));
+}
+
+html[data-color="Orange"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionOrange-900)), rgb(255,255,255));
+}
+
+html[data-color="Orange"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionOrange-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionOrange-900)) 180deg,
+        transparent 280deg
+    );
+}
+
+
+
+
+html[data-color="Blue"] #flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgb(var(--actionBlue-900));
+}
+
+html[data-color="Blue"] #flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgb(var(--actionBlue-900));
+}
+
+html[data-color="Blue"] ::marker {
+    color: rgb(var(--actionBlue-900));
+}
+
+html[data-color="Blue"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionBlue-400));
+}
+
+html[data-color="Blue"] .toggleCheckbox:checked ~ .toggle {
+    background-color: rgb(var(--actionBlue-700));
+}
+
+.dark[data-color="Blue"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionBlue-900));
+}
+
+html[data-color="Blue"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionBlue-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Blue"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionBlue-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Blue"] .liveLink {
+    background: radial-gradient(rgb(var(--actionBlue-400)), rgb(255,255,255));
+}
+
+html[data-color="Blue"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionBlue-900)), rgb(255,255,255));
+}
+
+html[data-color="Blue"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionBlue-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionBlue-900)) 180deg,
+        transparent 280deg
+    );
+}
+
+
+
+
+html[data-color="Green"] #flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgb(var(--actionGreen-900));
+}
+
+html[data-color="Green"] #flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgb(var(--actionGreen-900));
+}
+
+html[data-color="Green"] ::marker {
+    color: rgb(var(--actionGreen-900));
+}
+
+html[data-color="Green"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionGreen-400));
+}
+
+html[data-color="Green"] .toggleCheckbox:checked ~ .toggle {
+    background-color: rgb(var(--actionGreen-700));
+}
+
+.dark[data-color="Green"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionGreen-900));
+}
+
+html[data-color="Green"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionGreen-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Green"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionGreen-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Green"] .liveLink {
+    background: radial-gradient(rgb(var(--actionGreen-400)), rgb(255,255,255));
+}
+
+html[data-color="Green"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionGreen-900)), rgb(255,255,255));
+}
+
+html[data-color="Green"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionGreen-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionGreen-900)) 180deg,
+        transparent 280deg
+    );
+}
+
+
+
+
+html[data-color="Purple"] #flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgb(var(--actionPurple-900));
+}
+
+html[data-color="Purple"] #flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgb(var(--actionPurple-900));
+}
+
+html[data-color="Purple"] ::marker {
+    color: rgb(var(--actionPurple-900));
+}
+
+html[data-color="Purple"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionPurple-400));
+}
+
+html[data-color="Purple"] .toggleCheckbox:checked ~ .toggle {
+    background-color: rgb(var(--actionPurple-700));
+}
+
+.dark[data-color="Purple"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgb(var(--actionPurple-900));
+}
+
+html[data-color="Purple"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionPurple-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Purple"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionPurple-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Purple"] .liveLink {
+    background: radial-gradient(rgb(var(--actionPurple-400)), rgb(255,255,255));
+}
+
+html[data-color="Purple"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionPurple-900)), rgb(255,255,255));
+}
+
+html[data-color="Purple"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionPurple-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionPurple-900)) 180deg,
+        transparent 280deg
+    );
+}
+
+
+
+
+html[data-color="Magenta"] #flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgba(var(--actionMagenta-900));
+}
+
+html[data-color="Magenta"] #flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgba(var(--actionMagenta-900));
+}
+
+html[data-color="Magenta"] ::marker {
+    color: rgba(var(--actionMagenta-900));
+}
+
+html[data-color="Magenta"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgba(var(--actionMagenta-400));
+}
+
+html[data-color="Magenta"] .toggleCheckbox:checked ~ .toggle {
+    background-color: rgba(var(--actionMagenta-700));
+}
+
+.dark[data-color="Magenta"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgba(var(--actionMagenta-900));
+}
+
+html[data-color="Magenta"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionMagenta-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Magenta"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionMagenta-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Magenta"] .liveLink {
+    background: radial-gradient(rgb(var(--actionMagenta-400)), rgb(255,255,255));
+}
+
+html[data-color="Magenta"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionMagenta-900)), rgb(255,255,255));
+}
+
+html[data-color="Magenta"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionMagenta-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionMagenta-900)) 180deg,
+        transparent 280deg
+    );
+}
+
+
+
+
+html[data-color="Yellow"] #flag-checkbox:not(:checked)~#german-flag .rect {
+    stroke: rgba(var(--actionYellow-900));
+}
+
+html[data-color="Yellow"] #flag-checkbox:checked~#uk-flag .rect {
+    stroke: rgba(var(--actionYellow-900));
+}
+
+html[data-color="Yellow"] ::marker {
+    color: rgba(var(--actionYellow-900));
+}
+
+html[data-color="Yellow"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgba(var(--actionYellow-400));
+}
+
+html[data-color="Yellow"] .toggleCheckbox:checked ~ .toggle {
+    background-color: rgba(var(--actionYellow-700));
+}
+
+.dark[data-color="Yellow"] .toggleCheckbox:focus ~ .toggle {
+    --tw-ring-color: rgba(var(--actionYellow-900));
+}
+
+html[data-color="Yellow"] .projectcard::before {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionYellow-900), var(--projectcard-color-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Yellow"] .projectcard::after {
+    background: radial-gradient(var(--projectcard-radialGradient-size) circle at var(--mouse-x) var(--mouse-y), rgba(var(--actionYellow-900), var(--projectcard-borderColor-opacity)), transparent var(--projectcard-radialGradient-opacity));
+}
+
+html[data-color="Yellow"] .liveLink {
+    background: radial-gradient(rgb(var(--actionYellow-400)), rgb(255,255,255));
+}
+
+html[data-color="Yellow"] .liveLink::before {
+    background: radial-gradient(rgb(var(--actionYellow-900)), rgb(255,255,255));
+}
+
+html[data-color="Yellow"] .form-wrapper::before {
+    background-image: conic-gradient(
+        rgb(var(--actionYellow-900)) 20deg,
+        transparent 120deg,
+        transparent 180deg,
+        rgb(var(--actionYellow-900)) 180deg,
+        transparent 280deg
+    );
 }
