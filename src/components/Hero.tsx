@@ -13,8 +13,8 @@ const Hero = () => {
             className={`w-full lg:py-32 md:py-24 pb-12 pt-24`}
         >
             <div
-                id="hero-wrapper"
-                className={`${styles.maxSiteWidth} mx-auto grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10`}
+                id="hero-content"
+                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-10`}
             >
                 <div
                     id="hero-text"
