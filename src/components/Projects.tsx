@@ -22,11 +22,11 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className={`w-full py-12 md:py-24 lg:py-32 ${styles.secondaryBackground}`}
+            className={`w-full lg:py-32 md:py-24 py-12 ${styles.secondaryBackground}`}
         >
             <div
                 id="projects-content"
-                className={`${styles.maxSiteWidth} mx-auto px-4 md:px-6`}
+                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4`}
             >
                 <div
                     id="projects-header"
@@ -38,7 +38,7 @@ const Projects = () => {
                         {PageTextContent.projectsHead}
                     </h2>
                     <p
-                        className={`mx-auto ${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                        className={`mx-auto ${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                     >
                         {PageTextContent.projectsSub}
                     </p>
@@ -114,7 +114,7 @@ const Projects = () => {
                             </h3>
 
                             <div className="mb-4">
-                                <p className={`mb-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}>
+                                <p className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}>
                                     {description[0]}
                                 </p>
 
@@ -130,7 +130,7 @@ const Projects = () => {
                                                 <Fragment key={activeProject.title_en + idx}>
                                                     {idx !== 0 && (
                                                         <p
-                                                            className={`mb-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                                                            className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                                                         >
                                                             {paragraph}
                                                         </p>

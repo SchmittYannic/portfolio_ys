@@ -31,7 +31,7 @@ const Hero = () => {
                         {PageTextContent.jobTitle}
                     </h2>
                     <p
-                        className={`${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                        className={`${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                     >
                         {PageTextContent.heroSubText1}
                         Frontend

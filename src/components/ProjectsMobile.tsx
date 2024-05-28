@@ -36,7 +36,7 @@ const Project = ({ project }: { project: ProjectType }) => {
                 </h3>
 
                 <div className="mb-4 dark:text-darkTextPrimary text-textPrimary">
-                    <p className={`mb-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}>
+                    <p className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}>
                         {description[0]}
                     </p>
 
@@ -52,7 +52,7 @@ const Project = ({ project }: { project: ProjectType }) => {
                                     <Fragment key={project.title_en + idx}>
                                         {idx !== 0 && (
                                             <p
-                                                className={`mb-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                                                className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                                             >
                                                 {paragraph}
                                             </p>
@@ -103,7 +103,7 @@ const ProjectsMobile = () => {
                         {PageTextContent.projectsHead}
                     </h2>
                     <p
-                        className={`mx-auto ${styles.maxContainer} md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ${styles.primaryTextColor}`}
+                        className={`mx-auto ${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                     >
                         {PageTextContent.projectsSub}
                     </p>
