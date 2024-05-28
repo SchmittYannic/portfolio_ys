@@ -11,9 +11,9 @@ const Button = ({ children, ...rest }: PropsWithChildren<ButtonHTMLAttributes<HT
         <button
             {...rest}
             type="button"
-            className={`relative p-1 rounded dark:bg-darkTextPrimary bg-textPrimary before:absolute before:top-0 before:right-0 before:h-full before:w-0 before:rounded ${beforeColorClass} before:ease-button before:duration-1500 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
+            className={`relative p-1 h-10 rounded dark:bg-darkTextPrimary bg-textPrimary before:absolute before:top-0 before:right-0 before:h-full before:w-0 before:rounded ${beforeColorClass} before:ease-button before:duration-1500 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
         >
-            <p className={`relative z-10 sm:px-6 px-3 sm:py-[9px] py-[6px] sm:text-xl text-lg font bold ${styles.primaryBackground} dark:text-darkTextPrimary text-textPrimary`}>
+            <p className={`relative h-full w-full inline-flex items-center justify-center z-10 px-8 text-sm font-bold ${styles.primaryBackground} dark:text-darkTextPrimary text-textPrimary`}>
                 {children}
             </p>
         </button>

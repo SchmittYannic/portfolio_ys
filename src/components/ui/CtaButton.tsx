@@ -9,11 +9,11 @@ const CtaButton = ({ tag, children, ...rest }: PropsWithChildren<CtaButtonPropsT
 
     const { bgColorClass900 } = useDynamicClasses();
 
-    if( tag === "link" ) {
+    if (tag === "link") {
         return (
-            <a 
+            <a
                 {...rest}
-                className={`relative sm:px-6 px-3 sm:py-[13px] py-[10px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary sm:text-xl text-lg font-bold transition-[color] ease-button duration-1500 dark:hover:text-textPrimary hover:text-darkTextPrimary before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:rounded dark:before:bg-darkTextPrimary before:bg-textPrimary before:ease-button before:duration-1500 
+                className={`relative h-10 px-8 inline-flex items-center justify-center text-sm font-bold rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary transition-[color] ease-button duration-1500 dark:hover:text-textPrimary hover:text-darkTextPrimary before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:rounded dark:before:bg-darkTextPrimary before:bg-textPrimary before:ease-button before:duration-1500 
                 before:z-0 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
             >
                 <p className="relative z-10">
@@ -23,9 +23,9 @@ const CtaButton = ({ tag, children, ...rest }: PropsWithChildren<CtaButtonPropsT
         )
     } else {
         return (
-            <button 
+            <button
                 {...rest}
-                className={`relative sm:px-6 px-3 sm:py-[13px] py-[10px] rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary sm:text-xl text-lg font-bold transition-[color] ease-button duration-1500 dark:hover:text-textPrimary hover:text-darkTextPrimary before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:rounded dark:before:bg-darkTextPrimary before:bg-textPrimary before:ease-button before:duration-1500 
+                className={`relative h-10 px-8 inline-flex items-center justify-center text-sm font-bold rounded ${bgColorClass900} dark:text-darkTextPrimary text-textPrimary transition-[color] ease-button duration-1500 dark:hover:text-textPrimary hover:text-darkTextPrimary before:absolute before:top-0 before:right-0 before:w-0 before:h-full before:rounded dark:before:bg-darkTextPrimary before:bg-textPrimary before:ease-button before:duration-1500 
                 before:z-0 hover:before:w-full hover:before:left-0 hover:before:right-unset`}
             >
                 <p className="relative z-10">
