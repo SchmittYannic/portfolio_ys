@@ -4,6 +4,9 @@ import { styles } from "../styles"
 const Contact = () => {
 
     const { focusRingColorClass, PageTextContent } = useDynamicClasses();
+
+    const myEmail = String(import.meta.env.VITE_PERSONAL_EMAIL);
+
     const handleSubmit = () => { }
 
     return (
@@ -53,9 +56,9 @@ const Contact = () => {
                             </svg>
                             <a
                                 className={`${styles.primaryTextColor} hover:underline`}
-                                href={`mailto:${PageTextContent.emailAddress}`}
+                                href={`mailto:${myEmail}`}
                             >
-                                {PageTextContent.emailAddress}
+                                {myEmail}
                             </a>
                         </div>
                         <div

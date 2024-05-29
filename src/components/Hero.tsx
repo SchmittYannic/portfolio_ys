@@ -7,6 +7,9 @@ import { styles } from "../styles";
 const Hero = () => {
     const { PageTextContent } = useDynamicClasses();
 
+    const firstName = String(import.meta.env.VITE_FIRSTNAME);
+    const lastName = String(import.meta.env.VITE_LASTNAME);
+
     return (
         <section
             id="hero"
@@ -23,7 +26,7 @@ const Hero = () => {
                     <h1
                         className={`text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl ${styles.headlineTextColor}`}
                     >
-                        {PageTextContent.firstName} {PageTextContent.lastName}
+                        {firstName} {lastName}
                     </h1>
                     <h2
                         className={`text-xl font-medium ${styles.primaryTextColor}`}

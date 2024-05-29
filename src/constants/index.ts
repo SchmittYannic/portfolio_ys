@@ -17,8 +17,6 @@ const TextContent = {
         heroSubText1: "Junior Webentwickler mit Fokus auf dem ",
         heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
         jobTitle: "Junior Webentwickler",
-        firstName: "Yannic",
-        lastName: "Schmitt",
 
         aboutHead: "Über mich",
         educationHead: "Bildung",
@@ -40,7 +38,6 @@ const TextContent = {
 
         contactHead: "Kontakt",
         contactSub: "Bei Fragen können Sie sich jederzeit an mich wenden.",
-        emailAddress: "schmitt.yannic@web.de",
         nameLabel: "Name",
         namePlaceholder: "Ihr Name",
         emailLabel: "Email",
@@ -63,8 +60,6 @@ const TextContent = {
         heroSubText1: "junior web developer with a focus on the ",
         heroSubText2: ". Using the latest technologies, I will bring your designs to life.",
         jobTitle: "Junior Web Developer",
-        firstName: "Yannic",
-        lastName: "Schmitt",
 
         aboutHead: "About me",
         educationHead: "Education",
@@ -86,7 +81,6 @@ const TextContent = {
 
         contactHead: "Get in Touch",
         contactSub: "Feel free to reach out to me for any inquiries.",
-        emailAddress: "schmitt.yannic@web.de",
         nameLabel: "Name",
         namePlaceholder: "Your name",
         emailLabel: "Email",
