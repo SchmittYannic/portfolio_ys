@@ -280,7 +280,7 @@ const About = () => {
                     <p
                         className={`mx-auto ${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                     >
-                        {PageTextContent.projectsSub}
+                        {PageTextContent.aboutSub}
                     </p>
                 </div>
 

@@ -18,6 +18,7 @@ export type LocalizedTextContentType = {
     jobTitle: string,
 
     aboutHead: string,
+    aboutSub: string,
     educationHead: string,
     noDegree: string,
     gpa: string,
@@ -67,6 +68,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         jobTitle: "Junior Webentwickler",
 
         aboutHead: "Über mich",
+        aboutSub: "Erfahre mehr über meinen Bildungsweg und meine Fachkenntnisse",
         educationHead: "Bildung",
         noDegree: "ohne Abschluss",
         gpa: "Notenschnitt: ",
@@ -110,6 +112,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         jobTitle: "Junior Web Developer",
 
         aboutHead: "About me",
+        aboutSub: "Find out more about my educational background and my expertise",
         educationHead: "Education",
         noDegree: "no degree",
         gpa: "GPA: ",
