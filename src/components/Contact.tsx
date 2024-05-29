@@ -1,10 +1,10 @@
-import { useState, SyntheticEvent, ChangeEvent } from "react";
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form"
 import emailjs from "@emailjs/browser";
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { styles } from "../styles"
-import useToast from "../hooks/useToast";
 
-type FormType = {
+type FormStateType = {
     name: string,
     email: string,
     message: string,
@@ -13,66 +13,56 @@ type FormType = {
 const Contact = () => {
 
     const { focusRingColorClass, PageTextContent } = useDynamicClasses();
-    const { addToast } = useToast();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<FormStateType>();
+
+    const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const myEmail = String(import.meta.env.VITE_PERSONAL_EMAIL);
+    const myFirstname = String(import.meta.env.VITE_FIRSTNAME);
     const serviceId = String(import.meta.env.VITE_EMAILJS_SERVICE_ID);
     const templateId = String(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
     const publicKey = String(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
-    const [form, setForm] = useState<FormType>({
-        name: "",
-        email: "",
-        message: "",
-    });
+    const onSubmit: SubmitHandler<FormStateType> = async (data) => {
+        try {
+            setFormStatus("loading");
+            const { name, email, message } = data;
 
-    const [isSending, setIsSending] = useState<boolean>(false);
+            await emailjs.send(
+                serviceId,
+                templateId,
+                {
+                    from_name: name,
+                    to_name: myFirstname,
+                    from_email: email,
+                    to_email: myEmail,
+                    message: message
+                },
+                publicKey
+            );
 
-    const handleSubmit = (e: SyntheticEvent<HTMLFormElement>): void => {
-        e.preventDefault();
-        setIsSending(true);
-
-        emailjs.send(
-            serviceId,
-            templateId,
-            {
-                from_name: form.name,
-                to_name: "Yannic",
-                from_email: form.email,
-                to_email: "schmitt.yannic@web.com",
-                message: form.message
-            },
-            publicKey
-        ).then(() => {
-            setIsSending(false);
-            //alert("Thank you. I will get back to you as soon as possible");
-            const toastText = PageTextContent.successMessage;
-            addToast("success", toastText);
-
-            setForm({
-                name: "",
-                email: "",
-                message: "",
-            })
-        }, (error) => {
-            setIsSending(false);
-
-            console.log(error);
-            //alert("Something went wrong.");
-            const toastText = PageTextContent.failureMessage;
-            addToast("failure", toastText);
-        })
+            setFormStatus("success")
+        } catch (error) {
+            setFormStatus("error")
+        }
     }
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-        const { name, value } = e.target;
+    const resetFormStatus = () => setFormStatus("idle");
 
-        setForm(prevState => {
-            const newState = { ...prevState }
-            newState[name as keyof FormType] = value
-            return newState
-        })
-    }
+    useEffect(() => {
+        if (formStatus !== "success") return
+        reset({
+            name: "",
+            email: "",
+            message: "",
+        });
+    }, [formStatus]);
 
     return (
         <section
@@ -140,7 +130,7 @@ const Contact = () => {
                 >
                     <form
                         className="space-y-4"
-                        onSubmit={handleSubmit}
+                        onSubmit={handleSubmit(onSubmit)}
                     >
                         <div
                             className="space-y-2"
@@ -153,14 +143,21 @@ const Contact = () => {
                             </label>
                             <input
                                 id="name"
-                                name="name"
-                                className={`flex h-10 w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex h-10 w-full rounded-md border border-input ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50 ${errors.name ? "border-gray-700 dark:border-gray-100" : "dark:border-gray-600"}`}
                                 type="text"
                                 maxLength={80}
                                 placeholder={PageTextContent.namePlaceholder}
-                                value={form.name}
-                                onChange={handleChange}
+                                {...register("name", {
+                                    required: "*Pflichtfeld",
+                                    onChange: resetFormStatus,
+                                })}
                             />
+                            {
+                                errors.name &&
+                                <span className={`text-sm w-full h-4 inline-flex justify-end ${styles.headlineTextColor}`} role="alert">
+                                    {errors.name?.message}
+                                </span>
+                            }
                         </div>
                         <div
                             className="space-y-2"
@@ -173,14 +170,21 @@ const Contact = () => {
                             </label>
                             <input
                                 id="email"
-                                name="email"
-                                className={`flex h-10 w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex h-10 w-full rounded-md border border-input ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50 ${errors.email ? "border-gray-700 dark:border-gray-100" : "dark:border-gray-600"}`}
                                 type="text"
                                 maxLength={80}
                                 placeholder={PageTextContent.emailPlaceholder}
-                                value={form.email}
-                                onChange={handleChange}
+                                {...register("email", {
+                                    required: "*Pflichtfeld",
+                                    onChange: resetFormStatus,
+                                })}
                             />
+                            {
+                                errors.email &&
+                                <span className={`text-sm w-full h-4 inline-flex justify-end ${styles.headlineTextColor}`} role="alert">
+                                    {errors.email?.message}
+                                </span>
+                            }
                         </div>
                         <div
                             className="space-y-2"
@@ -193,21 +197,46 @@ const Contact = () => {
                             </label>
                             <textarea
                                 id="message"
-                                name="message"
-                                className={`flex min-h-[80px] w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm  placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50`}
+                                className={`flex min-h-[80px] w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm  placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50 ${errors.message ? "border-gray-700 dark:border-gray-100" : "dark:border-gray-600"}`}
                                 maxLength={2000}
                                 placeholder={PageTextContent.messagePlaceholder}
-                                value={form.message}
-                                onChange={handleChange}
+                                {...register("message", {
+                                    required: "*Pflichtfeld",
+                                    onChange: resetFormStatus,
+                                })}
                             ></textarea>
+                            {
+                                errors.message &&
+                                <span className={`text-sm w-full h-4 inline-flex justify-end ${styles.headlineTextColor}`} role="alert">
+                                    {errors.message?.message}
+                                </span>
+                            }
                         </div>
+                        {
+                            formStatus === "error" &&
+                            <div className="w-full py-2 px-4 bg-red-500 text-white text-sm mx-0 rounded grid justify-center" role="alert">
+                                Etwas ist schiefgelaufen. Alternativ können Sie mir auch jederzeit eine Email senden:
+                                <a
+                                    className="text-blue-400 hover:text-purple-400 underline"
+                                    href={`mailto:${myEmail}`}
+                                >
+                                    {myEmail}
+                                </a>
+                            </div>
+                        }
+                        {
+                            formStatus === "success" &&
+                            <div className="w-full py-2 px-4 bg-green-500 text-white text-sm mx-0 rounded inline-flex justify-center" role="alert">
+                                Nachricht erfolgreich versendet
+                            </div>
+                        }
                         <button
                             className={`w-full h-10 px-4 py-2 inline-flex items-center justify-center text-white dark:text-black whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-4 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:pointer-events-none disabled:opacity-50 bg-black dark:bg-white hover:bg-black/70 dark:hover:bg-white/70`}
                             type="submit"
-                            disabled={isSending}
+                            disabled={isSubmitting || formStatus === "loading"}
                         >
-                            {isSending ?
-                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            {isSubmitting || formStatus === "loading" ?
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white dark:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
