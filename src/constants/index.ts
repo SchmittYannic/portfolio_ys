@@ -4,7 +4,55 @@ const navbarHeight = 72; // when changing also change safelist in tailwind.confi
 const menuWidth = 180;
 const liIconCircleRadius = 40;
 
-const TextContent = {
+export type LocalizedTextContentType = {
+    settings: string,
+    darkmode: string,
+    language: string,
+    colorscheme: string,
+    navigation: string,
+
+    contact: string,
+    heroHeadText: string,
+    heroSubText1: string,
+    heroSubText2: string,
+    jobTitle: string,
+
+    aboutHead: string,
+    educationHead: string,
+    noDegree: string,
+    gpa: string,
+    thesis: string,
+    focus: string,
+
+    skillsHead: string,
+    itHead: string,
+    languageHead: string,
+
+    projectsHead: string,
+    projectsSub: string,
+    expandButton: string,
+    collapseButton: string,
+    livelinktitle: string,
+    githubtitle: string,
+
+    contactHead: string,
+    contactSub: string,
+    nameLabel: string,
+    namePlaceholder: string,
+    emailLabel: string,
+    emailPlaceholder: string,
+    messageLabel: string,
+    messagePlaceholder: string,
+    sendButton: string,
+    contactSuccessMessage: string,
+    contactFailureMessage: string,
+}
+
+const languages = ["german", "english"] as const
+
+type LanguageType = typeof languages[number];
+
+const TextContent: Record<LanguageType, LocalizedTextContentType> = {
     german: {
         settings: "Einstellungen",
         darkmode: "Dunkelmodus",
@@ -45,8 +93,8 @@ const TextContent = {
         messageLabel: "Nachricht",
         messagePlaceholder: "Ihre Nachricht",
         sendButton: "Senden",
-        successMessage: "Nachricht erfolgreich versendet.",
-        failureMessage: "Etwas ist schief gelaufen.",
+        contactSuccessMessage: "Nachricht erfolgreich versendet",
+        contactFailureMessage: "Etwas ist schiefgelaufen. Alternativ können Sie mir auch jederzeit eine Email senden: ",
     },
     english: {
         settings: "Settings",
@@ -88,12 +136,18 @@ const TextContent = {
         messageLabel: "Message",
         messagePlaceholder: "Your message",
         sendButton: "Send",
-        successMessage: "Message sent successfully.",
-        failureMessage: "Something went wrong.",
+        contactSuccessMessage: "Message sent successfully",
+        contactFailureMessage: "Something went wrong. Alternatively, you can always send me an email: ",
     }
 };
 
-const TooltipTextContent = {
+export type LocalizedTooltipTextContentType = {
+    languageToggle: string,
+    burgerMenu: string,
+    closeMenu: string,
+}
+
+const TooltipTextContent: Record<LanguageType, LocalizedTooltipTextContentType> = {
     german: {
         languageToggle: "Sprache wechseln",
         burgerMenu: "Navigation öffnen",

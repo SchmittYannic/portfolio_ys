@@ -215,7 +215,7 @@ const Contact = () => {
                         {
                             formStatus === "error" &&
                             <div className="w-full py-2 px-4 bg-red-500 text-white text-sm mx-0 rounded grid justify-center" role="alert">
-                                Etwas ist schiefgelaufen. Alternativ können Sie mir auch jederzeit eine Email senden:
+                                {PageTextContent.contactFailureMessage}
                                 <a
                                     className="text-blue-400 hover:text-purple-400 underline"
                                     href={`mailto:${myEmail}`}
@@ -227,12 +227,13 @@ const Contact = () => {
                         {
                             formStatus === "success" &&
                             <div className="w-full py-2 px-4 bg-green-500 text-white text-sm mx-0 rounded inline-flex justify-center" role="alert">
-                                Nachricht erfolgreich versendet
+                                {PageTextContent.contactSuccessMessage}
                             </div>
                         }
                         <button
                             className={`w-full h-10 px-4 py-2 inline-flex items-center justify-center text-white dark:text-black whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-4 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:pointer-events-none disabled:opacity-50 bg-black dark:bg-white hover:bg-black/70 dark:hover:bg-white/70`}
                             type="submit"
+                            onClick={resetFormStatus}
                             disabled={isSubmitting || formStatus === "loading"}
                         >
                             {isSubmitting || formStatus === "loading" ?
