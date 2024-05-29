@@ -1,13 +1,78 @@
+import { useState, SyntheticEvent, ChangeEvent } from "react";
+import emailjs from "@emailjs/browser";
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { styles } from "../styles"
+import useToast from "../hooks/useToast";
+
+type FormType = {
+    name: string,
+    email: string,
+    message: string,
+}
 
 const Contact = () => {
 
     const { focusRingColorClass, PageTextContent } = useDynamicClasses();
+    const { addToast } = useToast();
 
     const myEmail = String(import.meta.env.VITE_PERSONAL_EMAIL);
+    const serviceId = String(import.meta.env.VITE_EMAILJS_SERVICE_ID);
+    const templateId = String(import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+    const publicKey = String(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
-    const handleSubmit = () => { }
+    const [form, setForm] = useState<FormType>({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const [isSending, setIsSending] = useState<boolean>(false);
+
+    const handleSubmit = (e: SyntheticEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        setIsSending(true);
+
+        emailjs.send(
+            serviceId,
+            templateId,
+            {
+                from_name: form.name,
+                to_name: "Yannic",
+                from_email: form.email,
+                to_email: "schmitt.yannic@web.com",
+                message: form.message
+            },
+            publicKey
+        ).then(() => {
+            setIsSending(false);
+            //alert("Thank you. I will get back to you as soon as possible");
+            const toastText = PageTextContent.successMessage;
+            addToast("success", toastText);
+
+            setForm({
+                name: "",
+                email: "",
+                message: "",
+            })
+        }, (error) => {
+            setIsSending(false);
+
+            console.log(error);
+            //alert("Something went wrong.");
+            const toastText = PageTextContent.failureMessage;
+            addToast("failure", toastText);
+        })
+    }
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+        const { name, value } = e.target;
+
+        setForm(prevState => {
+            const newState = { ...prevState }
+            newState[name as keyof FormType] = value
+            return newState
+        })
+    }
 
     return (
         <section
@@ -88,9 +153,13 @@ const Contact = () => {
                             </label>
                             <input
                                 id="name"
+                                name="name"
                                 className={`flex h-10 w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50`}
                                 type="text"
+                                maxLength={80}
                                 placeholder={PageTextContent.namePlaceholder}
+                                value={form.name}
+                                onChange={handleChange}
                             />
                         </div>
                         <div
@@ -104,9 +173,13 @@ const Contact = () => {
                             </label>
                             <input
                                 id="email"
+                                name="email"
                                 className={`flex h-10 w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50`}
                                 type="text"
+                                maxLength={80}
                                 placeholder={PageTextContent.emailPlaceholder}
+                                value={form.email}
+                                onChange={handleChange}
                             />
                         </div>
                         <div
@@ -120,15 +193,27 @@ const Contact = () => {
                             </label>
                             <textarea
                                 id="message"
+                                name="message"
                                 className={`flex min-h-[80px] w-full rounded-md border border-input dark:border-gray-600 ${styles.primaryTextColor} ${styles.primaryBackground} px-3 py-2 text-sm  placeholder:text-gray-500 dark:placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-2 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:cursor-not-allowed disabled:opacity-50`}
+                                maxLength={2000}
                                 placeholder={PageTextContent.messagePlaceholder}
+                                value={form.message}
+                                onChange={handleChange}
                             ></textarea>
                         </div>
                         <button
                             className={`w-full h-10 px-4 py-2 inline-flex items-center justify-center text-white dark:text-black whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-4 ${focusRingColorClass} focus-visible:ring-offset-4 ring-offset-gray-100 dark:ring-offset-gray-800 disabled:pointer-events-none disabled:opacity-50 bg-black dark:bg-white hover:bg-black/70 dark:hover:bg-white/70`}
                             type="submit"
+                            disabled={isSending}
                         >
-                            {PageTextContent.sendButton}
+                            {isSending ?
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                :
+                                PageTextContent.sendButton
+                            }
                         </button>
                     </form>
                 </div>
