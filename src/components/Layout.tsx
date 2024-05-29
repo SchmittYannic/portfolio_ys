@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom"
-import useToast from "../hooks/useToast";
+import { Outlet } from "react-router-dom";
 import useSettings from "../hooks/useSettings";
 import Navbar from "./Navbar"
-import Toast from "./Toast"
+//import Footer from "./Footer";
 import { styles } from "../styles";
 
 const Layout = () => {
 
     const { setTheme, setLang, setColor } = useSettings();
-    const { toastList } = useToast();
 
     useEffect(() => {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -35,7 +33,7 @@ const Layout = () => {
             setColor("Orange");
             document.documentElement.setAttribute("data-color", "Orange");
         }
-    }, [])
+    }, []);
 
     return (
         <div
@@ -44,7 +42,7 @@ const Layout = () => {
         >
             <Navbar />
             <Outlet />
-            <Toast toastList={toastList} />
+            {/* <Footer /> */}
         </div>
     )
 }
