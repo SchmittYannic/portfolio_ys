@@ -28,6 +28,8 @@ import hairdresserAppimg from "./hairdresserAppimg.webp"
 import hairdresserApp from "./hairdresserApp.webm";
 import datavisualizerAppimg from "./datavisualizerAppimg.webp";
 import datavisualizerApp from "./datavisualizerApp.webm";
+import eldenplannerAppimg from "./eldenplannerAppimg.webp";
+import eldenplannerApp from "./eldenplannerApp.webm";
 
 export {
     placeholderProfile,
@@ -57,4 +59,6 @@ export {
     hairdresserApp,
     datavisualizerAppimg,
     datavisualizerApp,
+    eldenplannerAppimg,
+    eldenplannerApp,
 }
