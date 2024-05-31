@@ -82,7 +82,7 @@ const Projects = () => {
                                 title={PageTextContent.githubtitle}
                             >
                                 <img
-                                    className="absolute bottom-6 left-6 w-16 h-16 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2 transition-[transform] duration-500 ease-linear"
+                                    className="absolute top-6 left-6 w-16 h-16 rounded-full hover:scale-125 group-focus:ring-4 ring-black/30 ring-offset-2 transition-[transform] duration-500 ease-linear"
                                     src={githubLogo}
                                     alt="Github Logo"
                                 />
@@ -90,7 +90,7 @@ const Projects = () => {
 
                             {activeProject.liveLink && (
                                 <a
-                                    className="group outline-none absolute bottom-6 left-28"
+                                    className="group outline-none absolute top-6 left-28"
                                     href={activeProject.liveLink}
                                     target="_blank"
                                     title={PageTextContent.livelinktitle}
