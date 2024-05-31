@@ -1,4 +1,4 @@
-import { html5Logo, css3Logo, javascriptLogo, typescriptLogo, germany, uk, placeholderProject, DataVisualizerImg } from "../assets";
+import { html5Logo, css3Logo, javascriptLogo, typescriptLogo, germany, uk, placeholderProject, hairdresserApp, hairdresserAppimg, datavisualizerAppimg, datavisualizerApp } from "../assets";
 
 const navbarHeight = 72; // when changing also change safelist in tailwind.config -> pt-[${navbarHeight}px]
 const menuWidth = 180;
@@ -563,6 +563,7 @@ export type ProjectType = {
     title_de: string,
     title_en: string,
     image: string,
+    webm: string,
     description_de: string[],
     description_en: string[],
     tags: TagKeyType[],
@@ -572,19 +573,32 @@ export type ProjectType = {
 
 const projects: ProjectType[] = [
     {
+        title_de: "Terminbuchungsapp",
+        title_en: "Appointment booking app",
+        image: hairdresserAppimg,
+        webm: hairdresserApp,
+        description_de: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"],
+        description_en: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"],
+        tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
+        githubLink: "https://github.com/SchmittYannic/hairdresser",
+        liveLink: "https://hairdresser.project-domain.de",
+    },
+    {
         title_de: "DataVisualizer",
         title_en: "DataVisualizer",
-        image: DataVisualizerImg,
+        image: datavisualizerAppimg,
+        webm: datavisualizerApp,
         description_de: ["DataVisualizer ist ein Tool, das die Erstellung von Diagrammen ermöglicht. Ein Nutzer kann Daten in Form einer CSV-Datei hochgeladen und ein Diagramm aus einer großen Auswahl an Diagrammtypen auswählen.", "DataVisualizer unterstützt die Erstellung von Boxplots, Säulen-, Kreis-, Streu-, Linien- und Flächendiagrammen. Eine einfache Anpassung der Dimensionen, Farbgestaltung und Textinhalte der Diagramme anhand individueller Bedürfnisse ist gegeben.", "Das Projekt nutzt React im Frontend, Flask als Backend und D3 für die Erstellung der Diagramme"],
         description_en: ["DataVisualizer is a tool that allows the creation of charts. A user can upload data in the form of a CSV file and select a chart from a wide range of chart types.", "DataVisualizer supports the creation of boxplots, bar, pie, scatter, line and area charts.The dimensions, coloring and text content of the charts can be easily adjusted based on individual needs.", "The project uses React on the frontend, Flask on the backend and D3 for creating the diagrams"],
-        tags: ["React", "D3"],
+        tags: ["React", "Typescript", "D3"],
         githubLink: "https://github.com/SchmittYannic/DataVisualizer",
-        liveLink: "https://data-visualizer-live.vercel.app/",
+        liveLink: "https://datavisualizer.project-domain.de/",
     },
     {
         title_de: "Elden Ring Buildplanner",
         title_en: "Elden Ring Buildplanner",
         image: placeholderProject,
+        webm: hairdresserApp,
         description_de: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         description_en: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
@@ -595,6 +609,7 @@ const projects: ProjectType[] = [
         title_de: "Mein Portfolio",
         title_en: "My Portfolio",
         image: placeholderProject,
+        webm: hairdresserApp,
         description_de: ["Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten."],
         description_en: ["My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly."],
         tags: ["React", "Typescript", "Tailwind", "Framermotion"],
