@@ -55,18 +55,25 @@ const Projects = () => {
                             id="projects-display-img-wrapper"
                             className={`relative border-2 ${borderColorClass900} ${styles.primaryBackground}`}
                         >
-                            <motion.img
-                                key={activeProject.image}
-                                src={activeProject.image}
-                                alt=""
+                            <motion.video
+                                key={activeProject.title_en}
                                 className="aspect-[16/9] overflow-hidden object-cover object-top"
-                                width={1024}
-                                height={576}
+                                poster={activeProject.image}
+                                width={1600}
+                                height={900}
+                                muted={true}
+                                controls
+                                autoPlay
+                                loop
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 1, ease: "linear" }}
-                            />
+                            >
+                                <source src={activeProject.webm} type="video/webm" />
+                                Your browser does not support the video tag.
+                            </motion.video>
+
 
                             <a
                                 className="group outline-none"
