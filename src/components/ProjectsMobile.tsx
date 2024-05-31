@@ -17,7 +17,7 @@ const Project = ({ project }: { project: ProjectType }) => {
     return (
         <div
             key={project.title_en}
-            className={`project-mobile ${styles.maxContainer} lg:mt-14 md:mt-10 mt-8 mx-auto flex flex-col items-center`} //sm:pb-48 pb-24
+            className={`project-mobile ${styles.maxContainer} mx-auto flex flex-col items-center`} //sm:pb-48 pb-24
         >
             <div className="project-mobile-img-wrapper">
                 <img
@@ -109,9 +109,14 @@ const ProjectsMobile = () => {
                     </p>
                 </div>
 
-                {projects.map(project => (
-                    <Project key={project.title_en} project={project} />
-                ))}
+                <div
+                    id="projects-main"
+                    className="lg:mt-14 md:mt-10 mt-8 flex flex-col md:gap-24 gap-16"
+                >
+                    {projects.map(project => (
+                        <Project key={project.title_en} project={project} />
+                    ))}
+                </div>
             </div>
         </section>
     )
