@@ -53,7 +53,7 @@ export {
     reactLogo, //currently not used
     pythonLogo, //currently not used
     typescriptLogo,
-    githubLogo,
+    githubLogo, //currently not used
     playButton,
     hairdresserAppimg,
     hairdresserApp,
