@@ -24,7 +24,10 @@ import typescriptLogo from "./typescript.svg";
 
 import githubLogo from "./github.svg";
 import playButton from "./playButton.svg";
-import DataVisualizerImg from "./DataVisualizerImg.png";
+import hairdresserAppimg from "./hairdresserAppimg.webp"
+import hairdresserApp from "./hairdresserApp.webm";
+import datavisualizerAppimg from "./datavisualizerAppimg.webp";
+import datavisualizerApp from "./datavisualizerApp.webm";
 
 export {
     placeholderProfile,
@@ -50,5 +53,8 @@ export {
     typescriptLogo,
     githubLogo,
     playButton,
-    DataVisualizerImg,
+    hairdresserAppimg,
+    hairdresserApp,
+    datavisualizerAppimg,
+    datavisualizerApp,
 }
