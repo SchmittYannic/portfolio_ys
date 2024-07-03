@@ -1,16 +1,16 @@
+import { Link } from "react-router-dom";
 import { styles } from "../styles"
 
 const Footer = () => {
-
-    const myFirstname = String(import.meta.env.VITE_FIRSTNAME);
-    const myLastname = String(import.meta.env.VITE_LASTNAME);
-    const now = new Date();
-
     return (
         <footer
-            className={`${styles.primaryTextColor} text-sm py-4 flex justify-center border-t-2`}
+            className={`${styles.primaryTextColor} text-sm py-4 flex justify-center border-t-2 border-gray-100 dark:border-gray-800`}
         >
-            © {now.getFullYear()}  All rights reserved - {myFirstname} {myLastname}
+            <Link
+                to={"/impressum"}
+            >
+                Impressum
+            </Link>
         </footer>
     )
 }
