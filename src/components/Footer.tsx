@@ -7,6 +7,7 @@ const Footer = () => {
             className={`${styles.primaryTextColor} text-sm py-4 flex justify-center border-t-2 border-gray-100 dark:border-gray-800`}
         >
             <Link
+                className="hover:underline"
                 to={"/impressum"}
             >
                 Impressum
