@@ -18,6 +18,10 @@ type NavMenuPropsType = {
     setIsSettingOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
+type NavbarPropsType = {
+    type?: "complete" | "minimal"
+}
+
 const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuPropsType): ReactElement => {
     const { lang, theme } = useSettings();
     const cog: string = theme === "light" ? cogBlack : cogWhite;
@@ -198,7 +202,7 @@ const SettingsMenu = () => {
     )
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
     const { lang, theme } = useSettings();
     const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
     const [isSettingsButtonHovered, setIsSettingsButtonHovered] = useState<boolean>(false);
@@ -224,13 +228,17 @@ const DesktopNav = () => {
 
     return (
         <>
-            <div className="ml-6 py-2 w-fit flex items-center">
-                <div className="relative h-full">
-                    <NavElement>
-                        <LanguageToggle />
-                    </NavElement>
-                </div>
-            </div>
+            {
+                type === "complete" ?
+                    <div className="ml-6 py-2 w-fit flex items-center">
+                        <div className="relative h-full">
+                            <NavElement>
+                                <LanguageToggle />
+                            </NavElement>
+                        </div>
+                    </div>
+                    : <div></div>
+            }
 
             <div className="py-2">
                 <div className="relative h-full">
@@ -250,47 +258,53 @@ const DesktopNav = () => {
                 </div>
             </div>
 
-            <ul className="mr-6 py-2 justify-self-end flex xl:gap-10 gap-1 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
-                {navLinks.map(link => (
-                    <li key={link.id} className="relative">
-                        <NavElement>
-                            <a className="relative px-2 h-full flex items-center z-20 rounded-md" href={`#${link.id}`}>
-                                {lang === "de" ? link.title_de : link.title_en}
-                            </a>
-                        </NavElement>
-                    </li>
-                ))}
+            {
+                type === "complete" ?
+                    <>
+                        <ul className="mr-6 py-2 justify-self-end flex xl:gap-10 gap-1 items-stretch  xl:text-xl text-lg  dark:text-darkTextPrimary text-textPrimary">
+                            {navLinks.map(link => (
+                                <li key={link.id} className="relative">
+                                    <NavElement>
+                                        <a className="relative px-2 h-full flex items-center z-20 rounded-md" href={`#${link.id}`}>
+                                            {lang === "de" ? link.title_de : link.title_en}
+                                        </a>
+                                    </NavElement>
+                                </li>
+                            ))}
 
-                <li className="relative">
-                    <NavElement>
-                        <button
-                            ref={scope}
-                            type="button"
-                            className="relative px-2 h-full flex items-center gap-2 z-20 rounded-md"
-                            onMouseEnter={() => setIsSettingsButtonHovered(true)}
-                            onMouseLeave={() => setIsSettingsButtonHovered(false)}
-                            onClick={() => {
-                                setIsSettingOpen(!isSettingOpen)
-                            }}
+                            <li className="relative">
+                                <NavElement>
+                                    <button
+                                        ref={scope}
+                                        type="button"
+                                        className="relative px-2 h-full flex items-center gap-2 z-20 rounded-md"
+                                        onMouseEnter={() => setIsSettingsButtonHovered(true)}
+                                        onMouseLeave={() => setIsSettingsButtonHovered(false)}
+                                        onClick={() => {
+                                            setIsSettingOpen(!isSettingOpen)
+                                        }}
+                                    >
+                                        <img src={cog} alt="settings" className="w-5 h-5" />
+                                        {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
+                                    </button>
+                                </NavElement>
+                            </li>
+                        </ul>
+
+                        <div
+                            className={`${isSettingOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
+                            style={{ top: navbarHeight }}
                         >
-                            <img src={cog} alt="settings" className="w-5 h-5" />
-                            {lang === "de" ? TextContent.german.settings : TextContent.english.settings}
-                        </button>
-                    </NavElement>
-                </li>
-            </ul>
-
-            <div
-                className={`${isSettingOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
-                style={{ top: navbarHeight }}
-            >
-                <SettingsMenu />
-            </div>
+                            <SettingsMenu />
+                        </div>
+                    </>
+                    : <div></div>
+            }
         </>
     )
 }
 
-const MobileNav = (): ReactElement => {
+const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const { theme } = useSettings();
     const { TooltipContent } = useDynamicClasses();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -346,13 +360,17 @@ const MobileNav = (): ReactElement => {
 
     return (
         <>
-            <div className="ml-6 py-2 w-fit flex items-center">
-                <div className="relative h-full">
-                    <NavElement>
-                        <LanguageToggle />
-                    </NavElement>
-                </div>
-            </div>
+            {
+                type === "complete" ?
+                    <div className="ml-6 py-2 w-fit flex items-center">
+                        <div className="relative h-full">
+                            <NavElement>
+                                <LanguageToggle />
+                            </NavElement>
+                        </div>
+                    </div>
+                    : <div></div>
+            }
 
             <div className="py-2">
                 <div className="relative h-full">
@@ -372,53 +390,59 @@ const MobileNav = (): ReactElement => {
                 </div>
             </div>
 
-            <div className={`mr-6 py-2 justify-self-end`}>
-                <div className="relative h-full">
-                    <NavElement>
-                        <button
-                            ref={scope}
-                            className="relative px-2 h-full w-14 z-20 rounded-md"
-                            type="button"
-                            title={isMenuOpen ? TooltipContent.closeMenu : TooltipContent.burgerMenu}
-                            onClick={() => {
-                                setIsMenuOpen(!isMenuOpen);
-                                setIsSettingOpen(false);
+            {
+                type === "complete" ?
+                    <>
+                        <div className={`mr-6 py-2 justify-self-end`}>
+                            <div className="relative h-full">
+                                <NavElement>
+                                    <button
+                                        ref={scope}
+                                        className="relative px-2 h-full w-14 z-20 rounded-md"
+                                        type="button"
+                                        title={isMenuOpen ? TooltipContent.closeMenu : TooltipContent.burgerMenu}
+                                        onClick={() => {
+                                            setIsMenuOpen(!isMenuOpen);
+                                            setIsSettingOpen(false);
+                                        }}
+                                    >
+                                        <motion.span
+                                            id="burger-line1"
+                                            className="absolute block h-1 w-10 top-[25%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
+                                            initial={{ y: "-50%", x: "-50%" }}
+                                        />
+                                        <motion.span
+                                            id="burger-line2"
+                                            className="absolute block h-1 w-10 top-[50%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
+                                            initial={{ y: "-50%", x: "-50%" }}
+                                        />
+                                        <motion.span
+                                            id="burger-line3"
+                                            className="absolute block h-1 w-10 top-[75%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
+                                            initial={{ y: "-50%", x: "-50%" }}
+                                        />
+                                    </button>
+                                </NavElement>
+                            </div>
+                        </div>
+
+                        <div
+                            className={`${isMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
+                            style={{
+                                top: navbarHeight,
+                                width: menuWidth,
                             }}
                         >
-                            <motion.span
-                                id="burger-line1"
-                                className="absolute block h-1 w-10 top-[25%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
-                                initial={{ y: "-50%", x: "-50%" }}
-                            />
-                            <motion.span
-                                id="burger-line2"
-                                className="absolute block h-1 w-10 top-[50%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
-                                initial={{ y: "-50%", x: "-50%" }}
-                            />
-                            <motion.span
-                                id="burger-line3"
-                                className="absolute block h-1 w-10 top-[75%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
-                                initial={{ y: "-50%", x: "-50%" }}
-                            />
-                        </button>
-                    </NavElement>
-                </div>
-            </div>
-
-            <div
-                className={`${isMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
-                style={{
-                    top: navbarHeight,
-                    width: menuWidth,
-                }}
-            >
-                <NavMenu setIsMenuOpen={setIsMenuOpen} isSettingOpen={isSettingOpen} setIsSettingOpen={setIsSettingOpen} />
-            </div>
+                            <NavMenu setIsMenuOpen={setIsMenuOpen} isSettingOpen={isSettingOpen} setIsSettingOpen={setIsSettingOpen} />
+                        </div>
+                    </>
+                    : <div></div>
+            }
         </>
     )
 };
 
-const Navbar = (): ReactElement => {
+const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const { color } = useSettings();
     const { setLastHoveredNavElement } = useNavHoverState();
     const windowSize = useWindowSize();
@@ -445,8 +469,8 @@ const Navbar = (): ReactElement => {
                         {isInitialRender
                             ? <></>
                             : isXlScreen
-                                ? <DesktopNav />
-                                : <MobileNav />
+                                ? <DesktopNav type={type} />
+                                : <MobileNav type={type} />
                         }
                     </div>
                 </nav>
