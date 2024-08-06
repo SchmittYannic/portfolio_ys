@@ -1,23 +1,88 @@
-import { html5Logo, css3Logo, javascriptLogo, typescriptLogo, germany, uk, placeholderProject, DataVisualizerImg } from "../assets";
+import {
+    html5Logo,
+    css3Logo,
+    javascriptLogo,
+    typescriptLogo,
+    germany,
+    uk,
+    placeholderProject,
+    hairdresserApp,
+    hairdresserAppimg,
+    datavisualizerAppimg,
+    datavisualizerApp,
+    eldenplannerAppimg,
+    eldenplannerApp
+} from "../assets";
 
 const navbarHeight = 72; // when changing also change safelist in tailwind.config -> pt-[${navbarHeight}px]
 const menuWidth = 180;
 const liIconCircleRadius = 40;
 
-const TextContent = {
+export type LocalizedTextContentType = {
+    settings: string,
+    darkmode: string,
+    language: string,
+    colorscheme: string,
+    navigation: string,
+
+    contact: string,
+    heroHeadText: string,
+    heroSubText1: string,
+    heroSubText2: string,
+    jobTitle: string,
+
+    aboutHead: string,
+    aboutSub: string,
+    educationHead: string,
+    noDegree: string,
+    gpa: string,
+    thesis: string,
+    focus: string,
+
+    skillsHead: string,
+    itHead: string,
+    languageHead: string,
+
+    projectsHead: string,
+    projectsSub: string,
+    expandButton: string,
+    collapseButton: string,
+    livelinktitle: string,
+    githubtitle: string,
+
+    contactHead: string,
+    contactSub: string,
+    nameLabel: string,
+    namePlaceholder: string,
+    emailLabel: string,
+    emailPlaceholder: string,
+    messageLabel: string,
+    messagePlaceholder: string,
+    sendButton: string,
+    contactSuccessMessage: string,
+    contactFailureMessage: string,
+}
+
+const languages = ["german", "english"] as const
+
+type LanguageType = typeof languages[number];
+
+const TextContent: Record<LanguageType, LocalizedTextContentType> = {
     german: {
         settings: "Einstellungen",
         darkmode: "Dunkelmodus",
         language: "Sprache",
         colorscheme: "Farbschema",
         navigation: "Navigation",
-        
+
         contact: "Kontakt",
         heroHeadText: "Hi, Ich bin ",
         heroSubText1: "Junior Webentwickler mit Fokus auf dem ",
         heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
-        
+        jobTitle: "Junior Webentwickler",
+
         aboutHead: "Über mich",
+        aboutSub: "Erfahre mehr über meinen Bildungsweg und meine Fachkenntnisse",
         educationHead: "Bildung",
         noDegree: "ohne Abschluss",
         gpa: "Notenschnitt: ",
@@ -29,17 +94,23 @@ const TextContent = {
         languageHead: "Sprachen",
 
         projectsHead: "Projekte",
+        projectsSub: "Schauen Sie sich einige meiner letzten Projekte an.",
         expandButton: "Weiterlesen...",
         collapseButton: "Schließen",
         livelinktitle: "Live-Demo ansehen",
         githubtitle: "Code auf GitHub anzeigen",
 
-        nameLabel: "Ihr Name",
-        emailLabel: "Ihre E-Mail-Adresse",
+        contactHead: "Kontakt",
+        contactSub: "Bei Fragen können Sie sich jederzeit an mich wenden.",
+        nameLabel: "Name",
+        namePlaceholder: "Ihr Name",
+        emailLabel: "Email",
+        emailPlaceholder: "Ihre E-Mail-Adresse",
         messageLabel: "Nachricht",
+        messagePlaceholder: "Ihre Nachricht",
         sendButton: "Senden",
-        successMessage: "Nachricht erfolgreich versendet.",
-        failureMessage: "Etwas ist schief gelaufen.",
+        contactSuccessMessage: "Nachricht erfolgreich versendet",
+        contactFailureMessage: "Etwas ist schiefgelaufen. Alternativ können Sie mir auch jederzeit eine Email senden: ",
     },
     english: {
         settings: "Settings",
@@ -52,8 +123,10 @@ const TextContent = {
         heroHeadText: "Hi, I am ",
         heroSubText1: "junior web developer with a focus on the ",
         heroSubText2: ". Using the latest technologies, I will bring your designs to life.",
+        jobTitle: "Junior Web Developer",
 
         aboutHead: "About me",
+        aboutSub: "Find out more about my educational background and my expertise",
         educationHead: "Education",
         noDegree: "no degree",
         gpa: "GPA: ",
@@ -65,21 +138,33 @@ const TextContent = {
         languageHead: "Languages",
 
         projectsHead: "Projects",
+        projectsSub: "Check out some of my recent projects.",
         expandButton: "Read more",
         collapseButton: "Close",
         livelinktitle: "View Live Demo",
         githubtitle: "View Code on GitHub",
 
-        nameLabel: "Your Name",
-        emailLabel: "Your Email",
+        contactHead: "Get in Touch",
+        contactSub: "Feel free to reach out to me for any inquiries.",
+        nameLabel: "Name",
+        namePlaceholder: "Your name",
+        emailLabel: "Email",
+        emailPlaceholder: "Your email",
         messageLabel: "Message",
+        messagePlaceholder: "Your message",
         sendButton: "Send",
-        successMessage: "Message sent successfully.",
-        failureMessage: "Something went wrong.",
+        contactSuccessMessage: "Message sent successfully",
+        contactFailureMessage: "Something went wrong. Alternatively, you can always send me an email: ",
     }
 };
 
-const TooltipTextContent = {
+export type LocalizedTooltipTextContentType = {
+    languageToggle: string,
+    burgerMenu: string,
+    closeMenu: string,
+}
+
+const TooltipTextContent: Record<LanguageType, LocalizedTooltipTextContentType> = {
     german: {
         languageToggle: "Sprache wechseln",
         burgerMenu: "Navigation öffnen",
@@ -492,6 +577,8 @@ export type ProjectType = {
     title_de: string,
     title_en: string,
     image: string,
+    webm: string,
+    mode: string,
     description_de: string[],
     description_en: string[],
     tags: TagKeyType[],
@@ -501,19 +588,35 @@ export type ProjectType = {
 
 const projects: ProjectType[] = [
     {
+        title_de: "Terminbuchungsapp",
+        title_en: "Appointment booking app",
+        image: hairdresserAppimg,
+        webm: hairdresserApp,
+        mode: "light",
+        description_de: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"],
+        description_en: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"],
+        tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
+        githubLink: "https://github.com/SchmittYannic/hairdresser",
+        liveLink: "https://hairdresser.project-domain.de",
+    },
+    {
         title_de: "DataVisualizer",
         title_en: "DataVisualizer",
-        image: DataVisualizerImg,
+        image: datavisualizerAppimg,
+        webm: datavisualizerApp,
+        mode: "light",
         description_de: ["DataVisualizer ist ein Tool, das die Erstellung von Diagrammen ermöglicht. Ein Nutzer kann Daten in Form einer CSV-Datei hochgeladen und ein Diagramm aus einer großen Auswahl an Diagrammtypen auswählen.", "DataVisualizer unterstützt die Erstellung von Boxplots, Säulen-, Kreis-, Streu-, Linien- und Flächendiagrammen. Eine einfache Anpassung der Dimensionen, Farbgestaltung und Textinhalte der Diagramme anhand individueller Bedürfnisse ist gegeben.", "Das Projekt nutzt React im Frontend, Flask als Backend und D3 für die Erstellung der Diagramme"],
         description_en: ["DataVisualizer is a tool that allows the creation of charts. A user can upload data in the form of a CSV file and select a chart from a wide range of chart types.", "DataVisualizer supports the creation of boxplots, bar, pie, scatter, line and area charts.The dimensions, coloring and text content of the charts can be easily adjusted based on individual needs.", "The project uses React on the frontend, Flask on the backend and D3 for creating the diagrams"],
-        tags: ["React", "D3"],
+        tags: ["React", "Typescript", "D3"],
         githubLink: "https://github.com/SchmittYannic/DataVisualizer",
-        liveLink: "https://data-visualizer-live.vercel.app/",
+        liveLink: "https://datavisualizer.project-domain.de/",
     },
     {
         title_de: "Elden Ring Buildplanner",
         title_en: "Elden Ring Buildplanner",
-        image: placeholderProject,
+        image: eldenplannerAppimg,
+        webm: eldenplannerApp,
+        mode: "dark",
         description_de: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         description_en: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
@@ -524,6 +627,8 @@ const projects: ProjectType[] = [
         title_de: "Mein Portfolio",
         title_en: "My Portfolio",
         image: placeholderProject,
+        webm: hairdresserApp,
+        mode: "light",
         description_de: ["Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten."],
         description_en: ["My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly."],
         tags: ["React", "Typescript", "Tailwind", "Framermotion"],

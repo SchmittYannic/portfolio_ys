@@ -1,26 +1,17 @@
 import { PropsWithChildren, useRef } from "react";
 import { motion, MotionValue, useScroll } from "framer-motion";
-import useDynamicClasses from "../hooks/useDynamicClasses";
+
+import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
-import { styles } from "../styles";
-import {
-    education_de,
-    education_en,
-    educationType,
-    liIconCircleRadius,
-    skillsIT_de,
-    skillsIT_en,
-    skillsLanguage_de,
-    skillsLanguage_en,
-    SkillsType
-} from "../constants";
+import { styles } from "../styles"
+import { education_de, education_en, educationType, liIconCircleRadius, skillsIT_de, skillsIT_en, skillsLanguage_de, skillsLanguage_en, SkillsType } from "../constants";
 import { ScrollOffset } from "../utils/types";
 
 type fillColorType = `fill-${string}`;
 
-const CalendarIcon = ({ classes, fillColor = "fill-[#000000]" }: { classes: string, fillColor: fillColorType }) => {
+const CalendarIcon = ({classes, fillColor="fill-[#000000]"}: {classes: string, fillColor: fillColorType}) => {
     return (
-        <svg className={`${classes}`} width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg className={`${classes}`} width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"> 
             <defs></defs>
             <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g className={`${fillColor}`} id="Dribbble-Light-Preview" transform="translate(-300.000000, -2799.000000)">
@@ -35,7 +26,7 @@ const CalendarIcon = ({ classes, fillColor = "fill-[#000000]" }: { classes: stri
     )
 };
 
-const LiIcon = ({ progress }: { progress: MotionValue<number> }) => {
+const LiIcon = ({ progress }: { progress: MotionValue<number>}) => {
     const { color } = useSettings();
     const strokeColorClass900 = `stroke-action${color}-900`;
     const fillColorClass900 = `fill-action${color}-900`
@@ -44,13 +35,13 @@ const LiIcon = ({ progress }: { progress: MotionValue<number> }) => {
         <figure className={`absolute left-0 ${strokeColorClass900}`}>
             <svg className="-rotate-90" width={liIconCircleRadius} height={liIconCircleRadius} viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r={liIconCircleRadius} className="dark:stroke-base-900 stroke-darkBase-900 stroke-[4px] fill-none" />
-                <motion.circle
+                <motion.circle 
                     cx="50" cy="50" r={liIconCircleRadius} className="stroke-[10px] dark:fill-darkBase-900 fill-base-900"
                     style={{
                         pathLength: progress,
                     }}
                 />
-                <circle cx="50" cy="50" r={liIconCircleRadius / 2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
+                <circle cx="50" cy="50" r={liIconCircleRadius/2} className={`animate-pulse stroke-1 ${fillColorClass900}`} />
             </svg>
         </figure>
     )
@@ -71,7 +62,7 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
 
             <motion.div
                 className="mb-8"
-                initial={{
+                initial={{ 
                     y: 50,
                 }}
                 whileInView={{
@@ -79,7 +70,7 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 }}
                 transition={{
                     duration: 0.5,
-                    type: "spring",
+                    type:"spring",
                 }}
                 viewport={{ once: true }}
             >
@@ -93,20 +84,20 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 <p className="mb-3 text-md dark:text-darkTextPrimary text-textPrimary">
                     {entry.location}
                 </p>
-                <ul className={`ml-4 list-disc list-outside ${styles.primaryTextColor} ${styles.primaryFontSize}`}>
-                    <li>
-                        {entry.grade === "noDegree"
-                            ? PageTextContent.noDegree
+                <ul className="ml-4 list-disc list-outside dark:text-darkTextPrimary text-textPrimary">
+                    <li className="text-lg">
+                        {entry.grade === "noDegree" 
+                            ? PageTextContent.noDegree 
                             : PageTextContent.gpa + entry.grade
                         }
                     </li>
                     {entry.thesis &&
-                        <li>
+                        <li className="text-lg">
                             {PageTextContent.thesis}{entry.thesis}
                         </li>
                     }
                     {entry.focus &&
-                        <li>
+                        <li className="text-lg">
                             {PageTextContent.focus}{entry.focus}
                         </li>
                     }
@@ -172,28 +163,28 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
                     type: "spring",
                     bounce: 0.4,
                     duration: 1,
-                    delay: (idx % 3) * 0.1,
+                    delay: (idx % 3)*0.1,
                 }
             }}
             viewport={{ once: true }}
         >
-            <label
+            <label 
                 id={skill.id}
                 className="text-center dark:text-darkTextPrimary text-textPrimary"
                 title={skill.description}
             >
                 <p className="py-3">{skill.name}</p>
-                <img
-                    src={skill.logo}
-                    alt={skill.name}
-                    className="w-[100px] h-[100px]"
+                <img 
+                    src={skill.logo} 
+                    alt={skill.name} 
+                    className="w-[100px] h-[100px]" 
                 />
             </label>
         </motion.div>
     )
 };
 
-const SkillsSubSectionHeadText = ({ children, offset }: PropsWithChildren<{ offset: ScrollOffset }>) => {
+const SkillsSubSectionHeadText = ({ children, offset }: PropsWithChildren<{offset: ScrollOffset}>) => {
     const { bgColorClass900 } = useDynamicClasses();
     const ref: React.MutableRefObject<null | HTMLDivElement> = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -231,9 +222,9 @@ const SkillsSubSection = () => {
 
             <div className="mb-14 flex justify-center flex-wrap">
                 {skillsIT.map((skill, idx) => (
-                    <Skill
-                        key={skill.name + idx}
-                        skill={skill}
+                    <Skill 
+                        key={skill.name + idx} 
+                        skill={skill} 
                         idx={idx}
                     />
                 ))}
@@ -245,7 +236,7 @@ const SkillsSubSection = () => {
 
             <div className="flex justify-center flex-wrap">
                 {skillsLanguage.map((language, idx) => (
-                    <Skill
+                    <Skill 
                         key={language.name}
                         skill={language}
                         idx={idx}
@@ -257,42 +248,27 @@ const SkillsSubSection = () => {
 };
 
 const About = () => {
-    const { PageTextContent } = useDynamicClasses();
+    const { PageTextContent, sectionPaddingTop, bgColorClass900 } = useDynamicClasses();
 
     return (
-        <section
-            id="about"
-            className={`w-full lg:py-32 md:py-24 py-12`}
-        >
-            <div
-                id="about-content"
-                className={`${styles.maxSiteWidth} mx-auto px-4 md:px-6`}
-            >
-                <div
-                    id="about-header"
-                    className="text-center space-y-4"
-                >
-                    <h2
-                        className={`md:text-5xl sm:text-4xl text-3xl font-bold tracking-tighter ${styles.headlineTextColor}`}
-                    >
+        <section id="about" className={`relative ${sectionPaddingTop}`}>
+            <div className={`about-background absolute inset-0 flex flex-col-reverse ${sectionPaddingTop}`}>
+                <div className={`w-full h-[10px] ${bgColorClass900}`} />
+            </div>
+            <div className="about-content relative">
+                <div className={`max-container ${styles.maxContainer}`}>
+                    <h2 className="pt-12 mb-12 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
                         {PageTextContent.aboutHead}
                     </h2>
-                    <p
-                        className={`mx-auto ${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
-                    >
-                        {PageTextContent.aboutSub}
-                    </p>
-                </div>
 
-                <div
-                    className={`lg:max-w-none ${styles.maxContainer} lg:mx-0 mx-auto lg:mt-14 md:mt-10 mt-8 grid lg:grid-cols-2 lg:gap-16 grid-cols-1`}
-                >
-                    {/* margin bottom should be the same as sectionPaddingBottom */}
-                    <div className="education-wrapper lg:mb-0 md:mb-10 mb-8">
-                        <EducationSubSection />
-                    </div>
-                    <div className="skills-wrapper">
-                        <SkillsSubSection />
+                    <div className={`grid xl:grid-cols-2 xl:gap-16 grid-cols-1 ${styles.sectionPaddingBottom}`}>
+                        {/* margin bottom should be the same as sectionPaddingBottom */}
+                        <div className="education-wrapper xl:mb-0 mb-24">
+                            <EducationSubSection />
+                        </div>
+                        <div className="skills-wrapper">
+                            <SkillsSubSection />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,11 @@
-import { Fragment, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-import useSettings from "../hooks/useSettings"
+import { useState, Fragment } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import useSettings from "../hooks/useSettings";
 import useDynamicClasses from "../hooks/useDynamicClasses";
-import { projectsMobileStyles, styles } from "../styles";
-import { ProjectType, projects } from "../constants";
-import TechTags from "./ui/TechTags";
 import { ExpandButton } from "./ui";
+import TechTags from "./ui/TechTags";
+import { styles } from "../styles";
+import { ProjectType, projects } from "../constants";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
@@ -16,37 +15,44 @@ const Project = ({ project }: { project: ProjectType }) => {
     const description: string[] = lang === "en" ? project.description_en : project.description_de;
 
     return (
-        <div key={project.title_en} className={`project-mobile ${styles.sectionPaddingBottom} flex flex-col items-center`}>
+        <div
+            key={project.title_en}
+            className={`project-mobile ${styles.maxContainer} mx-auto flex flex-col items-center`} //sm:pb-48 pb-24
+        >
             <div className="project-mobile-img-wrapper">
-                <img 
-                    src={project.image} 
-                    alt="" 
-                    className={`${projectsMobileStyles.projectImgWidth} ${projectsMobileStyles.projectImgHeight}`}
+                <img
+                    src={project.image}
+                    alt=""
+                    className="aspect-[16/9] overflow-hidden object-cover object-top"
+                    width={1024}
+                    height={576}
                 />
             </div>
-            <div className={`project-mobile-description ${projectsMobileStyles.projectImgWidth}`}>
-                <h3 className="mt-8 mb-4 text-4xl dark:text-darkTextPrimary text-textPrimary">
+            <div
+                className="project-mobile-description"
+            >
+                <h3 className={`mt-8 mb-4 md:text-3xl sm:text-2xl text-xl font-bold ${styles.headlineTextColor}`}>
                     {lang === "en" ? project.title_en : project.title_de}
                 </h3>
 
                 <div className="mb-4 dark:text-darkTextPrimary text-textPrimary">
-                    <p className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary">
+                    <p className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}>
                         {description[0]}
                     </p>
 
                     <AnimatePresence>
                         {isDescExpanded && (
                             <motion.div
-                                initial={{maxHeight: "0px", opacity: 0}}
-                                animate={{maxHeight: "1000px", opacity: 1}}
-                                exit={{maxHeight: "0px", opacity: 0}}
-                                transition={{duration: 1}}
+                                initial={{ maxHeight: "0px", opacity: 0 }}
+                                animate={{ maxHeight: "1000px", opacity: 1 }}
+                                exit={{ maxHeight: "0px", opacity: 0 }}
+                                transition={{ duration: 1 }}
                             >
-                                {description.map((paragraph, idx) => 
+                                {description.map((paragraph, idx) =>
                                     <Fragment key={project.title_en + idx}>
                                         {idx !== 0 && (
                                             <p
-                                                className="mb-2 text-lg dark:text-darkTextPrimary text-textPrimary"
+                                                className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                                             >
                                                 {paragraph}
                                             </p>
@@ -76,22 +82,37 @@ const Project = ({ project }: { project: ProjectType }) => {
 }
 
 const ProjectsMobile = () => {
-    const { sectionPaddingTop, PageTextContent, bgColorClass900 } = useDynamicClasses();
+    const { PageTextContent } = useDynamicClasses();
 
     return (
-        <section id="projects" className={`relative ${sectionPaddingTop}`}>
-            <div className={`projects-background absolute inset-0 flex flex-col ${sectionPaddingTop}`}>
-                <div className={`w-full h-[200px] ${bgColorClass900}`} />
-                <div className={`w-full ${styles.primaryBackground} grow`} />
-                <div className={`w-full h-[10px] ${bgColorClass900}`} />
-            </div>
-
-            <div className="projects-content relative">
-                <div className={`max-container ${styles.maxContainer}`}>
-                    <h2 className="pt-12 mb-12 text-5xl text-center dark:text-darkTextPrimary text-textPrimary">
+        <section
+            id="projects"
+            className={`w-full py-12 md:py-24 lg:py-32 ${styles.secondaryBackground}`}
+        >
+            <div
+                id="projects-content"
+                className={`relative ${styles.maxSiteWidth} mx-auto px-4 md:px-6`}
+            >
+                <div
+                    id="projects-header"
+                    className="text-center space-y-4"
+                >
+                    <h2
+                        className={`md:text-5xl sm:text-4xl text-3xl font-bold tracking-tighter ${styles.headlineTextColor}`}
+                    >
                         {PageTextContent.projectsHead}
                     </h2>
+                    <p
+                        className={`mx-auto ${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
+                    >
+                        {PageTextContent.projectsSub}
+                    </p>
+                </div>
 
+                <div
+                    id="projects-main"
+                    className="lg:mt-14 md:mt-10 mt-8 flex flex-col md:gap-24 gap-16"
+                >
                     {projects.map(project => (
                         <Project key={project.title_en} project={project} />
                     ))}
