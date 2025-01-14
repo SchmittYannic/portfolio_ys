@@ -2,8 +2,10 @@ import { useRef, useEffect, useState, MouseEventHandler } from "react";
 import { canvasImg } from "../assets";
 
 interface SquareProps {
-    x: number;
-    y: number;
+    originalX: number;
+    originalY: number;
+    currentX: number;
+    currentY: number;
     size: number;
     color: string;
     draw(ctx: CanvasRenderingContext2D): void;
@@ -30,6 +32,13 @@ const HeroCanvas = () => {
         });
     };
 
+    const handleMouseOut = () => {
+        setMousePosition({
+            x: 0,
+            y: 0,
+        });
+    };
+
     useEffect(() => {
         if (!canvasRef.current) return;
 
@@ -46,14 +55,18 @@ const HeroCanvas = () => {
         const radius = 30;
 
         class Square implements SquareProps {
-            x: number;
-            y: number;
+            originalX: number;
+            originalY: number;
+            currentX: number;
+            currentY: number;
             size: number;
             color: string;
 
             constructor(x: number, y: number, size: number, color: string) {
-                this.x = x;
-                this.y = y;
+                this.originalX = x;
+                this.originalY = y;
+                this.currentX = x;
+                this.currentY = y
                 this.size = size;
                 this.color = color;
             }
@@ -61,21 +74,34 @@ const HeroCanvas = () => {
             draw(): void {
                 if (!ctx) return
                 ctx.fillStyle = this.color;
-                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.fillRect(this.currentX, this.currentY, this.size, this.size);
             }
 
             update(mouseX: number, mouseY: number): void {
                 if (this.isNearMouse(mouseX, mouseY, radius)) {
-                    ctx?.clearRect(this.x, this.y, this.size, this.size)
-                    //console.log("near: ", this.x, this.y)
-                    //this.draw()
+                    ctx?.clearRect(this.currentX, this.currentX, this.size, this.size)
+
+                    //calc new current position
+                    const dx = this.currentX - mousePosition.x;
+                    const dy = this.currentY - mousePosition.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const moveDistance = 5; // Adjust for stronger effect
+
+                    if (distance < radius) {
+                        const moveX = (dx / distance) * moveDistance;
+                        const moveY = (dy / distance) * moveDistance;
+                        this.currentX += moveX;
+                        this.currentY += moveY;
+                    }
+
+                    this.draw()
                 }
             }
 
             isNearMouse(mouseX: number, mouseY: number, radius: number): boolean {
                 // Calculate the distance from the square's center to the mouse
-                const dx = mouseX - (this.x + this.size / 2);
-                const dy = mouseY - (this.y + this.size / 2);
+                const dx = mouseX - (this.currentX + this.size / 2);
+                const dy = mouseY - (this.currentY + this.size / 2);
                 return Math.sqrt(dx * dx + dy * dy) < radius;
             }
         }
@@ -182,7 +208,16 @@ const HeroCanvas = () => {
     //     };
     // }, [mousePosition]);
 
-    return <canvas ref={canvasRef} id="heroCanvas" onMouseMove={handleMouseMove}></canvas>;
+    return (
+        <canvas
+            ref={canvasRef}
+            id="heroCanvas"
+            onMouseMove={handleMouseMove}
+            onMouseOut={handleMouseOut}
+        >
+
+        </canvas>
+    );
 }
 
 export default HeroCanvas
