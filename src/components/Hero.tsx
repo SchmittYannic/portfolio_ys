@@ -1,6 +1,7 @@
 
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { Button, CtaButton } from "./ui";
+import HeroCanvas from "./HeroCanvas";
 import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 
@@ -56,13 +57,14 @@ const Hero = () => {
                 <div
                     id="hero-img"
                 >
-                    <img
+                    {/* <img
                         className="mx-auto aspect-[3/2] overflow-hidden rounded-xl object-cover object-center border-2"
                         src={placeholderProfile}
                         alt=""
                         width={600}
                         height={400}
-                    />
+                    /> */}
+                    <HeroCanvas />
                 </div>
             </div>
         </section>
