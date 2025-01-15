@@ -14,7 +14,8 @@ interface SquareProps {
 type mouseType = {
     x: number
     y: number
-    radius: number
+    outerRadius: number
+    innerRadius: number
 }
 
 const HeroCanvas = () => {
@@ -39,9 +40,10 @@ const HeroCanvas = () => {
 
         // mouse position on canvas
         const mouse: mouseType = {
-            x: 0,
-            y: 0,
-            radius: 100,
+            x: -500,
+            y: -500,
+            outerRadius: 200,
+            innerRadius: 0,
         };
 
         // Event listeners
@@ -53,8 +55,8 @@ const HeroCanvas = () => {
         };
 
         const handleMouseOut = () => {
-            mouse.x = -200;
-            mouse.y = -200;
+            mouse.x = -500;
+            mouse.y = -500;
         };
 
         // class for individual squares on canvas
@@ -82,7 +84,8 @@ const HeroCanvas = () => {
             }
 
             update(): void {
-                if (!ctx) return
+                if (!ctx) return;
+
                 // Calculate distance between mouse and square
                 let dx = mouse.x - this.currentX;
                 let dy = mouse.y - this.currentY;
@@ -92,25 +95,27 @@ const HeroCanvas = () => {
                 let forceDirX = dx / distance || 0;
                 let forceDirY = dy / distance || 0;
 
-                // Max force radius and scaled force calculation
-                let maxDistance = mouse.radius;
-                //let force = ((maxDistance - distance) / maxDistance) * 10
-                let force = Math.max(0, (maxDistance - distance) / maxDistance); // Scale force: closer = stronger
+                if (distance < mouse.outerRadius) {
+                    // Calculate the force based on distance
+                    let normalizedDistance = Math.max(0, (distance - mouse.innerRadius) / (mouse.outerRadius - mouse.innerRadius));
+                    let force = (1 - normalizedDistance) ** 2 * 10;
 
-                // Apply force gradually based on distance
-                let dirX = forceDirX * force * 10;
-                let dirY = forceDirY * force * 10;
-                if (distance < maxDistance) {
-                    // Squares within the radius are pushed away
-                    this.currentX -= dirX;
-                    this.currentY -= dirY;
+                    // Apply a slight displacement force
+                    this.currentX -= forceDirX * force;
+                    this.currentY -= forceDirY * force;
+
+                    // Ensure squares don't permanently leave their original position
+                    let driftX = this.currentX - this.originalX;
+                    let driftY = this.currentY - this.originalY;
+                    this.currentX -= driftX / 20; // Gradual return to original X
+                    this.currentY -= driftY / 20; // Gradual return to original Y
                 } else {
-                    // Gradually return to original position
+                    // Outside the outer radius, squares smoothly return to their original position
                     if (this.originalX !== this.currentX) {
                         let dx = this.currentX - this.originalX;
                         this.currentX -= dx / 10;
                     }
-                    if (this.currentY != this.originalY) {
+                    if (this.originalY !== this.currentY) {
                         let dy = this.currentY - this.originalY;
                         this.currentY -= dy / 10;
                     }
