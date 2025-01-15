@@ -41,7 +41,7 @@ const HeroCanvas = () => {
         const mouse: mouseType = {
             x: 0,
             y: 0,
-            radius: 30,
+            radius: 100,
         };
 
         // Event listeners
@@ -83,20 +83,29 @@ const HeroCanvas = () => {
 
             update(): void {
                 if (!ctx) return
-
+                // Calculate distance between mouse and square
                 let dx = mouse.x - this.currentX;
                 let dy = mouse.y - this.currentY;
                 let distance = Math.sqrt(dx * dx + dy * dy);
-                let forceDirX = dx / distance;
-                let forceDirY = dy / distance;
+
+                // Direction vector (normalized)
+                let forceDirX = dx / distance || 0;
+                let forceDirY = dy / distance || 0;
+
+                // Max force radius and scaled force calculation
                 let maxDistance = mouse.radius;
-                let force = ((maxDistance - distance) / maxDistance) * 10
-                let dirX = forceDirX * force;
-                let dirY = forceDirY * force;
+                //let force = ((maxDistance - distance) / maxDistance) * 10
+                let force = Math.max(0, (maxDistance - distance) / maxDistance); // Scale force: closer = stronger
+
+                // Apply force gradually based on distance
+                let dirX = forceDirX * force * 10;
+                let dirY = forceDirY * force * 10;
                 if (distance < maxDistance) {
+                    // Squares within the radius are pushed away
                     this.currentX -= dirX;
                     this.currentY -= dirY;
                 } else {
+                    // Gradually return to original position
                     if (this.originalX !== this.currentX) {
                         let dx = this.currentX - this.originalX;
                         this.currentX -= dx / 10;
