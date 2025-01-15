@@ -11,6 +11,12 @@ interface SquareProps {
     draw(ctx: CanvasRenderingContext2D): void;
 }
 
+type mouseType = {
+    x: number
+    y: number
+    radius: number
+}
+
 const HeroCanvas = () => {
 
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -43,23 +49,25 @@ const HeroCanvas = () => {
         canvas.height = 400;
         const squares: Square[] = [];
         const squareSize = 1;
-        const radius = 30;
 
         // mouse position on canvas
-        let mouseX = 0;
-        let mouseY = 0;
+        const mouse: mouseType = {
+            x: 0,
+            y: 0,
+            radius: 30,
+        };
 
         // Event listeners
         const handleMouseMove = (e: MouseEvent) => {
             if (!canvasRef.current) return
             const rect = canvasRef.current.getBoundingClientRect();
-            mouseX = e.clientX - rect.left;
-            mouseY = e.clientY - rect.top;
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
         };
 
         const handleMouseOut = () => {
-            mouseX = 0;
-            mouseY = 0;
+            mouse.x = 0;
+            mouse.y = 0;
         };
 
         // class for individual squares on canvas
@@ -86,17 +94,17 @@ const HeroCanvas = () => {
                 ctx.fillRect(this.currentX, this.currentY, this.size, this.size);
             }
 
-            update(mouseX: number, mouseY: number): void {
-                if (this.isNearMouse(mouseX, mouseY, radius)) {
+            update(mouse: mouseType): void {
+                if (this.isNearMouse(mouse)) {
                     ctx?.clearRect(this.currentX, this.currentX, this.size, this.size)
 
                     //calc new current position
-                    const dx = this.currentX - mouseX;
-                    const dy = this.currentY - mouseY;
+                    const dx = this.currentX - mouse.x;
+                    const dy = this.currentY - mouse.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     const moveDistance = 5; // Adjust for stronger effect
 
-                    if (distance < radius) {
+                    if (distance < mouse.radius) {
                         const moveX = (dx / distance) * moveDistance;
                         const moveY = (dy / distance) * moveDistance;
                         this.currentX += moveX;
@@ -107,11 +115,11 @@ const HeroCanvas = () => {
                 }
             }
 
-            isNearMouse(mouseX: number, mouseY: number, radius: number): boolean {
+            isNearMouse(mouse: mouseType): boolean {
                 // Calculate the distance from the square's center to the mouse
-                const dx = mouseX - (this.currentX + this.size / 2);
-                const dy = mouseY - (this.currentY + this.size / 2);
-                return Math.sqrt(dx * dx + dy * dy) < radius;
+                const dx = mouse.x - (this.currentX + this.size / 2);
+                const dy = mouse.y - (this.currentY + this.size / 2);
+                return Math.sqrt(dx * dx + dy * dy) < mouse.radius;
             }
         }
 
@@ -185,7 +193,7 @@ const HeroCanvas = () => {
             //     square.draw();
             // });
 
-            squares.forEach((square) => square.update(mouseX, mouseY))
+            squares.forEach((square) => square.update(mouse))
 
             requestAnimationFrame(animate);
         }
