@@ -2,7 +2,6 @@
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { Button, CtaButton } from "./ui";
 import HeroCanvas from "./HeroCanvas";
-import { placeholderProfile } from "../assets";
 import { styles } from "../styles";
 
 const Hero = () => {
@@ -18,7 +17,7 @@ const Hero = () => {
         >
             <div
                 id="hero-content"
-                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-10`}
+                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-0`}
             >
                 <div
                     id="hero-text"
@@ -56,6 +55,7 @@ const Hero = () => {
                 </div>
                 <div
                     id="hero-img"
+                    className="h-[400px] lg:block hidden"
                 >
                     {/* <img
                         className="mx-auto aspect-[3/2] overflow-hidden rounded-xl object-cover object-center border-2"

@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { canvasImg } from "../assets";
+//import { canvasImg } from "../assets";
 
 interface SquareProps {
     originalX: number;
@@ -21,7 +21,7 @@ type mouseType = {
 const HeroCanvas = () => {
 
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const imageSrc = canvasImg;
+    //const imageSrc = canvasImg;
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -35,8 +35,8 @@ const HeroCanvas = () => {
         // canvas.width = 400;
         // canvas.height = 400;
         const squares: Square[] = [];
-        const squareSize = 3;
-        const gapSize = 0.2;
+        const squareSize = 2;
+        const gapSize = 0.1;
 
         // mouse position on canvas
         const mouse: mouseType = {
@@ -309,7 +309,8 @@ const HeroCanvas = () => {
             requestAnimationFrame(animate);
         }
 
-        initializeHtml(50, 10);
+        //initializeHtml(80, 250);
+        initializeHtml(80, 120);
 
         animate();
 
@@ -328,9 +329,11 @@ const HeroCanvas = () => {
         <canvas
             ref={canvasRef}
             id="heroCanvas"
-            className="mx-auto overflow-hidden border-2"
-            width={400}
+            //className="mx-auto overflow-hidden border-2"
+            //className="absolute top-0"
+            width={480}
             height={400}
+        //height={656}
         >
         </canvas>
     );
