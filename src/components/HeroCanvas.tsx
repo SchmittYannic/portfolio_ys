@@ -22,20 +22,6 @@ const HeroCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imageSrc = canvasImg;
 
-    // const handleMouseMove: MouseEventHandler<HTMLCanvasElement> = (e) => {
-    //     if (!canvasRef.current) return;
-    //     const rect = canvasRef.current.getBoundingClientRect();
-    //     // Save mouse position directly on the canvas element
-    //     canvasRef.current.dataset.mouseX = (e.clientX - rect.left).toString();
-    //     canvasRef.current.dataset.mouseY = (e.clientY - rect.top).toString();
-    // };
-
-    // const handleMouseOut = () => {
-    //     if (!canvasRef.current) return;
-    //     canvasRef.current.dataset.mouseX = "0";
-    //     canvasRef.current.dataset.mouseY = "0";
-    // };
-
     useEffect(() => {
         if (!canvasRef.current) return;
 
@@ -94,36 +80,35 @@ const HeroCanvas = () => {
                 ctx.fillRect(this.currentX, this.currentY, this.size, this.size);
             }
 
-            update(mouse: mouseType): void {
-                if (this.isNearMouse(mouse)) {
-                    ctx?.clearRect(this.currentX, this.currentX, this.size, this.size)
+            update(): void {
+                if (!ctx) return
 
-                    //calc new current position
-                    const dx = this.currentX - mouse.x;
-                    const dy = this.currentY - mouse.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const moveDistance = 5; // Adjust for stronger effect
-
-                    if (distance < mouse.radius) {
-                        const moveX = (dx / distance) * moveDistance;
-                        const moveY = (dy / distance) * moveDistance;
-                        this.currentX += moveX;
-                        this.currentY += moveY;
+                let dx = mouse.x - this.currentX;
+                let dy = mouse.y - this.currentY;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let forceDirX = dx / distance;
+                let forceDirY = dy / distance;
+                let maxDistance = mouse.radius;
+                let force = ((maxDistance - distance) / maxDistance) * 10
+                let dirX = forceDirX * force;
+                let dirY = forceDirY * force;
+                if (distance < maxDistance) {
+                    this.currentX -= dirX;
+                    this.currentY -= dirY;
+                } else {
+                    if (this.originalX !== this.currentX) {
+                        let dx = this.currentX - this.originalX;
+                        this.currentX -= dx / 10;
                     }
-
-                    this.draw()
+                    if (this.currentY != this.originalY) {
+                        let dy = this.currentY - this.originalY;
+                        this.currentY -= dy / 10;
+                    }
                 }
-            }
-
-            isNearMouse(mouse: mouseType): boolean {
-                // Calculate the distance from the square's center to the mouse
-                const dx = mouse.x - (this.currentX + this.size / 2);
-                const dy = mouse.y - (this.currentY + this.size / 2);
-                return Math.sqrt(dx * dx + dy * dy) < mouse.radius;
             }
         }
 
-        // Load the image
+        // Load the pixelart image
         const img = new Image();
         img.src = imageSrc;
 
@@ -144,6 +129,7 @@ const HeroCanvas = () => {
             // Get the pixel data from the temporary canvas
             const imageData = tempCtx.getImageData(0, 0, img.width, img.height)
 
+            // Create the squares on the canvas (not the temporary canvas)
             for (let y = 0; y < img.height; y += squareSize) {
                 for (let x = 0; x < img.width; x += squareSize) {
                     // Get the color of the top-left pixel of the square
@@ -171,31 +157,16 @@ const HeroCanvas = () => {
 
         function animate(): void {
             if (!ctx) return
-            //ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw each square, applying the mouse effect
-            // squares.forEach((square) => {
-            //     if (square.isNearMouse(mousePosition.x, mousePosition.y, radius)) {
-            //         // Move square away from mouse (or make it disappear, etc.)
-            //         // For simplicity, let's move the square slightly away
-            //         const dx = square.x - mousePosition.x;
-            //         const dy = square.y - mousePosition.y;
-            //         const distance = Math.sqrt(dx * dx + dy * dy);
-            //         const moveDistance = 5; // Adjust for stronger effect
-
-            //         if (distance < radius) {
-            //             const moveX = (dx / distance) * moveDistance;
-            //             const moveY = (dy / distance) * moveDistance;
-            //             square.x += moveX;
-            //             square.y += moveY;
-            //         }
-            //     }
-            //     square.draw();
-            // });
-
-            squares.forEach((square) => square.update(mouse))
+            squares.forEach((square) => {
+                square.draw();
+                square.update();
+            })
 
             requestAnimationFrame(animate);
+
+            console.log(squares.length)
         }
 
         animate();
