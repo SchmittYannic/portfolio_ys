@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, MouseEventHandler } from "react";
+import { useRef, useEffect } from "react";
 import { canvasImg } from "../assets";
 
 interface SquareProps {
@@ -16,19 +16,19 @@ const HeroCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imageSrc = canvasImg;
 
-    const handleMouseMove: MouseEventHandler<HTMLCanvasElement> = (e) => {
-        if (!canvasRef.current) return;
-        const rect = canvasRef.current.getBoundingClientRect();
-        // Save mouse position directly on the canvas element
-        canvasRef.current.dataset.mouseX = (e.clientX - rect.left).toString();
-        canvasRef.current.dataset.mouseY = (e.clientY - rect.top).toString();
-    };
+    // const handleMouseMove: MouseEventHandler<HTMLCanvasElement> = (e) => {
+    //     if (!canvasRef.current) return;
+    //     const rect = canvasRef.current.getBoundingClientRect();
+    //     // Save mouse position directly on the canvas element
+    //     canvasRef.current.dataset.mouseX = (e.clientX - rect.left).toString();
+    //     canvasRef.current.dataset.mouseY = (e.clientY - rect.top).toString();
+    // };
 
-    const handleMouseOut = () => {
-        if (!canvasRef.current) return;
-        canvasRef.current.dataset.mouseX = "0";
-        canvasRef.current.dataset.mouseY = "0";
-    };
+    // const handleMouseOut = () => {
+    //     if (!canvasRef.current) return;
+    //     canvasRef.current.dataset.mouseX = "0";
+    //     canvasRef.current.dataset.mouseY = "0";
+    // };
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -45,19 +45,24 @@ const HeroCanvas = () => {
         const squareSize = 1;
         const radius = 30;
 
+        // mouse position on canvas
         let mouseX = 0;
         let mouseY = 0;
 
-        canvas.onmousemove = () => {
-            mouseX = parseFloat(canvasRef.current?.dataset.mouseX || '0');
-            mouseY = parseFloat(canvasRef.current?.dataset.mouseY || '0');
-        }
+        // Event listeners
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!canvasRef.current) return
+            const rect = canvasRef.current.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        };
 
-        canvas.onmouseout = () => {
+        const handleMouseOut = () => {
             mouseX = 0;
             mouseY = 0;
-        }
+        };
 
+        // class for individual squares on canvas
         class Square implements SquareProps {
             originalX: number;
             originalY: number;
@@ -186,16 +191,23 @@ const HeroCanvas = () => {
         }
 
         animate();
+
+        // Add event listeners
+        canvas.addEventListener("mousemove", handleMouseMove);
+        canvas.addEventListener("mouseout", handleMouseOut);
+
+        // Cleanup function to remove the event listeners when the component unmounts
+        return () => {
+            canvas.removeEventListener("mousemove", handleMouseMove);
+            canvas.removeEventListener("mouseout", handleMouseOut);
+        };
     }, []);
 
     return (
         <canvas
             ref={canvasRef}
             id="heroCanvas"
-            onMouseMove={handleMouseMove}
-            onMouseOut={handleMouseOut}
         >
-
         </canvas>
     );
 }
