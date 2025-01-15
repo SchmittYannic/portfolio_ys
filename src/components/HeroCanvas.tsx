@@ -16,27 +16,18 @@ const HeroCanvas = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imageSrc = canvasImg;
 
-    const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
-        x: 0,
-        y: 0,
-    });
-
     const handleMouseMove: MouseEventHandler<HTMLCanvasElement> = (e) => {
         if (!canvasRef.current) return;
-        const canvas = canvasRef.current;
-
-        const rect = canvas.getBoundingClientRect();
-        setMousePosition({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top,
-        });
+        const rect = canvasRef.current.getBoundingClientRect();
+        // Save mouse position directly on the canvas element
+        canvasRef.current.dataset.mouseX = (e.clientX - rect.left).toString();
+        canvasRef.current.dataset.mouseY = (e.clientY - rect.top).toString();
     };
 
     const handleMouseOut = () => {
-        setMousePosition({
-            x: 0,
-            y: 0,
-        });
+        if (!canvasRef.current) return;
+        canvasRef.current.dataset.mouseX = "0";
+        canvasRef.current.dataset.mouseY = "0";
     };
 
     useEffect(() => {
@@ -53,6 +44,19 @@ const HeroCanvas = () => {
         const squares: Square[] = [];
         const squareSize = 1;
         const radius = 30;
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        canvas.onmousemove = () => {
+            mouseX = parseFloat(canvasRef.current?.dataset.mouseX || '0');
+            mouseY = parseFloat(canvasRef.current?.dataset.mouseY || '0');
+        }
+
+        canvas.onmouseout = () => {
+            mouseX = 0;
+            mouseY = 0;
+        }
 
         class Square implements SquareProps {
             originalX: number;
@@ -82,8 +86,8 @@ const HeroCanvas = () => {
                     ctx?.clearRect(this.currentX, this.currentX, this.size, this.size)
 
                     //calc new current position
-                    const dx = this.currentX - mousePosition.x;
-                    const dy = this.currentY - mousePosition.y;
+                    const dx = this.currentX - mouseX;
+                    const dy = this.currentY - mouseY;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     const moveDistance = 5; // Adjust for stronger effect
 
@@ -125,7 +129,7 @@ const HeroCanvas = () => {
             tempCtx.drawImage(img, 0, 0);
 
             // Get the pixel data from the temporary canvas
-            const imageData = tempCtx.getImageData(0, 0, img.width, img.height);
+            const imageData = tempCtx.getImageData(0, 0, img.width, img.height)
 
             for (let y = 0; y < img.height; y += squareSize) {
                 for (let x = 0; x < img.width; x += squareSize) {
@@ -176,37 +180,13 @@ const HeroCanvas = () => {
             //     square.draw();
             // });
 
-            squares.forEach((square) => square.update(mousePosition.x, mousePosition.y))
+            squares.forEach((square) => square.update(mouseX, mouseY))
 
             requestAnimationFrame(animate);
         }
 
         animate();
-    }, [mousePosition, imageSrc]);
-
-    // useEffect(() => {
-    //     if (!canvasRef.current) return;
-
-    //     const canvas = canvasRef.current;
-
-    //     const onMouseMove = (e: MouseEvent) => {
-    //         const rect = canvas.getBoundingClientRect();
-    //         setMousePosition({
-    //             x: e.clientX - rect.left,
-    //             y: e.clientY - rect.top,
-    //         });
-    //     };
-
-    //     //console.log(mousePosition)
-
-    //     // Add mouse move listener
-    //     canvas.addEventListener("mousemove", onMouseMove);
-
-    //     return () => {
-    //         // Cleanup event listener on unmount
-    //         canvas.removeEventListener("mousemove", onMouseMove);
-    //     };
-    // }, [mousePosition]);
+    }, []);
 
     return (
         <canvas
