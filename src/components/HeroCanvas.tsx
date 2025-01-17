@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { htmlLogoGrid, jsLogoGrid } from "../assets";
+import { cssLogoGrid, htmlLogoGrid, jsLogoGrid } from "../assets";
 
 interface SquareProps {
     originalX: number;
@@ -202,6 +202,13 @@ const HeroCanvas = () => {
                         const a = 255;
                         color = `rgba(${r}, ${g}, ${b}, ${a / 255})`
                     }
+                    if (grid[row][col] === 4) {
+                        const r = 33;
+                        const g = 149;
+                        const b = 243;
+                        const a = 255;
+                        color = `rgba(${r}, ${g}, ${b}, ${a / 255})`
+                    }
 
                     const square = new Square(
                         x,
@@ -229,7 +236,8 @@ const HeroCanvas = () => {
 
         //initializeHtml(80, 250);
         initLogo(htmlLogoGrid, 80, 130);
-        initLogo(jsLogoGrid, 194, 70)
+        initLogo(jsLogoGrid, 194, 70);
+        initLogo(cssLogoGrid, 350, 130);
 
         animate();
 

@@ -2,6 +2,7 @@ import placeholderProfile from "./placeholderProfile.png";
 import placeholderProject from "./placeholder.jpg";
 import htmlLogoGrid from "./htmlLogoGrid";
 import jsLogoGrid from "./jsLogoGrid";
+import cssLogoGrid from "./cssLogoGrid";
 
 import closeBlack from "./closeBlack.svg";
 import closeWhite from "./closeWhite.svg";
@@ -38,6 +39,7 @@ export {
     placeholderProject,
     htmlLogoGrid,
     jsLogoGrid,
+    cssLogoGrid,
     closeBlack,
     closeWhite,
     cogBlack,
