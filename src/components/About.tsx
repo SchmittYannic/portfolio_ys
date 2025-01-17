@@ -160,8 +160,8 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
         <motion.div
             className="p-[10px] m-[5px] flex flex-col justify-center items-center"
             initial={{
-                y: 300,
-                rotate: 75,
+                //y: 300,
+                //rotate: 75,
                 opacity: 0,
             }}
             whileInView={{
@@ -171,8 +171,8 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
                 transition: {
                     type: "spring",
                     bounce: 0.4,
-                    duration: 1,
-                    delay: (idx % 3) * 0.1,
+                    duration: 2,
+                    delay: (idx % 3) * 0.2,
                 }
             }}
             viewport={{ once: true }}
