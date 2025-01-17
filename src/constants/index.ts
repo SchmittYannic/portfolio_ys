@@ -440,24 +440,24 @@ const skillsIT_en: SkillsType[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg",
         description: "A JavaScript library for manipulating documents based on data, enabling dynamic and interactive data visualizations on the web.",
     },
-    {
-        id: "framermotion",
-        name: "Framer Motion",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
-        description: "A React library for creating fluid animations and gestures, enhancing user experience in web applications.",
-    },
+    // {
+    //     id: "framermotion",
+    //     name: "Framer Motion",
+    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+    //     description: "A React library for creating fluid animations and gestures, enhancing user experience in web applications.",
+    // },
     {
         id: "typescript",
         name: "Typescript",
         logo: typescriptLogo,
         description: "A superset of JavaScript adding static typing, enhancing code quality and scalability in large-scale applications.",
     },
-    // {
-    //     id: "nodejs",
-    //     name: "Node.js",
-    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    //     description: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
-    // },
+    {
+        id: "nodejs",
+        name: "Node.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+        description: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
+    },
     // {
     //     id: "express",
     //     name: "Express",
