@@ -1,6 +1,7 @@
 import placeholderProfile from "./placeholderProfile.png";
 import placeholderProject from "./placeholder.jpg";
-import canvasImg from "./canvasImg.png";
+import htmlLogoGrid from "./htmlLogoGrid";
+import jsLogoGrid from "./jsLogoGrid";
 
 import closeBlack from "./closeBlack.svg";
 import closeWhite from "./closeWhite.svg";
@@ -35,7 +36,8 @@ import eldenplannerApp from "./eldenplannerApp.webm";
 export {
     placeholderProfile,
     placeholderProject,
-    canvasImg,
+    htmlLogoGrid,
+    jsLogoGrid,
     closeBlack,
     closeWhite,
     cogBlack,
