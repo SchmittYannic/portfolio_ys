@@ -2,6 +2,7 @@
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { Button, CtaButton } from "./ui";
 import HeroCanvas from "./HeroCanvas";
+import HeroBg from "./HeroBg";
 import { styles } from "../styles";
 
 const Hero = () => {
@@ -13,11 +14,17 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className={`w-full lg:py-32 md:py-24 pb-12 pt-24 overflow-hidden`}
+            className={`relative w-full lg:py-32 md:py-24 pb-12 pt-24 overflow-hidden`}
         >
             <div
+                id="hero-background"
+                className={`lg:block hidden overflow-hidden`}
+            >
+                <HeroBg />
+            </div>
+            <div
                 id="hero-content"
-                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-0`}
+                className={`${styles.maxSiteWidth} relative mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-0 z-10`}
             >
                 <div
                     id="hero-text"
