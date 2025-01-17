@@ -31,8 +31,6 @@ const HeroCanvas = () => {
         if (!ctx) return;
 
         // settings
-        // canvas.width = 400;
-        // canvas.height = 400;
         const squares: Square[] = [];
         const squareSize = 2;
         const gapSize = 0.1;
@@ -234,9 +232,8 @@ const HeroCanvas = () => {
             requestAnimationFrame(animate);
         }
 
-        //initializeHtml(80, 250);
-        initLogo(htmlLogoGrid, 80, 130);
-        initLogo(jsLogoGrid, 194, 70);
+        initLogo(htmlLogoGrid, 90, 130);
+        initLogo(jsLogoGrid, 205, 70);
         initLogo(cssLogoGrid, 350, 130);
 
         animate();
@@ -258,7 +255,7 @@ const HeroCanvas = () => {
             id="heroCanvas"
             //className="mx-auto overflow-hidden border-2"
             //className="absolute top-0"
-            width={480}
+            width={600}
             height={400}
         //height={656}
         >

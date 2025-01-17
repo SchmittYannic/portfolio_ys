@@ -13,7 +13,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className={`w-full lg:py-32 md:py-24 pb-12 pt-24`}
+            className={`w-full lg:py-32 md:py-24 pb-12 pt-24 overflow-hidden`}
         >
             <div
                 id="hero-content"
