@@ -377,24 +377,24 @@ const skillsIT_de: SkillsType[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg",
         description: "Eine JavaScript-Bibliothek zum Manipulieren von Dokumenten basierend auf Daten, die dynamische und interaktive Datenvisualisierungen im Web ermöglicht.",
     },
-    {
-        id: "framermotion",
-        name: "Framer Motion",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
-        description: "Eine React-Bibliothek zum Erstellen flüssiger Animationen und Gesten, die die Benutzererfahrung in Webanwendungen verbessert.",
-    },
+    // {
+    //     id: "framermotion",
+    //     name: "Framer Motion",
+    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+    //     description: "Eine React-Bibliothek zum Erstellen flüssiger Animationen und Gesten, die die Benutzererfahrung in Webanwendungen verbessert.",
+    // },
     {
         id: "typescript",
         name: "Typescript",
         logo: typescriptLogo,
         description: "Eine Erweiterung von JavaScript, die statische Typisierung hinzufügt und die Codequalität und Skalierbarkeit in großen Anwendungen verbessert.",
     },
-    // {
-    //     id: "nodejs",
-    //     name: "Node.js",
-    //     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    //     description: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
-    // },
+    {
+        id: "nodejs",
+        name: "Node.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+        description: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
+    },
     // {
     //     id: "express",
     //     name: "Express",
