@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form"
 import emailjs from "@emailjs/browser";
 import useDynamicClasses from "../hooks/useDynamicClasses"
+import ContactBg from "./ContactBg";
 import { styles } from "../styles"
 
 type FormStateType = {
@@ -69,11 +70,17 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className={`w-full lg:py-32 md:py-24 py-12 border-t-2 border-gray-100 dark:border-gray-800`}
+            className={`relative w-full lg:py-32 md:py-24 py-12 border-t-2 border-gray-100 dark:border-gray-800`}
         >
             <div
+                id="contact-background"
+                className={`lg:block hidden overflow-hidden`}
+            >
+                <ContactBg />
+            </div>
+            <div
                 id="contact-content"
-                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4 grid items-start gap-6 lg:grid-cols-2 lg:gap-10`}
+                className={`${styles.maxSiteWidth} relative mx-auto md:px-6 px-4 grid items-start gap-6 lg:grid-cols-2 lg:gap-10 z-10`}
             >
                 <div
                     id="contact-text"

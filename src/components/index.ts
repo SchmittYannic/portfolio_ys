@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
-import ContactsBg from "./ContactsBg";
+import ContactBg from "./ContactBg";
 import Toggle from "./Toggle";
 import LanguageToggle from "./LanguageToggle";
 import Toast from "./Toast";
@@ -14,7 +14,7 @@ export {
     About,
     Projects,
     Contact,
-    ContactsBg,
+    ContactBg,
     Toggle,
     LanguageToggle,
     Toast,
