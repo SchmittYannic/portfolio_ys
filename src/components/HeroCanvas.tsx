@@ -27,6 +27,7 @@ const HeroCanvas = () => {
 
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
+        let animationFrameId: number
 
         if (!ctx) return;
 
@@ -229,7 +230,7 @@ const HeroCanvas = () => {
                 square.update();
             })
 
-            requestAnimationFrame(animate);
+            animationFrameId = requestAnimationFrame(animate);
         }
 
         initLogo(htmlLogoGrid, 90, 130);
@@ -246,6 +247,7 @@ const HeroCanvas = () => {
         return () => {
             canvas.removeEventListener("mousemove", handleMouseMove);
             canvas.removeEventListener("mouseout", handleMouseOut);
+            cancelAnimationFrame(animationFrameId)
         };
     }, []);
 
