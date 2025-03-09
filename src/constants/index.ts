@@ -5,13 +5,13 @@ import {
     typescriptLogo,
     germany,
     uk,
-    placeholderProject,
     hairdresserApp,
     hairdresserAppimg,
     datavisualizerAppimg,
     datavisualizerApp,
     eldenplannerAppimg,
-    eldenplannerApp
+    eldenplannerApp,
+    portfolioAppimg
 } from "../assets";
 
 const navbarHeight = 72; // when changing also change safelist in tailwind.config -> pt-[${navbarHeight}px]
@@ -674,13 +674,13 @@ const projects: ProjectType[] = [
         description_de: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         description_en: ["No more than lipsum and some Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lo"],
         tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
-        githubLink: "https://www.google.com",
-        liveLink: "https://www.google.com",
+        githubLink: "https://github.com/SchmittYannic/Eldenplanner",
+        liveLink: "https://www.eldenplanner.de",
     },
     {
         title_de: "Mein Portfolio",
         title_en: "My Portfolio",
-        image: placeholderProject,
+        image: portfolioAppimg,
         webm: hairdresserApp,
         mode: "light",
         description_de: ["Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten."],
