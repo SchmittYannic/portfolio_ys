@@ -128,6 +128,25 @@ const Projects = () => {
                             </h3>
 
                             <div className="mb-4">
+                                {activeProject.demoaccname && activeProject.demoaccpw &&
+                                    <>
+                                        <h4 className={`mb-1 text-xl ${styles.headlineTextColor}`}>
+                                            Demoaccount:
+                                        </h4>
+                                        <p
+                                            className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
+                                        >
+                                            {PageTextContent.emailLabel}: {activeProject.demoaccname}
+                                            <br />
+                                            {PageTextContent.passwordLabel}: {activeProject.demoaccpw}
+                                        </p>
+
+                                        <h4 className={`mb-1 text-xl ${styles.headlineTextColor}`}>
+                                            {PageTextContent.descriptionHead}:
+                                        </h4>
+                                    </>
+                                }
+
                                 <p className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}>
                                     {description[0]}
                                 </p>
@@ -136,7 +155,7 @@ const Projects = () => {
                                     {isDescExpanded && (
                                         <motion.div
                                             initial={{ maxHeight: "0px", opacity: 0 }}
-                                            animate={{ maxHeight: "1000px", opacity: 1 }}
+                                            animate={{ maxHeight: "2000px", opacity: 1 }}
                                             exit={{ maxHeight: "0px", opacity: 0 }}
                                             transition={{ duration: 1 }}
                                         >

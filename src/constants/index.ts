@@ -49,6 +49,7 @@ export type LocalizedTextContentType = {
     collapseButton: string,
     livelinktitle: string,
     githubtitle: string,
+    descriptionHead: string,
 
     contactHead: string,
     contactSub: string,
@@ -58,6 +59,7 @@ export type LocalizedTextContentType = {
     emailPlaceholder: string,
     messageLabel: string,
     messagePlaceholder: string,
+    passwordLabel: string,
     sendButton: string,
     contactSuccessMessage: string,
     contactFailureMessage: string,
@@ -99,6 +101,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         collapseButton: "Schließen",
         livelinktitle: "Live-Demo ansehen",
         githubtitle: "Code auf GitHub anzeigen",
+        descriptionHead: "Beschreibung",
 
         contactHead: "Kontakt",
         contactSub: "Bei Fragen können Sie sich jederzeit an mich wenden.",
@@ -108,6 +111,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         emailPlaceholder: "Ihre E-Mail-Adresse",
         messageLabel: "Nachricht",
         messagePlaceholder: "Ihre Nachricht",
+        passwordLabel: "Passwort",
         sendButton: "Senden",
         contactSuccessMessage: "Nachricht erfolgreich versendet",
         contactFailureMessage: "Etwas ist schiefgelaufen. Alternativ können Sie mir auch jederzeit eine Email senden: ",
@@ -143,6 +147,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         collapseButton: "Close",
         livelinktitle: "View Live Demo",
         githubtitle: "View Code on GitHub",
+        descriptionHead: "Description",
 
         contactHead: "Get in Touch",
         contactSub: "Feel free to reach out to me for any inquiries.",
@@ -152,6 +157,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         emailPlaceholder: "Your email",
         messageLabel: "Message",
         messagePlaceholder: "Your message",
+        passwordLabel: "Password",
         sendButton: "Send",
         contactSuccessMessage: "Message sent successfully",
         contactFailureMessage: "Something went wrong. Alternatively, you can always send me an email: ",

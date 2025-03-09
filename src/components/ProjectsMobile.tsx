@@ -36,6 +36,25 @@ const Project = ({ project }: { project: ProjectType }) => {
                 </h3>
 
                 <div className="mb-4 dark:text-darkTextPrimary text-textPrimary">
+                    {project.demoaccname && project.demoaccpw &&
+                        <>
+                            <h4 className={`mb-1 md:text-xl sm:text-lg ${styles.headlineTextColor}`}>
+                                Demoaccount:
+                            </h4>
+                            <p
+                                className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
+                            >
+                                {PageTextContent.emailLabel}: {project.demoaccname}
+                                <br />
+                                {PageTextContent.passwordLabel}: {project.demoaccpw}
+                            </p>
+
+                            <h4 className={`mb-1 md:text-xl sm:text-lg ${styles.headlineTextColor}`}>
+                                {PageTextContent.descriptionHead}:
+                            </h4>
+                        </>
+                    }
+
                     <p className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}>
                         {description[0]}
                     </p>
@@ -44,7 +63,7 @@ const Project = ({ project }: { project: ProjectType }) => {
                         {isDescExpanded && (
                             <motion.div
                                 initial={{ maxHeight: "0px", opacity: 0 }}
-                                animate={{ maxHeight: "1000px", opacity: 1 }}
+                                animate={{ maxHeight: "2000px", opacity: 1 }}
                                 exit={{ maxHeight: "0px", opacity: 0 }}
                                 transition={{ duration: 1 }}
                             >
