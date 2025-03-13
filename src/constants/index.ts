@@ -675,7 +675,7 @@ const projects: ProjectType[] = [
         demoaccpw: "Demo#1",
         description_de: [
             "Eldenplanner ist ein begleitendes Tool für das Action-Rollenspiel Elden Ring. Es ermöglicht Spielern, individuelle Charakter-Builds zu erstellen, zu speichern und mit anderen zu teilen, um ihre Spielweise gezielt zu optimieren.",
-            "Das Herzstück der Anwendung ist der Charakterplaner – ein interaktives Tool, mit dem Spieler ihre Charakterwerte und Ausrüstung strategisch planen können. Basierend auf der aktuellen Spielversion berechnet die Anwendung essenzielle Statistiken wie Lebenspunkte, Ausdauer, Angriffskraft und Verteidigung. Dadurch können Spieler Builds optimieren, ohne wertvolle Ressourcen im Spiel ausgeben zu müssen. Der Charakterplaner ist auch ohne Account vollständig nutzbar.",
+            "Das Herzstück der Anwendung ist der Charakterplaner – ein interaktives Tool, mit dem Spieler ihre Charakterwerte und Ausrüstung strategisch planen können. Basierend auf der aktuellen Spielversion berechnet die Anwendung essenzielle Statistiken wie Lebenspunkte, Ausdauer, Angriffskraft und Verteidigung. Dies ermöglicht es den Spielern, ihre Builds zu optimieren, ohne wertvolle In-Game-Ressourcen zu verbrauchen. Der Charakterplaner ist auch ohne Account vollständig nutzbar.",
             "Im Community Builds-Bereich können Spieler die erstellten Builds anderer Nutzer einsehen. Dank Filter-, Sortier- und Suchfunktionen lassen sich Builds gezielt nach bestimmten Kriterien finden und als Inspiration nutzen. Auch diese Funktion steht ohne Anmeldung zur Verfügung.",
             "Um eigene Builds zu speichern und zu teilen, können Nutzer einen Account erstellen. Ein Account bietet zusätzliche Funktionen wie:",
             "- Kommentieren von Builds und Nutzerprofilen",
@@ -693,7 +693,7 @@ const projects: ProjectType[] = [
         ],
         description_en: [
             "Eldenplanner is a companion tool for the action RPG Elden Ring. It allows players to create, save, and share custom character builds to optimize their gameplay experience.",
-            "The core of the application is the Character Planner – an interactive tool that enables players to strategically plan their character stats and equipment. Based on the latest game version, the application calculates key statistics such as health points, stamina, attack power, and defense. This allows players to refine their builds without spending valuable in-game resources. The Character Planner is fully accessible without an account.",
+            "The core of the application is the Character Planner – an interactive tool that enables players to strategically plan their character stats and equipment. Based on the latest game version, the application calculates key statistics such as health points, stamina, attack power, and defense. This enables players to optimize their builds without consuming valuable in-game resources. The Character Planner is fully accessible without an account.",
             "The Community Builds section allows players to explore builds created by other users. With filtering, sorting, and search functions, users can find builds based on specific criteria and use them as inspiration for their own. This feature is also available without registration.",
             "To save and share custom builds, users can create an account. An account provides additional features such as:",
             "- Commenting on builds and user profiles",
