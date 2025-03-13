@@ -230,7 +230,7 @@ const Projects = () => {
                                                     height={576}
                                                 />
                                                 <h4
-                                                    className={`ml-4 ${styles.primaryTextColor}`}
+                                                    className={`ml-4 break-words hyphens-auto ${styles.primaryTextColor}`}
                                                 >
                                                     {lang === "en" ? project.title_en : project.title_de}
                                                 </h4>
