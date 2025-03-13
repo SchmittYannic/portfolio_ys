@@ -458,7 +458,7 @@ const skillsLanguage: SkillsType[] = [
     },
 ];
 
-const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3", "Framermotion", "Node", "Mongodb", "Express"] as const;
+const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3", "Framermotion", "Node", "Mongodb", "Express", "Redux"] as const;
 export type TagKeyType = typeof tags[number];
 
 type TagType = {
@@ -532,6 +532,12 @@ const tagData: TagDataType = {
         textColor: "dark:text-black text-white",
         backgroundColor: "dark:bg-white bg-black",
         link: "https://expressjs.com/",
+    },
+    Redux: {
+        name: "Redux Toolkit",
+        textColor: "text-white",
+        backgroundColor: "bg-purple-600",
+        link: "https://redux-toolkit.js.org/",
     },
 }
 
@@ -665,7 +671,7 @@ const projects: ProjectType[] = [
             "- TanStack Table for a fast and flexible table view in the Community Builds section",
             "- Token-based authentication for secure login and authorization",
         ],
-        tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb"],
+        tags: ["React", "Typescript", "SCSS", "Node", "Express", "Mongodb", "Redux"],
         githubLink: "https://github.com/SchmittYannic/Eldenplanner",
         liveLink: "https://eldenplanner.project-domain.de/",
     },
