@@ -1,9 +1,10 @@
-import { useState, Fragment } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import useSettings from "../hooks/useSettings";
 import useDynamicClasses from "../hooks/useDynamicClasses";
 import { ExpandButton } from "./ui";
 import TechTags from "./ui/TechTags";
+import ProjectDescription from "./ProjectDescription";
 import { styles } from "../styles";
 import { ProjectType, projects } from "../constants";
 import { playButton } from "../assets";
@@ -101,24 +102,7 @@ const Project = ({ project }: { project: ProjectType }) => {
 
                     <AnimatePresence>
                         {isDescExpanded && (
-                            <motion.div
-                                initial={{ maxHeight: "0px", opacity: 0 }}
-                                animate={{ maxHeight: "2000px", opacity: 1 }}
-                                exit={{ maxHeight: "0px", opacity: 0 }}
-                                transition={{ duration: 1 }}
-                            >
-                                {description.map((paragraph, idx) =>
-                                    <Fragment key={project.title_en + idx}>
-                                        {idx !== 0 && (
-                                            <p
-                                                className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
-                                            >
-                                                {paragraph}
-                                            </p>
-                                        )}
-                                    </Fragment>
-                                )}
-                            </motion.div>
+                            <ProjectDescription description={description} />
                         )}
                     </AnimatePresence>
                 </div>

@@ -1,7 +1,8 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useSettings from "../hooks/useSettings";
 import useDynamicClasses from "../hooks/useDynamicClasses";
+import ProjectDescription from "./ProjectDescription";
 import { ExpandButton } from "./ui";
 import TechTags from "./ui/TechTags";
 import { styles } from "../styles";
@@ -134,7 +135,7 @@ const Projects = () => {
                                             Demoaccount:
                                         </h4>
                                         <p
-                                            className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
+                                            className={`mb-4 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                                         >
                                             {PageTextContent.emailLabel}: {activeProject.demoaccname}
                                             <br />
@@ -153,24 +154,7 @@ const Projects = () => {
 
                                 <AnimatePresence>
                                     {isDescExpanded && (
-                                        <motion.div
-                                            initial={{ maxHeight: "0px", opacity: 0 }}
-                                            animate={{ maxHeight: "2000px", opacity: 1 }}
-                                            exit={{ maxHeight: "0px", opacity: 0 }}
-                                            transition={{ duration: 1 }}
-                                        >
-                                            {description.map((paragraph, idx) =>
-                                                <Fragment key={activeProject.title_en + idx}>
-                                                    {idx !== 0 && (
-                                                        <p
-                                                            className={`mb-2 ${styles.primaryFontSize} ${styles.primaryTextColor}`}
-                                                        >
-                                                            {paragraph}
-                                                        </p>
-                                                    )}
-                                                </Fragment>
-                                            )}
-                                        </motion.div>
+                                        <ProjectDescription description={description} />
                                     )}
                                 </AnimatePresence>
                             </div>
