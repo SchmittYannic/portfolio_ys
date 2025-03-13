@@ -9,7 +9,7 @@ import { ProjectType, projects } from "../constants";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
-    const { PageTextContent } = useDynamicClasses();
+    const { PageTextContent, borderColorClass900 } = useDynamicClasses();
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
 
     const description: string[] = lang === "en" ? project.description_en : project.description_de;
@@ -19,7 +19,7 @@ const Project = ({ project }: { project: ProjectType }) => {
             key={project.title_en}
             className={`project-mobile ${styles.maxContainer} mx-auto flex flex-col items-center`} //sm:pb-48 pb-24
         >
-            <div className="project-mobile-img-wrapper">
+            <div className={`project-mobile-img-wrapper border-2 ${borderColorClass900}`}>
                 <img
                     src={project.image}
                     alt=""
