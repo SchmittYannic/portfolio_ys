@@ -78,10 +78,10 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         navigation: "Navigation",
 
         contact: "Kontakt",
-        heroHeadText: "Hi, Ich bin ",
+        heroHeadText: "Ich entwickle effiziente und benutzerfreundliche Frontends und setze meine Kenntnisse im Backend-Bereich gezielt ein, um reibungslose und leistungsstarke Webanwendungen zu schaffen.",
         heroSubText1: "Junior Webentwickler mit Fokus auf dem ",
         heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
-        jobTitle: "Junior Webentwickler",
+        jobTitle: "Webentwickler",
 
         aboutHead: "Über mich",
         aboutSub: "Erfahre mehr über meinen Bildungsweg und meine Fachkenntnisse",
@@ -124,10 +124,10 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         navigation: "Navigation",
 
         contact: "Contact",
-        heroHeadText: "Hi, I am ",
+        heroHeadText: "I develop efficient and user-friendly frontends and apply my knowledge of backend technologies to create smooth and high-performance web applications.",
         heroSubText1: "junior web developer with a focus on the ",
         heroSubText2: ". Using the latest technologies, I will bring your designs to life.",
-        jobTitle: "Junior Web Developer",
+        jobTitle: "Web Developer",
 
         aboutHead: "About me",
         aboutSub: "Find out more about my educational background and my expertise",

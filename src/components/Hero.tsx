@@ -43,9 +43,7 @@ const Hero = () => {
                     <p
                         className={`${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                     >
-                        {PageTextContent.heroSubText1}
-                        Frontend
-                        {PageTextContent.heroSubText2}
+                        {PageTextContent.heroHeadText}
                     </p>
                     <div
                         className="flex flex-col gap-2 min-[400px]:flex-row"
