@@ -1,5 +1,8 @@
 import placeholderProfile from "./placeholderProfile.png";
 import placeholderProject from "./placeholder.jpg";
+import htmlLogoGrid from "./htmlLogoGrid";
+import jsLogoGrid from "./jsLogoGrid";
+import cssLogoGrid from "./cssLogoGrid";
 
 import closeBlack from "./closeBlack.svg";
 import closeWhite from "./closeWhite.svg";
@@ -30,10 +33,15 @@ import datavisualizerAppimg from "./datavisualizerAppimg.webp";
 import datavisualizerApp from "./datavisualizerApp.webm";
 import eldenplannerAppimg from "./eldenplannerAppimg.webp";
 import eldenplannerApp from "./eldenplannerApp.webm";
+import portfolioAppimg from "./portfolioAppimg.webp";
+import portfolioApp from "./portfolioApp.webm";
 
 export {
     placeholderProfile,
     placeholderProject,
+    htmlLogoGrid,
+    jsLogoGrid,
+    cssLogoGrid,
     closeBlack,
     closeWhite,
     cogBlack,
@@ -61,4 +69,6 @@ export {
     datavisualizerApp,
     eldenplannerAppimg,
     eldenplannerApp,
+    portfolioAppimg,
+    portfolioApp,
 }

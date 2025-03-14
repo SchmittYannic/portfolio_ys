@@ -1,7 +1,8 @@
 
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import { Button, CtaButton } from "./ui";
-import { placeholderProfile } from "../assets";
+import HeroCanvas from "./HeroCanvas";
+import HeroBg from "./HeroBg";
 import { styles } from "../styles";
 
 const Hero = () => {
@@ -13,11 +14,17 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className={`w-full lg:py-32 md:py-24 pb-12 pt-24`}
+            className={`relative w-full lg:py-32 md:py-24 pb-12 pt-24 overflow-hidden`}
         >
             <div
+                id="hero-background"
+                className={`lg:block hidden overflow-hidden`}
+            >
+                <HeroBg />
+            </div>
+            <div
                 id="hero-content"
-                className={`${styles.maxSiteWidth} mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-10`}
+                className={`${styles.maxSiteWidth} relative mx-auto md:px-6 px-4 grid items-center gap-6 lg:grid-cols-2 lg:gap-0 z-10`}
             >
                 <div
                     id="hero-text"
@@ -36,9 +43,7 @@ const Hero = () => {
                     <p
                         className={`${styles.maxContainer} ${styles.primaryFontSize} ${styles.primaryTextColor}`}
                     >
-                        {PageTextContent.heroSubText1}
-                        Frontend
-                        {PageTextContent.heroSubText2}
+                        {PageTextContent.heroHeadText}
                     </p>
                     <div
                         className="flex flex-col gap-2 min-[400px]:flex-row"
@@ -55,14 +60,16 @@ const Hero = () => {
                 </div>
                 <div
                     id="hero-img"
+                    className="h-[400px] lg:block hidden"
                 >
-                    <img
+                    {/* <img
                         className="mx-auto aspect-[3/2] overflow-hidden rounded-xl object-cover object-center border-2"
                         src={placeholderProfile}
                         alt=""
                         width={600}
                         height={400}
-                    />
+                    /> */}
+                    <HeroCanvas />
                 </div>
             </div>
         </section>

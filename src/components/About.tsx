@@ -8,10 +8,8 @@ import {
     education_en,
     educationType,
     liIconCircleRadius,
-    skillsIT_de,
-    skillsIT_en,
-    skillsLanguage_de,
-    skillsLanguage_en,
+    skillsIT,
+    skillsLanguage,
     SkillsType
 } from "../constants";
 import { ScrollOffset } from "../utils/types";
@@ -156,12 +154,18 @@ type SkillPropsType = {
 }
 
 const Skill = ({ skill, idx }: SkillPropsType) => {
+
+    const { lang } = useSettings();
+
+    const description = lang === "en" ? skill.description_en : skill.description_de;
+    const name = lang === "en" ? skill.name_en : skill.name_de;
+
     return (
         <motion.div
             className="p-[10px] m-[5px] flex flex-col justify-center items-center"
             initial={{
-                y: 300,
-                rotate: 75,
+                //y: 300,
+                //rotate: 75,
                 opacity: 0,
             }}
             whileInView={{
@@ -171,8 +175,8 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
                 transition: {
                     type: "spring",
                     bounce: 0.4,
-                    duration: 1,
-                    delay: (idx % 3) * 0.1,
+                    duration: 2,
+                    delay: (idx % 3) * 0.2,
                 }
             }}
             viewport={{ once: true }}
@@ -180,12 +184,12 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
             <label
                 id={skill.id}
                 className="text-center dark:text-darkTextPrimary text-textPrimary"
-                title={skill.description}
+                title={description}
             >
-                <p className="py-3">{skill.name}</p>
+                <p className="py-3">{name}</p>
                 <img
                     src={skill.logo}
-                    alt={skill.name}
+                    alt={name}
                     className="w-[100px] h-[100px]"
                 />
             </label>
@@ -213,11 +217,7 @@ const SkillsSubSectionHeadText = ({ children, offset }: PropsWithChildren<{ offs
 }
 
 const SkillsSubSection = () => {
-    const { lang } = useSettings();
     const { PageTextContent } = useDynamicClasses();
-
-    const skillsIT = lang === "en" ? skillsIT_en : skillsIT_de;
-    const skillsLanguage = lang === "en" ? skillsLanguage_en : skillsLanguage_de;
 
     return (
         <>
@@ -232,7 +232,7 @@ const SkillsSubSection = () => {
             <div className="mb-14 flex justify-center flex-wrap">
                 {skillsIT.map((skill, idx) => (
                     <Skill
-                        key={skill.name + idx}
+                        key={skill.name_en + idx}
                         skill={skill}
                         idx={idx}
                     />
@@ -246,7 +246,7 @@ const SkillsSubSection = () => {
             <div className="flex justify-center flex-wrap">
                 {skillsLanguage.map((language, idx) => (
                     <Skill
-                        key={language.name}
+                        key={language.name_en}
                         skill={language}
                         idx={idx}
                     />

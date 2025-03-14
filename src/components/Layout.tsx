@@ -10,12 +10,20 @@ const Layout = () => {
     const { setTheme, setLang, setColor } = useSettings();
 
     useEffect(() => {
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-            setTheme("dark")
-        } else {
+        // if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        //     document.documentElement.classList.add('dark')
+        //     setTheme("dark")
+        // } else {
+        //     document.documentElement.classList.remove('dark')
+        //     setTheme("light")
+        // }
+
+        if (localStorage.theme === 'light') {
             document.documentElement.classList.remove('dark')
             setTheme("light")
+        } else {
+            document.documentElement.classList.add('dark')
+            setTheme("dark")
         }
 
         if (localStorage.lang === 'en') {
@@ -30,8 +38,8 @@ const Layout = () => {
             setColor(localStorage.color);
             document.documentElement.setAttribute("data-color", localStorage.color);
         } else {
-            setColor("Orange");
-            document.documentElement.setAttribute("data-color", "Orange");
+            setColor("Blue");
+            document.documentElement.setAttribute("data-color", "Blue");
         }
     }, []);
 
