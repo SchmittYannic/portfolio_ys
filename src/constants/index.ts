@@ -11,7 +11,8 @@ import {
     datavisualizerApp,
     eldenplannerAppimg,
     eldenplannerApp,
-    portfolioAppimg
+    portfolioAppimg,
+    portfolioApp,
 } from "../assets";
 
 const navbarHeight = 72; // when changing also change safelist in tailwind.config -> pt-[${navbarHeight}px]
@@ -679,7 +680,7 @@ const projects: ProjectType[] = [
         title_de: "Mein Portfolio",
         title_en: "My Portfolio",
         image: portfolioAppimg,
-        webm: hairdresserApp,
+        webm: portfolioApp,
         mode: "dark",
         description_de: ["Meine persönliche Portfolio Webseite, auf der ich meine Projekte und meine Person präsentiere. Ein Besucher kann Informationen über meinen Werdegange, Bildungsgrad und meine technischen Fähigkeiten erhalten sowie mit mir direkt in Kontakt treten."],
         description_en: ["My personal portfolio website, where I present my projects and myself. A visitor can get information about my career, educational level and technical skills as well as contact me directly."],

@@ -34,6 +34,7 @@ import datavisualizerApp from "./datavisualizerApp.webm";
 import eldenplannerAppimg from "./eldenplannerAppimg.webp";
 import eldenplannerApp from "./eldenplannerApp.webm";
 import portfolioAppimg from "./portfolioAppimg.webp";
+import portfolioApp from "./portfolioApp.webm";
 
 export {
     placeholderProfile,
@@ -69,4 +70,5 @@ export {
     eldenplannerAppimg,
     eldenplannerApp,
     portfolioAppimg,
+    portfolioApp,
 }
