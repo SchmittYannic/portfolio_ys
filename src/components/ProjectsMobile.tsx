@@ -7,7 +7,6 @@ import TechTags from "./ui/TechTags";
 import ProjectDescription from "./ProjectDescription";
 import { styles } from "../styles";
 import { ProjectType, projects } from "../constants";
-import { playButton } from "../assets";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
@@ -60,11 +59,9 @@ const Project = ({ project }: { project: ProjectType }) => {
                         <div
                             className={`liveLink w-12 h-12 relative rounded-full flex items-center justify-center hover:scale-125 transition-[transform] duration-500 ease-linear group-focus:ring-4 ${ringColorClass} ring-offset-2 z-10 before:inset-0 before:absolute before:content-[''] before:rounded-full before:opacity-0 before:-z-10 before:transition-opacity before:duration-500 before:ease-linear before:hover:opacity-100`}
                         >
-                            <img
-                                className="w-5 h-5 translate-x-0.5"
-                                src={playButton}
-                                alt="Live version"
-                            />
+                            <svg className="w-8 h-8" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 20H16M12 20H8M12 20V16M12 16H5C4.44772 16 4 15.5523 4 15V6C4 5.44771 4.44772 5 5 5H19C19.5523 5 20 5.44772 20 6V15C20 15.5523 19.5523 16 19 16H12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
                         </div>
                     </a>
                 )}

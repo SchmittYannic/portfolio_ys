@@ -21,7 +21,6 @@ import css3Logo from "./css3.svg";
 import javascriptLogo from "./javascript.svg";
 import typescriptLogo from "./typescript.svg";
 
-import playButton from "./playButton.svg";
 import hairdresserAppimg from "./hairdresserAppimg.webp"
 import hairdresserApp from "./hairdresserApp.webm";
 import datavisualizerAppimg from "./datavisualizerAppimg.webp";
@@ -52,7 +51,6 @@ export {
     css3Logo,
     javascriptLogo,
     typescriptLogo,
-    playButton,
     hairdresserAppimg,
     hairdresserApp,
     datavisualizerAppimg,
