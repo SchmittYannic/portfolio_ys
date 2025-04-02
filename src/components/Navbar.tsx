@@ -13,18 +13,12 @@ import useDynamicClasses from "../hooks/useDynamicClasses";
 import useNavHoverState from "../hooks/useNavHoverState";
 import useScrollTracker from "../hooks/useScrollTracker";
 
-type NavMenuPropsType = {
-    setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
-    isSettingOpen: boolean,
-    setIsSettingOpen: React.Dispatch<React.SetStateAction<boolean>>,
-}
-
 type NavbarPropsType = {
     type?: "complete" | "minimal"
 }
 
-const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuPropsType): ReactElement => {
-    const { lang, theme } = useSettings();
+const NavMenu = (): ReactElement => {
+    const { lang, theme, setIsBurgerMenuOpen, isSettingsMenuOpen, setIsSettingsMenuOpen } = useSettings();
     const cog: string = theme === "light" ? cogBlack : cogWhite;
 
     return (
@@ -41,7 +35,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
                 {navLinks.map(link => (
                     <li
                         key={link.id}
-                        onClick={() => { setIsMenuOpen(false) }}
+                        onClick={() => { setIsBurgerMenuOpen(false) }}
                     >
                         <div className="h-12 w-full inline-flex items-center justify-center cursor-pointer dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600">
                             <a
@@ -61,7 +55,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
                 type="button"
                 className="w-full px-4 py-3 flex items-center justify-center gap-2 text-sm dark:text-darkTextPrimary text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-600"
                 onClick={() => {
-                    setIsSettingOpen(!isSettingOpen);
+                    setIsSettingsMenuOpen(!isSettingsMenuOpen);
                 }}
             >
                 <img src={cog} alt="settings" className="w-5 h-5" />
@@ -69,7 +63,7 @@ const NavMenu = ({ setIsMenuOpen, isSettingOpen, setIsSettingOpen }: NavMenuProp
             </button>
 
             <div
-                className={`${isSettingOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute top-0 origin-center transition-[transform]`}
+                className={`${isSettingsMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute top-0 origin-center transition-[transform]`}
                 style={{ right: menuWidth }}
             >
                 <SettingsMenu />
@@ -204,8 +198,7 @@ const SettingsMenu = () => {
 }
 
 const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
-    const { lang, theme } = useSettings();
-    const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
+    const { lang, theme, isSettingsMenuOpen, setIsSettingsMenuOpen } = useSettings();
     const [isSettingsButtonHovered, setIsSettingsButtonHovered] = useState<boolean>(false);
     const [scope, animate] = useAnimate();
     const [animation, setAnimation] = useState<AnimationPlaybackControls | null>(null);
@@ -284,7 +277,7 @@ const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
                                         onMouseEnter={() => setIsSettingsButtonHovered(true)}
                                         onMouseLeave={() => setIsSettingsButtonHovered(false)}
                                         onClick={() => {
-                                            setIsSettingOpen(!isSettingOpen)
+                                            setIsSettingsMenuOpen(!isSettingsMenuOpen)
                                         }}
                                     >
                                         <img src={cog} alt="settings" className="w-5 h-5" />
@@ -295,7 +288,7 @@ const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
                         </ul>
 
                         <div
-                            className={`${isSettingOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
+                            className={`${isSettingsMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
                             style={{ top: navbarHeight }}
                         >
                             <SettingsMenu />
@@ -308,10 +301,8 @@ const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
 }
 
 const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
-    const { theme } = useSettings();
+    const { theme, isBurgerMenuOpen, setIsBurgerMenuOpen, setIsSettingsMenuOpen } = useSettings();
     const { TooltipContent } = useDynamicClasses();
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-    const [isSettingOpen, setIsSettingOpen] = useState<boolean>(false);
     const [scope, animate] = useAnimate();
 
     const logo: string = theme === "light" ? logoBlack : logoWhite;
@@ -350,7 +341,7 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
 
 
         const animateBurgerMenu = async () => {
-            if (isMenuOpen) {
+            if (isBurgerMenuOpen) {
                 await animateLinesTogether();
                 await animateLineRotation();
             } else {
@@ -359,7 +350,7 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
             }
         }
         animateBurgerMenu();
-    }, [isMenuOpen]);
+    }, [isBurgerMenuOpen]);
 
     return (
         <>
@@ -405,10 +396,10 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
                                         ref={scope}
                                         className="relative px-2 h-full w-14 z-20 rounded-md"
                                         type="button"
-                                        title={isMenuOpen ? TooltipContent.closeMenu : TooltipContent.burgerMenu}
+                                        title={isBurgerMenuOpen ? TooltipContent.closeMenu : TooltipContent.burgerMenu}
                                         onClick={() => {
-                                            setIsMenuOpen(!isMenuOpen);
-                                            setIsSettingOpen(false);
+                                            setIsBurgerMenuOpen(!isBurgerMenuOpen);
+                                            setIsSettingsMenuOpen(false);
                                         }}
                                     >
                                         <motion.span
@@ -432,13 +423,13 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
                         </div>
 
                         <div
-                            className={`${isMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
+                            className={`${isBurgerMenuOpen ? "visible opacity-100 scale-1" : "invisible opacity-0 scale-0"} absolute right-0 origin-center transition-[transform]`}
                             style={{
                                 top: navbarHeight,
                                 width: menuWidth,
                             }}
                         >
-                            <NavMenu setIsMenuOpen={setIsMenuOpen} isSettingOpen={isSettingOpen} setIsSettingOpen={setIsSettingOpen} />
+                            <NavMenu />
                         </div>
                     </>
                     : <div></div>
@@ -448,7 +439,7 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
 };
 
 const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
-    const { color } = useSettings();
+    const { color, isBurgerMenuOpen, isSettingsMenuOpen } = useSettings();
     const { setLastHoveredNavElement } = useNavHoverState();
     const windowSize = useWindowSize();
     const userScrollAction = useScrollTracker();
@@ -465,7 +456,7 @@ const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const navbarHeightClass: string = `-translate-y-[${navbarHeight}px]`;
 
     useEffect(() => {
-        if (userScrollAction === "down" && !isXlScreen) {
+        if (userScrollAction === "down" && !isXlScreen && !isBurgerMenuOpen && !isSettingsMenuOpen) {
             setIsNavbarHidden(true);
         } else {
             setIsNavbarHidden(false);

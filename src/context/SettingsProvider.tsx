@@ -7,6 +7,10 @@ export type UseSettingsContextType = {
     setLang: React.Dispatch<React.SetStateAction<string>>,
     color: string,
     setColor: React.Dispatch<React.SetStateAction<string>>,
+    isBurgerMenuOpen: boolean,
+    setIsBurgerMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    isSettingsMenuOpen: boolean,
+    setIsSettingsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 const initContextState: UseSettingsContextType = {
@@ -16,6 +20,10 @@ const initContextState: UseSettingsContextType = {
     setLang: () => { },
     color: "",
     setColor: () => { },
+    isBurgerMenuOpen: false,
+    setIsBurgerMenuOpen: () => { },
+    isSettingsMenuOpen: false,
+    setIsSettingsMenuOpen: () => { },
 }
 
 export const SettingsContext = createContext<UseSettingsContextType>(initContextState)
@@ -27,8 +35,24 @@ export const SettingsProvider = ({ children }: ChildrenType): ReactElement => {
     const [lang, setLang] = useState("de");
     const [color, setColor] = useState("blue");
 
+    const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+    const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
+
     return (
-        <SettingsContext.Provider value={{ theme, setTheme, lang, setLang, color, setColor }}>
+        <SettingsContext.Provider
+            value={{
+                theme,
+                setTheme,
+                lang,
+                setLang,
+                color,
+                setColor,
+                isBurgerMenuOpen,
+                setIsBurgerMenuOpen,
+                isSettingsMenuOpen,
+                setIsSettingsMenuOpen,
+            }}
+        >
             {children}
         </SettingsContext.Provider>
     )
