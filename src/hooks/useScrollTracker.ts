@@ -16,7 +16,7 @@ const useScrollTracker = () => {
         const prevScrollY = previousScrollPosition.current.scrollY;
         const prevScrollX = previousScrollPosition.current.scrollX
 
-        if (prevScrollY && scrollY && prevScrollY < scrollY) {
+        if (prevScrollY && scrollY && prevScrollY >= 0 && prevScrollY < scrollY) {
             setUserScrollingAction("down");
         } else if (prevScrollY && scrollY && prevScrollY > scrollY) {
             setUserScrollingAction("up");
