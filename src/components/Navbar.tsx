@@ -253,6 +253,8 @@ const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
                                 src={logo}
                                 alt="page-logo"
                                 className="w-[50px] h-[50px]"
+                                width={50}
+                                height={50}
                             />
                         </Link>
                     </NavElement>
@@ -385,6 +387,8 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
                                 src={logo}
                                 alt="page-logo"
                                 className="w-[50px] h-[50px]"
+                                width={50}
+                                height={50}
                             />
                         </Link>
                     </NavElement>
@@ -461,7 +465,7 @@ const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const navbarHeightClass: string = `-translate-y-[${navbarHeight}px]`;
 
     useEffect(() => {
-        if (userScrollAction === "down") {
+        if (userScrollAction === "down" && !isXlScreen) {
             setIsNavbarHidden(true);
         } else {
             setIsNavbarHidden(false);
