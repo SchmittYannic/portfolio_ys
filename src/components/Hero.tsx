@@ -1,12 +1,19 @@
 
 import useDynamicClasses from "../hooks/useDynamicClasses"
-import { Button, CtaButton } from "./ui";
+import useSettings from "../hooks/useSettings";
+import { LinkButton, CtaButton } from "./ui";
 import HeroCanvas from "./HeroCanvas";
 import HeroBg from "./HeroBg";
 import { styles } from "../styles";
 
 const Hero = () => {
     const { PageTextContent } = useDynamicClasses();
+    const { lang } = useSettings();
+
+    const lebenslaufLink = String(import.meta.env.VITE_PERSONAL_LEBENSLAUF_LINK);
+    const cvLink = String(import.meta.env.VITE_PERSONAL_CV_LINK);
+
+    const heroLink = lang === "en" ? cvLink : lebenslaufLink;
 
     const firstName = String(import.meta.env.VITE_FIRSTNAME);
     const lastName = String(import.meta.env.VITE_LASTNAME);
@@ -48,11 +55,12 @@ const Hero = () => {
                     <div
                         className="flex flex-col gap-2 min-[400px]:flex-row"
                     >
-                        <Button
-                            type="button"
+                        <LinkButton
+                            href={heroLink}
+                            target="_blank"
                         >
                             Resume
-                        </Button>
+                        </LinkButton>
                         <CtaButton tag="link" href={"#contact"}>
                             {PageTextContent.contact}
                         </CtaButton>

@@ -1,10 +1,10 @@
-import Button from "./Button";
+import LinkButton from "./LinkButton";
 import CtaButton from "./CtaButton";
 import ExpandButton from "./ExpandButton";
 import NavElement from "./NavElement";
 
 export {
-    Button,
+    LinkButton,
     CtaButton,
     ExpandButton,
     NavElement,
