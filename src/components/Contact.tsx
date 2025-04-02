@@ -71,7 +71,7 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className={`relative w-full lg:py-32 md:py-24 py-12 border-t-2 border-gray-100 dark:border-gray-800`}
+            className={`relative w-full lg:py-32 md:py-24 py-12 border-t-2 border-gray-100 dark:border-gray-800 overflow-hidden`}
         >
             <div
                 id="contact-background"
