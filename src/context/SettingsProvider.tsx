@@ -11,24 +11,24 @@ export type UseSettingsContextType = {
 
 const initContextState: UseSettingsContextType = {
     theme: "",
-    setTheme: () => {},
+    setTheme: () => { },
     lang: "",
-    setLang: () => {},
+    setLang: () => { },
     color: "",
-    setColor: () => {},
+    setColor: () => { },
 }
 
 export const SettingsContext = createContext<UseSettingsContextType>(initContextState)
 
-type ChildrenType = { children?: ReactElement | ReactElement[]}
+type ChildrenType = { children?: ReactElement | ReactElement[] }
 
-export const SettingsProvider = ({children}: ChildrenType): ReactElement => {
-    const [theme, setTheme] = useState("light");
+export const SettingsProvider = ({ children }: ChildrenType): ReactElement => {
+    const [theme, setTheme] = useState("dark");
     const [lang, setLang] = useState("de");
-    const [color, setColor] = useState("orange");
+    const [color, setColor] = useState("blue");
 
     return (
-        <SettingsContext.Provider value={{theme, setTheme, lang, setLang, color, setColor}}>
+        <SettingsContext.Provider value={{ theme, setTheme, lang, setLang, color, setColor }}>
             {children}
         </SettingsContext.Provider>
     )
