@@ -451,20 +451,37 @@ const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const isInView = useInView(ref);
     const { scrollYProgress } = useScroll();
     const scaleX = scrollYProgress;
+    const [lastScrollYProgress, setLastScrollYProgress] = useState<number>(0);
+    const [isNavbarHidden, setIsNavbarHidden] = useState<boolean>(false);
 
     const bgColorClass600: string = `bg-action${color}-600`;
     const isInitialRender: boolean = windowSize.width === undefined;
     const isXlScreen: boolean = windowSize.width !== undefined && windowSize.width >= 1280;
+    const navbarHeightClass: string = `-translate-y-[${navbarHeight}px]`;
+
+    useEffect(() => {
+
+        const cleanupScrollListener = scrollYProgress.on("change", (current) => {
+            setIsNavbarHidden(current > lastScrollYProgress); // Hide when scrolling down
+            setLastScrollYProgress(current);
+        });
+
+        return () => cleanupScrollListener();
+
+    }, [scrollY, lastScrollYProgress]);
 
     return (
         <>
             <div ref={ref} />
             <header
-                className={`${isInView ? "bg-transparent" : `${styles.primaryBackground} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl`} fixed w-full z-50`}
+                className={`${isInView ? "bg-transparent" : `${styles.primaryBackground} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl`} fixed w-full z-50 transition-transform duration-500 ${isNavbarHidden ? navbarHeightClass : "translate-y-0"
+                    }`}
                 style={{ height: navbarHeight }}
                 onMouseLeave={() => setLastHoveredNavElement(null)}
             >
-                <nav className={`relative h-full mx-auto ${styles.maxSiteWidth} min-w-[320px]`}>
+                <nav
+                    className={`relative h-full mx-auto ${styles.maxSiteWidth} min-w-[320px]`}
+                >
                     <div className="h-full grid grid-cols-[1fr_70px_1fr] items-stretch">
                         {isInitialRender
                             ? <></>
