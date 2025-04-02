@@ -15,3 +15,8 @@ type Intersection = `${Edge} ${Edge}`
 type ProgressIntersection = [number, number]
 
 export type ScrollOffset = Array<Edge | Intersection | ProgressIntersection>
+
+export type ScrollPositionType = {
+    scrollY: undefined | number,
+    scrollX: undefined | number,
+}

@@ -11,6 +11,7 @@ import { styles } from "../styles";
 import useWindowSize from "../hooks/useWindowSize";
 import useDynamicClasses from "../hooks/useDynamicClasses";
 import useNavHoverState from "../hooks/useNavHoverState";
+import useScrollTracker from "../hooks/useScrollTracker";
 
 type NavMenuPropsType = {
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -446,12 +447,12 @@ const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const { color } = useSettings();
     const { setLastHoveredNavElement } = useNavHoverState();
     const windowSize = useWindowSize();
+    const userScrollAction = useScrollTracker();
     const ref: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
     const isInView = useInView(ref);
     const { scrollYProgress } = useScroll();
     const scaleX = scrollYProgress;
-    const [lastScrollYProgress, setLastScrollYProgress] = useState<number>(0);
     const [isNavbarHidden, setIsNavbarHidden] = useState<boolean>(false);
 
     const bgColorClass600: string = `bg-action${color}-600`;
@@ -460,15 +461,12 @@ const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const navbarHeightClass: string = `-translate-y-[${navbarHeight}px]`;
 
     useEffect(() => {
-
-        const cleanupScrollListener = scrollYProgress.on("change", (current) => {
-            setIsNavbarHidden(current > lastScrollYProgress); // Hide when scrolling down
-            setLastScrollYProgress(current);
-        });
-
-        return () => cleanupScrollListener();
-
-    }, [scrollY, lastScrollYProgress]);
+        if (userScrollAction === "down") {
+            setIsNavbarHidden(true);
+        } else {
+            setIsNavbarHidden(false);
+        }
+    }, [userScrollAction]);
 
     return (
         <>
