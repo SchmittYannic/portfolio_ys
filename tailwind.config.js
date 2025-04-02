@@ -32,6 +32,17 @@ export default {
                     200: "#bbe1fb",
                     100: "#d2ebfc",
                 },
+                // actionBlue: {
+                //     900: "#1e3a8a",
+                //     800: "#1d4ed8",
+                //     700: "#2563eb",
+                //     600: "#3b82f6",
+                //     500: "#60a5fa",
+                //     400: "#93c5fd",
+                //     300: "#a5b4fc",
+                //     200: "#c7d2fe",
+                //     100: "#e0e7ff",
+                // },
                 actionOrange: {
                     900: "#fe5b02", //using https://maketintsandshades.com/#fe5b02
                     800: "#fe6b1b",

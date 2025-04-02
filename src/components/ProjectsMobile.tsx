@@ -10,7 +10,7 @@ import { ProjectType, projects } from "../constants";
 
 const Project = ({ project }: { project: ProjectType }) => {
     const { lang } = useSettings();
-    const { PageTextContent, borderColorClass900, ringColorClass } = useDynamicClasses();
+    const { PageTextContent, borderColorClass900 } = useDynamicClasses();
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
 
     const description: string[] = lang === "en" ? project.description_en : project.description_de;
@@ -29,7 +29,7 @@ const Project = ({ project }: { project: ProjectType }) => {
                     height={576}
                 />
 
-                <a
+                {/* <a
                     className="group outline-none"
                     href={project.githubLink}
                     target="_blank"
@@ -64,12 +64,82 @@ const Project = ({ project }: { project: ProjectType }) => {
                             </svg>
                         </div>
                     </a>
-                )}
+                )} */}
             </div>
+
+            <div className="mt-4 self-start flex gap-3">
+                <a
+                    className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 text-gray-800 dark:text-base-0 bg-white dark:bg-[#eee] dark:bg-gradient-to-b dark:from-[#fcfcfc] dark:to-[#eee] border border-gray-300 dark:border-[#d5d5d5] hover:bg-gray-100 dark:hover:bg-[#ddd] hover:bg-gradient-to-b hover:from-[#f8f8f8] hover:to-[#e6e6e6] dark:hover:bg-gradient-to-b dark:hover:from-[#eee] dark:hover:to-[#ddd] hover:border-gray-400 dark:hover:border-[#ccc] active:bg-gray-300 dark:active:bg-[#dcdcdc] active:bg-none active:border-gray-500 dark:active:border-[#b5b5b5] active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] focus:bg-gray-200 dark:focus:bg-[#ddd] focus:bg-gradient-to-b focus:from-[#f0f0f0] focus:to-[#d0d0d0] dark:focus:bg-gradient-to-b dark:focus:from-[#eee] dark:focus:to-[#ddd] focus:border-gray-400 dark:focus:border-[#ccc] focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-[#bbb]"
+                    href={project.githubLink}
+                    target="_blank"
+                    title={PageTextContent.githubtitle}
+                >
+                    <span
+                        className="inline-block mr-1 -mb-[3px]"
+                    >
+                        <svg className="text-[#333333]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="20px" height="20px" viewBox="12 12 40 40" enableBackground="new 12 12 40 40">
+                            <path fill="currentColor" d="M32 13.4c-10.5 0-19 8.5-19 19c0 8.4 5.5 15.5 13 18c1 0.2 1.3-0.4 1.3-0.9c0-0.5 0-1.7 0-3.2 c-5.3 1.1-6.4-2.6-6.4-2.6C20 41.6 18.8 41 18.8 41c-1.7-1.2 0.1-1.1 0.1-1.1c1.9 0.1 2.9 2 2.9 2c1.7 2.9 4.5 2.1 5.5 1.6 c0.2-1.2 0.7-2.1 1.2-2.6c-4.2-0.5-8.7-2.1-8.7-9.4c0-2.1 0.7-3.7 2-5.1c-0.2-0.5-0.8-2.4 0.2-5c0 0 1.6-0.5 5.2 2 c1.5-0.4 3.1-0.7 4.8-0.7c1.6 0 3.3 0.2 4.7 0.7c3.6-2.4 5.2-2 5.2-2c1 2.6 0.4 4.6 0.2 5c1.2 1.3 2 3 2 5.1c0 7.3-4.5 8.9-8.7 9.4 c0.7 0.6 1.3 1.7 1.3 3.5c0 2.6 0 4.6 0 5.2c0 0.5 0.4 1.1 1.3 0.9c7.5-2.6 13-9.7 13-18.1C51 21.9 42.5 13.4 32 13.4z" />
+                        </svg>
+                    </span>
+                    <span>Github</span>
+                </a>
+
+                <a
+                    className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 text-gray-800 dark:text-base-0 bg-white dark:bg-[#eee] dark:bg-gradient-to-b dark:from-[#fcfcfc] dark:to-[#eee] border border-gray-300 dark:border-[#d5d5d5] hover:bg-gray-100 dark:hover:bg-[#ddd] hover:bg-gradient-to-b hover:from-[#f8f8f8] hover:to-[#e6e6e6] dark:hover:bg-gradient-to-b dark:hover:from-[#eee] dark:hover:to-[#ddd] hover:border-gray-400 dark:hover:border-[#ccc] active:bg-gray-300 dark:active:bg-[#dcdcdc] active:bg-none active:border-gray-500 dark:active:border-[#b5b5b5] active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] focus:bg-gray-200 dark:focus:bg-[#ddd] focus:bg-gradient-to-b focus:from-[#f0f0f0] focus:to-[#d0d0d0] dark:focus:bg-gradient-to-b dark:focus:from-[#eee] dark:focus:to-[#ddd] focus:border-gray-400 dark:focus:border-[#ccc] focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-[#bbb]"
+                    // className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 
+                    // text-gray-800 dark:text-base-0 
+                    // bg-actionBlue-900 dark:bg-actionBlue-900 bg-gradient-to-b from-actionBlue-800 to-actionBlue-900 
+                    // border border-actionBlue-900 dark:border-actionBlue-900 
+                    // hover:bg-actionBlue-800 dark:hover:bg-actionBlue-600 
+                    // hover:bg-gradient-to-b hover:from-actionBlue-700 hover:to-actionBlue-800 
+                    // dark:hover:bg-gradient-to-b dark:hover:from-actionBlue-700 dark:hover:to-actionBlue-900 
+                    // hover:border-actionBlue-800 dark:hover:border-actionBlue-600 
+                    // active:bg-actionBlue-800 dark:active:bg-actionBlue-700 active:bg-none 
+                    // active:border-actionBlue-900 dark:active:border-actionBlue-900 
+                    // active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] 
+                    // focus:bg-actionBlue-800 dark:focus:bg-actionBlue-700 
+                    // focus:bg-gradient-to-b focus:from-actionBlue-700 focus:to-actionBlue-800 
+                    // dark:focus:bg-gradient-to-b dark:focus:from-actionBlue-800 dark:focus:to-actionBlue-900 
+                    // focus:border-actionBlue-800 dark:focus:border-actionBlue-900 
+                    // focus:outline-none focus:ring-2 focus:ring-actionBlue-400 dark:focus:ring-actionBlue-600"
+
+
+
+                    // className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 
+                    // text-white dark:text-gray-50 
+                    // bg-blue-500 dark:bg-blue-600 bg-gradient-to-b from-blue-400 to-blue-600 
+                    // border border-blue-600 dark:border-blue-700 
+                    // hover:bg-blue-600 dark:hover:bg-blue-700 
+                    // hover:bg-gradient-to-b hover:from-blue-500 hover:to-blue-700 
+                    // dark:hover:bg-gradient-to-b dark:hover:from-blue-600 dark:hover:to-blue-800 
+                    // hover:border-blue-700 dark:hover:border-blue-800 
+                    // active:bg-blue-700 dark:active:bg-blue-800 active:bg-none 
+                    // active:border-blue-800 dark:active:border-blue-900 
+                    // active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] 
+                    // focus:bg-blue-600 dark:focus:bg-blue-700 
+                    // focus:bg-gradient-to-b focus:from-blue-500 focus:to-blue-700 
+                    // dark:focus:bg-gradient-to-b dark:focus:from-blue-600 dark:focus:to-blue-800 
+                    // focus:border-blue-800 dark:focus:border-blue-900 
+                    // focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600"
+                    href={project.githubLink}
+                    target="_blank"
+                    title={PageTextContent.githubtitle}
+                >
+                    <span
+                        className="inline-block mr-1 -mb-[3px]"
+                    >
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 20H16M12 20H8M12 20V16M12 16H5C4.44772 16 4 15.5523 4 15V6C4 5.44771 4.44772 5 5 5H19C19.5523 5 20 5.44772 20 6V15C20 15.5523 19.5523 16 19 16H12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </span>
+                    <span>Live Demo</span>
+                </a>
+            </div>
+
             <div
                 className="project-mobile-description"
             >
-                <h3 className={`mt-8 mb-4 md:text-3xl sm:text-2xl text-xl font-bold ${styles.headlineTextColor}`}>
+                <h3 className={`mt-6 mb-4 md:text-3xl sm:text-2xl text-xl font-bold ${styles.headlineTextColor}`}>
                     {lang === "en" ? project.title_en : project.title_de}
                 </h3>
 
