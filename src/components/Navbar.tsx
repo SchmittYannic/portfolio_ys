@@ -476,7 +476,7 @@ const Navbar = ({ type = "complete" }: NavbarPropsType): ReactElement => {
         <>
             <div ref={ref} />
             <header
-                className={`${isInView ? "bg-transparent" : `${styles.primaryBackground} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl`} fixed w-full z-50 transition-transform duration-500 ${isNavbarHidden ? navbarHeightClass : "translate-y-0"
+                className={`${isInView ? "bg-transparent" : `${styles.primaryBackground} dark:shadow-darkTextPrimary/10 dark:shadow-md shadow-xl`} sticky w-full z-50 transition-transform duration-500 ${isNavbarHidden ? navbarHeightClass : "translate-y-0"
                     }`}
                 style={{ height: navbarHeight }}
                 onMouseLeave={() => setLastHoveredNavElement(null)}
