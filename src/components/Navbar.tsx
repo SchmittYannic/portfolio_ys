@@ -328,9 +328,9 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
 
         const animateLinesApart = async () => {
             await Promise.all([
-                animate("#burger-line1", { top: "25%" }),
+                animate("#burger-line1", { top: "30%" }),
                 animate("#burger-line2", { opacity: 1 }),
-                animate("#burger-line3", { top: "75%" }),
+                animate("#burger-line3", { top: "70%" }),
             ])
         };
 
@@ -413,17 +413,17 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
                                     >
                                         <motion.span
                                             id="burger-line1"
-                                            className="absolute block h-1 w-10 top-[25%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
+                                            className="absolute block h-1 w-8 top-[30%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
                                             initial={{ y: "-50%", x: "-50%" }}
                                         />
                                         <motion.span
                                             id="burger-line2"
-                                            className="absolute block h-1 w-10 top-[50%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
+                                            className="absolute block h-1 w-8 top-[50%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
                                             initial={{ y: "-50%", x: "-50%" }}
                                         />
                                         <motion.span
                                             id="burger-line3"
-                                            className="absolute block h-1 w-10 top-[75%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
+                                            className="absolute block h-1 w-8 top-[70%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
                                             initial={{ y: "-50%", x: "-50%" }}
                                         />
                                     </button>
