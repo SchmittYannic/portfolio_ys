@@ -11,6 +11,8 @@ const styles = {
         "text-gray-500 dark:text-gray-400",
     primaryFontSize:
         "md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed",
+    secondaryFontSize:
+        "text-sm/relaxed md:text-base/relaxed lg:text-sm/relaxed xl:text-base/relaxed",
     headlineTextColor:
         "text-base-0 dark:text-base-800",
     primaryBorderColor:

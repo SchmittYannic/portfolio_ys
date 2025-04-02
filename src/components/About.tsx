@@ -81,14 +81,14 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                 }}
                 viewport={{ once: true }}
             >
-                <h4 className="dark:text-darkTextPrimary text-textPrimary text-2xl mb-2">
+                <h4 className="md:text-2xl text-xl mb-2 dark:text-darkTextPrimary text-textPrimary">
                     {entry.name}
                 </h4>
-                <span className="flex items-center text-md dark:text-darkTextPrimary/60 text-textPrimary/60">
+                <span className={`flex items-center ${styles.secondaryFontSize} dark:text-darkTextPrimary/60 text-textPrimary/60`}>
                     <CalendarIcon classes={"w-3 h-3 mr-1"} fillColor={theme === "dark" ? "fill-darkTextPrimary/60" : "fill-textPrimary/60"} />
                     {entry.start} - {entry.end}
                 </span>
-                <p className="mb-3 text-md dark:text-darkTextPrimary text-textPrimary">
+                <p className={`mb-3 ${styles.secondaryFontSize} dark:text-darkTextPrimary text-textPrimary`}>
                     {entry.location}
                 </p>
                 <ul className={`ml-4 list-disc list-outside ${styles.primaryTextColor} ${styles.primaryFontSize}`}>
@@ -127,7 +127,7 @@ const EducationSubSection = () => {
 
     return (
         <>
-            <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
+            <h3 className="mb-12 md:text-3xl text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {PageTextContent.educationHead}
             </h3>
 
@@ -186,7 +186,9 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
                 className="text-center dark:text-darkTextPrimary text-textPrimary"
                 title={description}
             >
-                <p className="py-3">{name}</p>
+                <p className={`py-3 ${styles.secondaryFontSize}`}>
+                    {name}
+                </p>
                 <img
                     src={skill.logo}
                     alt={name}
@@ -206,7 +208,7 @@ const SkillsSubSectionHeadText = ({ children, offset }: PropsWithChildren<{ offs
     });
 
     return (
-        <h4 ref={ref} className="skillSubHeader w-full flex items-center text-3xl dark:text-darkTextPrimary text-textPrimary">
+        <h4 ref={ref} className="skillSubHeader w-full flex items-center md:text-2xl text-xl dark:text-darkTextPrimary text-textPrimary">
             {children}
             <motion.div
                 className={`ml-2 w-full h-1 ${bgColorClass900} origin-left`}
@@ -221,7 +223,7 @@ const SkillsSubSection = () => {
 
     return (
         <>
-            <h3 className="mb-12 text-4xl text-center dark:text-darkTextPrimary text-textPrimary">
+            <h3 className="mb-12 md:text-3xl text-2xl text-center dark:text-darkTextPrimary text-textPrimary">
                 {PageTextContent.skillsHead}
             </h3>
 
