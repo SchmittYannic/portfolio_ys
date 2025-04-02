@@ -192,7 +192,7 @@ const Skill = ({ skill, idx }: SkillPropsType) => {
                 <img
                     src={skill.logo}
                     alt={name}
-                    className="md:w-[100px] md:h-[100px] w-[80px] h-[80px]"
+                    className="xl:w-[100px] xl:h-[100px] md:w-[80px] md:h-[80px] w-[60px] h-[60px]"
                 />
             </label>
         </motion.div>
