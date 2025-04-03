@@ -2,39 +2,31 @@ import { useEffect, useState, useRef } from "react"
 import useScrollPosition from "./useScrollPosition"
 import { ScrollPositionType } from "../utils/types";
 
-type userScrollingActionType = "up" | "down" | "left" | "right" | "idle"
+type UserScrollingActionType = "up" | "down" | "left" | "right" | "idle"
 
 const useScrollTracker = () => {
     const { scrollY, scrollX } = useScrollPosition();
-    const previousScrollPosition = useRef<ScrollPositionType>({
-        scrollY: undefined,
-        scrollX: undefined,
-    });
-    const [userScrollingAction, setUserScrollingAction] = useState<userScrollingActionType>("idle");
+    const previousScrollPosition = useRef<ScrollPositionType>({ scrollY: 0, scrollX: 0 });
+    const [userScrollingAction, setUserScrollingAction] = useState<UserScrollingActionType>("idle");
 
     useEffect(() => {
-        const prevScrollY = previousScrollPosition.current.scrollY;
-        const prevScrollX = previousScrollPosition.current.scrollX
+        const { scrollY: prevScrollY, scrollX: prevScrollX } = previousScrollPosition.current;
 
-        if (prevScrollY && scrollY && prevScrollY >= 0 && prevScrollY < scrollY) {
-            setUserScrollingAction("down");
-        } else if (prevScrollY && scrollY && prevScrollY > scrollY) {
-            setUserScrollingAction("up");
-        } else if (prevScrollX && scrollX && prevScrollX < scrollX) {
-            setUserScrollingAction("right");
-        } else if (prevScrollX && scrollX && prevScrollX > scrollX) {
-            setUserScrollingAction("left");
-        } else {
-            setUserScrollingAction("idle");
+        let newAction: UserScrollingActionType = "idle";
+
+        if (prevScrollY !== undefined && prevScrollX !== undefined) {
+            if (scrollY > prevScrollY && prevScrollY >= 0) newAction = "down";
+            else if (scrollY < prevScrollY) newAction = "up";
+            else if (scrollX > prevScrollX) newAction = "right";
+            else if (scrollX < prevScrollX) newAction = "left";
         }
 
-        previousScrollPosition.current = {
-            scrollY: scrollY,
-            scrollX: scrollX,
-        };
+        setUserScrollingAction((prev) => (prev !== newAction ? newAction : prev));
+
+        previousScrollPosition.current = { scrollY, scrollX };
     }, [scrollY, scrollX]);
 
-    return userScrollingAction
-}
+    return userScrollingAction;
+};
 
-export default useScrollTracker
+export default useScrollTracker;
