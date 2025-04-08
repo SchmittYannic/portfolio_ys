@@ -22,7 +22,7 @@ const Impressum = () => {
             className={`relative w-full h-full ${styles.primaryBackground}`}
         >
             <Navbar type="minimal" />
-            <div className={`w-full lg:py-32 md:py-24 pb-12 pt-24`}>
+            <div className={`w-full lg:pt-16 md:pt-12 pt-8`}>
                 <div className="max-w-[1400px] mx-auto px-4 md:px-6">
                     <h1
                         className={`text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl ${styles.headlineTextColor}`}
