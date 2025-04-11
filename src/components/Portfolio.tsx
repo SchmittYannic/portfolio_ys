@@ -12,7 +12,7 @@ const Portfolio = () => {
 
     const isLgScreen = windowSize.width && windowSize.width >= 1024;
 
-    const navbarHeightClass: string = `-translate-y-[${navbarHeight}px]`;
+    const navbarHeightClass: string = `-mt-[${navbarHeight}px]`;
 
     return (
         <main id="portfolio" className={`${navbarHeightClass}`}>
