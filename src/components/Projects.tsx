@@ -12,7 +12,7 @@ import { removeItemFromArray } from "../constants/array";
 const Projects = () => {
 
     const { lang } = useSettings();
-    const { PageTextContent, ringColorClass, borderColorClass900 } = useDynamicClasses();
+    const { PageTextContent, borderColorClass900 } = useDynamicClasses();
     const [activeProject, setActiveProject] = useState<ProjectType>(projects[0]);
     const [selectedProjects, setSelectedProjects] = useState<ProjectType[]>(projects.filter(p => p.title_en !== projects[0].title_en));
     const [isDescExpanded, setIsDescExpanded] = useState<boolean>(false);
@@ -75,7 +75,7 @@ const Projects = () => {
                             </motion.video>
 
 
-                            <a
+                            {/* <a
                                 className="group outline-none"
                                 href={activeProject.githubLink}
                                 target="_blank"
@@ -109,6 +109,42 @@ const Projects = () => {
                                             <path d="M12 20H16M12 20H8M12 20V16M12 16H5C4.44772 16 4 15.5523 4 15V6C4 5.44771 4.44772 5 5 5H19C19.5523 5 20 5.44772 20 6V15C20 15.5523 19.5523 16 19 16H12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </div>
+                                </a>
+                            )} */}
+                        </div>
+
+                        <div className="mt-4 self-start flex gap-3">
+                            <a
+                                className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 text-gray-800 dark:text-base-0 bg-white dark:bg-[#eee] dark:bg-gradient-to-b dark:from-[#fcfcfc] dark:to-[#eee] border border-gray-300 dark:border-[#d5d5d5] hover:bg-gray-100 dark:hover:bg-[#ddd] hover:bg-gradient-to-b hover:from-[#f8f8f8] hover:to-[#e6e6e6] dark:hover:bg-gradient-to-b dark:hover:from-[#eee] dark:hover:to-[#ddd] hover:border-gray-400 dark:hover:border-[#ccc] active:bg-gray-300 dark:active:bg-[#dcdcdc] active:bg-none active:border-gray-500 dark:active:border-[#b5b5b5] active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] focus:bg-gray-200 dark:focus:bg-[#ddd] focus:bg-gradient-to-b focus:from-[#f0f0f0] focus:to-[#d0d0d0] dark:focus:bg-gradient-to-b dark:focus:from-[#eee] dark:focus:to-[#ddd] focus:border-gray-400 dark:focus:border-[#ccc] focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-[#bbb]"
+                                href={activeProject.githubLink}
+                                target="_blank"
+                                title={PageTextContent.githubtitle}
+                            >
+                                <span
+                                    className="inline-block mr-1 -mb-[3px]"
+                                >
+                                    <svg className="text-[#333333]" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" width="20px" height="20px" viewBox="12 12 40 40" enableBackground="new 12 12 40 40">
+                                        <path fill="currentColor" d="M32 13.4c-10.5 0-19 8.5-19 19c0 8.4 5.5 15.5 13 18c1 0.2 1.3-0.4 1.3-0.9c0-0.5 0-1.7 0-3.2 c-5.3 1.1-6.4-2.6-6.4-2.6C20 41.6 18.8 41 18.8 41c-1.7-1.2 0.1-1.1 0.1-1.1c1.9 0.1 2.9 2 2.9 2c1.7 2.9 4.5 2.1 5.5 1.6 c0.2-1.2 0.7-2.1 1.2-2.6c-4.2-0.5-8.7-2.1-8.7-9.4c0-2.1 0.7-3.7 2-5.1c-0.2-0.5-0.8-2.4 0.2-5c0 0 1.6-0.5 5.2 2 c1.5-0.4 3.1-0.7 4.8-0.7c1.6 0 3.3 0.2 4.7 0.7c3.6-2.4 5.2-2 5.2-2c1 2.6 0.4 4.6 0.2 5c1.2 1.3 2 3 2 5.1c0 7.3-4.5 8.9-8.7 9.4 c0.7 0.6 1.3 1.7 1.3 3.5c0 2.6 0 4.6 0 5.2c0 0.5 0.4 1.1 1.3 0.9c7.5-2.6 13-9.7 13-18.1C51 21.9 42.5 13.4 32 13.4z" />
+                                    </svg>
+                                </span>
+                                <span>Github</span>
+                            </a>
+
+                            {activeProject.liveLink && (
+                                <a
+                                    className="color-btn h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 text-gray-800 dark:text-base-0 bg-white dark:bg-[#eee] dark:bg-gradient-to-b dark:from-[#fcfcfc] dark:to-[#eee] border border-gray-300 dark:border-[#d5d5d5] hover:bg-gray-100 dark:hover:bg-[#ddd] hover:bg-gradient-to-b hover:from-[#f8f8f8] hover:to-[#e6e6e6] dark:hover:bg-gradient-to-b dark:hover:from-[#eee] dark:hover:to-[#ddd] hover:border-gray-400 dark:hover:border-[#ccc] active:bg-gray-300 dark:active:bg-[#dcdcdc] active:bg-none active:border-gray-500 dark:active:border-[#b5b5b5] active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] focus:bg-gray-200 dark:focus:bg-[#ddd] focus:bg-gradient-to-b focus:from-[#f0f0f0] focus:to-[#d0d0d0] dark:focus:bg-gradient-to-b dark:focus:from-[#eee] dark:focus:to-[#ddd] focus:border-gray-400 dark:focus:border-[#ccc] focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-[#bbb]"
+                                    href={activeProject.liveLink}
+                                    target="_blank"
+                                    title={PageTextContent.livelinktitle}
+                                >
+                                    <span
+                                        className="inline-block mr-1 -mb-[3px]"
+                                    >
+                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 20H16M12 20H8M12 20V16M12 16H5C4.44772 16 4 15.5523 4 15V6C4 5.44771 4.44772 5 5 5H19C19.5523 5 20 5.44772 20 6V15C20 15.5523 19.5523 16 19 16H12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </span>
+                                    <span>Live Demo</span>
                                 </a>
                             )}
                         </div>
