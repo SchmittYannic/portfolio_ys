@@ -84,56 +84,23 @@ const Project = ({ project }: { project: ProjectType }) => {
                     <span>Github</span>
                 </a>
 
-                <a
-                    className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 text-gray-800 dark:text-base-0 bg-white dark:bg-[#eee] dark:bg-gradient-to-b dark:from-[#fcfcfc] dark:to-[#eee] border border-gray-300 dark:border-[#d5d5d5] hover:bg-gray-100 dark:hover:bg-[#ddd] hover:bg-gradient-to-b hover:from-[#f8f8f8] hover:to-[#e6e6e6] dark:hover:bg-gradient-to-b dark:hover:from-[#eee] dark:hover:to-[#ddd] hover:border-gray-400 dark:hover:border-[#ccc] active:bg-gray-300 dark:active:bg-[#dcdcdc] active:bg-none active:border-gray-500 dark:active:border-[#b5b5b5] active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] focus:bg-gray-200 dark:focus:bg-[#ddd] focus:bg-gradient-to-b focus:from-[#f0f0f0] focus:to-[#d0d0d0] dark:focus:bg-gradient-to-b dark:focus:from-[#eee] dark:focus:to-[#ddd] focus:border-gray-400 dark:focus:border-[#ccc] focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-[#bbb]"
-                    // className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 
-                    // text-gray-800 dark:text-base-0 
-                    // bg-actionBlue-900 dark:bg-actionBlue-900 bg-gradient-to-b from-actionBlue-800 to-actionBlue-900 
-                    // border border-actionBlue-900 dark:border-actionBlue-900 
-                    // hover:bg-actionBlue-800 dark:hover:bg-actionBlue-600 
-                    // hover:bg-gradient-to-b hover:from-actionBlue-700 hover:to-actionBlue-800 
-                    // dark:hover:bg-gradient-to-b dark:hover:from-actionBlue-700 dark:hover:to-actionBlue-900 
-                    // hover:border-actionBlue-800 dark:hover:border-actionBlue-600 
-                    // active:bg-actionBlue-800 dark:active:bg-actionBlue-700 active:bg-none 
-                    // active:border-actionBlue-900 dark:active:border-actionBlue-900 
-                    // active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] 
-                    // focus:bg-actionBlue-800 dark:focus:bg-actionBlue-700 
-                    // focus:bg-gradient-to-b focus:from-actionBlue-700 focus:to-actionBlue-800 
-                    // dark:focus:bg-gradient-to-b dark:focus:from-actionBlue-800 dark:focus:to-actionBlue-900 
-                    // focus:border-actionBlue-800 dark:focus:border-actionBlue-900 
-                    // focus:outline-none focus:ring-2 focus:ring-actionBlue-400 dark:focus:ring-actionBlue-600"
-
-
-
-                    // className="h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 
-                    // text-white dark:text-gray-50 
-                    // bg-blue-500 dark:bg-blue-600 bg-gradient-to-b from-blue-400 to-blue-600 
-                    // border border-blue-600 dark:border-blue-700 
-                    // hover:bg-blue-600 dark:hover:bg-blue-700 
-                    // hover:bg-gradient-to-b hover:from-blue-500 hover:to-blue-700 
-                    // dark:hover:bg-gradient-to-b dark:hover:from-blue-600 dark:hover:to-blue-800 
-                    // hover:border-blue-700 dark:hover:border-blue-800 
-                    // active:bg-blue-700 dark:active:bg-blue-800 active:bg-none 
-                    // active:border-blue-800 dark:active:border-blue-900 
-                    // active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] 
-                    // focus:bg-blue-600 dark:focus:bg-blue-700 
-                    // focus:bg-gradient-to-b focus:from-blue-500 focus:to-blue-700 
-                    // dark:focus:bg-gradient-to-b dark:focus:from-blue-600 dark:focus:to-blue-800 
-                    // focus:border-blue-800 dark:focus:border-blue-900 
-                    // focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600"
-                    href={project.githubLink}
-                    target="_blank"
-                    title={PageTextContent.githubtitle}
-                >
-                    <span
-                        className="inline-block mr-1 -mb-[3px]"
+                {project.liveLink && (
+                    <a
+                        className="color-btn h-8 py-1 pl-[10px] pr-2 inline-block text-base rounded-md transition duration-300 text-gray-800 dark:text-base-0 bg-white dark:bg-[#eee] dark:bg-gradient-to-b dark:from-[#fcfcfc] dark:to-[#eee] border border-gray-300 dark:border-[#d5d5d5] hover:bg-gray-100 dark:hover:bg-[#ddd] hover:bg-gradient-to-b hover:from-[#f8f8f8] hover:to-[#e6e6e6] dark:hover:bg-gradient-to-b dark:hover:from-[#eee] dark:hover:to-[#ddd] hover:border-gray-400 dark:hover:border-[#ccc] active:bg-gray-300 dark:active:bg-[#dcdcdc] active:bg-none active:border-gray-500 dark:active:border-[#b5b5b5] active:shadow-inner dark:active:shadow-[inset_0_2px_4px_#00000026] focus:bg-gray-200 dark:focus:bg-[#ddd] focus:bg-gradient-to-b focus:from-[#f0f0f0] focus:to-[#d0d0d0] dark:focus:bg-gradient-to-b dark:focus:from-[#eee] dark:focus:to-[#ddd] focus:border-gray-400 dark:focus:border-[#ccc] focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-[#bbb]"
+                        href={project.liveLink}
+                        target="_blank"
+                        title={PageTextContent.livelinktitle}
                     >
-                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 20H16M12 20H8M12 20V16M12 16H5C4.44772 16 4 15.5523 4 15V6C4 5.44771 4.44772 5 5 5H19C19.5523 5 20 5.44772 20 6V15C20 15.5523 19.5523 16 19 16H12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </span>
-                    <span>Live Demo</span>
-                </a>
+                        <span
+                            className="inline-block mr-1 -mb-[3px]"
+                        >
+                            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 20H16M12 20H8M12 20V16M12 16H5C4.44772 16 4 15.5523 4 15V6C4 5.44771 4.44772 5 5 5H19C19.5523 5 20 5.44772 20 6V15C20 15.5523 19.5523 16 19 16H12Z" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </span>
+                        <span>Live Demo</span>
+                    </a>
+                )}
             </div>
 
             <div
