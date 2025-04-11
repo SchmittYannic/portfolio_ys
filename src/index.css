@@ -6,24 +6,73 @@
 
 @layer base {
     :root {
+        /* actionBlue */
         --actionBlue-900: 29, 155, 240;
+        --actionBlue-800: 52, 165, 242;
         --actionBlue-700: 74, 175, 243;
+        --actionBlue-600: 97, 185, 245;
+        --actionBlue-500: 119, 195, 246;
         --actionBlue-400: 142, 205, 248;
+        --actionBlue-300: 165, 215, 249;
+        --actionBlue-200: 187, 225, 251;
+        --actionBlue-100: 210, 235, 252;
+
+
+        /* actionOrange */
         --actionOrange-900: 254, 91, 2;
+        --actionOrange-800: 254, 107, 27;
         --actionOrange-700: 254, 124, 53;
+        --actionOrange-600: 254, 140, 78;
+        --actionOrange-500: 254, 157, 103;
         --actionOrange-400: 255, 189, 154;
-        --actionGreen-900: 0, 186, 124;
+        --actionOrange-300: 255, 206, 179;
+        --actionOrange-200: 255, 222, 204;
+        --actionOrange-100: 255, 239, 230;
+
+
+        /* actionGreen */
+         --actionGreen-900: 0, 186, 124;
+        --actionGreen-800: 26, 193, 137;
         --actionGreen-700: 51, 200, 150;
+        --actionGreen-600: 77, 207, 163;
+        --actionGreen-500: 102, 214, 176;
         --actionGreen-400: 128, 221, 190;
+        --actionGreen-300: 153, 227, 203;
+        --actionGreen-200: 179, 234, 216;
+        --actionGreen-100: 204, 241, 229;
+
+        /* actionPurple */
         --actionPurple-900: 120, 86, 255;
+        --actionPurple-800: 134, 103, 255;
         --actionPurple-700: 147, 120, 255;
+        --actionPurple-600: 161, 137, 255;
+        --actionPurple-500: 174, 154, 255;
         --actionPurple-400: 188, 171, 255;
+        --actionPurple-300: 201, 187, 255;
+        --actionPurple-200: 215, 204, 255;
+        --actionPurple-100: 228, 221, 255;
+
+        /* actionMagenta */
         --actionMagenta-900: 249, 24, 128;
+        --actionMagenta-800: 250, 47, 141;
         --actionMagenta-700: 250, 70, 153;
+        --actionMagenta-600: 251, 93, 166;
+        --actionMagenta-500: 251, 116, 179;
         --actionMagenta-400: 252, 140, 192;
+        --actionMagenta-300: 253, 163, 204;
+        --actionMagenta-200: 253, 186, 217;
+        --actionMagenta-100: 254, 209, 230;
+
+        /* actionYellow */
         --actionYellow-900: 255, 212, 0;
+        --actionYellow-800: 255, 216, 26;
         --actionYellow-700: 255, 221, 51;
+        --actionYellow-600: 255, 225, 77;
+        --actionYellow-500: 255, 229, 102;
         --actionYellow-400: 255, 234, 128;
+        --actionYellow-300: 255, 238, 153;
+        --actionYellow-200: 255, 242, 179;
+        --actionYellow-100: 255, 246, 204;
 
         --projectcard-radialGradient-size: 800px;
         --projectcard-borderColor-opacity: 0.6;
@@ -391,4 +440,254 @@ html[data-color="Yellow"] .form-wrapper::before {
         rgb(var(--actionYellow-900)) 180deg,
         transparent 280deg
     );
+}
+
+
+/* color-btn styles */
+
+html[data-color="Blue"] .color-btn {
+    background-color: rgb(var(--actionBlue-900));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionBlue-800)),
+        rgb(var(--actionBlue-900))
+    );
+    border: 1px solid rgb(var(--actionBlue-900));
+    transition: background-color 0.3s, background-image 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+  
+html[data-color="Blue"] .color-btn:hover {
+    background-color: rgb(var(--actionBlue-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionBlue-700)),
+        rgb(var(--actionBlue-800))
+    );
+    border-color: rgb(var(--actionBlue-800));
+}
+  
+html[data-color="Blue"] .color-btn:active {
+    background-color: rgb(var(--actionBlue-700));
+    background-image: none;
+    border-color: rgb(var(--actionBlue-900));
+    box-shadow: inset 0 2px 4px #00000026;
+}
+  
+html[data-color="Blue"] .color-btn:focus {
+    background-color: rgb(var(--actionBlue-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionBlue-700)),
+        rgb(var(--actionBlue-800))
+    );
+    border-color: rgb(var(--actionBlue-800));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--actionBlue-400), 1);
+}
+
+
+
+html[data-color="Orange"] .color-btn {
+    background-color: rgb(var(--actionOrange-900));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionOrange-800)),
+        rgb(var(--actionOrange-900))
+    );
+    border: 1px solid rgb(var(--actionOrange-900));
+    transition: background-color 0.3s, background-image 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+  
+html[data-color="Orange"] .color-btn:hover {
+    background-color: rgb(var(--actionOrange-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionOrange-700)),
+        rgb(var(--actionOrange-800))
+    );
+    border-color: rgb(var(--actionOrange-800));
+}
+  
+html[data-color="Orange"] .color-btn:active {
+    background-color: rgb(var(--actionOrange-700));
+    background-image: none;
+    border-color: rgb(var(--actionOrange-900));
+    box-shadow: inset 0 2px 4px #00000026;
+}
+  
+html[data-color="Orange"] .color-btn:focus {
+    background-color: rgb(var(--actionOrange-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionOrange-700)),
+        rgb(var(--actionOrange-800))
+    );
+    border-color: rgb(var(--actionOrange-800));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--actionOrange-400), 1);
+}
+
+
+
+html[data-color="Green"] .color-btn {
+    background-color: rgb(var(--actionGreen-900));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionGreen-800)),
+        rgb(var(--actionGreen-900))
+    );
+    border: 1px solid rgb(var(--actionGreen-900));
+    transition: background-color 0.3s, background-image 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+  
+html[data-color="Green"] .color-btn:hover {
+    background-color: rgb(var(--actionGreen-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionGreen-700)),
+        rgb(var(--actionGreen-800))
+    );
+    border-color: rgb(var(--actionGreen-800));
+}
+  
+html[data-color="Green"] .color-btn:active {
+    background-color: rgb(var(--actionGreen-700));
+    background-image: none;
+    border-color: rgb(var(--actionGreen-900));
+    box-shadow: inset 0 2px 4px #00000026;
+}
+  
+html[data-color="Green"] .color-btn:focus {
+    background-color: rgb(var(--actionGreen-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionGreen-700)),
+        rgb(var(--actionGreen-800))
+    );
+    border-color: rgb(var(--actionGreen-800));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--actionGreen-400), 1);
+}
+
+
+html[data-color="Purple"] .color-btn {
+    background-color: rgb(var(--actionPurple-900));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionPurple-800)),
+        rgb(var(--actionPurple-900))
+    );
+    border: 1px solid rgb(var(--actionPurple-900));
+    transition: background-color 0.3s, background-image 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+  
+html[data-color="Purple"] .color-btn:hover {
+    background-color: rgb(var(--actionPurple-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionPurple-700)),
+        rgb(var(--actionPurple-800))
+    );
+    border-color: rgb(var(--actionPurple-800));
+}
+  
+html[data-color="Purple"] .color-btn:active {
+    background-color: rgb(var(--actionPurple-700));
+    background-image: none;
+    border-color: rgb(var(--actionPurple-900));
+    box-shadow: inset 0 2px 4px #00000026;
+}
+  
+html[data-color="Purple"] .color-btn:focus {
+    background-color: rgb(var(--actionPurple-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionPurple-700)),
+        rgb(var(--actionPurple-800))
+    );
+    border-color: rgb(var(--actionPurple-800));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--actionPurple-400), 1);
+}
+
+
+html[data-color="Magenta"] .color-btn {
+    background-color: rgb(var(--actionMagenta-900));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionMagenta-800)),
+        rgb(var(--actionMagenta-900))
+    );
+    border: 1px solid rgb(var(--actionMagenta-900));
+    transition: background-color 0.3s, background-image 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+  
+html[data-color="Magenta"] .color-btn:hover {
+    background-color: rgb(var(--actionMagenta-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionMagenta-700)),
+        rgb(var(--actionMagenta-800))
+    );
+    border-color: rgb(var(--actionMagenta-800));
+}
+  
+html[data-color="Magenta"] .color-btn:active {
+    background-color: rgb(var(--actionMagenta-700));
+    background-image: none;
+    border-color: rgb(var(--actionMagenta-900));
+    box-shadow: inset 0 2px 4px #00000026;
+}
+  
+html[data-color="Magenta"] .color-btn:focus {
+    background-color: rgb(var(--actionMagenta-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionMagenta-700)),
+        rgb(var(--actionMagenta-800))
+    );
+    border-color: rgb(var(--actionMagenta-800));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--actionMagenta-400), 1);
+}
+
+
+html[data-color="Yellow"] .color-btn {
+    background-color: rgb(var(--actionYellow-900));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionYellow-800)),
+        rgb(var(--actionYellow-900))
+    );
+    border: 1px solid rgb(var(--actionYellow-900));
+    transition: background-color 0.3s, background-image 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+  
+html[data-color="Yellow"] .color-btn:hover {
+    background-color: rgb(var(--actionYellow-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionYellow-700)),
+        rgb(var(--actionYellow-800))
+    );
+    border-color: rgb(var(--actionYellow-800));
+}
+  
+html[data-color="Yellow"] .color-btn:active {
+    background-color: rgb(var(--actionYellow-700));
+    background-image: none;
+    border-color: rgb(var(--actionYellow-900));
+    box-shadow: inset 0 2px 4px #00000026;
+}
+  
+html[data-color="Yellow"] .color-btn:focus {
+    background-color: rgb(var(--actionYellow-800));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(var(--actionYellow-700)),
+        rgb(var(--actionYellow-800))
+    );
+    border-color: rgb(var(--actionYellow-800));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--actionYellow-400), 1);
 }
