@@ -72,7 +72,7 @@ const Hero = () => {
                 >
                     {/* <img
                         className="mx-auto aspect-[3/2] overflow-hidden rounded-xl object-cover object-center border-2"
-                        src={placeholderProfile}
+                        src={}
                         alt=""
                         width={600}
                         height={400}

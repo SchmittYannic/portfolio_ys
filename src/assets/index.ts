@@ -1,5 +1,3 @@
-import placeholderProfile from "./placeholderProfile.png";
-import placeholderProject from "./placeholder.jpg";
 import htmlLogoGrid from "./htmlLogoGrid";
 import jsLogoGrid from "./jsLogoGrid";
 import cssLogoGrid from "./cssLogoGrid";
@@ -31,8 +29,6 @@ import portfolioAppimg from "./portfolioAppimg.webp";
 import portfolioApp from "./portfolioApp.webm";
 
 export {
-    placeholderProfile,
-    placeholderProject,
     htmlLogoGrid,
     jsLogoGrid,
     cssLogoGrid,
