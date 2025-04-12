@@ -152,6 +152,7 @@ export default {
         "focus-visible:ring-actionOrange-900/30",
         "pt-[72px]", // number needs to be the same as navbarHeight in constants file
         "-mt-[72px]", // number needs to be the same as navbarHeight in constants file
+        "-translate-y-[72px]", // number needs to be the same as navbarHeight in constants file
     ],
     darkMode: "class",
 }
