@@ -82,7 +82,7 @@ const TextContent: Record<LanguageType, LocalizedTextContentType> = {
         heroHeadText: "Ich entwickle effiziente und benutzerfreundliche Frontends und setze meine Kenntnisse im Backend-Bereich gezielt ein, um reibungslose und leistungsstarke Webanwendungen zu schaffen.",
         heroSubText1: "Junior Webentwickler mit Fokus auf dem ",
         heroSubText2: ". Mit den neuesten Technologien werde ich ihre Designs zum Leben erwecken.",
-        jobTitle: "Webentwickler",
+        jobTitle: "Frontend Entwickler / Webentwickler",
 
         aboutHead: "Über mich",
         aboutSub: "Erfahre mehr über meinen Bildungsweg und meine Fachkenntnisse",
