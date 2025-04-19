@@ -81,7 +81,7 @@ const Contact = () => {
             </div>
             <div
                 id="contact-content"
-                className={`${styles.maxSiteWidth} relative mx-auto md:px-6 px-4 grid items-start gap-6 lg:grid-cols-2 lg:gap-10 z-10`}
+                className={`lg:max-w-[1400px] max-w-[632px] relative mx-auto lg:px-6 px-4 grid items-start gap-6 lg:grid-cols-2 lg:gap-10 z-10`}
             >
                 <div
                     id="contact-text"
@@ -173,7 +173,7 @@ const Contact = () => {
 
                 <div
                     id="contact-form"
-                    className={`rounded-lg p-6 ${styles.secondaryBackground}`}
+                    className={`rounded-lg lg:p-6 p-4 ${styles.secondaryBackground}`}
                 >
                     <form
                         className="space-y-4"
