@@ -303,54 +303,35 @@ const DesktopNav = ({ type = "complete" }: NavbarPropsType) => {
 const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
     const { theme, isBurgerMenuOpen, setIsBurgerMenuOpen, setIsSettingsMenuOpen } = useSettings();
     const { TooltipContent } = useDynamicClasses();
-    const [scope, animate] = useAnimate();
 
     const logo: string = theme === "light" ? logoBlack : logoWhite;
 
-    useEffect(() => {
-        if (!scope.current) return
-        const animateLinesTogether = async () => {
-            await Promise.all([
-                animate("#burger-line1", { top: "50%" }),
-                animate("#burger-line2", { opacity: 0 }),
-                animate("#burger-line3", { top: "50%" }),
-            ])
-        };
+    const line1Variants = {
+        closed: {
+            top: "30%", rotate: 0
+        },
+        open: {
+            top: "50%", rotate: 45
+        },
+    };
 
-        const animateLinesApart = async () => {
-            await Promise.all([
-                animate("#burger-line1", { top: "30%" }),
-                animate("#burger-line2", { opacity: 1 }),
-                animate("#burger-line3", { top: "70%" }),
-            ])
-        };
+    const line2Variants = {
+        closed: {
+            opacity: 1
+        },
+        open: {
+            opacity: 0
+        },
+    };
 
-        const animateLineRotation = async () => {
-            await Promise.all([
-                animate("#burger-line1", { rotate: 45 }),
-                animate("#burger-line3", { rotate: -45 }),
-            ])
-        };
-
-        const animateLineHorizontal = async () => {
-            await Promise.all([
-                animate("#burger-line1", { rotate: 0 }),
-                animate("#burger-line3", { rotate: 0 }),
-            ])
-        }
-
-
-        const animateBurgerMenu = async () => {
-            if (isBurgerMenuOpen) {
-                await animateLinesTogether();
-                await animateLineRotation();
-            } else {
-                await animateLineHorizontal();
-                await animateLinesApart();
-            }
-        }
-        animateBurgerMenu();
-    }, [isBurgerMenuOpen]);
+    const line3Variants = {
+        closed: {
+            top: "70%", rotate: 0
+        },
+        open: {
+            top: "50%", rotate: -45
+        },
+    };
 
     return (
         <>
@@ -393,7 +374,6 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
                             <div className="relative h-full">
                                 <NavElement>
                                     <button
-                                        ref={scope}
                                         className="relative px-2 h-full w-14 z-20 rounded-md"
                                         type="button"
                                         title={isBurgerMenuOpen ? TooltipContent.closeMenu : TooltipContent.burgerMenu}
@@ -406,16 +386,23 @@ const MobileNav = ({ type = "complete" }: NavbarPropsType): ReactElement => {
                                             id="burger-line1"
                                             className="absolute block h-1 w-8 top-[30%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
                                             initial={{ y: "-50%", x: "-50%" }}
+                                            variants={line1Variants}
+                                            animate={isBurgerMenuOpen ? "open" : "closed"}
+
                                         />
                                         <motion.span
                                             id="burger-line2"
                                             className="absolute block h-1 w-8 top-[50%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
                                             initial={{ y: "-50%", x: "-50%" }}
+                                            variants={line2Variants}
+                                            animate={isBurgerMenuOpen ? "open" : "closed"}
                                         />
                                         <motion.span
                                             id="burger-line3"
                                             className="absolute block h-1 w-8 top-[70%] left-1/2 dark:bg-darkTextPrimary bg-textPrimary"
                                             initial={{ y: "-50%", x: "-50%" }}
+                                            variants={line3Variants}
+                                            animate={isBurgerMenuOpen ? "open" : "closed"}
                                         />
                                     </button>
                                 </NavElement>
