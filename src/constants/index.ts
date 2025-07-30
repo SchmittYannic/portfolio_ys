@@ -15,6 +15,7 @@ import {
     eldenplannerApp,
     portfolioAppimg,
     portfolioApp,
+    springbootLogo,
 } from "../assets";
 
 const navbarHeight = 72; // when changing also change safelist in tailwind.config -> pt-[${navbarHeight}px]
@@ -385,6 +386,14 @@ const skillsIT: SkillsType[] = [
         description_de: "Eine Erweiterung von JavaScript, die statische Typisierung hinzufügt und die Codequalität und Skalierbarkeit in großen Anwendungen verbessert.",
     },
     {
+        id: "java",
+        name_en: "Java",
+        name_de: "Java",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        description_en: "A general-purpose programming language designed for platform independence and object-oriented development, commonly used in backend systems, enterprise applications, and Android development.",
+        description_de: "Eine universell einsetzbare Programmiersprache, entwickelt für Plattformunabhängigkeit und objektorientierte Softwareentwicklung. Häufig eingesetzt in Backend-Systemen, Unternehmensanwendungen und der Android-Entwicklung.",
+    },
+    {
         id: "react",
         name_en: "React",
         name_de: "React",
@@ -393,12 +402,28 @@ const skillsIT: SkillsType[] = [
         description_de: "Eine JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, die effiziente Renderung und eine komponentenbasierte Architektur bietet.",
     },
     {
+        id: "angular",
+        name_en: "Angular",
+        name_de: "Angular",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+        description_en: "A TypeScript-based web framework for building scalable single-page applications, maintained by Google and widely used for enterprise-grade frontends.",
+        description_de: "Ein auf TypeScript basierendes Web-Framework zur Entwicklung skalierbarer Single-Page-Anwendungen, von Google gepflegt und häufig in Enterprise-Frontends eingesetzt.",
+    },
+    {
         id: "nodejs",
         name_en: "Node.js",
         name_de: "Node.js",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
         description_en: "A JavaScript runtime environment allowing server-side execution of JavaScript code, facilitating scalable and efficient backend development.",
         description_de: "Eine JavaScript-Laufzeitumgebung, die die serverseitige Ausführung von JavaScript-Code ermöglicht und die skalierbare und effiziente Backend-Entwicklung erleichtert.",
+    },
+    {
+        id: "spring",
+        name_en: "Spring Boot",
+        name_de: "Spring Boot",
+        logo: springbootLogo,
+        description_en: "A Java-based framework for building stand-alone, production-ready backend applications with minimal configuration, commonly used in microservice architectures.",
+        description_de: "Ein Java-basiertes Framework zur Entwicklung eigenständiger, produktionsreifer Backend-Anwendungen mit minimalem Konfigurationsaufwand – oft eingesetzt in Microservice-Architekturen.",
     },
     {
         id: "redux",
