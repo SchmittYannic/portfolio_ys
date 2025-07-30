@@ -18,6 +18,7 @@ import html5Logo from "./html5.svg";
 import css3Logo from "./css3.svg";
 import javascriptLogo from "./javascript.svg";
 import typescriptLogo from "./typescript.svg";
+import springbootLogo from "./springboot.svg";
 
 import hairdresserAppimg from "./hairdresserAppimg.webp";
 import hairdresserApp from "./hairdresserApp.webm";
@@ -49,6 +50,7 @@ export {
     css3Logo,
     javascriptLogo,
     typescriptLogo,
+    springbootLogo,
     hairdresserAppimg,
     hairdresserApp,
     hairdresserDashboardAppimg,
