@@ -461,7 +461,22 @@ const skillsLanguage: SkillsType[] = [
     },
 ];
 
-const tags = ["React", "Typescript", "Tailwind", "SCSS", "Flask", "D3", "Framermotion", "Node", "Mongodb", "Express", "Redux"] as const;
+const tags = [
+    "React",
+    "Typescript",
+    "Tailwind",
+    "SCSS",
+    "Flask",
+    "D3",
+    "Framermotion",
+    "Node",
+    "Mongodb",
+    "Express",
+    "Redux",
+    "Java",
+    "Spring",
+    "Angular",
+] as const;
 export type TagKeyType = typeof tags[number];
 
 type TagType = {
@@ -542,6 +557,24 @@ const tagData: TagDataType = {
         backgroundColor: "bg-purple-600",
         link: "https://redux-toolkit.js.org/",
     },
+    Java: {
+        name: "Java",
+        textColor: "text-white",
+        backgroundColor: "bg-orange-500",
+        link: "https://www.java.com/",
+    },
+    Spring: {
+        name: "Spring Boot",
+        textColor: "text-white",
+        backgroundColor: "bg-green-600",
+        link: "https://spring.io/projects/spring-boot",
+    },
+    Angular: {
+        name: "Angular",
+        textColor: "text-white",
+        backgroundColor: "bg-red-600",
+        link: "https://angular.dev/",
+    },
 }
 
 export type ProjectType = {
@@ -606,7 +639,7 @@ const projects: ProjectType[] = [
         demoaccpw: "Admin#1",
         description_de: [],
         description_en: [],
-        tags: [],
+        tags: ["Angular", "Typescript", "SCSS", "Java", "Spring", "Mongodb"],
         githubLink: "https://github.com/SchmittYannic/hairdresser_dashboard",
         liveLink: "https://hairdresser-dashboard.project-domain.de",
     },
