@@ -19,8 +19,10 @@ import css3Logo from "./css3.svg";
 import javascriptLogo from "./javascript.svg";
 import typescriptLogo from "./typescript.svg";
 
-import hairdresserAppimg from "./hairdresserAppimg.webp"
+import hairdresserAppimg from "./hairdresserAppimg.webp";
 import hairdresserApp from "./hairdresserApp.webm";
+import hairdresserDashboardAppimg from "./hairdresserDashboardAppimg.webp";
+import hairdresserDashboardApp from "./hairdresserDashboardApp.webm";
 import datavisualizerAppimg from "./datavisualizerAppimg.webp";
 import datavisualizerApp from "./datavisualizerApp.webm";
 import eldenplannerAppimg from "./eldenplannerAppimg.webp";
@@ -49,6 +51,8 @@ export {
     typescriptLogo,
     hairdresserAppimg,
     hairdresserApp,
+    hairdresserDashboardAppimg,
+    hairdresserDashboardApp,
     datavisualizerAppimg,
     datavisualizerApp,
     eldenplannerAppimg,
