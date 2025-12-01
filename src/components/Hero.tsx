@@ -2,7 +2,8 @@
 import useDynamicClasses from "../hooks/useDynamicClasses"
 import useSettings from "../hooks/useSettings";
 import { LinkButton, CtaButton } from "./ui";
-import HeroCanvas from "./HeroCanvas";
+import HeroWebGL from "./HeroWebGL";
+import { cssLogoGrid, htmlLogoGrid, jsLogoGrid } from "../assets";
 import HeroBg from "./HeroBg";
 import { styles } from "../styles";
 
@@ -77,7 +78,11 @@ const Hero = () => {
                         width={600}
                         height={400}
                     /> */}
-                    <HeroCanvas />
+                    <HeroWebGL grids={[
+                        { grid: jsLogoGrid, x: 205, y: 70 },
+                        { grid: htmlLogoGrid, x: 90, y: 130 },
+                        { grid: cssLogoGrid, x: 350, y: 130 },
+                    ]} />
                 </div>
             </div>
         </section>
