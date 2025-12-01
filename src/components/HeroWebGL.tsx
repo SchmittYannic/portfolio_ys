@@ -33,10 +33,39 @@ const HeroCanvasWebGL: React.FC<Props> = ({
         const canvas = canvasRef.current;
         if (!canvas) return;
 
+        // Build squares
+        const squares: Square[] = [];
+        const GAP = 0.5;
+        const spacing = pixelSize + GAP;
+
         const gl = canvas.getContext("webgl");
         if (!gl) {
-            console.error("WebGL not supported");
-            return;
+            console.warn("WebGL not supported, rendering static canvas");
+            const ctx = canvas.getContext("2d");
+            if (!ctx) return;
+
+            // Optional: statische Version zeichnen
+            grids.forEach(({ grid, x: startX, y: startY }) => {
+                grid.forEach((row, rowIndex) => {
+                    row.forEach((v, colIndex) => {
+                        if (v === 0) return;
+                        const px = startX + colIndex * spacing;
+                        const py = startY + rowIndex * spacing;
+                        let color: string;
+                        switch (v) {
+                            case 1: color = "rgb(239,72,13)"; break;
+                            case 2: color = "white"; break;
+                            case 3: color = "rgb(228,160,37)"; break;
+                            case 4: color = "rgb(33,149,243)"; break;
+                            default: color = "white";
+                        }
+                        ctx.fillStyle = color;
+                        ctx.fillRect(px, py, pixelSize, pixelSize);
+                    });
+                });
+            });
+
+            return; // Kein WebGL → keine Animation oder Mouse-Events
         }
 
         // Mouse state
@@ -53,11 +82,6 @@ const HeroCanvasWebGL: React.FC<Props> = ({
 
         canvas.addEventListener("mousemove", handleMove);
         canvas.addEventListener("mouseout", handleOut);
-
-        // Build squares
-        const squares: Square[] = [];
-        const GAP = 0.5;
-        const spacing = pixelSize + GAP;
 
         grids.forEach(({ grid, x: startX, y: startY }) => {
             for (let row = 0; row < grid.length; row++) {
