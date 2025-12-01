@@ -1,3 +1,5 @@
+// CURRENTLY UNUSED
+
 import { useRef, useEffect } from "react";
 import { cssLogoGrid, htmlLogoGrid, jsLogoGrid } from "../assets";
 
