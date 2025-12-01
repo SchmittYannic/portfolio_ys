@@ -92,12 +92,12 @@ const TimelineEntry = ({ entry }: { entry: educationType }) => {
                     {entry.location}
                 </p>
                 <ul className={`ml-4 list-disc list-outside ${styles.primaryTextColor} ${styles.primaryFontSize}`}>
-                    <li>
+                    {/* <li>
                         {entry.grade === "noDegree"
                             ? PageTextContent.noDegree
                             : PageTextContent.gpa + entry.grade
                         }
-                    </li>
+                    </li> */}
                     {entry.thesis &&
                         <li>
                             {PageTextContent.thesis}{entry.thesis}
